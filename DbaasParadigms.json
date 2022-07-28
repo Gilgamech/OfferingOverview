@@ -1,0 +1,117 @@
+
+[{
+	"name": "Key-Value",
+	"Data is stored as": "Values that are attached to keys.",
+	"Use Case": "Very fast in-memory caching to supplement another database option.",
+	"Non-Ideal": "Structured or general site data, joins.",
+	"Schema": "No",
+	"Horizontal": "Very good",
+	"Offerings": "Elasticache, Redis ",
+	"notes":[
+		"Basically remote variables. Remote Procedure Call where the Remote Procedure just stores and responds with the data sent to it."
+	]
+
+},
+{
+	"name": "Wide Column",
+	"Data is stored as": "Values that are attached to keys. The value's properties are treated as columns, grouped almost into tables.",
+	"Use Case": "Provides CQL which is similar to SQL. Best used to supplement another database option.",
+	"Non-Ideal": "Structured or general site data, joins.",
+	"Schema": "No",
+	"Horizontal": "Very good",
+	"Offerings": "Cassandra, Oracle HBase (Kinda what AWS Glue does for AWS Athena.)",
+	"notes":[
+		"Structured key-value."
+	]
+},
+{
+	"name": "Document",
+	"Data is stored as": "JSON Documents as unstructured containers for key:value pairs, and these are grouped into collections. Fields in collections can be indexed into hierarchies. This gives a good amount of relational data. No joins, so embed data instead of normalizing it.",
+	"Use Case": "Phone games, IOT, Content Management, anywhere you have a lot of unstructured data. Much faster reads.",
+	"Non-Ideal": "Structured data, joins. Writes etc aren't much faster.",
+	"Schema": "No",
+	"Horizontal": "Good?",
+	"Offerings": "MongoDB, FirestormDB, DynamoDB, CouchDB, SimpleDB, etc.",
+	"notes":[
+		"Highly structured key-value."
+	]
+},
+{
+	"name": "Relational",
+	"Data is stored as": "Tables of rows with primary key IDs, with data set in typed columns. Allows referencing a foreign key ID from another table, and performing joins between tables. Operates best when data has been normalized into the smallest normal form. ACID compliant, which normally makes it hard to scale.",
+	"Use Case": "Banks, financial institutions, long-term structured data storage. Usual starting DB choice, since it's the first.",
+	"Non-Ideal": "Unstructured data.",
+	"Schema": "Yes",
+	"Horizontal": "Usually poor, but some solutions have good scalability.",
+	"Offerings": "SQLite, PostGres, MySQL, MSSQL, CochroachDB, numerous others. ",
+	"notes":[
+		"Oldest DB (since 1974), uses SQL."
+	]
+},
+{
+	"name": "Graph",
+	"Data is stored as": "Nodes, with relationships between them as edges.",
+	"Use Case": "Knowledge graphs, fraud detection, recommendation engines. (Intrusion detection?)",
+	"Non-Ideal": "Unstructured data.",
+	"Schema": "No?",
+	"Horizontal": "???",
+	"Offerings": "Neo4j, DGraph",
+	"notes":[
+		"To set up a many:many relationship, instead of the Relational model's creating a Join Table with foreign keys of both tables, we just set up the data and the various edges between them, no middle table needed. Makes queries much simpler and easier, and gives better performance on big data with join-heavy queries. Uses Cypher query language."
+	]
+},
+{
+	"name": "Search",
+	"Data is stored as": "JSON Documents as unstructured containers, and the words in these are indexed into searchable terms.",
+	"Use Case": "Index data for searching. Can run numerous typo, ranking, relevance, and recommendation algorithms, at the cost of speed and flexibility:but could be valuable as a type-ahead search box.",
+	"Non-Ideal": "Structured data, unstructured data for quick retrieval, joins, general site data.",
+	"Schema": "No?",
+	"Horizontal": "???",
+	"Offerings": " Apache Lucene (Elastic, Solr), Algolia, Meili",
+	"notes":[
+		"The search term is then used as the key, and the list of documents in the searchable term index is the value."
+	]
+},
+{
+	"name": "Multi-model",
+	"Data is stored as": "structured and unstructured as needed.",
+	"Use Case": "Abstract away data modeling, schemas, replication, shards, etc.",
+	"Non-Ideal": "???",
+	"Schema": "When needed.",
+	"Horizontal": "???",
+	"Offerings": "FaunaDB",
+	"notes":[
+		"Uses modeling to pick the optimal DB type foreach type of data added. Can add documents to collections."
+	]
+},
+{
+	"name": "Time-Series",
+	"Data is stored as": "",
+	"Use Case": "",
+	"Non-Ideal": "",
+	"Schema": "",
+	"Horizontal": "",
+	"Offerings": "",
+	"notes":[]
+},
+{
+	"name": "Data Warehouse",
+	"Data is stored as": "",
+	"Use Case": "",
+	"Non-Ideal": "",
+	"Schema": "",
+	"Horizontal": "",
+	"Offerings": "",
+	"notes":[]
+
+},
+{
+	"name": "Data Lake",
+	"Data is stored as": "",
+	"Use Case": "",
+	"Non-Ideal": "",
+	"Schema": "",
+	"Horizontal": "",
+	"Offerings": "AWS Data Lake",
+	"notes":[]
+}]

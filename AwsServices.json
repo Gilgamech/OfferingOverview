@@ -1,0 +1,857 @@
+[{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Amplify",
+	"stack": "",
+	"type": "",
+  	"useCase": "mobile SDKs to connect to AWS infra."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "",
+	"stack": "",
+	"type": "",
+  	"useCase": ""
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "",
+	"stack": "",
+	"type": "",
+  	"useCase": ""
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"App Runner",
+	"type": "SaaS",
+	"useCase": "Point at container and it handles all the orchestration."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Block Storage (EBS?)",
+	"type": "IaaS",
+	"useCase": "Used for high-data requirements, but needs manual config."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Bracket",
+	"type": "IaaS",
+	"useCase": "Quantum Computing"
+},
+{
+	"cost": "free",
+	"encryption": "SSL",
+	"HaDrBc": "",
+	"name":"CLI",
+	"type": "PaaS",
+	"useCase": "perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, etc.",
+	"notes": [
+	"Easily switch between accounts with --profile",
+	"Change --output between JSON, Table, and Text.",
+	"Programmatic Access must be setup from IAM",
+	"aws configure command sets up IAM keys, stored plaintext on the filesystem, so use roles instead wherever possible.",
+	"Installed via Python script"
+	]
+},
+{
+	"cost": "",
+	"encryption": "are templates encrypted?",
+	"HaDrBc": "",
+	"name": "CloudFormation",
+	"type": "IaaS",
+	"useCase": "automate the provisioning of resources and Infrastructure As Code.",
+	"notes": [
+		"JSON or YAML",
+		"Errors rollback with message 'ROLLBACK_IN_PROGRESS'"
+	],
+	"CloudFormation Templates": [
+		"Must define at least one resource.",
+		"Larger than 51,200 bytes (0.05 MB) must be imported from S3 bucket",
+		"Can be nested into NestedStacks.",
+		{
+		"Fields": [
+			"MetaData - extra info",
+			"Description - of the template",
+			"Parameters - user inputs",
+			"Transforms - Macros to modify data.",
+			"Outputs - Become inputs into other stacks.",
+			"Mappings - key value lookup table",
+			"Resources - define what to provision (minimum 1)",
+			"Conditions - control if resources get created and/or properties assigned."
+			]
+		}
+	]
+},
+{
+	"cost": "",
+	"encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
+	"HaDrBc": "",
+	"name":"CloudFront CDN",
+	"type": "IaaS",
+	"useCase": "Distributes cached copies to Edge Locations for faster worldwide retrieval.",
+	"notes": [
+		"Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, etc)",
+		"Distribution defines a collection of Edge Locations and behavior on how it should handle your cached content.",
+		"2 types: Web (static content) and RTMP (streaming media) ",
+		"Security through Signed URLs or Signed Cookies.",
+		"Write to Edge Locations with verbs like PUT objects. (How does this work and what are the use cases? Invalidate cache for a specific location, or A/B test stuff in a specific region?)",
+		"Lambda@Edge allows passing requests through a Lambda to transform.",
+		"TTL defines cache expiry in seconds.",
+		"Invalidating cache immediately expires the cached items, so they refresh immediately.",
+		"Refreshing a cached item has a bandwidth cost of moving the item from origin to edge."
+	]
+},
+{
+	"cost": "",
+	"encryption": "Are trails encrypted?",
+	"HaDrBc": "",
+	"name":"CloudTrail",
+	"type": "SaaS",
+	"useCase": "Logs calls between AWS services.",
+	"notes": [
+		"Involves governance, compliance, operational auditing, and risk auditing.",
+		"Can be configured to gather all logs in all regions in all accounts across an AWS Organization.",
+		"Default is 90 days via Event History, and beyond 90 days requires creating a Trail, which is logged to an S3 bucket, and can be analyzed with Athena."
+	],
+	"CloudTrail Logs":{
+		"encryption": "KMS",
+		"notes": [
+			"Log Validation prevents tampering. (How?)",
+			"Can be streamed to CloudWatch Logs",
+			"2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
+		]
+	}
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"CloudWatch",
+	"type": "SaaS",
+	"useCase": "Monitoring",
+	"notes": [
+		"You can track the amount of data written to AWS using Amazon CloudWatch. https://aws.amazon.com/c-tax-faqs/",
+		"Collection of monitoring services: Dashboards, Events, Alarms, Logs, Metrics",
+		"Most services default to 1 minute reporting intervals, with options for 1, 3, and 5.",
+		"EC2 starts with 5 and calls the 1 min option 'detailed monitoring' (does it cost more?) - CloudWatch Agent required.",
+		"Can stream custom logs too."
+	],
+	"CloudWatch Dashboards": {
+	"encryption": "Are Dashboards encrypted?",
+	"notes": [
+		"Visualize metrics"
+		]
+	},
+	"CloudWatch Events": {
+	"encryption": "Are Events encrypted?",
+	"notes": [
+		"Trigger AWS events based on condition (use case hourly snapshots)"
+		]
+	},
+	"CloudWatch Alarms": {
+	"encryption": "Are Alarms encrypted?",
+	"notes": [
+		"Notifications based on metrics"
+		]
+	},
+	"CloudWatch Logs": {
+	"encryption": "Are Logs encrypted?",
+	"notes": [
+		"Data point logging",
+		"Must belong to log group"
+		]
+	},
+	"CloudWatch Metrics": {
+	"encryption": "Are Metrics encrypted?",
+	"notes": [
+		"Capture one data point across time.",
+		"Custom Metrics allow much higher resolution, down to 1 second."
+		]
+	}
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Cognito",
+	"encryption": "Are user pools and identity pools encrypted? Where are they stored?",
+	"type": "PaaS",
+	"useCase": "Decentralized managed auth.",
+	"notes": [
+		"User Pools directory allows users to auth using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
+		"Uses JWTs to persist auth",
+		"Identity Pools can provide temp AWS creds for service access (S3, DynamoDB, etc)",
+		"Cognito Sync can sync user data and preferences across devices with one line of code (powered by SNS)",
+		"Web Identity Federation exchanges identity and security info between IdP and apps.",
+		"IdP is a trusted login source for other services.",
+		"OIDC is an Oauth type of IdP.",
+		"SAML is an SSO type of IdP."
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Data Exchange",
+	"type": "SaaS",
+	"useCase": "Buy someone else's data to process, or use 3rd party data"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Datasync",
+	"type": "IaaS",
+	"useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Deep Racer",
+	"type": "PaaS",
+	"useCase": "RC car that you can program with ML "
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-DocumentDB",
+	"type": "PaaS",
+	"useCase": "notMongoDB with 1:1 to be allowed to charge money for open sourced applications."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-DynamoDB",
+	"type": "PaaS",
+	"useCase": "Fully managed NOSQL key/value & document DB.",
+	"notes": [
+		"Easy to scale document DB, but no joins and limited queries.",
+		"Good for applications with large amounts of data and need predictable read & write while scaling.",
+		"Scales to meet the specified read and write (per second) capacities.",
+		"Data stored as 3 copies on SSDs in 3 regions.",
+		"Two consistency modes: ",
+		"Eventually (1 sec) Consistent Reads - can return inconsistent immediate reads too.",
+		"Strongly Consistent Reads - will wait until data is consistent (1 sec) before returning, with higher latencies due to no immediate read option."
+	]
+},
+{
+	"cost": "",
+	"encryption": "KMS?",
+	"HaDrBc": "",
+	"name":"EBS",
+	"type": "IaaS",
+	"useCase": "virtual block-level storage drive that you can attach to a single EC2 instance.",
+	"notes": [
+		"Volume dimensions (size, storage type) can be changed at any time.",
+		"Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. (What is the use case for these?)",
+		"EBS backed instances can be stopped without data loss.",
+		"Root volumes delete on termination by default.",
+		"Volumes can have termination protection."
+	],
+	"Snapshots":[
+		"Snapshots are incremental point-in-time copies, and only changes made since the last snapshot are moved to S3.",
+		"Initial snapshots will take longer than subsequent snapshots.",
+		"EC2 instance should be stopped before snapshotting root volume. But other disks can be taken while the server is running.",
+		"Restoring a snapshots of an encrypted volume will give you a snapshot that is still encrypted, and you can't share encrypted snapshots.",
+		"Unencrypted snapshots can be shared with other AWS accounts or made public. (Why would you want to make a snapshot public?)",
+		"AMIs can be created from snapshots, or volumes."
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"EC2",
+	"type": "IaaS",
+	"EC2-AMI":[],
+	"EC2-ASG":[],
+	"EC2-NAT":[],
+	"EC2-pricing":[],
+	"EC2-pricing2":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-ElasiCache",
+	"type": "PaaS",
+	"useCase": "Fully managed Redis in-memory database."
+},
+{
+	"cost": " ~$0.55/day or $18/month.",
+	"encryption": "All can hold SSL certs",
+	"HaDrBc": "",
+	"name":"ELB",
+	"type": "IaaS",
+	"useCase": "Split traffic from one destination across numerous servers.",
+	"notes": [
+		"3 flavors: Network, Application, Classic"
+	],
+	"Application": [
+		"Has Listeners, Rules, and Target Groups",
+		"For HTTP(S) and is good for web apps.",
+		"Can attach WAF. (Goes in front?)",
+		"Advanced routing rules (can route based on subdomain header, path, and other HTTP(S) info.)",
+		"Can have sticky sessions which are remembered by cookie."
+	],
+	"Network": [
+		"Has Listeners and Target Groups but is a lawless place.",
+		"For TCP/UDP and is good for high throughput i.e. video games.",
+		"Can't have sticky sessions?"
+	],
+	"Classic": [
+		"Has Listeners with EC2 instances registered directly.",
+		"For legacy and is being depreciated",
+		"Can have sticky sessions which are remembered by cookie.",
+		"Must have at least 2 AZs",
+		"Cannot be cross-region.",
+		"X-Forwarded-For header has source IP."
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-ES",
+	"type": "PaaS"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"FSx",
+	"type": "PaaS"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Fargate",
+	"type": "SaaS",
+	"useCase": "Run containers without worrying about servers."
+},
+{
+	"cost": "free?",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Glue",
+	"type": "PaaS",
+	"useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio. (If a user can access ALL s3 files in a Glue Table, then Glue will present the Table to Athena for the user to query.)"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Graviton CPUs",
+	"type": "IaaS",
+	"useCase": ""
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Ground Station",
+	"type": "IaaS",
+	"useCase": "Contact satellites in orbit around the Earth."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Honeycode",
+	"type": "PaaS",
+	"useCase": "Write functions without code"
+},
+{
+	"cost": "free",
+	"encryption": "(Are your policies encrypted at rest?)",
+	"HaDrBc": "",
+	"name":"IAM",
+	"type": "PaaS",
+	"useCase": "Used to manage AWS access.",
+	"notes": [
+		"Foundational",
+		"Universal system, applies to all regions at once.",
+		"AWS account creation normally starts with root user account setup.",
+		"Always setup MFA for root accounts.",
+		"New accounts have no permissions until assigned.",
+		"New users get an access key and secret key when created with the programmatic access option set.",
+		"Access keys are only for CLI / SDK access and not for console access.",
+		"Access secret keys are only shown on creation - if lost they must be made again.",
+		"Users must setup MFA for themselves, and this can't be done by an admin. (is this true?)",
+		"IAM allows setting password policies like minimum length or rotation time.",
+		"IAM identities are users, groups, and roles.",
+		"IAM user accounts allow users to use the AWS Console, or CLI or SDK.",
+		"IAM Groups allow grouping users with the same permissions.",
+		"IAM Roles associate permissions with a resource.",
+		"IAM Policies are JSON documents listing specific permissions.",
+		"Managed Policies are read-only from AWS",
+		"Customer Policies are ones you make and maintain.",
+		"Inline Policies are directly attached to a user, group, or resource.",
+		"List Policies can be listed in the AWS Console and are not directly attached."
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"IOT",
+	"IOT Core":[
+		"logging"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Kinesis",
+	"type": "PaaS",
+	"useCase": "Captures realtime data stream "
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Lake Formation",
+	"type": "PaaS",
+	"useCase": "Create data lakes, or repositories of unstructured data."
+},
+{
+	"cost": " Pay per invocation (CPU time and memory size, rounded to nearest 100 ms, and based on requests. First 1M requests are free.) ",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Lambda",
+	"type": "PaaS",
+	"useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture. Good fit for short-running tasks where you don't need to customize the OS or environment.",
+	"Supports 7 runtimes":[
+		"Ruby",
+		"Python",
+		"Java",
+		"NodeJS",
+		"C#",
+		"PowerShell",
+		"Go"
+	],
+	"notes": [
+		"Adjustable duration timeout upto 15 min and memory size up to 3008 MB.",
+		"Can be triggered from SDK or multiple services (S3, API Gateway, DynamoDB, etc)",
+		"Use no VPC by default, but can use a VPC to interact with your other services, like RDS.",
+		"Can scale to 1000 (default) concurrent functions. Can increase this default as an AWS Service Limit increase.",
+		"Cold Starts - if not used recently there will be a startup delay.",
+		"For longer than 15 minutes or a custom OS environment, consider Fargate/ECS"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"LandingZone",
+	"notes": [
+		"Foundational"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Lex",
+	"type": "PaaS",
+	"useCase": "Conversational service with the same tech that operates Amazon Alexa"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Lightsail",
+	"type": "SaaS",
+	"useCase": "If you don't care about the infra and just want to deploy a Wordpress site."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"MapReduce",
+	"type": "PaaS",
+	"useCase": "Apache Spark, lets you do massive parallel processing on data sets."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"MSK",
+	"type": "PaaS",
+	"useCase": "Fully managed Apache Kafka message queue"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-Neptune",
+	"type": "PaaS",
+	"useCase": "Graph DB that can get better performance on highly-connected data like a social graph or recommendation engine."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Organizations",
+	"notes": [
+		"Foundational"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Outposts",
+	"type": "IaaS",
+	"useCase": "Run AWS APIs on your servers."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-Quantum Ledger",
+	"type": "PaaS",
+	"useCase": "QLDB is blockchain-ish"
+},
+{
+	"cost": "",
+	"encryption": "(Is there any non-public info in DNS?)",
+	"HaDrBc": "",
+	"name":"R53",
+	"type": "IaaS",
+	"useCase": "DNS provider, registrar, and domain manager.",
+	"notes": [
+		"Traffic Flow: Visual editor for chaining routing policies, has versioning for easy rollback.",
+		"Alias Record - AWS' smart record - it detects changed IP addresses and updates automatically. (How - is it a type of reverse DNS?)",
+		"R53 Resolver: Lets you regionally route DNS queries between your VPCs and your hybrid network.",
+		"Health checks can monitor and automatically reroute between endpoints. And health checks can monitor other health checks."
+	],
+	"Routing types":{
+		"Simple": "Default, multiple addresses result in random endpoint selection.",
+		"Weighted": "Assign percentages to different routes.",
+		"Latency-based": "Directs traffic based on region to get lowest latency.",
+		"Failover": "Directs traffic to secondary site only if primary site is down.",
+		"Geolocation": "Route based on geographic location.",
+		"Geo-proximity": "Add Bias to Geolocation (requires R53 Traffic Flow)",
+		"Multi-Value Answer": "Return multiple answers (using health checks)"
+	}
+},
+{
+	"cost": "",
+	"encryption": "at rest with KMS, in motion with HTTPS.",
+	"HaDrBc": "",
+	"name":"RDS",
+	"type": "PaaS",
+	"useCase": "Relational Database Service",
+	"Automatic Backups":[
+		"You can set a schedule.",
+		"No additional cost.",
+		"Retention window between 1 and 35 days."
+	],
+	"Manual Snapshots": [
+		"Can restore database from snapshot."
+	],
+		"6 database flavors": [
+		{
+			"Aurora":[
+				"Fully-managed PostGres or MySQL with scaling, HA, and fault tolerance.",
+				"5x faster than MySQL and 3x faster than PostGres, on same flavor. (How much faster than MySQL is the PostGres one? How do MySQL and PG compare?)",
+				"Pricing is about 1/10 other flavors.",
+				"Data stored as 6 copies in 3 regions.",
+				"Can span regions with Global Database.",
+				"Aurora Serverless allows starting, stopping, and scaling - for new projects or those with infrequent DB use - to keep costs low."
+			]
+		},
+			"MariaDB",
+			"MSSQL",
+			"MySQL",
+			"Oracle",
+			{
+			"PostGres":[
+				"Multi-AZ replicates a standby copy of your DB to another AZ, and keeps it up to date.",
+				"Automatic Failover will automatically promote to master the standby copy if the main DB's AZ goes down.",
+				"Read-Replicas "
+			]
+		}
+	],
+	"notes": [
+		"Instances are managed and cannot be accessed.",
+		"Allow you to run multiple read-only copies of your DB, to improve performance",
+		"Uses asynchronous replication. (What's the significance of this?) ",
+		"Requires automatic backups be setup.",
+		"Limit of 5, except Aurora can have 15.",
+		"Can be multi-AZ and use Read-Replicas.",
+		"Can be in another region (Cross-Region Read-Replicas)",
+		"Can be promoted to their own database, but this breaks replication.",
+		"You can have replicas of Read-Replicas. (Can you have Read-Replicas of Read-Replicas?)"
+	]
+},
+{
+	"cost": " Billed per hour for single-nodes and compute nodes.",
+	"encryption": "KMS or CloudHSM",
+	"HaDrBc": "",
+	"name":"ODS-Redshift",
+	"type": "PaaS",
+	"useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
+	"BI(g) Data warehousing":[
+		"Can handle petabytes of data. Data in a warehouse is structured.",
+		"Columnar Store OLAP DB that takes SQL-like queries.",
+		"Can ingest data from S3, EMR, DynamoDB, or multiple sources on remote hosts.",
+		"Limited to single-AZ.",
+		"Single-node or multi-node (clustered)."
+	],
+	"notes": [
+		"Each node holds 160 GB.",
+		"Multi-node has a leader node and upto 128 compute nodes. Leader node is free.",
+		"Two node types: Dense Compute and Dense Storage",
+		"Attempts 3 backup copies: Original, Compute, S3.",
+		"Uses sequential HDD caching.",
+		"Backup retention default is 1 day, can be set up to 35 days.",
+		"Can asynchronously backup snapshots to another region's S3 bucket.",
+		"Uses massively parallel processing (MPP) to distribute queries and data.",
+		"Uses sample data to create an empty table."
+	]
+},
+{
+	"cost": "free",
+	"encryption": "N/A",
+	"HaDrBc": "",
+	"name":"Registry of Open Data ",
+	"type": "SaaS",
+	"useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Rekognition",
+	"type": "PaaS",
+	"useCase": "Image classification API"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Robomaker",
+	"type": "PaaS",
+	"useCase": "robot simulators"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"S3",
+	"type": "SaaS",
+	"useCase": "Storage drives in the cloud",
+	"S3-storageClasses":[],
+	"S3-transfer":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"S3-snowball",
+	"type": "SaaS"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Sagemaker",
+	"type": "PaaS",
+	"useCase": "Use Tensorflow or Pytorch with a managed Jupyter notebook that can connect to a GPU."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"SDK",
+	"type": "PaaS",
+	"notes": [
+		"Programmatic Access must be setup from IAM"
+	],
+	"Available languages": [
+		"C++",
+		" Go",
+		" Java",
+		" JS & NodeJS",
+		" .NET",
+		" PHP",
+		" Python",
+		" Ruby"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Serverless repos",
+	"type": "SaaS",
+	"useCase": "Lambda Marketplace"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"SES",
+	"type": "SaaS",
+	"useCase": "can send emails"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-SimpleDB",
+	"type": "PaaS",
+	"useCase": "Basic NoSQL DB."
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Snow Mobile Core (SnowCone?)",
+	"useCase": "Provides a suite of services (Systems Manager, Config, CloudWatch, AutoScaling, CloudFormation, CloudTrail, S3, SAS, VPC Management Tools, Provisioning and Subscriber tools, Mobile core control plane through a 5G or 4G connection.)",
+	"type": "IaaS"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"SNS",
+	"type": "SaaS",
+	"useCase": "can send push notifications to your app."
+},
+{
+	"cost": " Services are billed separately below.",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Storage Gateway",
+	"type": "IaaS",
+	"useCase": "Data transfer agent deployed on a VM or hardware device in your network, or as EC2 or VMWare Cloud VM.",
+	"notes": [
+		"The AWS Hardware Appliance is available exclusively through resellers, including CDW.",
+		"Data Transfer from your gateway appliance to the AWS Storage Gateway service is free.",
+		"Data Transfer from the AWS Storage Gateway service to your on-premises gateway appliance ",
+		"| TB/Month | per GB | ",
+		"| 9.999 | $0.09 |",
+		"| 40 | $0.085 |",
+		"| 100 | $0.07 |",
+		"| -gt 150 | $0.05 |",
+		"Data Transfer from the AWS Storage Gateway service to an Amazon EC2-based gateway appliance in the same region is free.",
+		"Data Transfer from the AWS Storage Gateway service to your gateway appliance in other regions is $0.02 per GB currently."
+	],
+	"S3 Gateway": [
+		"Storage Cost: S3 rate",
+		"Transfer Cost: The first 100 GB into AWS per account is free, then $0.01 per GB up to a maximum of $125.00 per gateway per month. (Billed as Amazon S3 requests.)"
+	],
+	"FSx Gateway": [
+		"Gateway Cost: $0.69 per Hour",
+		"Storage Cost: FSx for Windows rate",
+		"Transfer Cost: (None listed)"
+	],
+	"Tape Gateway": [
+		"Gateway Cost: ",
+		"Storage tiers: (per GB-month)",
+	"Standard: $0.023 ",
+	"Glacier Flexible Retrieval: $0.0036 ",
+	"Glacier Deep Archive: $0.00099",
+		"Transfer Cost: The first 100 GB into AWS per account is free, then $0.01 per GB up to a maximum of $125.00 per gateway per month.",
+		"Retrieval tiers: (per GB)",
+	"Standard: $0.01 ",
+	"Glacier Flexible Retrieval: $0.02 ",
+	"Glacier Deep Archive: $0.0032",
+		"Early Deletion tiers: (per GB)",
+	"Standard: None listed",
+	"Glacier Flexible Retrieval: $0.0108 (Prorated across 90 days.)",
+	"Glacier Deep Archive: $0.00099 (Prorated across 180 days.)",
+		"Archival: Free (what does this entail?)"
+	],
+	"Volume Gateway": [
+		"Gateway Cost: ",
+		"Storage Cost: $0.023 per GB-month of data stored",
+		"EBS Snapshot storage - Stored and billed as Amazon EBS snapshots.",
+		"Transfer Cost: The first 100 GB into AWS per account is free, then $0.01 per GB up to a maximum of $125.00 per gateway per month."
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"STS",
+	"type": "PaaS",
+	"notes": [
+		"Foundational"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Transit Gateway",
+	"type": "IaaS"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"ODS-Timestream",
+	"type": "PaaS",
+	"useCase": "Time series database with built-in time-based queries and analytics"
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Trainium ML",
+	"type": "PaaS",
+	"useCase": "Machine Learning ASICs can improve training speed while reducing costs.",
+	"notes": [
+		"Training hardware Trn1"
+	]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"VMWare Cloud",
+	"type": "IaaS",
+	"useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy."
+},
+{
+	"cost": "",
+	"encryption": "Unsure",
+	"HaDrBc": "",
+	"name":"VPC",
+	"cost": "free",
+	"type": "IaaS",
+	"useCase": "Container for other AWS IaaS and PaaS products, and can have Endpoints for AWS SaaS, products.",
+	"VPC-endpoints": [],
+	"VPC-flowLogs": [],
+	"VPC-nacls": [],
+	"VPC-nat": [],
+	"VPC-securityGroups": []
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Cloud Audit Academy",
+	"type": "IaaS",
+	"useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy."
+}]
