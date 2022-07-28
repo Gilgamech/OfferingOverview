@@ -45,5 +45,7 @@ DBaaS - DB are software, so DBaaS are SaaS by definition.
 	- https://www.youtube.com/watch?v=Ia-UEYYR44s
 - Fireship
 	- Top 50+ AWS Services Explained in 10 Minutes
-	- https://www.youtube.com/watch?v=JIbIYCM48to 
+		- https://www.youtube.com/watch?v=JIbIYCM48to 
+	- DBaaS paradigms 
+		- https://www.youtube.com/watch?v=W2Z7fbCLSTw
 
