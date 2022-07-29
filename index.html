@@ -17,7 +17,10 @@
 			<a class="pageTitle " href="/">Offering Overview</a>
 		</div>
 		<p class="menu">
-			<input id="searchField" type="text" placeholder="Search" onchange="writeElement(searchEntry(readElement('searchField')),'searchField');"> |
+		<span>
+		<input type="text" class="searchBox" onKeyUp="showResults(this.value)" />
+			<span id="result" class="searchResult"></span>
+		</span>|
 			<a href="/">Product Index</a> |
 			<a href="/">Company Listing</a> |
 		</p>

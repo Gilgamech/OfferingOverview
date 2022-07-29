@@ -63,6 +63,32 @@ height: auto;
 object-fit: contain
 }
 
+/*Search*/
+.searchBox {
+	width: 20vw;
+}
+.searchResult {
+	position: absolute;
+	/*margin: top  right bottom left*/
+	margin: 26px 25px 0 -21vw;
+	width: 20vw;
+	border: 1px dotted #ccc;
+	padding: 3px;
+	
+	background: #bbb;
+	color: #000;
+}
+.searchResult ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.searchResult ul li {
+  padding: 5px 0;
+}
+.searchResult ul li:hover {
+  background: #eee;
+}
 
 /*Tables*/
 table, table td {
