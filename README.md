@@ -1,11 +1,16 @@
 # OfferingOverview
+- Where will it live?
+- S3 flat flies. 
+https://aws.amazon.com/websites/
+
 Site with my AWS .txt notes in an ExpressJS template, read from a local CSV/JSON.
 Pages
-- Product page
-- Company page?
-- Main page?
-- Index?
-- 
+- Product page 
+- Company page
+- Product Index (Front page)
+- Company Index
+- Error page (Search Not Found etc)
+- Search - type in an exact match and it takes you there. Else errors.
 
 ## Service types
 IaaS - lets you host your applications (servers)
@@ -36,7 +41,6 @@ DBaaS - DB are software, so DBaaS are SaaS by definition.
 - Is your use case really so specific that it needs custom software, or will FOSS COTS do th e job? 
 - Is FOSS COTS needed, or will SaaS do the job?
 - What would it take to stay on the free tier?
-- 
 
 
 ## AWS Services Bibliography:

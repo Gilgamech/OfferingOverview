@@ -1,0 +1,30 @@
+[{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "AzureAD",
+	"stack": "",
+	"type": "SaaS",
+  	"useCase": "Serverless Active Directory",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Windows 365",
+	"stack": "",
+	"type": "SaaS",
+  	"useCase": "Package sort for physical logistics throughput.",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Excel Live",
+	"stack": "",
+	"type": "SaaS",
+  	"useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.",
+	"notes":[]
+}]

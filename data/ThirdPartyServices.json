@@ -31,6 +31,7 @@
 	"Crunchbase": "",
 	"encryption": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"HaBcDr": "",
 	"name": "CockroachDB",
 	"stack": "",
@@ -51,6 +52,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -64,6 +66,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -77,6 +80,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Very big data",
 	"notes":[]
@@ -90,6 +94,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -103,6 +108,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -116,6 +122,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Scan all ports on all hosts on your network, and report back which ones are open, alongside scary reports of which kinds of hacks hold open these ports.",
 	"notes":[]
@@ -129,6 +136,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Find vulnerabilities in your dependencies, Codesmells Dashboards.",
 	"notes":[]
@@ -142,6 +150,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Find vulnerabilities in your dependencies.",
 	"notes":[]
@@ -155,6 +164,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Board Deck creation software (automation?)",
 	"notes":[
@@ -171,6 +181,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -184,6 +195,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -197,6 +209,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -211,6 +224,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Australian MSP",
 	"notes":[]
@@ -224,6 +238,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "Infra",
   	"useCase": "Lightweight SQL as flat files.",
 	"notes":[]
@@ -237,6 +252,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "Infra",
   	"useCase": "High-volume webserver, caching reverse proxy. Defaults to programmatic file handling.",
 	"notes":[
@@ -253,6 +269,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Provides CSS utility classes to be combined into your desired style. Use @apply keyword in normal CSS to prevent boilerplating. VSCode aids in utility class disambiguation.",
 	"notes":[
@@ -268,6 +285,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "CI/CD testing",
 	"notes":[]
@@ -281,6 +299,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Info about companies - Bloomberg competitor?",
 	"notes":[]
@@ -294,6 +313,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "",
   	"useCase": "Employee reviews of companies.",
 	"notes":[]
@@ -307,6 +327,7 @@
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "PaaS",
   	"useCase": "Remote primary hosting, data recovery, and backup hosting. (Cloud Partner / MSP?)",
 	"notes":[
@@ -317,25 +338,111 @@
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "AzureAD",
+	"name": "Amazon Sortation Center",
 	"stack": "",
-	"stockPriceOrOwnership": "Microsoft",
+	"stockPriceOrOwnership": "Amazon",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "SaaS",
-  	"useCase": "Serverless Active Directory",
+  	"useCase": "Package sort for physical logistics throughput.",
 	"notes":[]
 },
 {
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "Amazon Sortation Center",
+	"name": "Milli",
 	"stack": "",
-	"stockPriceOrOwnership": "Amazon",
+	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
+	"Homepage": "",
 	"type": "SaaS",
-  	"useCase": "Package sort for physical logistics throughput.",
+  	"useCase": "",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "CrowdStrike",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"Homepage": "",
+	"type": "SaaS",
+  	"useCase": "Broad security threat prevention",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Elementium",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"Homepage": "",
+	"type": "SaaS",
+  	"useCase": "Enterprise service supply chain management",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "HYCU (Haiku)",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"Homepage": "",
+	"type": "SaaS",
+  	"useCase": "Backup/DR ",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Cox2M",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"Homepage": "",
+	"type": "SaaS",
+  	"useCase": "Corporate vehicle tracking",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Proposify",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"Homepage": "",
+	"type": "SaaS",
+  	"useCase": "Corporate Proposals?",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Rubrik",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"Homepage": "",
+	"type": "SaaS",
+  	"useCase": "Zero Trust Data Security",
 	"notes":[]
 }]

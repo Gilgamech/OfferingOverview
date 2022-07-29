@@ -94,7 +94,7 @@
 	]
 },
 {
-	"cost": "",
+	"cost": "Free each month: 1 TB of data transfer out, 10,000,000 HTTP or HTTPS Requests, 2,000,000 CloudFront Function Invocations. First 10TB $0.085",
 	"encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
 	"HaDrBc": "",
 	"name":"CloudFront CDN",
