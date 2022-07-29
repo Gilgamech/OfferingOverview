@@ -1,15 +1,10 @@
 # OfferingOverview
 - Where will it live?
 - S3 flat flies. 
-https://aws.amazon.com/websites/
-
-Site with my AWS .txt notes in an ExpressJS template, read from a local CSV/JSON.
 Pages
-- Product page 
-- Company page
-- Product Index (Front page)
-- Company Index
-- Error page (Search Not Found etc)
+- Index Grid page (Company or product index, depending on data.)
+- Details page (Company or product page, depending on data.)
+- Error page (Search Not Found, page not found, etc)
 - Search - type in an exact match and it takes you there. Else errors.
 
 ## Service types
@@ -18,6 +13,7 @@ PaaS - lets you build your applications (functions)
 SaaS - lets you use your applications (cloud hosted)
 DBaaS - DB are software, so DBaaS are SaaS by definition.
 
+- Add these later. https://aws.amazon.com/websites/
 ## Misc 
 - Code should have minimal dependencies and then be as atomic as possible. This leads to smaller and simpler microservices, leading to smaller clusters, and more flexible compute supply. Reducing dependencies reduces package bloat, and reducing obfuscation makes understanding the code less complex. Smaller and simpler containers make smaller and simpler pods. Smaller and simpler containers and pods are easier to stack in RAM and schedule across CPUs. 
 - Heavy library reuse is not good, as including multiple dependencies bloats a software package while obfuscating its full functionality from even its own programmer. 
@@ -52,4 +48,5 @@ DBaaS - DB are software, so DBaaS are SaaS by definition.
 		- https://www.youtube.com/watch?v=JIbIYCM48to 
 	- DBaaS paradigms 
 		- https://www.youtube.com/watch?v=W2Z7fbCLSTw
-
+- ERP analysis
+	- https://media-exp1.licdn.com/dms/image/C5622AQGN3J9vLmJ0dg/feedshare-shrink_800/0/1658143789667?e=1661990400&v=beta&t=_6YPe2PBIWxxICTv3CghefTaeXcmcHQPK5RoqNO71J0
