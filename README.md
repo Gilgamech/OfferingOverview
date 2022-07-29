@@ -1,11 +1,9 @@
 # OfferingOverview
-- Where will it live?
-- S3 flat flies. 
+- Where will it live? S3 flat flies. 
 Pages
 - Index Grid page (Company or product index, depending on data.)
 - Details page (Company or product page, depending on data.)
 - Error page (Search Not Found, page not found, etc)
-- Search - type in an exact match and it takes you there. Else errors.
 
 ## Service types
 IaaS - lets you host your applications (servers)
