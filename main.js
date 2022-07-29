@@ -19,9 +19,9 @@ function autocompleteMatch(input) {
   if (input == '') {
     return [];
   }
-  var reg = new RegExp(input)
+  var reg = new RegExp(input.toLowerCase())
   return search_terms.filter(function(term) {
-	  if (term.match(reg)) {
+	  if (term.toLowerCase().match(reg)) {
   	  return term;
 	  }
   });
