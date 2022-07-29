@@ -18,6 +18,24 @@ a:visited {
 	color:#fff;
 }
 
+/*Grid page*/
+.grid-container {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  grid-template-areas: 'myArea myArea myArea myArea myArea';
+}
+.grid-item {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+.grid-item:hover {
+  background-color: #eee;
+}
+.mainGrid {
+}
+
 /*Site parts*/
 div.top {
 	margin:0;
