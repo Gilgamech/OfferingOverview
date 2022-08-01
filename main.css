@@ -9,31 +9,10 @@ html {
 }
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	background-color:#bbb;
+	background-color:#fff;
 	margin: 0px;
 	padding: 0px;
 	text-align:left;
-}
-a:visited {
-	color:#fff;
-}
-
-/*Grid page*/
-.grid-container {
-  display: grid;
-  gap: 10px;
-  padding: 10px;
-  grid-template-areas: 'myArea myArea myArea myArea myArea';
-}
-.grid-item {
-  text-align: center;
-  padding: 20px;
-  font-size: 30px;
-}
-.grid-item:hover {
-  background-color: #eee;
-}
-.mainGrid {
 }
 
 /*Site parts*/
@@ -54,7 +33,6 @@ div.top a:link{
 	color:#000;
 }
 div.top a:visited {
-
 	color:#000;
 }
 .pageTitle {
@@ -80,6 +58,74 @@ max-height: 100vh;
 height: auto;
 object-fit: contain
 }
+
+.textBubbleBG {
+	padding: 10px;
+	background: #eee;
+	border: 1px solid #000;
+	border-radius: 15px;
+	overflow:  auto;
+}
+a:link {
+	color: #000;
+	text-decoration: none;
+}
+a:visited {
+	color:#000;
+	text-decoration: none;
+}
+a:hover {
+	color:#000;
+	text-decoration: none;
+}
+a:active {
+	color:#000;
+	text-decoration: none;
+}
+
+/*Grid page*/
+.grid-container {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+}
+.grid-item {
+	background: #eee;
+	text-align: center;
+	padding: 20px;
+	font-size: 30px;
+	border-radius: 15px;
+}
+.grid-item:hover {
+  background: #bbb;
+}
+/*Type colors*/
+.Infra{
+	background: #EEF; 
+}
+.Infra:hover{
+	background: #BEF; 
+}
+.IaaS{
+	background: #DDF; 
+}
+.IaaS:hover{
+	background: #88F; 
+}
+.PaaS{
+	background: #FEE;
+}
+.PaaS:hover{
+	background: #FCC; 
+}
+.SaaS{
+	background: #DFF; 
+}
+.SaaS:hover{
+	background: #0FF; 
+}
+
 
 /*Search*/
 .searchBox {

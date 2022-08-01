@@ -1,9 +1,11 @@
-[{
+[
+{
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Amplify",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "",
   	"useCase": "mobile SDKs to connect to AWS infra."
@@ -14,6 +16,7 @@
 	"HaDrBc": "",
 	"name":"App Runner",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "Point at container and it handles all the orchestration."
@@ -22,19 +25,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"Block Storage (EBS?)",
-	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
-	"type": "IaaS",
-	"useCase": "Used for high-data requirements, but needs manual config."
-},
-{
-	"cost": "",
-	"encryption": "",
-	"HaDrBc": "",
 	"name":"Bracket",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Specialized Compute",
 	"type": "IaaS",
 	"useCase": "Quantum Computing"
 },
@@ -44,6 +38,7 @@
 	"HaDrBc": "",
 	"name":"CLI",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, etc.",
@@ -62,7 +57,8 @@
 	"name": "CloudFormation",
 	"type": "IaaS",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "IaC",
 	"useCase": "automate the provisioning of resources and Infrastructure As Code.",
 	"notes": [
 		"JSON or YAML",
@@ -74,14 +70,14 @@
 		"Can be nested into NestedStacks.",
 		{
 		"Fields": [
-			"MetaData - extra info",
-			"Description - of the template",
-			"Parameters - user inputs",
-			"Transforms - Macros to modify data.",
-			"Outputs - Become inputs into other stacks.",
-			"Mappings - key value lookup table",
-			"Resources - define what to provision (minimum 1)",
-			"Conditions - control if resources get created and/or properties assigned."
+			"MetaData: extra info",
+			"Description: of the template",
+			"Parameters: user inputs",
+			"Transforms: Macros to modify data.",
+			"Outputs: Become inputs into other stacks.",
+			"Mappings: key value lookup table",
+			"Resources: define what to provision (minimum 1)",
+			"Conditions: control if resources get created and/or properties assigned."
 			]
 		}
 	]
@@ -90,9 +86,10 @@
 	"cost": "Free each month: 1 TB of data transfer out, 10,000,000 HTTP or HTTPS Requests, 2,000,000 CloudFront Function Invocations. First 10TB $0.085",
 	"encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
 	"HaDrBc": "",
-	"name":"CloudFront CDN",
+	"name":"CloudFront",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "CDN",
 	"type": "IaaS",
 	"useCase": "Distributes cached copies to Edge Locations for faster worldwide retrieval.",
 	"notes": [
@@ -113,7 +110,8 @@
 	"HaDrBc": "",
 	"name":"CloudTrail",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Monitoring",
 	"type": "SaaS",
 	"useCase": "Logs calls between AWS services.",
 	"notes": [
@@ -125,7 +123,7 @@
 		"encryption": "KMS",
 		"notes": [
 			"Log Validation prevents tampering. (How?)",
-			"Can be streamed to CloudWatch Logs",
+			"Can be streamed to Logs",
 			"2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
 		]
 	}
@@ -136,48 +134,34 @@
 	"HaDrBc": "",
 	"name":"CloudWatch",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Monitoring",
 	"type": "SaaS",
 	"useCase": "Monitoring",
 	"notes": [
-		"You can track the amount of data written to AWS using Amazon CloudWatch.",
 		"Collection of monitoring services: Dashboards, Events, Alarms, Logs, Metrics",
 		"Most services default to 1 minute reporting intervals, with options for 1, 3, and 5.",
-		"EC2 starts with 5 and calls the 1 min option 'detailed monitoring' (does it cost more?) - CloudWatch Agent required.",
+		"EC2 starts with 5 and calls the 1 min option 'detailed monitoring' (does it cost more?) - Agent required.",
+		"Can track the amount of billable data written to your AWS accounts.",
 		"Can stream custom logs too."
 	],
-	"CloudWatch Dashboards": {
-	"encryption": "Are Dashboards encrypted?",
-	"notes": [
+	"Dashboards": [
 		"Visualize metrics"
-		]
-	},
-	"CloudWatch Events": {
-	"encryption": "Are Events encrypted?",
-	"notes": [
+	],
+	"Events": [
 		"Trigger AWS events based on condition (use case hourly snapshots)"
-		]
-	},
-	"CloudWatch Alarms": {
-	"encryption": "Are Alarms encrypted?",
-	"notes": [
+	],
+	"Alarms": [
 		"Notifications based on metrics"
-		]
-	},
-	"CloudWatch Logs": {
-	"encryption": "Are Logs encrypted?",
-	"notes": [
+	],
+	"Logs": [
 		"Data point logging",
 		"Must belong to log group"
-		]
-	},
-	"CloudWatch Metrics": {
-	"encryption": "Are Metrics encrypted?",
-	"notes": [
+	],
+	"Metrics": [
 		"Capture one data point across time.",
 		"Custom Metrics allow much higher resolution, down to 1 second."
-		]
-	}
+	]
 },
 {
 	"cost": "",
@@ -185,7 +169,8 @@
 	"HaDrBc": "",
 	"name":"Cognito",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "IdP",
 	"type": "PaaS",
 	"useCase": "Decentralized managed auth.",
 	"notes": [
@@ -205,6 +190,7 @@
 	"HaDrBc": "",
 	"name":"Data Exchange",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "Buy someone else's data to process, or use 3rd party data"
@@ -215,7 +201,8 @@
 	"HaDrBc": "",
 	"name":"Datasync",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Data logistics",
 	"type": "IaaS",
 	"useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network."
 },
@@ -225,6 +212,7 @@
 	"HaDrBc": "",
 	"name":"Deep Racer",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "RC car that you can program with ML "
@@ -233,9 +221,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-DocumentDB",
+	"name":"DocumentDB (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Document DB",
 	"type": "PaaS",
 	"useCase": "notMongoDB with 1:1 to be allowed to charge money for open sourced applications."
 },
@@ -243,9 +232,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-DynamoDB",
+	"name":"DynamoDB (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Document DB",
 	"type": "PaaS",
 	"useCase": "Fully managed NOSQL key/value & document DB.",
 	"notes": [
@@ -264,7 +254,8 @@
 	"HaDrBc": "",
 	"name":"EBS",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Persistent Storage",
 	"type": "IaaS",
 	"useCase": "virtual block-level storage drive that you can attach to a single EC2 instance.",
 	"notes": [
@@ -289,6 +280,8 @@
 	"HaDrBc": "",
 	"name":"EC2",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
+	"useCase": "Servers as a service"
 	"stack": "",
 	"type": "IaaS",
 	"EC2-AMI":[],
@@ -301,9 +294,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-ElasiCache",
+	"name":"ElastiCache (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Caching DB",
 	"type": "PaaS",
 	"useCase": "Fully managed Redis in-memory database."
 },
@@ -313,6 +307,7 @@
 	"HaDrBc": "",
 	"name":"ELB",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "IaaS",
 	"useCase": "Split traffic from one destination across numerous servers.",
@@ -344,9 +339,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-ES",
+	"name":"ES (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Search DB",
 	"useCase": "",
 	"type": "PaaS"
 },
@@ -356,7 +352,8 @@
 	"HaDrBc": "",
 	"name":"FSx",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Persistent Data Storage",
 	"useCase": "",
 	"type": "PaaS"
 },
@@ -366,19 +363,39 @@
 	"HaDrBc": "",
 	"name":"Fargate",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Platform",
 	"type": "SaaS",
 	"useCase": "Run containers without worrying about servers."
 },
 {
-	"cost": "free?",
+	"cost": "",
+	"encryption": "",
+	"HaDrBc": "",
+	"name":"Athena (ODS)",
+	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
+	"stack": "",
+	"type": "SaaS",
+	"useCase": "Query data in s3 tables as though it were a database.",
+	"notes":[
+		"Depends on Glue to connect it to s3.",
+		"Glue assembles tables for Athena from s3 buckets. If a user can access ALL s3 buckets in a table, then Glue will make it available to Athena for the user to query."
+	]
+},
+{
+	"cost": "free",
 	"encryption": "",
 	"HaDrBc": "",
 	"name":"Glue",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
-	"useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio. (If a user can access ALL s3 files in a Glue Table, then Glue will present the Table to Athena for the user to query.)"
+	"useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio.",
+	"notes":[
+		"Glue assembles tables for Athena from s3 buckets. If a user can access ALL s3 buckets in a table, then it will be available in Athena to be queried."
+	]
 },
 {
 	"cost": "",
@@ -386,6 +403,7 @@
 	"HaDrBc": "",
 	"name":"Graviton CPUs",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "IaaS",
 	"useCase": ""
@@ -396,6 +414,7 @@
 	"HaDrBc": "",
 	"name":"Ground Station",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "IaaS",
 	"useCase": "Contact satellites in orbit around the Earth."
@@ -406,6 +425,7 @@
 	"HaDrBc": "",
 	"name":"Honeycode",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Write functions without code"
@@ -417,7 +437,8 @@
 	"name":"IAM",
 	"type": "PaaS",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Access",
 	"useCase": "Used to manage AWS access.",
 	"notes": [
 		"Foundational",
@@ -447,6 +468,7 @@
 	"HaDrBc": "",
 	"name":"IOT",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"useCase": "",
 	"type": "",
@@ -460,6 +482,7 @@
 	"HaDrBc": "",
 	"name":"Kinesis",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Captures realtime data stream "
@@ -470,6 +493,7 @@
 	"HaDrBc": "",
 	"name":"Lake Formation",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Create data lakes, or repositories of unstructured data."
@@ -480,7 +504,8 @@
 	"HaDrBc": "",
 	"name":"Lambda",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Function invocation",
 	"type": "PaaS",
 	"useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture. Good fit for short-running tasks where you don't need to customize the OS or environment.",
 	"Supports 7 runtimes":[
@@ -502,13 +527,14 @@
 	]
 },
 {
-	"cost": "",
+	"cost": "Free",
 	"encryption": "",
 	"HaDrBc": "",
 	"name":"LandingZone",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
-	"useCase": "",
+	"useCase": "Entry point for multi-account access.",
 	"type": "",
 	"notes": [
 		"Foundational"
@@ -520,8 +546,8 @@
 	"HaDrBc": "",
 	"name":"Lex",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
-	"useCase": "",
 	"type": "PaaS",
 	"useCase": "Conversational service with the same tech that operates Amazon Alexa"
 },
@@ -531,8 +557,8 @@
 	"HaDrBc": "",
 	"name":"Lightsail",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
-	"useCase": "",
 	"type": "SaaS",
 	"useCase": "If you don't care about the infra and just want to deploy a Wordpress site."
 },
@@ -542,6 +568,7 @@
 	"HaDrBc": "",
 	"name":"MapReduce",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Apache Spark, lets you do massive parallel processing on data sets."
@@ -552,7 +579,8 @@
 	"HaDrBc": "",
 	"name":"MSK",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "MQ",
 	"type": "PaaS",
 	"useCase": "Fully managed Apache Kafka message queue"
 },
@@ -560,11 +588,15 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-Neptune",
+	"name":"Neptune (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Graph DB",
 	"type": "PaaS",
-	"useCase": "Graph DB that can get better performance on highly-connected data like a social graph or recommendation engine."
+	"useCase": "Social graph or recommendation engine.",
+	"notes": [
+		""
+	]
 },
 {
 	"cost": "",
@@ -572,6 +604,7 @@
 	"HaDrBc": "",
 	"name":"Organizations",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"useCase": "",
 	"type": "",
@@ -585,6 +618,7 @@
 	"HaDrBc": "",
 	"name":"Outposts",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "IaaS",
 	"useCase": "Run AWS APIs on your servers."
@@ -593,19 +627,21 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-Quantum Ledger",
+	"name":"Quantum Ledger DB (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Blockchain",
 	"type": "PaaS",
-	"useCase": "QLDB is blockchain-ish"
+	"useCase": ""
 },
 {
 	"cost": "",
 	"encryption": "(Is there any non-public info in DNS?)",
 	"HaDrBc": "",
-	"name":"R53",
+	"name":"Route 53",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "DNS",
 	"type": "IaaS",
 	"useCase": "DNS provider, registrar, and domain manager.",
 	"notes": [
@@ -614,15 +650,15 @@
 		"R53 Resolver: Lets you regionally route DNS queries between your VPCs and your hybrid network.",
 		"Health checks can monitor and automatically reroute between endpoints. And health checks can monitor other health checks."
 	],
-	"Routing types":{
-		"Simple": "Default, multiple addresses result in random endpoint selection.",
-		"Weighted": "Assign percentages to different routes.",
-		"Latency-based": "Directs traffic based on region to get lowest latency.",
-		"Failover": "Directs traffic to secondary site only if primary site is down.",
-		"Geolocation": "Route based on geographic location.",
-		"Geo-proximity": "Add Bias to Geolocation (requires R53 Traffic Flow)",
-		"Multi-Value Answer": "Return multiple answers (using health checks)"
-	}
+	"Routing types":[
+		"Simple: Default, multiple addresses result in random endpoint selection.",
+		"Weighted: Assign percentages to different routes.",
+		"Latency-based: Directs traffic based on region to get lowest latency.",
+		"Failover: Directs traffic to secondary site only if primary site is down.",
+		"Geolocation: Route based on geographic location.",
+		"Geo-proximity: Add Bias to Geolocation (requires R53 Traffic Flow)",
+		"Multi-Value Answer: Return multiple answers (using health checks)"
+	]
 },
 {
 	"cost": "",
@@ -630,6 +666,7 @@
 	"HaDrBc": "",
 	"name":"RDS",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Relational Database Service",
@@ -680,8 +717,9 @@
 	"cost": " Billed per hour for single-nodes and compute nodes.",
 	"encryption": "KMS or CloudHSM",
 	"HaDrBc": "",
-	"name":"ODS-Redshift",
+	"name":"Redshift (ODS)",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
@@ -710,6 +748,7 @@
 	"HaDrBc": "",
 	"name":"Registry of Open Data ",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc."
@@ -720,6 +759,7 @@
 	"HaDrBc": "",
 	"name":"Rekognition",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Image classification API"
@@ -730,6 +770,7 @@
 	"HaDrBc": "",
 	"name":"Robomaker",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "robot simulators"
@@ -740,6 +781,7 @@
 	"HaDrBc": "",
 	"name":"S3",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "Storage drives in the cloud",
@@ -752,6 +794,7 @@
 	"HaDrBc": "",
 	"name":"S3-snowball",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"useCase": "",
 	"type": "SaaS"
@@ -762,6 +805,7 @@
 	"HaDrBc": "",
 	"name":"Sagemaker",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Use Tensorflow or Pytorch with a managed Jupyter notebook that can connect to a GPU."
@@ -772,6 +816,7 @@
 	"HaDrBc": "",
 	"name":"SDK",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"useCase": "",
 	"type": "PaaS",
@@ -795,6 +840,7 @@
 	"HaDrBc": "",
 	"name":"Serverless repos",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "Lambda Marketplace"
@@ -805,6 +851,7 @@
 	"HaDrBc": "",
 	"name":"SES",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "can send emails"
@@ -813,8 +860,9 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-SimpleDB",
+	"name":"SimpleDB (ODS)",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "PaaS",
 	"useCase": "Basic NoSQL DB."
@@ -823,11 +871,15 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"Snow Mobile Core (SnowCone?)",
+	"name":"Snow Mobile Core",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"useCase": "Provides a suite of services (Systems Manager, Config, CloudWatch, AutoScaling, CloudFormation, CloudTrail, S3, SAS, VPC Management Tools, Provisioning and Subscriber tools, Mobile core control plane through a 5G or 4G connection.)",
-	"type": "IaaS"
+	"type": "IaaS",
+	"notes":[
+		"Also called SnowCone?"
+	]
 },
 {
 	"cost": "",
@@ -835,6 +887,7 @@
 	"HaDrBc": "",
 	"name":"SNS",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "SaaS",
 	"useCase": "can send push notifications to your app."
@@ -845,6 +898,7 @@
 	"HaDrBc": "",
 	"name":"Storage Gateway",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"type": "IaaS",
 	"useCase": "Data transfer agent deployed on a VM or hardware device in your network, or as EC2 or VMWare Cloud VM.",
@@ -899,6 +953,7 @@
 	"HaDrBc": "",
 	"name":"STS",
 	"stockPriceOrOwnership": "Amazon",
+	"Website":"",
 	"stack": "",
 	"useCase": "",
 	"type": "PaaS",
@@ -912,7 +967,8 @@
 	"HaDrBc": "",
 	"name":"Transit Gateway",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Persistent Data Storage",
 	"useCase": "",
 	"type": "IaaS"
 },
@@ -920,9 +976,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaDrBc": "",
-	"name":"ODS-Timestream",
+	"name":"Timestream (ODS)",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Time-series DB",
 	"type": "PaaS",
 	"useCase": "Time series database with built-in time-based queries and analytics"
 },
@@ -932,7 +989,8 @@
 	"HaDrBc": "",
 	"name":"Trainium ML",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "ML",
 	"type": "PaaS",
 	"useCase": "Machine Learning ASICs can improve training speed while reducing costs.",
 	"notes": [
@@ -945,7 +1003,8 @@
 	"HaDrBc": "",
 	"name":"VMWare Cloud",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Hypervisor",
 	"type": "IaaS",
 	"useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy."
 },
@@ -955,7 +1014,8 @@
 	"HaDrBc": "",
 	"name":"VPC",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Networking Isolation",
 	"type": "IaaS",
 	"useCase": "Container for other AWS IaaS and PaaS products, and can have Endpoints for AWS SaaS, products.",
 	"VPC-endpoints": [],
@@ -970,7 +1030,8 @@
 	"HaDrBc": "",
 	"name":"Cloud Audit Academy",
 	"stockPriceOrOwnership": "Amazon",
-	"stack": "",
+	"Website":"",
+	"stack": "Training",
 	"type": "IaaS",
 	"useCase": "Learn about audits in AWS."
 },
@@ -980,7 +1041,8 @@
 	"HaBcDr": "",
 	"name": "AzureAD",
 	"stockPriceOrOwnership": "Microsoft",
-	"stack": "",
+	"Website":"",
+	"stack": "Auth",
 	"type": "SaaS",
   	"useCase": "Serverless Active Directory",
 	"notes":[]
@@ -991,8 +1053,9 @@
 	"HaBcDr": "",
 	"name": "Windows 365",
 	"stockPriceOrOwnership": "Microsoft",
-	"stack": "",
-	"type": "SaaS",
+	"Website":"",
+	"stack": "Desktop",
+	"type": "IaaS",
   	"useCase": "Package sort for physical logistics throughput.",
 	"notes":[]
 },
@@ -1002,68 +1065,107 @@
 	"HaBcDr": "",
 	"name": "Excel Live",
 	"stockPriceOrOwnership": "Microsoft",
-	"stack": "",
+	"Website":"",
+	"stack": "Application",
 	"type": "SaaS",
   	"useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.",
 	"notes":[]
 },
 {
-	"cost": [{
-		"Serverless": [
-			"Free 5GiB Storage",
-			"$1 per additional 1GiB storage",
-			"Free 250M Request Units/month",
-			"$1 per additional 10M RUs"
+	"Serverless cost": [
+		"Free 5GiB Storage",
+		"$1 per additional 1GiB storage",
+		"Free 250M Request Units/month",
+		"$1 per additional 10M RUs"
+	],
+	"Dedicated AWS cost (How much markup over EC2 or Aurora is this?)":[
+			"vCPU: $/hr",
+			"2: $0.51",
+			"4: $0.90",
+			"8: $1.60",
+			"16: $3.11",
+			"32: $5.34",
+			"1GB: $0.0005088/hr (1TB - $0.5088)",
+			"1IOPS : $0.0000196/hr (1k IOPS - $0.0196)"
 		],
-		"Dedicated":[{
-			"AWS (How much markup over EC2 or Aurora is this?)":{
-				"vCPU": "$/hr",
-				"2": "$0.51",
-				"4": "$0.90",
-				"8": "$1.60",
-				"16": "$3.11",
-				"32": "$5.34",
-				"1GB": "$0.0005088/hr (1TB - $0.5088)",
-				"1IOPS ": "$0.0000196/hr (1k IOPS - $0.0196)"
-			},
-			"GCP":{
-				"vCPU": "$/hr",
-				"2": "$0.43",
-				"4": "$0.71",
-				"8": "$1.18",
-				"16": "$2.30",
-				"32": "$4.20",
-				"1GB": "$0.0011986/hr (1TB - $1.1986)"
-			}
-		}]
+		""Dedicated GCP cost":[
+			"vCPU: $/hr",
+			"2: $0.43",
+			"4: $0.71",
+			"8: $1.18",
+			"16: $2.30",
+			"32: $4.20",
+			"1GB: $0.0011986/hr (1TB - $1.1986)"
+		]
 	}],
-	"Crunchbase": "",
 	"encryption": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"Crunchbase": "<a href='https://www.crunchbase.com/organization/cockroach-labs'>Crunchbase</a>",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-Cockroach-Labs-EI_IE1168502.11,25.htm'>Glassdoor</a>",
 	"HaBcDr": "",
 	"name": "CockroachDB",
-	"stack": "",
-	"stockPriceOrOwnership": "",
-	"type": "- SaaS (has PaaS container option)",
-  	"useCase": "PostGres switchover?",
+	"Website":"<a href='https://www.cockroachlabs.com/'>Webpage</a>",
+	"stack": "Relational DB",
+	"stockPriceOrOwnership": "Pre-IPO",
+	"type": "Infra",
+  	"useCase": "PostGres-ish SQL structured server software, designed for high scalability leading to high availability, with Infra and Serverless options.",
 	"notes":[
 		"Designed to be highly PG compliant, and some applications might 'just work'."
 	]
-
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Freevee",
+	"Website":"",
+	"stack": "",
+	"stockPriceOrOwnership": "Amazon",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"type": "",
+  	"useCase": "Free (ad-supported?) video streaming service.",
+	"notes":[]
 },
 {
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "ClearScale",
-	"stack": "",
-	"stockPriceOrOwnership": "",
-	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"Website":"<a href='https://www.clearscale.com/'>Webpage</a>",
+	"stack": "Consulting",
+	"stockPriceOrOwnership": "Private",
+	"Crunchbase": "<a href='https://www.crunchbase.com/organization/clearscale'>Crunchbase</a>",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-ClearScale-EI_IE1183929.11,21.htm'>Glassdoor</a>",
 	"type": "",
-  	"useCase": "",
+  	"useCase": "AWS Consulting Partner",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Splunk",
+	"Website":"<a href='https://www.splunk.com/'>Webpage</a>",
+	"stack": "Monitoring",
+	"stockPriceOrOwnership": "$103.91 (7/29/2022)",
+	"Crunchbase": "<a href='https://www.crunchbase.com/organization/splunk'>Crunchbase</a>",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Reviews/Splunk-Reviews-E117313.htm'>Glassdoor</a>",
+	"type": "",
+  	"useCase": "Data analytics collection and dashboarding.",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Perpetua",
+	"Website":"<a href='https://perpetua.io/'>Webpage</a>",
+	"stack": "",
+	"stockPriceOrOwnership": "Pre-IPO",
+	"Crunchbase": "<a href='https://www.crunchbase.com/organization/perpetua-labs'>Crunchbase</a>",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-Perpetua-EI_IE1671941.11,19.htm'>Glassdoor</a>",
+	"type": "",
+  	"useCase": "eCommerce Advertising Software",
 	"notes":[]
 },
 {
@@ -1071,13 +1173,13 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Acumatica",
-	"stack": "",
-	"stockPriceOrOwnership": "",
-	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"Website":"<a href='https://www.acumatica.com/'>Webpage</a>",
+	"stack": "ERP",
+	"stockPriceOrOwnership": "INVESTOR AB or EQT",
+	"Crunchbase": "<a href='https://www.crunchbase.com/organization/acumatica'>Crunchbase</a>",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-Acumatica-EI_IE562378.11,20.htm'>Glassdoor</a>",
 	"type": "",
-  	"useCase": "",
+  	"useCase": "Cloud Business Management Software",
 	"notes":[]
 },
 {
@@ -1085,11 +1187,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Digital Ocean",
-	"stack": "",
-	"stockPriceOrOwnership": "",
-	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"Website":"",
+	"stack": "Cloud Host",
+	"stockPriceOrOwnership": "$40.98 (7/29/2022)",
+	"Crunchbase": "<a href='https://www.crunchbase.com/organization/digitalocean'>Crunchbase</a>",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-DigitalOcean-EI_IE823482.11,23.htm'>Glassdoor</a>",
 	"type": "IaaS",
   	"useCase": "Cloud Host",
 	"notes":[]
@@ -1098,12 +1200,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "SAP Business One",
-	"stack": "",
-	"stockPriceOrOwnership": "",
-	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"name": "Business One",
+	"Website":"",
+	"stack": "ERP",
+	"stockPriceOrOwnership": "SAP",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1113,11 +1213,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Sage Intacct",
+	"Website":"",
 	"stack": "",
-	"stockPriceOrOwnership": "",
+	"stockPriceOrOwnership": "$34.35 (7/29/2022)",
 	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-Sage-EI_IE1150.11,15.htm'>Glassdoor</a>",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1127,11 +1227,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Oracle NetSuite",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1141,11 +1241,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Unanet GovCon",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1155,11 +1255,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "TallyPrime",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1168,12 +1268,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "SAP S/4Hana Cloud",
+	"name": "S/4Hana Cloud",
+	"Website":"",
 	"stack": "",
-	"stockPriceOrOwnership": "",
-	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"stockPriceOrOwnership": "SAP",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1183,11 +1281,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Total ETO",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1197,11 +1295,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "MIE Trak Pro",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1210,12 +1308,12 @@
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "Odoo ERP",
-	"stack": "",
+	"name": "Odoo",
+	"Website":"",
+	"stack": "ERP",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1225,11 +1323,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Epicor BisTrack",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1238,12 +1336,10 @@
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "SAP ByD",
+	"name": "ByD",
+	"Website":"",
 	"stack": "",
-	"stockPriceOrOwnership": "",
-	"Crunchbase": "",
-	"Glassdoor": "",
-	"Homepage": "",
+	"stockPriceOrOwnership": "SAP",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1253,11 +1349,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Epicor Kinetic",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1267,11 +1363,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "JupiterOne",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1281,11 +1377,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Snowflake",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Very big data",
 	"notes":[]
@@ -1295,11 +1391,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Flywheel",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1309,11 +1405,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "SonicWall",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1323,11 +1419,11 @@
 	"encryption": "No",
 	"HaBcDr": "",
 	"name": "Qualys",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Scan all ports on all hosts on your network, and report back which ones are open, alongside scary reports of which kinds of hacks hold open these ports.",
 	"notes":[]
@@ -1337,11 +1433,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Apica",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Find vulnerabilities in your dependencies, Codesmells Dashboards.",
 	"notes":[]
@@ -1351,11 +1447,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Snyk",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Find vulnerabilities in your dependencies.",
 	"notes":[]
@@ -1365,28 +1461,27 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Zeck",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Board Deck creation software (automation?)",
 	"notes":[
 		"Quirky sense of humor, or unprofessional presentation?"
 	]
-
 },
 {
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "RapidAPI",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1396,11 +1491,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Jetstack",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "",
 	"notes":[]
@@ -1410,13 +1505,13 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Traefik",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
-	"type": "",
-  	"useCase": "",
+	"type": "Infra",
+  	"useCase": "Load balancing router designed for containerization.",
 	"notes":[]
 
 },
@@ -1425,11 +1520,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Redbear",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Australian MSP",
 	"notes":[]
@@ -1439,11 +1534,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "SQLite",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "Infra",
   	"useCase": "Lightweight SQL as flat files.",
 	"notes":[]
@@ -1453,15 +1548,15 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "NGINX (Engine-X)",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "Infra",
   	"useCase": "High-volume webserver, caching reverse proxy. Defaults to programmatic file handling.",
 	"notes":[
-		"Video: https://www.youtube.com/watch?v=JKxlsvZXG7c"
+		"Video: <a href='https://www.youtube.com/watch?v=JKxlsvZXG7c"
 	]
 
 },
@@ -1470,15 +1565,15 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Tailwind",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Provides CSS utility classes to be combined into your desired style. Use @apply keyword in normal CSS to prevent boilerplating. VSCode aids in utility class disambiguation.",
 	"notes":[
-		"Video: https://www.youtube.com/watch?v=mr15Xzb1Ook"
+		"Video: <a href='https://www.youtube.com/watch?v=mr15Xzb1Ook"
 	]
 },
 {
@@ -1486,11 +1581,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "CircleCI",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "CI/CD testing",
 	"notes":[]
@@ -1500,11 +1595,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Crunchbase",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Info about companies - Bloomberg competitor?",
 	"notes":[]
@@ -1514,11 +1609,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Glassdoor",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "",
   	"useCase": "Employee reviews of companies.",
 	"notes":[]
@@ -1528,11 +1623,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Optum Cloud",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "PaaS",
   	"useCase": "Remote primary hosting, data recovery, and backup hosting. (Cloud Partner / MSP?)",
 	"notes":[
@@ -1544,11 +1639,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Amazon Sortation Center",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "Amazon",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Package sort for physical logistics throughput.",
 	"notes":[]
@@ -1557,12 +1652,39 @@
 	"cost": "",
 	"encryption": "",
 	"HaBcDr": "",
-	"name": "Milli",
+	"name": "Interview Kickstart",
+	"Website":"<a href='https://learn.interviewkickstart.com/",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
+	"type": "Education",
+  	"useCase": "MANGA (formerly FAANG) interview prep and hiring advice.",
+	"notes":[]},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Metis",
+	"Website":"<a href='https://www.thisismetis.com/",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"type": "Education",
+  	"useCase": "Data Science & Analytics Bootcamps",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Milli",
+	"Website":"",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
 	"type": "SaaS",
   	"useCase": "",
 	"notes":[]
@@ -1572,11 +1694,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "CrowdStrike",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Broad security threat prevention",
 	"notes":[]
@@ -1586,11 +1708,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Elementium",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Enterprise service supply chain management",
 	"notes":[]
@@ -1600,11 +1722,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "HYCU (Haiku)",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Backup/DR ",
 	"notes":[]
@@ -1614,11 +1736,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Cox2M",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Corporate vehicle tracking",
 	"notes":[]
@@ -1628,11 +1750,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Proposify",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Corporate Proposals?",
 	"notes":[]
@@ -1642,11 +1764,11 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Rubrik",
+	"Website":"",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
 	"Glassdoor": "",
-	"Homepage": "",
 	"type": "SaaS",
   	"useCase": "Zero Trust Data Security",
 	"notes":[]

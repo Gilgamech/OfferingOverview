@@ -39,52 +39,85 @@ function showResults(val) {
 }
 
 window.onload = function(){
-	// webRequest("get","https://45rgkt67agr5fty2oycvxqkmiu0ndjec.lambda-url.us-west-2.on.aws/",function(data){
-	//var data = '[{ "cost": "", "encryption": "", "HaBcDr": "", "name": "AzureAD", "stockPriceOrOwnership": "Microsoft", "stack": "", "type": "SaaS", "useCase": "Serverless Active Directory", "notes":[] }, { "cost": "", "encryption": "", "HaBcDr": "", "name": "Windows 365", "stockPriceOrOwnership": "Microsoft", "stack": "", "type": "SaaS", "useCase": "Package sort for physical logistics throughput.", "notes":[] }, { "cost": "", "encryption": "", "HaBcDr": "", "name": "Excel Live", "stockPriceOrOwnership": "Microsoft", "stack": "", "type": "SaaS", "useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.", "notes":[] }]'
 	webRequest("get","http://offeringoverview.s3-website-us-west-2.amazonaws.com/Services.json",function(data){
 		//console.log(data)
 		sites = JSON.parse(data)
+
+		// sort by name
+		sites.sort(function(a, b) {
+		  const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+		  const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+		  if (nameA < nameB) {
+			return -1;
+		  }
+		  if (nameA > nameB) {
+			return 1;
+		  }
+
+		  // names must be equal
+		  return 0;
+		});
+
+		var currentSite;
+		var pathname = decodeURIComponent(window.location.pathname).replace("/","")
+
 		for (let site of sites) {
 			search_terms.push(site.name)
+			if (site.name == pathname) {
+				currentSite = site;
+			}
 		}
 		search_terms = search_terms.sort();
-		var pathname = decodeURIComponent(window.location.pathname).replace("/","")
 		
 		// if root make product grid
 		if (pathname == "") {
 			document.getElementById("content").classList.add("grid-container");
-			for (let term of search_terms) {
-				var content = divRef(term)
+			for (let site of sites) {
+				var content = divRef(site.name,site.type)
 				document.getElementById("content").innerHTML += content;
 			}
 			
 		// if any other page, load its data.
 		} else if (search_terms.includes(pathname)) {
-			for (let site of sites) {
-					console.log("Checking "+JSON.stringify(site.name));
-				if (site.name == pathname) {
-					console.log(JSON.stringify(site));
-					content = "<h2 style='text-align: center;'>"+site.name+"</h2>"
-					document.getElementById("content").innerHTML += content;
-					for (let key of getKeys(site)) {
-						if (site[key] != "" && key != "name") {
-							var content = div(key+" - "+site[key])
-							document.getElementById("content").innerHTML += content;
+			document.getElementById("content").classList.add("textBubbleBG");
+			try {
+				document.getElementById("content").classList.add(currentSite.type);
+			} catch {}
+			//console.log(JSON.stringify(currentSite));
+			content = "<h1 style='text-align: center;'>"+currentSite.name+"</h1>"
+			if (currentSite.useCase) {
+				content += "<h3 style='text-align: center;'>"+currentSite.useCase+"</h3>"
+			}; //end if currentSite
+			document.getElementById("content").innerHTML += content;
+			for (let key of getKeys(currentSite)) {
+				if (currentSite[key] != "" && key != "name" && key != "useCase") {
+					var content = div("<strong>"+key+":</strong> "+currentSite[key])
+					if (key == "notes") {
+						out = "<strong>"+key+":</strong><ul>";
+						for (let note of currentSite[key]) {
+							out +=  '<li>' + note + '</li>'
 						}
-					}
-				}
-			}
+						out +=  '</ul>'
+						content = div(out)
+					}; //end if currentSite
+					document.getElementById("content").innerHTML += content;
+				}; //end if currentSite
+			}; //end for let key
 		} else {
 			console.log("bad request")
-		}
-	})
-}
+		}; //end if pagename
+	}); //end webRequest
+}; //end window.onload
 
 function liRef(term) {
-	return '<li><a href="/' + term + '">' + term + '</li>';
+	return '<a href="/' + term + '"><li>' + term + '</li></a>';
 }
-function divRef(term) {
-	return '<div class="grid-item mainGrid"><a href="/' + term + '">' + term + '</div>';
-}function div(term) {
-	return '<div>' + term + '</div>';
+function liRef(term) {
+	return '<a href="/' + term + '"><li>' + term + '</li></a>';
+}
+function divRef(term,type) {
+	return '<a href="/' + term + '"><div class="grid-item '+type+'">' + term + '</div></a>';
+}
+function div(term) {
+	return '<p>' + term + '</p>';
 }
