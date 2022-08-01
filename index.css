@@ -16,32 +16,9 @@ body {
 }
 
 /*Site parts*/
-div.top {
-	margin:0;
-	padding:0;
-	border:1px solid #909090;
-	background-color:#909090;
-	color:#000;
-	font-variant: small-caps;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-weight:bold;
-	text-align:left;
-	font-size: 7ex;
-}
-div.top a:link{
-	text-decoration:none;
-	color:#000;
-}
-div.top a:visited {
-	color:#000;
-}
-.pageTitle {
-	font-variant: small-caps;
-	font-size: 7.99vw;
-	color: #fff; 
-	text-decoration: none;
-}
 .menu {
+	position: fixed;
+	width: 100vw;
 	margin:0;
 	padding:0;
 	border:1px solid #000;
@@ -129,17 +106,15 @@ a:active {
 
 /*Search*/
 .searchBox {
-	width: 20vw;
+	width: 50vw;
 }
 .searchResult {
 	position: absolute;
 	/*margin: top  right bottom left*/
-	margin: 26px 25px 0 -21vw;
-	width: 20vw;
-	border: 1px dotted #ccc;
-	padding: 3px;
+	margin: 26px 25px 0 -51vw;
+	width: 50vw;
 	
-	background: #bbb;
+	background: #fff;
 	color: #000;
 }
 .searchResult ul {

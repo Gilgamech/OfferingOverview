@@ -90,7 +90,7 @@ window.onload = function(){
 			}; //end if currentSite
 			document.getElementById("content").innerHTML += content;
 			for (let key of getKeys(currentSite)) {
-				if (currentSite[key] != "" && key != "name" && key != "useCase") {
+				if (currentSite[key] != "" && key != "name" && key != "useCase" && key != "video") {
 					var content = div("<strong>"+key+":</strong> "+currentSite[key])
 					if (key == "notes") {
 						out = "<strong>"+key+":</strong><ul>";
@@ -103,15 +103,15 @@ window.onload = function(){
 					document.getElementById("content").innerHTML += content;
 				}; //end if currentSite
 			}; //end for let key
+			if (currentSite.video) {
+				document.getElementById("content").innerHTML += currentSite.video;
+			}; //end if currentSite
 		} else {
 			console.log("bad request")
 		}; //end if pagename
 	}); //end webRequest
 }; //end window.onload
 
-function liRef(term) {
-	return '<a href="/' + term + '"><li>' + term + '</li></a>';
-}
 function liRef(term) {
 	return '<a href="/' + term + '"><li>' + term + '</li></a>';
 }
