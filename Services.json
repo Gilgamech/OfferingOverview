@@ -281,7 +281,7 @@
 	"name":"EC2",
 	"stockPriceOrOwnership": "Amazon",
 	"Website":"",
-	"useCase": "Servers as a service"
+	"useCase": "Servers as a service",
 	"stack": "",
 	"type": "IaaS",
 	"EC2-AMI":[],
@@ -1079,25 +1079,24 @@
 		"$1 per additional 10M RUs"
 	],
 	"Dedicated AWS cost (How much markup over EC2 or Aurora is this?)":[
-			"vCPU: $/hr",
-			"2: $0.51",
-			"4: $0.90",
-			"8: $1.60",
-			"16: $3.11",
-			"32: $5.34",
-			"1GB: $0.0005088/hr (1TB - $0.5088)",
-			"1IOPS : $0.0000196/hr (1k IOPS - $0.0196)"
-		],
-		""Dedicated GCP cost":[
-			"vCPU: $/hr",
-			"2: $0.43",
-			"4: $0.71",
-			"8: $1.18",
-			"16: $2.30",
-			"32: $4.20",
-			"1GB: $0.0011986/hr (1TB - $1.1986)"
-		]
-	}],
+		"vCPU: $/hr",
+		"2: $0.51",
+		"4: $0.90",
+		"8: $1.60",
+		"16: $3.11",
+		"32: $5.34",
+		"1GB: $0.0005088/hr (1TB - $0.5088)",
+		"1IOPS : $0.0000196/hr (1k IOPS - $0.0196)"
+	],
+	"Dedicated GCP cost":[
+		"vCPU: $/hr",
+		"2: $0.43",
+		"4: $0.71",
+		"8: $1.18",
+		"16: $2.30",
+		"32: $4.20",
+		"1GB: $0.0011986/hr (1TB - $1.1986)"
+	],
 	"encryption": "",
 	"Crunchbase": "<a href='https://www.crunchbase.com/organization/cockroach-labs'>Crunchbase</a>",
 	"Glassdoor": "<a href='https://www.glassdoor.com/Overview/Working-at-Cockroach-Labs-EI_IE1168502.11,25.htm'>Glassdoor</a>",
@@ -1554,9 +1553,10 @@
 	"Crunchbase": "",
 	"Glassdoor": "",
 	"type": "Infra",
-  	"useCase": "High-volume webserver, caching reverse proxy. Defaults to programmatic file handling.",
+  	"useCase": "High-volume webserver, caching reverse proxy.",
+	"video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/JKxlsvZXG7c' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>",
 	"notes":[
-		"Video: <a href='https://www.youtube.com/watch?v=JKxlsvZXG7c"
+	"Defaults to programmatic file handling."
 	]
 
 },
@@ -1571,9 +1571,11 @@
 	"Crunchbase": "",
 	"Glassdoor": "",
 	"type": "",
-  	"useCase": "Provides CSS utility classes to be combined into your desired style. Use @apply keyword in normal CSS to prevent boilerplating. VSCode aids in utility class disambiguation.",
+  	"useCase": "Provides CSS utility classes to be combined into your desired style.",
+	"video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/mr15Xzb1Ook' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>",
 	"notes":[
-		"Video: <a href='https://www.youtube.com/watch?v=mr15Xzb1Ook"
+		"Use @apply keyword in normal CSS to prevent boilerplating.",
+		"VSCode aids in utility class disambiguation."
 	]
 },
 {
@@ -1653,7 +1655,7 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Interview Kickstart",
-	"Website":"<a href='https://learn.interviewkickstart.com/",
+	"Website":"<a href='https://learn.interviewkickstart.com/'>Website</a>",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
@@ -1666,7 +1668,7 @@
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "Metis",
-	"Website":"<a href='https://www.thisismetis.com/",
+	"Website":"<a href='https://www.thisismetis.com/'>Website</a>",
 	"stack": "",
 	"stockPriceOrOwnership": "",
 	"Crunchbase": "",
@@ -1771,5 +1773,19 @@
 	"Glassdoor": "",
 	"type": "SaaS",
   	"useCase": "Zero Trust Data Security",
+	"notes":[]
+},
+{
+	"cost": "",
+	"encryption": "",
+	"HaBcDr": "",
+	"name": "Meetaverse",
+	"Website":"",
+	"stack": "",
+	"stockPriceOrOwnership": "",
+	"Crunchbase": "",
+	"Glassdoor": "",
+	"type": "SaaS",
+  	"useCase": "Create a custom corporate metaverse that your entire organization will love.",
 	"notes":[]
 }]
