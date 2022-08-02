@@ -5,23 +5,22 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<script src="https://www.gilgamech.com/js/Gilgamech.js"></script>
+		<script src="https://www.gilgamech.com/js/Sparational.js"></script>
 		<link href="https://www.gilgamech.com/css/normalize.css" rel="stylesheet" type="text/css" charset="utf-8">
 		<script src="/index.js"></script>
 		<link href="/index.css" rel="stylesheet" type="text/css" charset="utf-8">
 	</head>
 	<body>
 		<p class="menu">
-		<span>
-		<input type="text" class="searchBox" placeholder="Product Name" onKeyUp="showResults(this.value)" />
+		<span id="searchSpan">
+		<input type="text" class="searchBox" placeholder="Product Name" onKeyUp="sparationalHistory.push('/');showResults(this.value)" />
 			<span id="result" class="searchResult"></span>
 		</span>|
-			<a href="/" style="color: #fff">Product Index</a> |
+			<a style="color: #fff" onclick="buildPage('grid')">Product Index</a> |
 			<a href="mailto:OfferingOverview@Gilgamech.com" style="color: #fff">Contact</a> |
 		</p>
 		<div id="content">
 		</div><!-- End Content-->
-		<p class="copyright">© 2022 Gilgamech Technologies - We are the gears that make our world go around.</p>
+		<p class="copyright">© 2022 Gilgamech Technologies - Powered by SPArational.</p>
 	</body>
 </html>

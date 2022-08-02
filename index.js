@@ -4,16 +4,9 @@
 
 // Product and corp pages: display all properties as a list.
 // Indexes: display all products or corps in a grid
-// for (let item of items) {
-	//addElement("table",$innerText,$elementClass,$elementType,$elementStyle,$href,$onChange,$onClick,$contentEditable,$attributeType,$attributeAction,$elementId)
-//  }
 
 var sites;
 var search_terms = new Array();
-
-// If root, request all services, display page grid.
-// If /company, request all services, display company grid. (Don't have this data separate yet.)
-// if /pagename isin search_terms, load the services page with that info
 
 function autocompleteMatch(input) {
   if (input == '') {
@@ -28,14 +21,15 @@ function autocompleteMatch(input) {
 }
 
 function showResults(val) {
-	  var res = document.getElementById("result");
-	  res.innerHTML = '';
-	  let list = '';
-	  let terms = autocompleteMatch(val);
-	  for (i=0; i<terms.length; i++) {
-			list += liRef(terms[i]);
-	  }
-	  res.innerHTML = '<ul>' + list + '</ul>';
+	removeElement("result")
+	addElement("searchSpan","","searchResult","","","","","","","","","result")
+	let list = '';
+	let terms = autocompleteMatch(val);
+	var outerUL = addElement("result","","","ul");
+	for (i=0; i<terms.length; i++) {
+		var outerHref = addElement(outerUL,"","","a","","","","sparationalHistory.push('"+terms[i]+"');buildPage('"+terms[i]+"')");
+		addElement(outerHref,terms[i],"","li");
+	}
 }
 
 window.onload = function(){
@@ -57,67 +51,61 @@ window.onload = function(){
 		  // names must be equal
 		  return 0;
 		});
-
-		var currentSite;
-		var pathname = decodeURIComponent(window.location.pathname).replace("/","")
-
+		
 		for (let site of sites) {
 			search_terms.push(site.name)
-			if (site.name == pathname) {
-				currentSite = site;
-			}
 		}
 		search_terms = search_terms.sort();
 		
-		// if root make product grid
-		if (pathname == "") {
-			document.getElementById("content").classList.add("grid-container");
-			for (let site of sites) {
-				var content = divRef(site.name,site.type)
-				document.getElementById("content").innerHTML += content;
-			}
-			
-		// if any other page, load its data.
-		} else if (search_terms.includes(pathname)) {
-			document.getElementById("content").classList.add("textBubbleBG");
-			try {
-				document.getElementById("content").classList.add(currentSite.type);
-			} catch {}
-			//console.log(JSON.stringify(currentSite));
-			content = "<h1 style='text-align: center;'>"+currentSite.name+"</h1>"
-			if (currentSite.useCase) {
-				content += "<h3 style='text-align: center;'>"+currentSite.useCase+"</h3>"
-			}; //end if currentSite
-			document.getElementById("content").innerHTML += content;
-			for (let key of getKeys(currentSite)) {
-				if (currentSite[key] != "" && key != "name" && key != "useCase" && key != "video") {
-					var content = div("<strong>"+key+":</strong> "+currentSite[key])
-					if (key == "notes") {
-						out = "<strong>"+key+":</strong><ul>";
-						for (let note of currentSite[key]) {
-							out +=  '<li>' + note + '</li>'
-						}
-						out +=  '</ul>'
-						content = div(out)
-					}; //end if currentSite
-					document.getElementById("content").innerHTML += content;
-				}; //end if currentSite
-			}; //end for let key
-			if (currentSite.video) {
-				document.getElementById("content").innerHTML += currentSite.video;
-			}; //end if currentSite
-		} else {
-			console.log("bad request")
-		}; //end if pagename
+		buildPage('grid');
 	}); //end webRequest
 }; //end window.onload
 
-function liRef(term) {
-	return '<a href="/' + term + '"><li>' + term + '</li></a>';
-}
-function divRef(term,type) {
-	return '<a href="/' + term + '"><div class="grid-item '+type+'">' + term + '</div></a>';
-}
-function div(term) {
-	return '<p>' + term + '</p>';
+function buildPage(name) {
+	removeElement("wrapper")
+	if (name == "grid") {
+		addElement("content","","grid-container","","","","","","","","","wrapper");
+		for (let site of sites) {
+			var outerHref = addElement("wrapper","","","a","","","","sparationalHistory.push('"+site.name+"');buildPage('"+site.name+"')");
+			addElement(outerHref,site.name,('grid-item '+site.type));
+		}
+	} else {
+		var currentSite;
+		for (let site of sites) {
+			if (site.name == name) {
+				currentSite = site;
+			}
+		}
+
+		try {
+			addElement("content","","textBubbleBG "+currentSite.type,"","","","","","","","","wrapper");
+		} catch {
+			addElement("content","","textBubbleBG","","","","","","","","","wrapper");
+		}
+		addElement("wrapper",currentSite.name,"","h1","text-align: center");
+		if (currentSite.useCase) {
+			addElement("wrapper",currentSite.useCase,"","h3","text-align: center");
+		}; //end if currentSite
+		for (let key of getKeys(currentSite)) {
+			if (currentSite[key] != "" && key != "name" && key != "useCase" && key != "video") {
+				var outerPara = addElement("wrapper","","","p");
+				addElement(outerPara,key+": ","","strong");
+
+				if (typeof currentSite[key] == "object") {
+					var innerUL = addElement(outerPara,"","","ul");
+					for (let note of currentSite[key]) {
+						addElement(innerUL,note,"","li");
+					}
+				} else if (typeof currentSite[key] == "string") {
+					addElement(outerPara,currentSite[key],"","span");
+				} else {
+				}; //end if key
+
+			}; //end if currentSite
+		}; //end for let key
+		if (currentSite.video) {
+			document.getElementById("wrapper").innerHTML += currentSite.video;
+		}; //end if currentSite
+	};// end if name
+
 }
