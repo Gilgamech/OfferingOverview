@@ -119,14 +119,11 @@
 		"Can be configured to gather all logs in all regions in all accounts across an AWS Organization.",
 		"Default is 90 days via Event History, and beyond 90 days requires creating a Trail, which is logged to an S3 bucket, and can be analyzed with Athena."
 	],
-	"CloudTrail Logs":{
-		"encryption": "KMS",
-		"notes": [
-			"Log Validation prevents tampering. (How?)",
-			"Can be streamed to Logs",
-			"2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
-		]
-	}
+	"CloudTrail Logs":[
+		"Log Validation prevents tampering. (How?)",
+		"Can be streamed to Logs",
+		"2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
+	]
 },
 {
 	"cost": "",
@@ -171,7 +168,7 @@
 	"stockPriceOrOwnership": "Amazon",
 	"Website":"",
 	"stack": "IdP",
-	"type": "PaaS",
+	"type": "SaaS",
 	"useCase": "Decentralized managed auth.",
 	"notes": [
 		"User Pools directory allows users to auth using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
@@ -1543,7 +1540,7 @@
 	"notes":[]
 },
 {
-	"cost": "free",
+	"cost": "Open-sourced",
 	"encryption": "",
 	"HaBcDr": "",
 	"name": "NGINX (Engine-X)",
