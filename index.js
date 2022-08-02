@@ -27,7 +27,7 @@ function showResults(val) {
 	let terms = autocompleteMatch(val);
 	var outerUL = addElement("result","","","ul");
 	for (i=0; i<terms.length; i++) {
-		var outerHref = addElement(outerUL,"","","a","","","","sparationalHistory.push('"+terms[i]+"');buildPage('"+terms[i]+"')");
+		var outerHref = addElement(outerUL,"","","a","",terms[i]);
 		addElement(outerHref,terms[i],"","li");
 	}
 }
@@ -56,17 +56,19 @@ window.onload = function(){
 			search_terms.push(site.name)
 		}
 		search_terms = search_terms.sort();
-		
-		buildPage('grid');
+
+		var pathname = decodeURIComponent(window.location.pathname).replace("/","")
+		buildPage(pathname);
 	}); //end webRequest
 }; //end window.onload
 
 function buildPage(name) {
 	removeElement("wrapper")
-	if (name == "grid") {
+	addElement("content","","","br");
+	if (name == "") {
 		addElement("content","","grid-container","","","","","","","","","wrapper");
 		for (let site of sites) {
-			var outerHref = addElement("wrapper","","","a","","","","sparationalHistory.push('"+site.name+"');buildPage('"+site.name+"')");
+			var outerHref = addElement("wrapper","","","a","",site.name);
 			addElement(outerHref,site.name,('grid-item '+site.type));
 		}
 	} else {
@@ -78,11 +80,11 @@ function buildPage(name) {
 		}
 
 		try {
-			addElement("content","","textBubbleBG "+currentSite.type,"","","","","","","","","wrapper");
+			addElement("content","","textBubbleBG "+currentSite.type+"Page","","","","","","","","","wrapper");
 		} catch {
 			addElement("content","","textBubbleBG","","","","","","","","","wrapper");
 		}
-		addElement("wrapper",currentSite.name,"","h1","text-align: center");
+		addElement("wrapper",name,"","h1","text-align: center");
 		if (currentSite.useCase) {
 			addElement("wrapper",currentSite.useCase,"","h3","text-align: center");
 		}; //end if currentSite
@@ -97,7 +99,11 @@ function buildPage(name) {
 						addElement(innerUL,note,"","li");
 					}
 				} else if (typeof currentSite[key] == "string") {
-					addElement(outerPara,currentSite[key],"","span");
+					if (currentSite[key].substr(0,4) == "http") {
+						addElement(outerPara,key,"","a","",currentSite[key]);
+					} else {
+						addElement(outerPara,currentSite[key],"","span");
+					}; //end if currentSite key
 				} else {
 				}; //end if key
 
@@ -107,5 +113,6 @@ function buildPage(name) {
 			document.getElementById("wrapper").innerHTML += currentSite.video;
 		}; //end if currentSite
 	};// end if name
-
 }
+
+

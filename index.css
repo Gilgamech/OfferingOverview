@@ -81,28 +81,46 @@ a:active {
 }
 /*Type colors*/
 .Infra{
-	background: #EEF; 
+	background: #DEF; 
 }
 .Infra:hover{
 	background: #BEF; 
 }
+.InfraPage{
+	background: #DEF; 
+}
+
+/*IaaS = Indigo-ish*/
 .IaaS{
 	background: #DDF; 
 }
 .IaaS:hover{
 	background: #88F; 
 }
+.IaaSPage{
+	background: #EEF; 
+}
+
+/*PaaS = Pink-ish*/
 .PaaS{
 	background: #FEE;
 }
 .PaaS:hover{
 	background: #FCC; 
 }
+.PaaSPage{
+	background: #FEE;
+}
+
+/*SaaS = Cyan-ish*/
 .SaaS{
 	background: #DFF; 
 }
 .SaaS:hover{
 	background: #0FF; 
+}
+.SaaSPage{
+	background: #EFF; 
 }
 
 
