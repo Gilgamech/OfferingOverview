@@ -4,6 +4,7 @@
 
 // Product and corp pages: display all properties as a list.
 // Indexes: display all products or corps in a grid
+//addElement($elementParent,$innerText,$elementClass,$elementType,$elementStyle,$href,$onChange,$onClick,$contentEditable,$attributeType,$attributeAction,$elementId)
 
 var sites;
 var search_terms = new Array();
