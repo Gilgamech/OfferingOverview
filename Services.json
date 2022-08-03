@@ -60,20 +60,18 @@
 	"CloudFormation Templates": [
 		"Must define at least one resource.",
 		"Larger than 51,200 bytes (0.05 MB) must be imported from S3 bucket",
-		"Can be nested into NestedStacks.",
-		{
-		"Fields": [
-			"MetaData: extra info",
-			"Description: of the template",
-			"Parameters: user inputs",
-			"Transforms: Macros to modify data.",
-			"Outputs: Become inputs into other stacks.",
-			"Mappings: key value lookup table",
-			"Resources: define what to provision (minimum 1)",
-			"Conditions: control if resources get created and/or properties assigned."
-			]
-		}
-	]
+		"Can be nested into NestedStacks."
+	],
+	"Fields": [
+		"MetaData: extra info",
+		"Description: of the template",
+		"Parameters: user inputs",
+		"Transforms: Macros to modify data.",
+		"Outputs: Become inputs into other stacks.",
+		"Mappings: key value lookup table",
+		"Resources: define what to provision (minimum 1)",
+		"Conditions: control if resources get created and/or properties assigned."
+		]
 },
 {
 	"freeTier":[
@@ -927,14 +925,16 @@
 	"stack":"ERP"
 },
 {
-	"name":"Epicor BisTrack"
+	"name":"BisTrack",
+	"ownership":"Epicor"
 },
 {
 	"name":"ByD",
 	"ownership":"SAP"
 },
 {
-	"name":"Epicor Kinetic"
+	"name":"Kinetic",
+	"ownership":"Epicor"
 },
 {
 	"name":"JupiterOne"
