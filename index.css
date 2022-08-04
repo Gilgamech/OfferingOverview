@@ -71,26 +71,26 @@ object-fit: contain
 .grid:hover {
   background: #bbb;
 }
-
-.Infrastructure{
-	background: #DEF; 
-}
-.Infrastructure:hover{
-	background: #BEF; 
-}
-.InfrastructurePage{
-	background: #DEF; 
 }
 
 /*IaaS = Indigo-ish*/
 .IaaS{
 	background: #DDF; 
 }
+.Infrastructure{
+	background: #DEF; 
+}
 .IaaS:hover{
 	background: #88F; 
 }
+.Infrastructure:hover{
+	background: #8DF; 
+}
 .IaaSPage{
 	background: #EEF; 
+}
+.InfrastructurePage{
+	background: #DEF; 
 }
 
 /*PaaS = Pink-ish*/
