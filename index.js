@@ -66,11 +66,11 @@ window.onload = function(){
 function buildPage(name) {
 	removeElement("wrapper")
 	addElement("content","","","br");
+	addElement("content","","grid-container","","","","","","","","","wrapper");
 	if (name == "") {
-		addElement("content","","grid-container","","","","","","","","","wrapper");
 		for (let site of sites) {
 			var outerHref = addElement("wrapper","","","a","",site.name);
-			addElement(outerHref,site.name,('grid-item '+site.type));
+			addElement(outerHref,site.name,('grid grid-item '+site.Type));
 		}
 	} else {
 		var currentSite;
@@ -80,18 +80,14 @@ function buildPage(name) {
 			}
 		}
 
-		try {
-			addElement("content","","textBubbleBG "+currentSite.type+"Page","","","","","","","","","wrapper");
-		} catch {
-			addElement("content","","textBubbleBG","","","","","","","","","wrapper");
-		}
-		addElement("wrapper",name,"","h1","text-align: center");
+		addElement("wrapper","","grid-item "+currentSite.Type+"Page","","","","","","","","","innerWrapper");
+		addElement("innerWrapper",name,"","h1","text-align: center");
 		if (currentSite.useCase) {
-			addElement("wrapper",currentSite.useCase,"","h3","text-align: center");
+			addElement("innerWrapper",currentSite.useCase,"","h3","text-align: center");
 		}; //end if currentSite
 		for (let key of getKeys(currentSite)) {
 			if (currentSite[key] != "" && key != "name" && key != "useCase" && key != "video") {
-				var outerPara = addElement("wrapper","","","p");
+				var outerPara = addElement("innerWrapper","","","p");
 				addElement(outerPara,key+": ","","strong");
 
 				if (typeof currentSite[key] == "object") {
@@ -111,7 +107,7 @@ function buildPage(name) {
 			}; //end if currentSite
 		}; //end for let key
 		if (currentSite.video) {
-			document.getElementById("wrapper").innerHTML += currentSite.video;
+			document.getElementById("innerWrapper").innerHTML += currentSite.video;
 		}; //end if currentSite
 	};// end if name
 }
