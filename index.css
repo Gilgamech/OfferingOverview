@@ -59,20 +59,13 @@ object-fit: contain
 .grid-item {
 	border-radius: 15px;
 }
-
-/*Type colors*/
-/*no type*/
 .grid {
-	background: #eee;
 	text-align: center;
 	padding: 20px;
 	font-size: 30px;
 }
-.grid:hover {
-  background: #bbb;
-}
-}
 
+/*Type colors*/
 /*IaaS = Indigo-ish*/
 .IaaS{
 	background: #DDF; 
@@ -97,22 +90,40 @@ object-fit: contain
 .PaaS{
 	background: #FEE;
 }
+.Platform{
+	background: #FED; 
+}
 .PaaS:hover{
 	background: #FCC; 
 }
+.Platform:hover{
+	background: #FC0; 
+}
 .PaaSPage{
 	background: #FEE;
+}
+.PlatformPage{
+	background: #FED; 
 }
 
 /*SaaS = Cyan-ish*/
 .SaaS{
 	background: #DFF; 
 }
+.Software{
+	background: #DEE; 
+}
 .SaaS:hover{
 	background: #0FF; 
 }
+.Software:hover{
+	background: #0AA; 
+}
 .SaaSPage{
 	background: #EFF; 
+}
+.SoftwarePage{
+	background: #DEE; 
 }
 
 

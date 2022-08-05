@@ -1,1301 +1,1461 @@
 [
-{
-	"name": "Amplify",
-	"useCase": "Build extensible, full-stack web and mobile apps faster.",
-	"Free Tier":[
-		"The free tier expires at the end of your 12 month AWS Free Tier term.",
-		"Build & Deploy: 1000 build minutes per month. ($10 value)",
-		"Static Web Hosting: 5 GB/month stored ($0.115 value) & 15 GB/month served ($0.225 value)."
-	],
-	"Paid Tier":[
-		"Build & Deploy: $0.01 per build minute",
-		"Static Web Hosting: $0.023 GB/month stored & $0.15 GB/month served",
-		"Multiple sites per project, public SSL certificates included at no extra cost."
-	],
-	"Ownership": "Amazon",
-	"Website":"https://aws.amazon.com/amplify/",
-	"Stack":"IDE with hosting",
-	"Notes":[
-		"Studio: Visual (no-code?) app builder.",
-		"Libraries: Connect to AWS services.",
-		"CLI: Follow guided workflows to configure app backend.",
-		"Hosting: CloudFront integration."
-	]
-},
-{
-	"name": "App Runner",
-	"useCase": "Point at container and it handles all the orchestration.",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Website":"https://aws.amazon.com/apprunner/",
-	"Paid Tier": "$0.007 / GB-hour ($5.04/month) to remain in RAM, plus $0.064 / vCPU-hour (in 1 minute increments) while processing requests. (Slightly higher in Tokyo.)",
-	"Notes":[
-		"Automatic load balancing, SSL, autoscaling, logging, & metrics."
-	]
-},
-{
-	"name": "App Mesh",
-	"useCase": "Easily monitor and control microservices.",
-	"Free Tier":"Full Service (pay only for the ECS/EKS/EC2 resources.)",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Website":"https://aws.amazon.com/app-mesh/?aws-app-mesh-blogs.sort-by=item.additionalFields.createdDate&aws-app-mesh-blogs.sort-order=desc&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc",
-	"Stack":"Network Isolation",
-	"Notes":[
-		"Works with EC2, ECS, EKS, Fargate, Kubernetes in AWS, and Outposts.",
-		"Uses Envoy app proxy to provide networking."
-	]
-},
-{
-	"name": "Envoy",
-	"useCase": "Open source edge and service proxy, designed for cloud native applications.",
-	"Ownership": "Private",
-	"Crunchbase": "https://www.crunchbase.com/organization/envoy-proxy",
-	"Stack": "Network Proxy",
-	"Install Link": "https://www.envoyproxy.io/docs/envoy/latest/start/install",
-	"Type": "IaaS"
-},
-{
-	"name": "Braket",
-	"useCase": "Quantum Computing (named after Bra-ket notation).",
-	"Free Tier": "One free hour of quantum circuit simulation time per month. (Expires after first 12 months.)",
-	"Paid Tier": [
-		"Per-task price (Defined number of shots) is $0.30 across all QPUs.",
-		"Per-shot price ranges from $0.00019 to $0.01, depending on QPU."
-	],
-	"Ownership": "Amazon",
-	"Stack": "Specialized Compute",
-	"Type": "IaaS",
-	"Website": "https://aws.amazon.com/braket/"
-},
-{
-	"name": "AWS CLI",
-	"useCase": "Perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, etc.",
-	"Free Tier":"Full Service",
-	"Encryption": "SSL",
-	"Ownership": "Amazon",
-	"Type": "Control Plane",
-	"Notes": [
-		"Easily switch between accounts with --profile",
-		"Change --output between JSON, Table, and Text.",
-		"Programmatic Access must be setup from IAM",
-		"aws configure command sets up IAM keys, stored plaintext on the filesystem, so use roles instead wherever possible.",
-		"Installed via Python script"
-	]
-},
-{
-	"name": "CloudFormation",
-	"useCase": "automate the provisioning of resources and Infrastructure As Code.",
-	"Encryption": "are templates encrypted?",
-	"Type": "IaaS",
-	"Ownership": "Amazon",
-	"Stack": "IaC",
-	"Notes": [
-		"JSON or YAML",
-		"Errors rollback with message 'ROLLBACK_IN_PROGRESS'"
-	],
-	"CloudFormation Templates": [
-		"Must define at least one resource.",
-		"Larger than 51,200 bytes (0.05 MB) must be imported from S3 bucket",
-		"Can be nested into NestedStacks."
-	],
-	"Fields": [
-		"MetaData: extra info",
-		"Description: of the template",
-		"Parameters: user inputs",
-		"Transforms: Macros to modify data.",
-		"Outputs: Become inputs into other stacks.",
-		"Mappings: key value lookup table",
-		"Resources: define what to provision (minimum 1)",
-		"Conditions: control if resources get created and/or properties assigned."
-	]
-},
-{
-	"name": "CloudFront",
-	"useCase": "Distributes cached copies to Edge Locations for faster worldwide retrieval.",
-	"Free Tier": [
-		"1 TB of data transfer out",
-		"10,000,000 HTTP/S Requests",
-		"2,000,000 CloudFront Function Invocations."
-	],
-	"Paid Tier": "First 10TB $0.085",
-	"Encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
-	"Ownership": "Amazon",
-	"Stack": "CDN",
-	"Type": "IaaS",
-	"Notes": [
-		"Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, etc)",
-		"Distribution defines a collection of Edge Locations and behavior on how it should handle your cached content.",
-		"2 types: Web (static content) and RTMP (streaming media) ",
-		"Security through Signed URLs or Signed Cookies.",
-		"Write to Edge Locations with verbs like PUT objects. (How does this work and what are the use cases? Invalidate cache for a specific location, or A/B test stuff in a specific region?)",
-		"Lambda@Edge allows passing requests through a Lambda to transform.",
-		"TTL defines cache expiry in seconds.",
-		"Invalidating cache immediately expires the cached items, so they refresh immediately.",
-		"Refreshing a cached item has a bandwidth cost of moving the item from origin to edge."
-	]
-},
-{
-	"name": "CloudTrail",
-	"useCase": "Logs calls between AWS services.",
-	"Encryption": [
-		"Trails sent to S3 can use S3-KMS.",
-		"Are trails not in S3 encrypted?"
-	],
-	"Ownership": "Amazon",
-	"Stack": "Monitoring",
-	"Type": "SaaS",
-	"Notes": [
-		"Involves governance, compliance, operational auditing, and risk auditing.",
-		"Can be configured to gather all logs in all regions in all accounts across an AWS Organization.",
-		"Default is 90 days via Event History, and beyond 90 days requires creating a Trail, which is logged to an S3 bucket, and can be analyzed with Athena."
-	],
-	"CloudTrail Logs": [
-		"Log Validation prevents tampering. (How?)",
-		"Can be streamed to Logs",
-		"2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
-	]
-},
-{
-	"name": "CloudWatch",
-	"useCase": "Monitoring, dashboards, event engine, alarms, logging, metrics.",
-	"Ownership": "Amazon",
-	"Stack": "Monitoring",
-	"Type": "SaaS",
-	"Notes": [
-		"Collection of monitoring services: Dashboards, Events, Alarms, Logs, Metrics",
-		"Most services default to 1 minute reporting intervals, with options for 1, 3, and 5.",
-		"EC2 starts with 5 and calls the 1 min option 'detailed monitoring' (does it cost more?) - Agent required.",
-		"Can track the amount of billable data written to your AWS accounts.",
-		"Can stream custom logs too."
-	],
-	"Dashboards": [
-		"Visualize metrics"
-	],
-	"Events": [
-		"Trigger AWS events based on condition (use case hourly snapshots)"
-	],
-	"Alarms": [
-		"Notifications based on metrics"
-	],
-	"Logs": [
-		"Data point logging",
-		"Must belong to log group"
-	],
-	"Metrics": [
-		"Capture one data point across time.",
-		"Custom Metrics allow much higher resolution, down to 1 second."
-	]
-},
-{
-	"name": "Cognito",
-	"useCase": "Decentralized managed authorization.",
-	"Encryption": "Are user pools and identity pools encrypted? Where are they stored?",
-	"Ownership": "Amazon",
-	"Stack": "IdP",
-	"Type": "SaaS",
-	"Notes": [
-		"User Pools directory allows users to auth using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
-		"Uses JWTs to persist auth",
-		"Identity Pools can provide temp AWS creds for service access (S3, DynamoDB, etc)",
-		"Cognito Sync can sync user data and preferences across devices with one line of code (powered by SNS)",
-		"Web Identity Federation exchanges identity and security info between IdP and apps.",
-		"IdP is a trusted login source for other services.",
-		"OIDC is an Oauth type of IdP.",
-		"SAML is an SSO type of IdP."
-	]
-},
-{
-	"name": "Data Exchange",
-	"useCase": "Buy someone else's data to process, or use 3rd party data",
-	"Ownership": "Amazon",
-	"Type": "SaaS"
-},
-{
-	"name": "Datasync",
-	"useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network.",
-	"Ownership": "Amazon",
-	"Stack": "Data logistics",
-	"Type": "IaaS"
-},
-{
-	"name": "Deep Racer",
-	"useCase": "RC car that you can program with ML.",
-	"Ownership": "Amazon",
-	"Type": "PaaS"
-},
-{
-	"name": "DocumentDB (ODS)",
-	"useCase": "Document DB with 1:1 featureset match with MongoDB.",
-	"Ownership": "Amazon",
-	"Stack": "Document DB",
-	"Type": "PaaS",
-	"Notes":[
-		"DocumentDB's featureset match effectively allows charging money for an open sourced application."
-	]
-},
-{
-	"name": "DynamoDB (ODS)",
-	"Ownership": "Amazon",
-	"Stack": "Document DB",
-	"Type": "PaaS",
-	"useCase": "Fully managed NOSQL key/value & document DB.",
-	"Notes": [
-		"Good for applications with large amounts of data and need predictable read & write while scaling.",
-		"Scales to meet the specified read and write (per second) capacities.",
-		"Data stored as 3 copies on SSDs in 3 regions."
-	],
-	"Two consistency modes": [
-		"Eventually (1 sec) Consistent Reads - can return inconsistent immediate reads too.",
-		"Strongly Consistent Reads - will wait until data is consistent (1 sec) before returning, with higher latencies due to no immediate read option."
-	]
-},
-{
-	"name": "EBS",
-	"useCase": "virtual block-level storage drive that you can attach to a single EC2 instance.",
-	"Encryption": "KMS?",
-	"Ownership": "Amazon",
-	"Stack": "Persistent Storage",
-	"Type": "IaaS",
-	"Notes": [
-		"Volume dimensions (size, storage type) can be changed at any time.",
-		"Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. (What is the use case for these?)",
-		"EBS backed instances can be stopped without data loss.",
-		"Root volumes delete on termination by default.",
-		"Volumes can have termination protection."
-	],
-	"Snapshots": [
-		"Snapshots are incremental point-in-time copies, and only changes made since the last snapshot are moved to S3.",
-		"Initial snapshots will take longer than subsequent snapshots.",
-		"EC2 instance should be stopped before snapshotting root volume. But other disks can be taken while the server is running.",
-		"Restoring a snapshots of an encrypted volume will give you a snapshot that is still encrypted, and you can't share encrypted snapshots.",
-		"Unencrypted snapshots can be shared with other AWS accounts or made public. (Why would you want to make a snapshot public?)",
-		"AMIs can be created from snapshots, or volumes."
-	]
-},
-{
-	"name": "EC2",
-	"useCase": "Servers as a service",
-	"Ownership": "Amazon",
-	"Type": "IaaS",
-	"EC2-AMI": [],
-	"EC2-ASG": [],
-	"EC2-NAT": [],
-	"EC2-pricing": [],
-	"EC2-pricing2": []
-},
-{
-	"name": "ElastiCache (ODS)",
-	"useCase": "Fully managed Redis in-memory database.",
-	"Ownership": "Amazon",
-	"Stack": "Caching DB",
-	"Type": "PaaS"
-},
-{
-	"name": "ELB",
-	"useCase": "Elastic Load Balancers - split traffic from one destination across numerous servers.",
-	"Paid Tier": " ~$0.55/day or $18/month.",
-	"Encryption": "All can hold SSL certs",
-	"Ownership": "Amazon",
-	"Type": "IaaS",
-	"Notes": [
-		"3 flavors: Network, Application, Classic"
-	],
-	"Application": [
-		"Has Listeners, Rules, and Target Groups",
-		"For HTTP(S) and is good for web apps.",
-		"Can attach WAF. (Goes in front?)",
-		"Advanced routing rules (can route based on subdomain header, path, and other HTTP(S) info.)",
-		"Can have sticky sessions which are remembered by cookie."
-	],
-	"Network": [
-		"Has Listeners and Target Groups but is a lawless place.",
-		"For TCP/UDP and is good for high throughput i.e. video games.",
-		"Can't have sticky sessions?"
-	],
-	"Classic": [
-		"Has Listeners with EC2 instances registered directly.",
-		"For legacy and is being depreciated",
-		"Can have sticky sessions which are remembered by cookie.",
-		"Must have at least 2 AZs",
-		"Cannot be cross-region.",
-		"X-Forwarded-For header has source IP."
-	]
-},
-{
-	"name": "ES (ODS)",
-	"Ownership": "Amazon",
-	"Stack": "Search DB",
-	"Type": "PaaS"
-},
-{
-	"name": "FSx",
-	"Ownership": "Amazon",
-	"Stack": "Persistent Data Storage",
-	"Type": "PaaS"
-},
-{
-	"name": "Fargate",
-	"useCase": "Run containers without worrying about servers.",
-	"Ownership": "Amazon",
-	"Stack": "Platform",
-	"Type": "SaaS"
-},
-{
-	"name": "Athena (ODS)",
-	"useCase": "Query data in s3 tables as though it were a database.",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Notes": [
-		"Depends on Glue to connect it to s3.",
-		"Glue assembles tables for Athena from s3 buckets. If a user can access ALL s3 buckets in a table, then Glue will make it available to Athena for the user to query."
-	]
-},
-{
-	"name": "Glue",
-	"useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio.",
-	"Free Tier":"Full Service",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"Notes": [
-		"Glue assembles tables for Athena from s3 buckets. If a user can access ALL s3 buckets in a table, then it will be available in Athena to be queried."
-	]
-},
-{
-	"name": "Graviton",
-	"useCase":"Container-optimized arm64 processor.",
-	"Free Tier":"T4g (750 hrs/month, expires Dec 2022.)",
-	"Ownership": "Amazon",
-	"Type": "IaaS",
-	"Stack": "CPU",
-	"Broad ecosystem support":[
-		"Codebuild",
-		"CircleCI",
-		"Cirrus CI",
-		"Travis CI",
-		"GitHub",
-		"GitLab",
-		"Buildkite",
-		"Jenkins"
-	],
-	"Ease of Adoption":[
-		"Difficulty - OS - Languages - Path",
-		"Easy - Linux - Interpreted / JIT (Java, PHP, Node, etc) - Use arm64 or Multi-Arch image.",
-		"Medium - Linux - Compiled (C/C++, Python, Go) - Cross-compile or other fixes during build.",
-		"Hard - Windows - .NET - migrate to .NET Core on Linux.",
-		"Uncompleted - Windows - Windows Server applications can't yet compile to arm64."
-	],
-	"video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/iwSQRLzDwHA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
-},
-{
-	"name": "Bottlerocket",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Stack": "Container image",
-	"Notes":[
-		"Built to run containers, using Linux SE for best security."
-	]
-},
-{
-	"name": "ECR",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Stack": "Container registry",
-	"Notes":[
-		"Elastic Container Registry"
-	]
-},
-{
-	"name": "ECS",
-	"Encryption": "Doesn't handle SSL certificates, so use ELB (or CloudFront) to front. Or have your container handle the SSL in some way.",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Stack": "Container orchestration",
-	"Notes":[
-		"Elastic Container Service"
-	]
-},
-{
-	"name": "EKS",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"Stack": "Container orchestration",
-	"Notes":[
-		"Elastic Kubernetes Service"
-	]
-},
-{
-	"name": "Ground Station",
-	"Ownership": "Amazon",
-	"Type": "IaaS",
-	"useCase": "Contact satellites in orbit around the Earth."
-},
-{
-	"name": "Honeycode",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Write functions without code"
-},
-{
-	"name": "IAM",
-	"useCase": "Used to manage AWS access.",
-	"Free Tier":"Full Service",
-	"Encryption": "Are your policies encrypted at rest?",
-	"Type": "PaaS",
-	"Ownership": "Amazon",
-	"Stack": "Access",
-	"Notes": [
-		"Foundational",
-		"Universal system, applies to all regions at once.",
-		"AWS account creation normally starts with root user account setup.",
-		"Always setup MFA for root accounts.",
-		"New accounts have no permissions until assigned.",
-		"New users get an access key and secret key when created with the programmatic access option set.",
-		"Access keys are only for CLI / SDK access and not for console access.",
-		"Access secret keys are only shown on creation - if lost they must be made again.",
-		"Users must setup MFA for themselves, and this can't be done by an admin. (is this true?)",
-		"Allows setting password policies like minimum length or rotation time."
-	],
-	"Identities are users, groups, and roles.":[
-		"User accounts allow users to use the AWS Console, or CLI or SDK.",
-		"Groups allow grouping users with the same permissions.",
-		"Roles associate permissions with a resource.",
-		"Policies are JSON documents listing specific permissions.",
-		"Inline Policies are directly attached to a user, group, or role.",
-		"List Policies can be listed in the AWS Console and are not directly attached. List policies can be Customer or Managed.",
-		"Customer Policies are ones you make and maintain.",
-		"Managed Policies are read-only from AWS"
-	]
-},
-{
-	"name": "IOT",
-	"Ownership": "Amazon",
-	"IOT Core": [
-		"logging"
-	]
-},
-{
-	"name": "Kinesis",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Captures realtime data stream "
-},
-{
-	"name": "Lake Formation",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Create data lakes, or repositories of unstructured data."
-},
-{
-	"name": "Lambda",
-	"useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture.",
-	"Free Tier":"First 1M requests are free.",
-	"Paid Tier":"",
-	"Encryption In Motion":"HTTPS - you'll need to use HTTPS endpoints in your Lambda Function's code.",
-	"Ownership": "Amazon",
-	"Stack": "Function invocation",
-	"Type": "PaaS",
-	"Supports 7 runtimes": [
-		"Ruby",
-		"Python",
-		"Java",
-		"NodeJS",
-		"C#",
-		"PowerShell",
-		"Go"
-	],
-	"Notes": [
-		"Code packages are called Lambda Functions, regardless of if they contain any software functions.",
-		"Adjustable duration timeout upto 15 min and memory size up to 3008 MB.",
-		"Good fit for short-running tasks where you don't need to customize the OS or environment. For longer than 15 minutes, more RAM, or a custom OS environment, consider Fargate/ECS",
-		"Can be triggered from SDK or multiple services (S3, API Gateway, DynamoDB, etc). Function URLs allow direct Internet access to trigger a Lambda function - an API Gateway and Route53 redirect are no longer needed.",
-		"Use no VPC by default, but can use a VPC to interact with your other services, like RDS.",
-		"Can scale to 1000 (default) concurrent functions. Can increase this default as an AWS Service Limit increase.",
-		"Cold Starts - if not used recently there will be a startup delay."
-	]
-},
-{
-	"Free Tier":"Full Service",
-	"name": "LandingZone",
-	"Ownership": "Amazon",
-	"useCase": "Entry point for multi-account access.",
-	"Notes": [
-		"Foundational"
-	]
-},
-{
-	"name": "Lex",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Conversational service with the same tech that operates Amazon Alexa"
-},
-{
-	"name": "Lightsail",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"useCase": "If you don't care about the infra and just want to deploy a Wordpress site."
-},
-{
-	"name": "MapReduce",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Apache Spark, lets you do massive parallel processing on data sets."
-},
-{
-	"name": "MSK",
-	"Ownership": "Amazon",
-	"Stack": "MQ",
-	"Type": "PaaS",
-	"useCase": "Fully managed Apache Kafka message queue"
-},
-{
-	"name": "Neptune (ODS)",
-	"Ownership": "Amazon",
-	"Stack": "Graph DB",
-	"Type": "PaaS",
-	"useCase": "Social graph or recommendation engine."
-},
-{
-	"name": "Organizations",
-	"Ownership": "Amazon",
-	"Notes": [
-		"Foundational"
-	]
-},
-{
-	"name": "Outposts",
-	"Ownership": "Amazon",
-	"Type": "IaaS",
-	"useCase": "Run AWS APIs on your servers."
-},
-{
-	"name": "Quantum Ledger DB (ODS)",
-	"Ownership": "Amazon",
-	"Stack": "Blockchain",
-	"Type": "PaaS"
-},
-{
-	"name": "Route 53",
-	"Ownership": "Amazon",
-	"Stack": "DNS",
-	"Type": "IaaS",
-	"useCase": "DNS provider, registrar, and domain manager.",
-	"Notes": [
-		"Traffic Flow: Visual editor for chaining routing policies, has versioning for easy rollback.",
-		"Alias Record - AWS' smart record - it detects changed IP addresses and updates automatically. (How - is it a type of reverse DNS?)",
-		"R53 Resolver: Lets you regionally route DNS queries between your VPCs and your hybrid network.",
-		"Health checks can monitor and automatically reroute between endpoints. And health checks can monitor other health checks."
-	],
-	"Routing types": [
-		"Simple: Default, multiple addresses result in random endpoint selection.",
-		"Weighted: Assign percentages to different routes.",
-		"Latency-based: Directs traffic based on region to get lowest latency.",
-		"Failover: Directs traffic to secondary site only if primary site is down.",
-		"Geolocation: Route based on geographic location.",
-		"Geo-proximity: Add Bias to Geolocation (requires R53 Traffic Flow)",
-		"Multi-Value Answer: Return multiple answers (using health checks)"
-	]
-},
-{
-	"name": "RDS",
-	"useCase": "Relational Database Service",
-	"Encryption At Rest": "KMS",
-	"Encryption In Motion": "HTTPS",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"Automatic Backups": [
-		"You can set a schedule.",
-		"No additional cost.",
-		"Retention window between 1 and 35 days."
-	],
-	"Manual Snapshots": [
-		"Can restore database from snapshot."
-	],
-	"6 database flavors": [
-		"Aurora",
-		"MariaDB",
-		"MSSQL",
-		"MySQL",
-		"Oracle",
-		"PostgreSQL"
-	],
-	"Aurora notes": [
-		"Fully-managed PostgreSQL or MySQL with scaling, HA, and fault tolerance.",
-		"5x faster than MySQL and 3x faster than PostgreSQL, on same flavor. (How much faster than MySQL is the PostgreSQL one? How do MySQL and PG compare?)",
-		"Pricing is about 1/10 other flavors.",
-		"Data stored as 6 copies in 3 regions.",
-		"Can span regions with Global Database.",
-		"Aurora Serverless allows starting, stopping, and scaling - for new projects or those with infrequent DB use - to keep costs low."
-	],
-	"PostgreSQL notes": [
-		"Multi-AZ replicates a standby copy of your DB to another AZ, and keeps it up to date.",
-		"Automatic Failover will automatically promote to master the standby copy if the main DB's AZ goes down.",
-		"Read-Replicas "
-	],
-	"Notes": [
-		"Instances are managed and cannot be accessed.",
-		"Allow you to run multiple read-only copies of your DB, to improve performance",
-		"Uses asynchronous replication. (What's the significance of this?) ",
-		"Requires automatic backups be setup.",
-		"Limit of 5, except Aurora can have 15.",
-		"Can be multi-AZ and use Read-Replicas.",
-		"Can be in another region (Cross-Region Read-Replicas)",
-		"Can be promoted to their own database, but this breaks replication.",
-		"You can have replicas of Read-Replicas. (Can you have Read-Replicas of Read-Replicas?)"
-	]
-},
-{
-	"name": "Redshift (ODS)",
-	"useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
-	"cost": " Billed per hour for single-nodes and compute nodes.",
-	"Encryption": "KMS or CloudHSM",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"BI(g) Data warehousing": [
-		"Can handle petabytes of data. Data in a warehouse is structured.",
-		"Columnar Store OLAP DB that takes SQL-like queries.",
-		"Can ingest data from S3, EMR, DynamoDB, or multiple sources on remote hosts.",
-		"Limited to single-AZ.",
-		"Single-node or multi-node (clustered)."
-	],
-	"Notes": [
-		"Each node holds 160 GB.",
-		"Multi-node has a leader node and upto 128 compute nodes. Leader node is free.",
-		"Two node types: Dense Compute and Dense Storage",
-		"Attempts 3 backup copies: Original, Compute, S3.",
-		"Uses sequential HDD caching.",
-		"Backup retention default is 1 day, can be set up to 35 days.",
-		"Can asynchronously backup snapshots to another region's S3 bucket.",
-		"Uses massively parallel processing (MPP) to distribute queries and data.",
-		"Uses sample data to create an empty table."
-	]
-},
-{
-	"name": "Registry of Open Data",
-	"Ownership": "Amazon",
-	"Free Tier": "free",
-	"Type": "SaaS",
-	"Stack": "Datasets",
-	"useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc."
-},
-{
-	"name": "Rekognition",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Image classification API"
-},
-{
-	"name": "Robomaker",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "robot simulators"
-},
-{
-	"name": "S3",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"useCase": "Storage drives in the cloud",
-	"S3-storageClasses": [],
-	"S3-transfer": [],
-	"S3-snowball": []
-},
-{
-	"name": "Sagemaker",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Use Tensorflow or Pytorch with a managed Jupyter notebook that can connect to a GPU."
-},
-{
-	"name": "AWS SDK",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"Notes": [
-		"Programmatic Access must be setup from IAM"
-	],
-	"Available languages": [
-		"C++",
-		" Go",
-		" Java",
-		" JS & NodeJS",
-		" .NET",
-		" PHP",
-		" Python",
-		" Ruby"
-	]
-},
-{
-	"name": "Serverless repos",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"useCase": "Lambda Marketplace"
-},
-{
-	"name": "SES",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"useCase": "can send emails"
-},
-{
-	"name": "SimpleDB (ODS)",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"useCase": "Basic NoSQL DB."
-},
-{
-	"name": "Snow Mobile Core",
-	"Ownership": "Amazon",
-	"useCase": "Suitcase-sized device which provides a suite of services through a 5G or 4G connection.",
-	"Type": "IaaS",
-	"Services Provided":[
-		"Config",
-		"CloudWatch",
-		"AutoScaling",
-		"CloudFormation",
-		"CloudTrail",
-		"S3",
-		"SAS",
-		"Systems Manager",
-		"Provisioning and Subscriber tools",
-		"VPC Management Tools",
-		"Mobile core control plane."
-	],
-	"Notes": [
-		"Also called SnowCone?"
-	]
-},
-{
-	"name": "SNS",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"useCase": "can send push notifications to your app."
-},
-{
-	"name": "Storage Gateway",
-	"useCase": "Data transfer agent deployed on a VM or hardware device in your network, or as EC2 or VMWare Cloud VM.",
-	"Ownership": "Amazon",
-	"Type": "IaaS",
-	"Notes": [
-		"The AWS Hardware Appliance is available exclusively through resellers, including CDW."
-	],
-	"Free Tier":[
-		"Data Transfer from your gateway appliance to the AWS Storage Gateway service is free.",
-		"Data Transfer from the AWS Storage Gateway service to an Amazon EC2-based gateway appliance in the same region is free.",
-		"Transfer Cost: The first 100 GB/month into each AWS account is free."
-	],
-	"Transfer Cost":[
-		"$0.01 per GB up to a maximum of $125.00 per gateway per month (12.5 TB) - after the first 100 GB/month into the AWS account. Billed as Amazon S3 requests for S3 Gateways.",
-		"Data Transfer from the AWS Storage Gateway service to your on-premises gateway appliance ",
-		"TB/Month - per GB - $/1kGB/Month",
-		"9.999 - $0.09 - $899.91",
-		"40 - $0.085  - $3,400",
-		"100 - $0.07  - $7,000",
-		"150+ - $0.05  - $7,500",
-		"Data Transfer from the AWS Storage Gateway service to your gateway appliance in other regions is $0.02 per GB currently."
-	],
-	"S3 Gateway": [
-		"Storage Cost: S3 rate"
-	],
-	"FSx Gateway": [
-		"Gateway Cost: $0.69 per Hour",
-		"Storage Cost: FSx for Windows rate"
-	],
-	"Tape Gateway": [
-		"(per GB-month): Storage - Retrieval - Early Deletion",
-		"Standard: $0.023 - $0.01 - (free)",
-		"Glacier Flexible Retrieval: $0.0036 - $0.02 - $0.0108 (Prorated across 90 days.)",
-		"Glacier Deep Archive: $0.00099 - $0.0032 - $0.00099 (Prorated across 180 days.)",
-		"Archival: Free (what does this entail?)"
-	],
-	"Volume Gateway": [
-		"Storage Cost: $0.023 per GB-month of data stored.",
-		"EBS Snapshot storage - Stored and billed as Amazon EBS snapshots)."
-	]
-},
-{
-	"name": "STS",
-	"Ownership": "Amazon",
-	"Type": "PaaS",
-	"Notes": [
-		"Foundational"
-	]
-},
-{
-	"name": "Transit Gateway",
-	"Ownership": "Amazon",
-	"Stack": "Persistent Data Storage",
-	"Type": "IaaS"
-},
-{
-	"name": "Timestream (ODS)",
-	"useCase": "Time series database with built-in time-based queries and analytics",
-	"Ownership": "Amazon",
-	"Stack": "Time-series DB",
-	"Type": "PaaS"
-},
-{
-	"name": "Trainium ML",
-	"useCase": "Machine Learning ASICs can improve training speed while reducing costs.",
-	"Ownership": "Amazon",
-	"Stack": "ML",
-	"Type": "PaaS",
-	"Notes": [
-		"Training hardware Trn1"
-	]
-},
-{
-	"name": "VMWare Cloud",
-	"useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy.",
-	"Ownership": "Amazon",
-	"Stack": "Hypervisor",
-	"Type": "IaaS"
-},
-{
-	"name": "VPC",
-	"useCase": "Container for other AWS IaaS and PaaS products, and can have Endpoints for AWS SaaS, products.",
-	"Free Tier":"Full Service",
-	"Encryption": "Unsure",
-	"Ownership": "Amazon",
-	"Stack": "Networking Isolation",
-	"Type": "IaaS",
-	"VPC-endpoints": [],
-	"VPC-flowLogs": [],
-	"VPC-nacls": [],
-	"VPC-nat": [],
-	"VPC-securityGroups": []
-},
-{
-	"name": "Cloud Audit Academy",
-	"useCase": "Learn about audits in AWS.",
-	"Ownership": "Amazon",
-	"Stack": "Training",
-	"Type": "IaaS"
-},
-{
-	"name": "AzureAD",
-	"useCase": "Serverless Active Directory",
-	"Ownership": "Microsoft",
-	"Stack": "Auth",
-	"Type": "SaaS"
-},
-{
-	"name": "Windows 365",
-	"useCase": "Package sort for physical logistics throughput.",
-	"Ownership": "Microsoft",
-	"Stack": "Desktop",
-	"Type": "IaaS"
-},
-{
-	"name": "Excel Live",
-	"useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.",
-	"Ownership": "Microsoft",
-	"Stack": "Application",
-	"Type": "SaaS"
-},
-{
-	"name": "CockroachDB",
-	"useCase": "PostgreSQL-ish SQL structured server software, designed for high scalability leading to high availability, with Infra and Serverless options.",
-	"Crunchbase": "https://www.crunchbase.com/organization/cockroach-labs",
-	"Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Cockroach-Labs-EI_IE1168502.11,25.htm",
-	"Website": "https://www.cockroachlabs.com/",
-	"Stack": "Relational DB",
-	"Ownership": "Pre-IPO",
-	"Type": "Infrastructure",
-	"Free Tier": [
-		"Serverless: Free 5GiB Storage & 250M Request Units/month"
-	],
-	"Paid Tier": [
-		"Serverless: $1 per additional 1GiB storage, $1 per additional 10M RUs",
-		"Dedicated AWS IOPS: 1IOPS = $0.0000196/hr (1k IOPS = $0.0196)",
-		"Dedicated AWS storage: 1GB = $0.0005088/hr (1TB = $0.5088)",
-		"Dedicated GCP storage: 1GB = $0.0011986/hr (1TB - $1.1986)"
-	],
-	"Dedicated AWS compute": [
-		"vCPU: $/hr (rate : change)",
-		"2: $0.51 ($0.255 : 0)",
-		"4: $0.90 ($0.225 : 88.2%)",
-		"8: $1.60 ($0.2 : 88.89%)",
-		"16: $3.11 ($0.194 : 97.2%)",
-		"32: $5.34 ($0.167 : 85.9%)"
-	],
-	"Dedicated GCP compute": [
-		"vCPU: $/hr (rate : change)",
-		"2: $0.43 ($0.215 : 0%)",
-		"4: $0.71 ($0.178 : 82.8%)",
-		"8: $1.18 ($0.148 : 83.1%)",
-		"16: $2.30 ($0.144 : 97.3%)",
-		"32: $4.20 ($0.131 : 91.0%)"
-	],
-	"Notes": [
-		"Designed to be highly PostgreSQL compliant, and some applications might 'just work'.",
-		"High-pressure sales team."
-	]
-},
-{
-	"name": "Freevee",
-	"Ownership": "Amazon",
-	"useCase": "Free (ad-supported?) video streaming service."
-},
-{
-	"name": "ClearScale",
-	"useCase": "AWS Consulting Partner",
-	"Website": "https://www.clearscale.com/",
-	"Stack": "Consulting",
-	"Ownership": "Private",
-	"Crunchbase": "https://www.crunchbase.com/organization/clearscale",
-	"Glassdoor": "https://www.glassdoor.com/Overview/Working-at-ClearScale-EI_IE1183929.11,21.htm"
-},
-{
-	"name": "Jenkins",
-	"useCase": "The leading open source automation server",
-	"Free Tier": "Open Source",
-	"Encryption": "Most data is exposed to the filesystem and memory. Recommends using Docker secrets/ directory to store API keys and other sensitive data.",
-	"Website": "https://www.jenkins.io/",
-	"Overview": "https://www.lambdatest.com/blog/what-is-jenkins/",
-	"InstallLink": "https://www.jenkins.io/download/",
-	"Stack": "CI/CD",
-	"Type": "Infrastructure",
-	"Notes": [
-		"Jenkins is distributed as WAR files, native packages, installers, and Docker images."
-	]
-},
-{
-	"name": "Splunk",
-	"useCase": "Data analytics collection and dashboarding.",
-	"Website": "https://www.splunk.com/",
-	"Stack": "Monitoring",
-	"Ownership": "Stock Price $103.91 (7/29/2022)",
-	"Crunchbase": "https://www.crunchbase.com/organization/splunk",
-	"Glassdoor": "https://www.glassdoor.com/Reviews/Splunk-Reviews-E117313.htm"
-},
-{
-	"name": "Perpetua",
-	"useCase": "eCommerce Advertising Software",
-	"Website": "https://perpetua.io/",
-	"Ownership": "Pre-IPO",
-	"Crunchbase": "https://www.crunchbase.com/organization/perpetua-labs",
-	"Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Perpetua-EI_IE1671941.11,19.htm"
-},
-{
-	"name": "Acumatica",
-	"useCase": "Cloud Business Management Software",
-	"Website": "https://www.acumatica.com/",
-	"Stack": "ERP",
-	"Ownership": "INVESTOR AB or EQT",
-	"Crunchbase": "https://www.crunchbase.com/organization/acumatica",
-	"Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Acumatica-EI_IE562378.11,20.htm"
-},
-{
-	"name": "Digital Ocean",
-	"useCase": "Cloud Host",
-	"Stack": "Cloud Host",
-	"Ownership": "Stock Price $40.98 (7/29/2022)",
-	"Crunchbase": "https://www.crunchbase.com/organization/digitalocean",
-	"Glassdoor": "https://www.glassdoor.com/Overview/Working-at-DigitalOcean-EI_IE823482.11,23.htm",
-	"Type": "IaaS"
-},
-{
-	"name": "Business One",
-	"Stack": "ERP",
-	"Ownership": "SAP"
-},
-{
-	"name": "Sage Intacct",
-	"Ownership": "Stock Price $34.35 (7/29/2022)",
-	"Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Sage-EI_IE1150.11,15.htm"
-},
-{
-	"name": "Oracle NetSuite"
-},
-{
-	"name": "Unanet GovCon"
-},
-{
-	"name": "TallyPrime"
-},
-{
-	"name": "S/4Hana Cloud",
-	"Ownership": "SAP"
-},
-{
-	"name": "Total ETO"
-},
-{
-	"name": "MIE Trak Pro"
-},
-{
-	"name": "Odoo",
-	"Stack": "ERP"
-},
-{
-	"name": "BisTrack",
-	"Ownership": "Epicor"
-},
-{
-	"name": "ByD",
-	"Ownership": "SAP"
-},
-{
-	"name": "Kinetic",
-	"Ownership": "Epicor"
-},
-{
-	"name": "JupiterOne"
-},
-{
-	"name": "Snowflake",
-	"useCase": "Very big data"
-},
-{
-	"name": "Flywheel"
-},
-{
-	"name": "SonicWall"
-},
-{
-	"Encryption": "No",
-	"useCase": "Scan all ports on all hosts on your network, and report back which ones are open, alongside scary reports of which kinds of hacks hold open these ports.",
-	"name": "Qualys"
-},
-{
-	"name": "Apica",
-	"useCase": "Find vulnerabilities in your dependencies, Codesmells Dashboards."
-},
-{
-	"name": "Snyk",
-	"useCase": "Find vulnerabilities in your dependencies."
-},
-{
-	"name": "Zeck",
-	"useCase": "Board Deck creation software (automation?)",
-	"Notes": [
-		"Quirky sense of humor, or unprofessional presentation?"
-	]
-},
-{
-	"name": "RapidAPI"
-},
-{
-	"name": "Jetstack"
-},
-{
-	"name": "Broadcade"
-},
-{
-	"name": "HTE"
-},
-{
-	"name": "Rapid7"
-},
-{
-	"name": "Autobox"
-},
-{
-	"name": "Ansible",
-	"useCase": "Delivers simple IT automation that ends repetitive tasks and frees up DevOps teams for more strategic work.",
-	"Ownership": "Red Hat",
-	"Tutorial": "https://codingbee.net/ansible/ansible-a-hello-world-playbook",
-	"Overview": "https://www.ansible.com/overview/how-ansible-works?hsLang=en-us",
-	"InstallLink": "https://docs.ansible.com/ansible/latest/installation_guide/index.html",
-	"Stack": "Infra as Code",
-	"Type": "ControlPlane",
-	"Notes": [
-		"Code files are called Playbooks and use YAML format."
-	]
-},
-{
-	"name": "Infrastructure",
-	"useCase": "Powerful Policy-Based Configuration Management System Software",
-	"Ownership": "Chef",
-	"Website": "https://www.chef.io/products/chef-Infrastructure",
-	"InstallLink": "https://docs.chef.io/windows/",
-	"Github": "https://gist.github.com/dhana-git/700da979e8c0d39f7ee74ad5ba8e5f1f",
-	"Stack": "Infra as Code",
-	"Type": "ControlPlane"
-},
-{
-	"name": "Otter",
-	"useCase": "Provision your servers and manage configuration",
-	"Ownership": "Inedo",
-	"Free Tier": "No server limit, but no permissions (all users are admins).",
-	"Paid Tier": [
-		"Basic: $1,995/yr for upto 100 servers.",
-		"Enterprise: $9,995/yr for upto 100 servers. Includes HA clustering, SAML SSO, and configuration drift tools."
-	],
-	"Website": "https://inedo.com/otter",
-	"InstallLink": "https://inedo.com/otter/download",
-	"Stack": "Infra as Code",
-	"Type": "ControlPlane",
-	"Notes": [
-		"Pricing page is a little unclear, and makes services seem nearly identical, until you've looked at it for a few minutes."
-	]
-
-},
-{
-	"name": "Salt",
-	"useCase": "Automation, infrastructure management, its data-driven orchestration, remote execution, configuration management, and so much more.",
-	"Ownership": "Pre-IPO",
-	"Website": "https://saltproject.io/",
-	"Tutorial": "https://crate.io/blog/infrastructure-as-code-configuration-with-salt",
-	"Github": "https://github.com/saltstack/salt-pack",
-	"InstallLink": "https://docs.saltproject.io/en/latest/topics/installation/index.html",
-	"Stack": "Infra as Code",
-	"Type": "ControlPlane"
-},
-{
-	"name": "CFEngine",
-	"useCase": "An open-source configuration management system.",
-	"Free Tier": "Linux only, basic features.",
-	"Paid Tier": "Call for quote. Windows, AIX, Solaris, and HP-UX OSes, REST API and web portal, alerts & triggers, reporting.",
-	"InstallLink": "https://cfengine.com/downloads/quick-install/",
-	"Github": "https://github.com/cfengine",
-	"Website": "https://cfengine.com/download/",
-	"Stack": "Infra as Code",
-	"Type": "Software"
-},
-{
-	"name": "Terraform",
-	"useCase": "Automate infrastructure provisioning on any cloud",
-	"Stack": "Infra as Code",
-	"InstallLink": "https://www.terraform.io/downloads",
-	"Tutorial": "https://learn.hashicorp.com/tutorials/terraform/aws-build?in=terraform/aws-get-started"
-},
-{
-	"name": "Traefik",
-	"useCase": "Load balancing router designed for containerization.",
-	"Type": "Infrastructure"
-
-},
-{
-	"name": "Redbear",
-	"useCase": "Australian MSP"
-},
-{
-	"Free Tier": "Open Source",
-	"useCase": "Lightweight SQL as flat files.",
-	"name": "SQLite",
-	"Type": "Infrastructure"
-},
-{
-	"name": "NGINX (Engine-X)",
-	"useCase": "High-volume webserver, caching reverse proxy.",
-	"Free Tier": "Open Source",
-	"Type": "Infrastructure",
-	"Notes": [
-		"Defaults to programmatic file handling."
-	],
-	"video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/JKxlsvZXG7c' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
-
-},
-{
-	"name": "Tailwind",
-	"useCase": "Provides CSS utility classes to be combined into your desired style.",
-	"Notes": [
-		"Use @apply keyword in normal CSS to prevent boilerplating.",
-		"VSCode aids in utility class disambiguation."
-	],
-	"video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/mr15Xzb1Ook' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
-},
-{
-	"name": "CircleCI",
-	"useCase": "CI/CD testing",
-	"Stack": "CI/CD"
-},
-{
-	"name": "Cirrus CI",
-	"useCase": "CI/CD testing",
-	"Stack": "CI/CD"
-},
-{
-	"name": "Travis CI",
-	"useCase": "CI/CD testing",
-	"Stack": "CI/CD"
-},
-{
-	"name": "CodeBuild",
-	"useCase": "Serverless code build and test.",
-	"Free Tier": "100 minutes on general1.small compute type per month.",
-	"Paid Tier": "$0.005/minute, after the free tier is used up.",
-	"Encryption": "KMS",
-	"Ownership": "Amazon",
-	"Website": "https://aws.amazon.com/codebuild/",
-	"Stack": "CI/CD",
-	"Type": "SaaS",
-	"Notes": [
-		"Has Jenkins plugin."
-	]
-},
-{
-	"name": "Crunchbase",
-	"useCase": "Info about companies - Bloomberg competitor?"
-},
-{
-	"name": "Glassdoor",
-	"useCase": "Employee reviews of companies."
-},
-{
-	"name": "Optum Cloud",
-	"Type": "PaaS",
-	"useCase": "Remote primary hosting, data recovery, and backup hosting.",
-	"Stack": "Cloud Partner / MSP.",
-	"Notes": [
-		"Not to be confused with OptumCare."
-	]
-},
-{
-	"name": "Amazon Sortation Center",
-	"Ownership": "Amazon",
-	"Type": "SaaS",
-	"useCase": "Package sort for physical logistics throughput."
-},
-{
-	"name": "Interview Kickstart",
-	"Website": "https://learn.interviewkickstart.com/",
-	"Type": "Education",
-	"useCase": "MANGA (formerly FAANG) interview prep and hiring advice."
-},
-{
-	"name": "Metis",
-	"Website": "https://www.thisismetis.com/",
-	"Type": "Education",
-	"useCase": "Data Science & Analytics Bootcamps"
-},
-{
-	"name": "Milli",
-	"Type": "SaaS"
-},
-{
-	"name": "CrowdStrike",
-	"Type": "SaaS",
-	"useCase": "Broad security threat prevention"
-},
-{
-	"name": "Elementium",
-	"Type": "SaaS",
-	"useCase": "Enterprise service supply chain management"
-},
-{
-	"name": "HYCU (Haiku)",
-	"Type": "SaaS",
-	"useCase": "Backup/DR "
-},
-{
-	"name": "Cox2M",
-	"Type": "SaaS",
-	"useCase": "Corporate vehicle tracking"
-},
-{
-	"name": "Proposify",
-	"Type": "SaaS",
-	"useCase": "Corporate Proposals?"
-},
-{
-	"name": "Rubrik",
-	"Type": "SaaS",
-	"useCase": "Zero Trust Data Security"
-},
-{
-	"name": "Meetaverse",
-	"Type": "SaaS",
-	"useCase": "Create a custom corporate metaverse that your entire organization will love."
-}
+  {
+    "name": "Amplify",
+    "useCase": "Build extensible, full-stack web and mobile apps faster.",
+    "Free Tier": [
+      "The free tier expires at the end of your 12 month AWS Free Tier term.",
+      "Build & Deploy: 1000 build minutes per month. ($10 value)",
+      "Static Web Hosting: 5 GB/month stored ($0.115 value) & 15 GB/month served ($0.225 value)."
+    ],
+    "Paid Tier": [
+      "Build & Deploy: $0.01 per build minute",
+      "Static Web Hosting: $0.023 GB/month stored & $0.15 GB/month served",
+      "Multiple sites per project, public SSL certificates included at no extra cost."
+    ],
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/amplify/",
+    "Layer": "IDE with hosting",
+    "Notes": [
+      "Studio: Visual (no-code?) app builder.",
+      "Libraries: Connect to AWS services.",
+      "CLI: Follow guided workflows to configure app backend.",
+      "Hosting: CloudFront integration."
+    ]
+  },
+  {
+    "name": "App Runner",
+    "useCase": "Point at container and it handles all the orchestration.",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Website": "https://aws.amazon.com/apprunner/",
+    "Paid Tier": "$0.007 / GB-hour ($5.04/month) to remain in RAM, plus $0.064 / vCPU-hour (in 1 minute increments) while processing requests. (Slightly higher in Tokyo.)",
+    "Notes": [
+      "Automatic load balancing, SSL, autoscaling, logging, & metrics."
+    ]
+  },
+  {
+    "name": "App Mesh",
+    "useCase": "Easily monitor and control microservices.",
+    "Free Tier": "Full Service (pay only for the ECS/EKS/EC2 resources.)",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Website": "https://aws.amazon.com/app-mesh/?aws-app-mesh-blogs.sort-by=item.additionalFields.createdDate&aws-app-mesh-blogs.sort-order=desc&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc",
+    "Layer": "Network Isolation",
+    "Notes": [
+      "Works with EC2, ECS, EKS, Fargate, Kubernetes in AWS, and Outposts.",
+      "Uses Envoy app proxy to provide networking."
+    ]
+  },
+  {
+    "name": "Envoy",
+    "useCase": "Open source edge and service proxy, designed for cloud native applications.",
+    "Ownership": "Private",
+    "Crunchbase": "https://www.crunchbase.com/organization/envoy-proxy",
+    "Layer": "Network Proxy",
+    "Install Link": "https://www.envoyproxy.io/docs/envoy/latest/start/install",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Braket",
+    "useCase": "Quantum Computing (named after Bra-ket notation).",
+    "Free Tier": "One free hour of quantum circuit simulation time per month. (Expires after first 12 months.)",
+    "Paid Tier": [
+      "Per-task price (Defined number of shots) is $0.30 across all QPUs.",
+      "Per-shot price ranges from $0.00019 to $0.01, depending on QPU."
+    ],
+    "Ownership": "Amazon",
+    "Layer": "Specialized Compute",
+    "Type": "IaaS",
+    "Website": "https://aws.amazon.com/braket/"
+  },
+  {
+    "name": "AWS CLI",
+    "useCase": "Perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, etc.",
+    "Free Tier": "Full Service",
+    "Encryption": "SSL",
+    "Ownership": "Amazon",
+    "Layer": "Control Plane",
+    "Type": "Software",
+    "Notes": [
+      "Easily switch between accounts with --profile",
+      "Change --output between JSON, Table, and Text.",
+      "Programmatic Access must be setup from IAM",
+      "aws configure command sets up IAM keys, stored plaintext on the filesystem, so use roles instead wherever possible.",
+      "Installed via Python script"
+    ]
+  },
+  {
+    "name": "CloudFormation",
+    "useCase": "automate the provisioning of resources and Infrastructure As Code.",
+    "Encryption": "are templates encrypted?",
+    "Type": "IaaS",
+    "Ownership": "Amazon",
+    "Layer": "IaC",
+    "Notes": [
+      "JSON or YAML",
+      "Errors rollback with message 'ROLLBACK_IN_PROGRESS'"
+    ],
+    "CloudFormation Templates": [
+      "Must define at least one resource.",
+      "Larger than 51,200 bytes (0.05 MB) must be imported from S3 bucket",
+      "Can be nested into NestedStacks."
+    ],
+    "Fields": [
+      "MetaData: extra info",
+      "Description: of the template",
+      "Parameters: user inputs",
+      "Transforms: Macros to modify data.",
+      "Outputs: Become inputs into other stacks.",
+      "Mappings: key value lookup table",
+      "Resources: define what to provision (minimum 1)",
+      "Conditions: control if resources get created and/or properties assigned."
+    ]
+  },
+  {
+    "name": "CloudFront",
+    "useCase": "Distributes cached copies to Edge Locations for faster worldwide retrieval.",
+    "Free Tier": [
+      "1 TB of data transfer out",
+      "10M HTTP/S Requests",
+      "2M CloudFront Function Invocations."
+    ],
+    "Paid Tier": "First 10TB $0.085",
+    "Encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/cloudfront/",
+    "Layer": "CDN",
+    "Type": "IaaS",
+    "Notes": [
+      "Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, etc)",
+      "Distribution defines a collection of Edge Locations and behavior on how it should handle your cached content.",
+      "2 types: Web (static content) and RTMP (streaming media) ",
+      "Security through Signed URLs or Signed Cookies.",
+      "Write to Edge Locations with verbs like PUT objects. (How does this work and what are the use cases? Invalidate cache for a specific location, or A/B test stuff in a specific region?)",
+      "Lambda@Edge allows passing requests through a Lambda to transform.",
+      "TTL defines cache expiry in seconds.",
+      "Invalidating cache immediately expires the cached items, so they refresh immediately.",
+      "Refreshing a cached item has a bandwidth cost of moving the item from origin to edge."
+    ]
+  },
+  {
+    "name": "CloudTrail",
+    "useCase": "Logs calls between AWS services.",
+    "Encryption": [
+      "Trails sent to S3 can use S3-KMS.",
+      "Are trails not in S3 encrypted?"
+    ],
+    "Ownership": "Amazon",
+    "Layer": "Monitoring",
+    "Type": "SaaS",
+    "Notes": [
+      "Involves governance, compliance, operational auditing, and risk auditing.",
+      "Can be configured to gather all logs in all regions in all accounts across an AWS Organization.",
+      "Default is 90 days via Event History, and beyond 90 days requires creating a Trail, which is logged to an S3 bucket, and can be analyzed with Athena."
+    ],
+    "CloudTrail Logs": [
+      "Log Validation prevents tampering. (How?)",
+      "Can be streamed to Logs",
+      "2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
+    ]
+  },
+  {
+    "name": "CloudWatch",
+    "useCase": "Monitoring, dashboards, event engine, alarms, logging, metrics.",
+    "Ownership": "Amazon",
+    "Layer": "Monitoring",
+    "Type": "SaaS",
+    "Notes": [
+      "Collection of monitoring services: Dashboards, Events, Alarms, Logs, Metrics",
+      "Most services default to 1 minute reporting intervals, with options for 1, 3, and 5.",
+      "EC2 starts with 5 and calls the 1 min option 'detailed monitoring' (does it cost more?) - Agent required.",
+      "Can track the amount of billable data written to your AWS accounts.",
+      "Can stream custom logs too."
+    ],
+    "Dashboards": [
+      "Visualize metrics"
+    ],
+    "Events": [
+      "Trigger AWS events based on condition (use case hourly snapshots)"
+    ],
+    "Alarms": [
+      "Notifications based on metrics"
+    ],
+    "Logs": [
+      "Data point logging",
+      "Must belong to log group"
+    ],
+    "Metrics": [
+      "Capture one data point across time.",
+      "Custom Metrics allow much higher resolution, down to 1 second."
+    ]
+  },
+  {
+    "name": "Cognito",
+    "useCase": "Decentralized managed authorization.",
+    "Encryption": "Are user pools and identity pools encrypted? Where are they stored?",
+    "Ownership": "Amazon",
+    "Layer": "IdP",
+    "Type": "SaaS",
+    "Notes": [
+      "User Pools directory allows users to auth using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
+      "Uses JWTs to persist auth",
+      "Identity Pools can provide temp AWS creds for service access (S3, DynamoDB, etc)",
+      "Cognito Sync can sync user data and preferences across devices with one line of code (powered by SNS)",
+      "Web Identity Federation exchanges identity and security info between IdP and apps.",
+      "IdP is a trusted login source for other services.",
+      "OIDC is an Oauth type of IdP.",
+      "SAML is an SSO type of IdP."
+    ]
+  },
+  {
+    "name": "Data Exchange",
+    "useCase": "Easily find, subscribe to, and use third-party data.",
+    "Free Tier": "Most data sets are free.",
+    "Paid Tier": "A few data sets cost $1000/month, or even $150,000 for 12 months + API metered costs ($0.00000093 per 100 bytes, or $930/GB)",
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/data-exchange/",
+    "Type": "SaaS",
+    "Categories": [
+      "Retail, Location & Marketing Data (1421)",
+      "Financial Services Data (1354)",
+      "Public Sector Data (551)",
+      "Healthcare & Life Sciences Data (516)",
+      "Resources Data (462)",
+      "Media & Entertainment Data (246)",
+      "Telecommunications Data (232)",
+      "Environmental Data (137)",
+      "Automotive Data (97)",
+      "Manufacturing Data (84)",
+      "Gaming Data (15)"
+    ],
+    "Notes": [
+      "Some of these may be useful for ML training, while others might allow access to user or customer data."
+    ]
+  },
+  {
+    "name": "Datasync",
+    "useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network.",
+    "Ownership": "Amazon",
+    "Layer": "Data logistics",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Deep Racer",
+    "useCase": "RC car that you can program with ML.",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "DocumentDB",
+    "useCase": "Document DB with 1:1 featureset match with MongoDB.",
+    "Ownership": "Amazon",
+    "Layer": "NoSQL Document DB",
+    "Type": "PaaS",
+    "Notes": [
+      "DocumentDB's featureset match effectively allows charging money for an open sourced application."
+    ]
+  },
+  {
+    "name": "DynamoDB",
+    "Ownership": "Amazon",
+    "Layer": "NoSQL Document DB",
+    "Type": "PaaS",
+    "useCase": "Fully managed NOSQL key/value & document DB.",
+    "Notes": [
+      "Good for applications with large amounts of data and need predictable read & write while scaling.",
+      "Scales to meet the specified read and write (per second) capacities.",
+      "Data stored as 3 copies on SSDs in 3 regions."
+    ],
+    "Two consistency modes": [
+      "Eventually (1 sec) Consistent Reads - can return inconsistent immediate reads too.",
+      "Strongly Consistent Reads - will wait until data is consistent (1 sec) before returning, with higher latencies due to no immediate read option."
+    ]
+  },
+  {
+    "name": "EBS",
+    "useCase": "virtual block-level storage drive that you can attach to a single EC2 instance.",
+    "Encryption": "KMS?",
+    "Ownership": "Amazon",
+    "Layer": "Persistent Storage",
+    "Type": "IaaS",
+    "Notes": [
+      "Volume dimensions (size, storage type) can be changed at any time.",
+      "Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. (What is the use case for these?)",
+      "EBS backed instances can be stopped without data loss.",
+      "Root volumes delete on termination by default.",
+      "Volumes can have termination protection."
+    ],
+    "Snapshots": [
+      "Snapshots are incremental point-in-time copies, and only changes made since the last snapshot are moved to S3.",
+      "Initial snapshots will take longer than subsequent snapshots.",
+      "EC2 instance should be stopped before snapshotting root volume. But other disks can be taken while the server is running.",
+      "Restoring a snapshots of an encrypted volume will give you a snapshot that is still encrypted, and you can't share encrypted snapshots.",
+      "Unencrypted snapshots can be shared with other AWS accounts or made public. (Why would you want to make a snapshot public?)",
+      "AMIs can be created from snapshots, or volumes."
+    ]
+  },
+  {
+    "name": "EC2",
+    "useCase": "Servers as a service",
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "EC2-AMI": [],
+    "EC2-ASG": [],
+    "EC2-NAT": [],
+    "EC2-pricing": [],
+    "EC2-pricing2": []
+  },
+  {
+    "name": "ElastiCache",
+    "useCase": "Fully managed Redis in-memory database.",
+    "Ownership": "Amazon",
+    "Layer": "Caching DB",
+    "Type": "PaaS"
+  },
+  {
+    "name": "ELB",
+    "useCase": "Elastic Load Balancers - split traffic from one destination across numerous servers.",
+    "Paid Tier": " ~$0.55/day or $18/month.",
+    "Encryption": "All can hold SSL certs",
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "Notes": [
+      "3 flavors: Network, Application, Classic"
+    ],
+    "Application": [
+      "Has Listeners, Rules, and Target Groups",
+      "For HTTP(S) and is good for web apps.",
+      "Can attach WAF. (Goes in front?)",
+      "Advanced routing rules (can route based on subdomain header, path, and other HTTP(S) info.)",
+      "Can have sticky sessions which are remembered by cookie."
+    ],
+    "Network": [
+      "Has Listeners and Target Groups but is a lawless place.",
+      "For TCP/UDP and is good for high throughput i.e. video games.",
+      "Can't have sticky sessions?"
+    ],
+    "Classic": [
+      "Has Listeners with EC2 instances registered directly.",
+      "For legacy and is being depreciated",
+      "Can have sticky sessions which are remembered by cookie.",
+      "Must have at least 2 AZs",
+      "Cannot be cross-region.",
+      "X-Forwarded-For header has source IP."
+    ]
+  },
+  {
+    "name": "ES",
+    "useCase": "Elastic Search",
+    "Ownership": "Amazon",
+    "Layer": "Search DB",
+    "Type": "PaaS"
+  },
+  {
+    "name": "FSx",
+    "Ownership": "Amazon",
+    "Layer": "Persistent Data Storage",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Fargate",
+    "useCase": "Run containers without worrying about servers.",
+    "Free Tier": "Full Service (pay only for the ECS/EKS/EC2 resources.)",
+    "Ownership": "Amazon",
+    "Layer": "Platform",
+    "Type": "SaaS",
+    "Notes": [
+      "Fargate isn't an independent service, but is a name for Networking Only ECS, which is basically serverless. "
+    ]
+  },
+  {
+    "name": "Athena",
+    "useCase": "Query data in S3 tables as though it were a database.",
+    "Paid Tier": [
+      "$5.00 per TB of data scanned. (This can be reduced up to 3x by compressing the data with GZIP.)",
+      "Any Glue, SageMaker, Lambda, and S3 usage fees from Athena will be charged normally."
+    ],
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/athena/",
+    "Type": "SaaS",
+    "Layer": "Relational DB",
+    "Notes": [
+      "Depends on Glue to assemble S3 folders into tables. If a user can access ALL S3 folders in a table, then Glue will make it available to Athena for the user to query."
+    ]
+  },
+  {
+    "name": "Glue",
+    "useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio.",
+    "Free Tier": [
+      "AWS Glue Studio Job Notebooks are a built-in interface for Interactive Sessions",
+      "First million objects stored",
+      "First million requests per month"
+    ],
+    "Paid Tier": [
+      "$0.44/DPU-Hour for ETL, billed per second with a 1, 10, or 30 minute minimum depending on service.",
+      "$1.00/month per 100k objects stored after the first 1 million.",
+      "$1.00/month per million requests after the first 1 million.",
+      "$1.00/ DataBrew interactive session.",
+      "$0.48/ DataBrew node hour.",
+      "$0.16/VPU-Hour for Elastic View processing.",
+      "$0.023/GB-month for Elastic View Table storage."
+    ],
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/glue/",
+    "Type": "SaaS",
+    "Notes": [
+	  "Glue has Crawlers, Connections, Tables, Schema, Data Catalog, Jobs",
+      "Glue assembles tables for Athena from S3 buckets. If a user can access ALL S3 buckets in a table, then it will be available in Athena to be queried.",
+	  "Use data partitions to focus queries and exclude irrelevant data, saving the cost of querying it.",
+	  "Can add tables manually, by schema, or by crawler. (Can 'manually' be automated by CLI/API?)",
+	  "Connections can load data into other databases which are defined in the Data Catalog.",
+	  "Jobs are ETL agents that run from either a schedule or external triggers.",
+	  "Glue Dev Endpoints are an abstracted cluster to test and develop scripts against. Pricing is around $50/day and $1k/month"
+    ]
+  },
+  {
+    "name": "Graviton",
+    "useCase": "Container-optimized arm64 processor.",
+    "Free Tier": "T4g (750 hrs/month, expires Dec 2022.)",
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "Layer": "CPU",
+    "Broad ecosystem support": [
+      "Codebuild",
+      "CircleCI",
+      "Cirrus CI",
+      "Travis CI",
+      "GitHub",
+      "GitLab",
+      "Buildkite",
+      "Jenkins"
+    ],
+    "Ease of Adoption": [
+      "Difficulty - OS - Languages - Path",
+      "Easy - Linux - Interpreted / JIT (Java, PHP, Node, etc) - Use arm64 or Multi-Arch image.",
+      "Medium - Linux - Compiled (C/C++, Python, Go) - Cross-compile or other fixes during build.",
+      "Hard - Windows - .NET - migrate to .NET Core on Linux.",
+      "Uncompleted - Windows - Windows Server applications can't yet compile to arm64."
+    ],
+    "video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/iwSQRLzDwHA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+  },
+  {
+    "name": "Bottlerocket",
+    "useCase": "Built to run containers, using Linux SE for best security.",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Layer": "Container image"
+  },
+  {
+    "name": "ECR",
+    "useCase": "Elastic Container Registry",
+    "Free Tier": [
+      "Data Transfer Into AWS is free. ",
+      "500 MB of private repository storage (for 1 year)",
+      "50 GB of public repository storage",
+      "500 GB/month of data transferred to the Internet from a public repository anonymously, or 5 TB/month if authenticated to ECR.",
+      "Transferring data from a public repository to AWS compute resources in any AWS Region."
+    ],
+    "Paid Tier": [
+      "Storage is $0.10 per GB / month, when storing more than the free limits above.",
+      "Other data transfer is about $0.09 per GB"
+    ],
+    "Website": "https://aws.amazon.com/ecr/",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Layer": "Container registry"
+  },
+  {
+    "name": "ECS",
+    "useCase": "Elastic Container Service",
+    "Website": "https://aws.amazon.com/ecs/",
+    "Free Tier": "Full Service (pay only for the EC2 resources.)",
+    "Encryption": "Doesn't handle SSL certificates, so use ELB (or CloudFront) to front. Or have your container handle the SSL in some way.",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Layer": "Container orchestration",
+    "Notes": [
+      "Build a Cluster, then define a Task within it.",
+      "Has 3 cluster templates: Networking only (Fargate), EC2 Linux + Networking, EC2 Windows + Networking",
+      "Tasks have 3 launch types: Fargate, EC2, External (On-premises)"
+    ]
+  },
+  {
+    "name": "EKS",
+    "useCase": "Elastic Kubernetes Service",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Layer": "Container orchestration"
+  },
+  {
+    "name": "AKS",
+    "useCase": "Azure Kubernetes Service",
+    "Free Tier": "Details are difficult to find. Cluster Management is free, only pay for the VM used to deliver the containers.",
+    "Ownership": "Microsoft",
+    "Type": "SaaS",
+    "Layer": "Container orchestration"
+  },
+  {
+    "name": "Rancher",
+    "Paid Tier": "Contact Sales for a quote.",
+    "useCase": "Kubernetes-as-a-Service.",
+    "Ownership": "SUSE",
+    "Type": "SaaS",
+    "Layer": "Container orchestration",
+    "Website": "https://rancher.com/"
+  },
+  {
+    "name": "EKS Anywhere",
+    "useCase": "Create and operate Kubernetes clusters on your own infrastructure.",
+    "Paid Tier": [
+      "1 year subscription at $24k/cluster/year.",
+      "3 year subscription at $18k/cluster/year (total $54k).",
+      "EKS Anywhere Support will only be available for on-premises clusters with a valid, registered EKS Anywhere Support Subscription. (Does it cost extra?)"
+    ],
+    "Supported Clouds": [
+      "On-Premise",
+      "AWS"
+    ],
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/eks/eks-anywhere/",
+    "Type": "SaaS",
+    "Layer": "Container orchestration"
+  },
+  {
+    "name": "Anthos",
+    "useCase": "A managed platform for all your application deployments, both traditional as well as cloud native.",
+    "Supported Clouds": [
+      "On-Premise",
+      "AWS",
+      "Azure",
+      "GCP"
+    ],
+    "Paid Tier": [
+      "Cloud Type: Hourly per vCPU (720 Hours) - Monthly per vCPU - Subscription per vCPU (monthly)",
+      "GCP / AWS / Azure / attached: $0.01096 ($7.8912) - $8 - $6",
+      "VMware / bare metal: $0.03288 ($23.6736) - $24 - $18"
+    ],
+    "Ownership": "Google",
+    "Website": "https://cloud.google.com/anthos",
+    "Type": "SaaS",
+    "Layer": "Container orchestration"
+  },
+  {
+    "name": "Arc",
+    "useCase": "Secure, develop, and operate infrastructure, apps, and Azure services anywhere.",
+    "Free Tier": "Connect to unlimited containers and servers. Configuration updates on 6 vCPUs of containers per month.",
+    "Paid Tier - Configuration updates": [
+      "Containers: $2/vCPU/month after the first 6.",
+      "Servers: $6/Server/Month."
+    ],
+    "Managed SQL Instance Tiers": [
+      "General Purpose (GP): SQL Server Standard featureset, 24 vCPU & 128 GB limit, single instance.",
+      "Business Critical (BC): SQL Server Enterprise featureset, No vCPU & RAM GB limit, contained availability groups."
+    ],
+    "Managed SQL Instance Pricing": [
+      "1 vCore / Month: Pay as you go - 1 year reserved instances - 3 year reserved instances",
+      "License Included (GP): $153.30 - $113.00 - $93.01",
+      "License Included (BC): $433.62 - $353.76 - $313.75",
+      "Azure Hybrid Benefit (GP): $80.30 - $40.00 - $20.01",
+      "Azure Hybrid Benefit (BC): $159.87 - $80.01 - $40.00"
+    ],
+    "Supported Clouds": [
+      "On-Premise",
+      "Azure"
+    ],
+    "Ownership": "Microsoft",
+    "Website": "https://azure.microsoft.com/en-us/services/azure-arc/",
+    "Type": "SaaS",
+    "Layer": "Container orchestration"
+  },
+  {
+    "name": "Ground Station",
+    "useCase": "Contact satellites in orbit around the Earth.",
+    "Ownership": "Amazon",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Honeycode",
+    "useCase": "Write functions without code",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "IAM",
+    "useCase": "Used to manage AWS access.",
+    "Free Tier": "Full Service",
+    "Encryption": "Are your policies encrypted at rest?",
+    "Type": "PaaS",
+    "Ownership": "Amazon",
+    "Layer": "Access",
+    "Notes": [
+      "Foundational",
+      "Universal system, applies to all regions at once.",
+      "AWS account creation normally starts with root user account setup.",
+      "Always setup MFA for root accounts.",
+      "New accounts have no permissions until assigned.",
+      "New users get an access key and secret key when created with the programmatic access option set.",
+      "Access keys are only for CLI / SDK access and not for console access.",
+      "Access secret keys are only shown on creation - if lost they must be made again.",
+      "Users must setup MFA for themselves, and this can't be done by an admin. (is this true?)",
+      "Allows setting password policies like minimum length or rotation time."
+    ],
+    "Identities are users, groups, and roles.": [
+      "User accounts allow users to use the AWS Console, or CLI or SDK.",
+      "Groups allow grouping users with the same permissions.",
+      "Roles associate permissions with a resource.",
+      "Policies are JSON documents listing specific permissions.",
+      "Inline Policies are directly attached to a user, group, or role.",
+      "List Policies can be listed in the AWS Console and are not directly attached. List policies can be Customer or Managed.",
+      "Customer Policies are ones you make and maintain.",
+      "Managed Policies are read-only from AWS"
+    ]
+  },
+  {
+    "name": "IOT",
+    "Ownership": "Amazon",
+    "IOT Core": [
+      "logging"
+    ]
+  },
+  {
+    "name": "Kinesis",
+    "useCase": "Captures realtime data stream ",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Lake Formation",
+    "useCase": "Create data lakes, or repositories of unstructured data.",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Lambda",
+    "useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture.",
+    "Free Tier": "First 1M requests are free.",
+    "Paid Tier": "",
+    "Encryption In Motion": "HTTPS - you'll need to use HTTPS endpoints in your Lambda Function's code.",
+    "Ownership": "Amazon",
+    "Layer": "Function invocation",
+    "Type": "PaaS",
+    "Supports 7 runtimes": [
+      "Ruby",
+      "Python",
+      "Java",
+      "NodeJS",
+      "C#",
+      "PowerShell",
+      "Go"
+    ],
+    "Notes": [
+      "Code packages are called Lambda Functions, regardless of if they contain any software functions.",
+      "Adjustable duration timeout upto 15 min and memory size up to 3008 MB.",
+      "Good fit for short-running tasks where you don't need to customize the OS or environment. For longer than 15 minutes, more RAM, or a custom OS environment, consider Fargate/ECS",
+      "Can be triggered from SDK or multiple services (S3, API Gateway, DynamoDB, etc). Function URLs allow direct Internet access to trigger a Lambda function - an API Gateway and Route53 redirect are no longer needed.",
+      "Use no VPC by default, but can use a VPC to interact with your other services, like RDS.",
+      "Can scale to 1000 (default) concurrent functions. Can increase this default as an AWS Service Limit increase.",
+      "Cold Starts - if not used recently there will be a startup delay."
+    ]
+  },
+  {
+    "name": "LandingZone",
+    "useCase": "Entry point for multi-account access.",
+    "Free Tier": "Full Service",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Notes": [
+      "Foundational"
+    ]
+  },
+  {
+    "name": "Lex",
+    "useCase": "Conversational service with the same tech that operates Amazon Alexa",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Lightsail",
+    "useCase": "If you don't care about the infra and just want to deploy a Wordpress site.",
+    "Ownership": "Amazon",
+    "Type": "SaaS"
+  },
+  {
+    "name": "MapReduce",
+    "useCase": "Apache Spark, lets you do massive parallel processing on data sets.",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "MSK",
+    "useCase": "Fully managed Apache Kafka message queue",
+    "Ownership": "Amazon",
+    "Layer": "MQ",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Neptune",
+    "useCase": "Social graph or recommendation engine.",
+    "Ownership": "Amazon",
+    "Layer": "Graph DB",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Organizations",
+    "Free Tier": "Full Service",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Notes": [
+      "Foundational"
+    ]
+  },
+  {
+    "name": "Outposts",
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "useCase": "Run AWS APIs on your servers."
+  },
+  {
+    "name": "Quantum Ledger",
+    "Ownership": "Amazon",
+    "Layer": "Blockchain DB",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Route 53",
+    "Ownership": "Amazon",
+    "Layer": "DNS",
+    "Type": "IaaS",
+    "useCase": "DNS provider, registrar, and domain manager.",
+    "Notes": [
+      "Traffic Flow: Visual editor for chaining routing policies, has versioning for easy rollback.",
+      "Alias Record - AWS' smart record - it detects changed IP addresses and updates automatically. (How - is it a type of reverse DNS?)",
+      "R53 Resolver: Lets you regionally route DNS queries between your VPCs and your hybrid network.",
+      "Health checks can monitor and automatically reroute between endpoints. And health checks can monitor other health checks."
+    ],
+    "Routing types": [
+      "Simple: Default, multiple addresses result in random endpoint selection.",
+      "Weighted: Assign percentages to different routes.",
+      "Latency-based: Directs traffic based on region to get lowest latency.",
+      "Failover: Directs traffic to secondary site only if primary site is down.",
+      "Geolocation: Route based on geographic location.",
+      "Geo-proximity: Add Bias to Geolocation (requires R53 Traffic Flow)",
+      "Multi-Value Answer: Return multiple answers (using health checks)"
+    ]
+  },
+  {
+    "name": "RDS",
+    "useCase": "Relational Database Service",
+    "Encryption At Rest": "KMS",
+    "Encryption In Motion": "HTTPS",
+    "Ownership": "Amazon",
+    "Type": "PaaS",
+    "Automatic Backups": [
+      "You can set a schedule.",
+      "No additional cost.",
+      "Retention window between 1 and 35 days."
+    ],
+    "Manual Snapshots": [
+      "Can restore database from snapshot."
+    ],
+    "6 database flavors": [
+      "Aurora",
+      "MariaDB",
+      "MSSQL",
+      "MySQL",
+      "Oracle",
+      "PostgreSQL"
+    ],
+    "Aurora notes": [
+      "Fully-managed PostgreSQL or MySQL with scaling, HA, and fault tolerance.",
+      "5x faster than MySQL and 3x faster than PostgreSQL, on same flavor. (How much faster than MySQL is the PostgreSQL one? How do MySQL and PG compare?)",
+      "Pricing is about 1/10 other flavors.",
+      "Data stored as 6 copies in 3 regions.",
+      "Can span regions with Global Database.",
+      "Aurora Serverless allows starting, stopping, and scaling - for new projects or those with infrequent DB use - to keep costs low."
+    ],
+    "PostgreSQL notes": [
+      "Multi-AZ replicates a standby copy of your DB to another AZ, and keeps it up to date.",
+      "Automatic Failover will automatically promote to master the standby copy if the main DB's AZ goes down.",
+      "Read-Replicas "
+    ],
+    "Notes": [
+      "Instances are managed and cannot be accessed.",
+      "Allow you to run multiple read-only copies of your DB, to improve performance",
+      "Uses asynchronous replication. (What's the significance of this?) ",
+      "Requires automatic backups be setup.",
+      "Limit of 5, except Aurora can have 15.",
+      "Can be multi-AZ and use Read-Replicas.",
+      "Can be in another region (Cross-Region Read-Replicas)",
+      "Can be promoted to their own database, but this breaks replication.",
+      "You can have replicas of Read-Replicas. (Can you have Read-Replicas of Read-Replicas?)"
+    ]
+  },
+  {
+    "name": "Redshift",
+    "useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
+    "cost": " Billed per hour for single-nodes and compute nodes.",
+    "Encryption": "KMS or CloudHSM",
+    "Ownership": "Amazon",
+    "Type": "PaaS",
+    "Layer": "Data Warehouse",
+    "BI(g) Data warehousing": [
+      "Can handle petabytes of data. Data in a warehouse is structured.",
+      "Columnar Store OLAP DB that takes SQL-like queries.",
+      "Can ingest data from S3, EMR, DynamoDB, or multiple sources on remote hosts.",
+      "Limited to single-AZ.",
+      "Single-node or multi-node (clustered)."
+    ],
+    "Notes": [
+      "Each node holds 160 GB.",
+      "Multi-node has a leader node and upto 128 compute nodes. Leader node is free.",
+      "Two node types: Dense Compute and Dense Storage",
+      "Attempts 3 backup copies: Original, Compute, S3.",
+      "Uses sequential HDD caching.",
+      "Backup retention default is 1 day, can be set up to 35 days.",
+      "Can asynchronously backup snapshots to another region's S3 bucket.",
+      "Uses massively parallel processing (MPP) to distribute queries and data.",
+      "Uses sample data to create an empty table."
+    ]
+  },
+  {
+    "name": "Registry of Open Data",
+    "useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc.",
+    "Ownership": "Amazon",
+    "Free Tier": "free",
+    "Type": "SaaS",
+    "Layer": "Datasets"
+  },
+  {
+    "name": "Rekognition",
+    "useCase": "Image classification API",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Robomaker",
+    "useCase": "Robot simulators",
+    "Ownership": "Amazon",
+    "Type": "PaaS"
+  },
+  {
+    "name": "S3",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "useCase": "Storage drives in the cloud",
+    "S3-storageClasses": [],
+    "S3-transfer": [],
+    "S3-snowball": []
+  },
+  {
+    "name": "Sagemaker",
+    "Ownership": "Amazon",
+    "Type": "PaaS",
+    "useCase": "Use Tensorflow or Pytorch with a managed Jupyter notebook that can connect to a GPU."
+  },
+  {
+    "name": "AWS SDK",
+    "Ownership": "Amazon",
+    "Free Tier": "Full Service",
+    "Type": "PaaS",
+    "Notes": [
+      "Programmatic Access must be setup from IAM"
+    ],
+    "Available languages": [
+      "C++",
+      " Go",
+      " Java",
+      " JS & NodeJS",
+      " .NET",
+      " PHP",
+      " Python",
+      " Ruby"
+    ]
+  },
+  {
+    "name": "Serverless repos",
+    "useCase": "Lambda Marketplace",
+    "Ownership": "Amazon",
+    "Type": "SaaS"
+  },
+  {
+    "name": "SES",
+    "useCase": "Simple Email Service",
+    "Ownership": "Amazon",
+    "Type": "SaaS"
+  },
+  {
+    "name": "SimpleDB",
+    "useCase": "Basic NoSQL DB.",
+    "Ownership": "Amazon",
+    "Type": "PaaS",
+    "Layer": "NoSQL Document DB"
+  },
+  {
+    "name": "Snow Mobile Core",
+    "Ownership": "Amazon",
+    "useCase": "Suitcase-sized device which provides a suite of services through a 5G or 4G connection.",
+    "Type": "IaaS",
+    "Services Provided": [
+      "Config",
+      "CloudWatch",
+      "AutoScaling",
+      "CloudFormation",
+      "CloudTrail",
+      "S3",
+      "SAS",
+      "Systems Manager",
+      "Provisioning and Subscriber tools",
+      "VPC Management Tools",
+      "Mobile core control plane."
+    ],
+    "Notes": [
+      "Also called SnowCone?"
+    ]
+  },
+  {
+    "name": "SNS",
+    "useCase": "Simple Notification Service",
+    "Ownership": "Amazon",
+    "Type": "SaaS",
+    "Notes": [
+      "Can send push notifications to your app."
+    ]
+  },
+  {
+    "name": "Storage Gateway",
+    "useCase": "Data transfer agent deployed on a VM or hardware device in your network, or as EC2 or VMWare Cloud VM.",
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "Notes": [
+      "The AWS Hardware Appliance is available exclusively through resellers, including CDW."
+    ],
+    "Free Tier": [
+      "Data Transfer from your gateway appliance to the AWS Storage Gateway service is free.",
+      "Data Transfer from the AWS Storage Gateway service to an Amazon EC2-based gateway appliance in the same region is free.",
+      "Transfer Cost: The first 100 GB/month into each AWS account is free."
+    ],
+    "Transfer Cost": [
+      "$0.01 per GB up to a maximum of $125.00 per gateway per month (12.5 TB) - after the first 100 GB/month into the AWS account. Billed as Amazon S3 requests for S3 Gateways.",
+      "Data Transfer from the AWS Storage Gateway service to your on-premises gateway appliance ",
+      "TB/Month - per GB - $/1kGB/Month",
+      "9.999 - $0.09 - $899.91",
+      "40 - $0.085  - $3,400",
+      "100 - $0.07  - $7k",
+      "150+ - $0.05  - $7,500",
+      "Data Transfer from the AWS Storage Gateway service to your gateway appliance in other regions is $0.02 per GB currently."
+    ],
+    "S3 Gateway": [
+      "Storage Cost: S3 rate"
+    ],
+    "FSx Gateway": [
+      "Gateway Cost: $0.69 per Hour",
+      "Storage Cost: FSx for Windows rate"
+    ],
+    "Tape Gateway": [
+      "(per GB-month): Storage - Retrieval - Early Deletion",
+      "Standard: $0.023 - $0.01 - (free)",
+      "Glacier Flexible Retrieval: $0.0036 - $0.02 - $0.0108 (Prorated across 90 days.)",
+      "Glacier Deep Archive: $0.00099 - $0.0032 - $0.00099 (Prorated across 180 days.)",
+      "Archival: Free (what does this entail?)"
+    ],
+    "Volume Gateway": [
+      "Storage Cost: $0.023 per GB-month of data stored.",
+      "EBS Snapshot storage - Stored and billed as Amazon EBS snapshots)."
+    ]
+  },
+  {
+    "name": "STS",
+    "Ownership": "Amazon",
+    "Type": "PaaS",
+    "Notes": [
+      "Foundational"
+    ]
+  },
+  {
+    "name": "Transit Gateway",
+    "Ownership": "Amazon",
+    "Layer": "Persistent Data Storage",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Timestream",
+    "useCase": "Time series database with built-in time-based queries and analytics",
+    "Ownership": "Amazon",
+    "Layer": "Time-series DB",
+    "Type": "PaaS"
+  },
+  {
+    "name": "Trainium ML",
+    "useCase": "Machine Learning ASICs can improve training speed while reducing costs.",
+    "Ownership": "Amazon",
+    "Layer": "ML",
+    "Type": "PaaS",
+    "Notes": [
+      "Training hardware Trn1"
+    ]
+  },
+  {
+    "name": "VMWare Cloud",
+    "useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy.",
+    "Ownership": "Amazon",
+    "Layer": "Hypervisor",
+    "Type": "IaaS"
+  },
+  {
+    "name": "VPC",
+    "useCase": "Container for other AWS IaaS and PaaS products, and can have Endpoints for AWS SaaS, products.",
+    "Free Tier": "Full Service",
+    "Encryption": "Unsure",
+    "Ownership": "Amazon",
+    "Layer": "Networking Isolation",
+    "Type": "IaaS",
+    "VPC-endpoints": [],
+    "VPC-flowLogs": [],
+    "VPC-nacls": [],
+    "VPC-nat": [],
+    "VPC-securityGroups": []
+  },
+  {
+    "name": "Cloud Audit Academy",
+    "useCase": "Learn about audits in AWS.",
+    "Ownership": "Amazon",
+    "Layer": "Training",
+    "Type": "IaaS"
+  },
+  {
+    "name": "AzureAD",
+    "useCase": "Serverless Active Directory",
+    "Ownership": "Microsoft",
+    "Layer": "Auth",
+    "Type": "SaaS"
+  },
+  {
+    "name": "Windows 365",
+    "useCase": "Package sort for physical logistics throughput.",
+    "Ownership": "Microsoft",
+    "Layer": "Desktop",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Excel Live",
+    "useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.",
+    "Ownership": "Microsoft",
+    "Layer": "Application",
+    "Type": "SaaS"
+  },
+  {
+    "name": "CockroachDB",
+    "useCase": "PostgreSQL-ish SQL structured server software, designed for high scalability leading to high availability, with Software and Serverless options.",
+    "Crunchbase": "https://www.crunchbase.com/organization/cockroach-labs",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Cockroach-Labs-EI_IE1168502.11,25.htm",
+    "Website": "https://www.cockroachlabs.com/",
+    "Layer": "Relational DB",
+    "Type": "Software",
+    "Ownership": "Pre-IPO",
+    "Free Tier": [
+      "Serverless: Free 5GiB Storage & 250M Request Units/month"
+    ],
+    "Paid Tier": [
+      "Serverless: $1 per additional 1GiB storage, $1 per additional 10M RUs",
+      "Dedicated AWS IOPS: 1IOPS = $0.0000196/hr (1k IOPS = $0.0196)",
+      "Dedicated AWS storage: 1GB = $0.0005088/hr (1TB = $0.5088)",
+      "Dedicated GCP storage: 1GB = $0.0011986/hr (1TB - $1.1986)"
+    ],
+    "Dedicated AWS compute": [
+      "vCPU: $/hr (rate : change)",
+      "2: $0.51 ($0.255 : 0)",
+      "4: $0.90 ($0.225 : 88.2%)",
+      "8: $1.60 ($0.2 : 88.89%)",
+      "16: $3.11 ($0.194 : 97.2%)",
+      "32: $5.34 ($0.167 : 85.9%)"
+    ],
+    "Dedicated GCP compute": [
+      "vCPU: $/hr (rate : change)",
+      "2: $0.43 ($0.215 : 0%)",
+      "4: $0.71 ($0.178 : 82.8%)",
+      "8: $1.18 ($0.148 : 83.1%)",
+      "16: $2.30 ($0.144 : 97.3%)",
+      "32: $4.20 ($0.131 : 91.0%)"
+    ],
+    "Notes": [
+      "Designed to be highly PostgreSQL compliant, and some applications might 'just work'.",
+      "High-pressure sales team."
+    ]
+  },
+  {
+    "name": "Freevee",
+    "Ownership": "Amazon",
+    "useCase": "Free (ad-supported?) video streaming service.",
+    "Type": "SaaS"
+  },
+  {
+    "name": "ClearScale",
+    "useCase": "AWS Consulting Partner",
+    "Website": "https://www.clearscale.com/",
+    "Layer": "Consulting",
+    "Type": "Infrastructure",
+    "Ownership": "Private",
+    "Crunchbase": "https://www.crunchbase.com/organization/clearscale",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-ClearScale-EI_IE1183929.11,21.htm"
+  },
+  {
+    "name": "Jenkins",
+    "useCase": "The leading open source automation server",
+    "Free Tier": "Open Source",
+    "Encryption": "Most data is exposed to the filesystem and memory. Recommends using Docker secrets/ directory to store API keys and other sensitive data.",
+    "Website": "https://www.jenkins.io/",
+    "Overview": "https://www.lambdatest.com/blog/what-is-jenkins/",
+    "InstallLink": "https://www.jenkins.io/download/",
+    "Layer": "CI/CD",
+    "Type": "Software",
+    "Notes": [
+      "Jenkins is distributed as WAR files, native packages, installers, and Docker images."
+    ]
+  },
+  {
+    "name": "Splunk",
+    "useCase": "Data analytics collection and dashboarding.",
+    "Website": "https://www.splunk.com/",
+    "Layer": "Monitoring",
+    "Type": "Software",
+    "Ownership": "Stock Price $103.91 (7/29/2022)",
+    "Crunchbase": "https://www.crunchbase.com/organization/splunk",
+    "Glassdoor": "https://www.glassdoor.com/Reviews/Splunk-Reviews-E117313.htm"
+  },
+  {
+    "name": "Perpetua",
+    "useCase": "eCommerce Advertising Software",
+    "Website": "https://perpetua.io/",
+    "Ownership": "Pre-IPO",
+    "Layer": "Advertising",
+    "Type": "Software",
+    "Crunchbase": "https://www.crunchbase.com/organization/perpetua-labs",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Perpetua-EI_IE1671941.11,19.htm"
+  },
+  {
+    "name": "Acumatica",
+    "useCase": "Cloud Business Management Software",
+    "Website": "https://www.acumatica.com/",
+    "Layer": "ERP",
+    "Ownership": "INVESTOR AB or EQT",
+    "Crunchbase": "https://www.crunchbase.com/organization/acumatica",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Acumatica-EI_IE562378.11,20.htm"
+  },
+  {
+    "name": "Digital Ocean",
+    "useCase": "Cloud Host",
+    "Layer": "Cloud Host",
+    "Ownership": "Stock Price $40.98 (7/29/2022)",
+    "Crunchbase": "https://www.crunchbase.com/organization/digitalocean",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-DigitalOcean-EI_IE823482.11,23.htm",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Business One",
+    "Layer": "ERP",
+    "Ownership": "SAP"
+  },
+  {
+    "name": "Sage Intacct",
+    "Ownership": "Stock Price $34.35 (7/29/2022)",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Sage-EI_IE1150.11,15.htm"
+  },
+  {
+    "name": "Oracle NetSuite"
+  },
+  {
+    "name": "Unanet GovCon"
+  },
+  {
+    "name": "TallyPrime"
+  },
+  {
+    "name": "S/4Hana Cloud",
+    "Ownership": "SAP"
+  },
+  {
+    "name": "Total ETO"
+  },
+  {
+    "name": "MIE Trak Pro"
+  },
+  {
+    "name": "Odoo",
+    "Layer": "ERP"
+  },
+  {
+    "name": "BisTrack",
+    "Ownership": "Epicor"
+  },
+  {
+    "name": "ByD",
+    "Ownership": "SAP"
+  },
+  {
+    "name": "Kinetic",
+    "Ownership": "Epicor"
+  },
+  {
+    "name": "JupiterOne"
+  },
+  {
+    "name": "Snowflake",
+    "useCase": "Very big data"
+  },
+  {
+    "name": "Flywheel"
+  },
+  {
+    "name": "SonicWall"
+  },
+  {
+    "Encryption": "No",
+    "useCase": "Scan all ports on all hosts on your network, and report back which ones are open, alongside scary reports of which kinds of hacks hold open these ports.",
+    "name": "Qualys"
+  },
+  {
+    "name": "Apica",
+    "useCase": "Find vulnerabilities in your dependencies, Codesmells Dashboards."
+  },
+  {
+    "name": "Snyk",
+    "useCase": "Find vulnerabilities in your dependencies."
+  },
+  {
+    "name": "Zeck",
+    "useCase": "Board Deck creation software (automation?)",
+    "Notes": [
+      "Quirky sense of humor, or unprofessional presentation?"
+    ]
+  },
+  {
+    "name": "RapidAPI"
+  },
+  {
+    "name": "Jetstack"
+  },
+  {
+    "name": "Broadcade"
+  },
+  {
+    "name": "HTE"
+  },
+  {
+    "name": "Rapid7"
+  },
+  {
+    "name": "Autobox"
+  },
+  {
+    "name": "Ansible",
+    "useCase": "Delivers simple IT automation that ends repetitive tasks and frees up DevOps teams for more strategic work.",
+    "Ownership": "Red Hat",
+    "Tutorial": "https://codingbee.net/ansible/ansible-a-hello-world-playbook",
+    "Overview": "https://www.ansible.com/overview/how-ansible-works?hsLang=en-us",
+    "InstallLink": "https://docs.ansible.com/ansible/latest/installation_guide/index.html",
+    "Layer": "Infra as Code",
+    "Type": "Software",
+    "Notes": [
+      "Code files are called Playbooks and use YAML format."
+    ]
+  },
+  {
+    "name": "Infra",
+    "useCase": "Powerful Policy-Based Configuration Management System Software",
+    "Ownership": "Chef",
+    "Website": "https://www.chef.io/products/chef-Infrastructure",
+    "InstallLink": "https://docs.chef.io/windows/",
+    "Github": "https://gist.github.com/dhana-git/700da979e8c0d39f7ee74ad5ba8e5f1f",
+    "Layer": "Infra as Code",
+    "Type": "Software"
+  },
+  {
+    "name": "Otter",
+    "useCase": "Provision your servers and manage configuration",
+    "Ownership": "Inedo",
+    "Free Tier": "No server limit, but no permissions (all users are admins).",
+    "Paid Tier": [
+      "Basic: $1,995/yr for upto 100 servers.",
+      "Enterprise: $9,995/yr for upto 100 servers. Includes HA clustering, SAML SSO, and configuration drift tools."
+    ],
+    "Website": "https://inedo.com/otter",
+    "InstallLink": "https://inedo.com/otter/download",
+    "Layer": "Infra as Code",
+    "Type": "Software",
+    "Notes": [
+      "Pricing page is a little unclear, and makes services seem nearly identical, until you've looked at it for a few minutes."
+    ]
+  },
+  {
+    "name": "Salt",
+    "useCase": "Automation, infrastructure management, its data-driven orchestration, remote execution, configuration management, and so much more.",
+    "Ownership": "Pre-IPO",
+    "Website": "https://saltproject.io/",
+    "Tutorial": "https://crate.io/blog/infrastructure-as-code-configuration-with-salt",
+    "Github": "https://github.com/saltstack/salt-pack",
+    "InstallLink": "https://docs.saltproject.io/en/latest/topics/installation/index.html",
+    "Layer": "Infra as Code",
+    "Type": "Software"
+  },
+  {
+    "name": "CFEngine",
+    "useCase": "An open-source configuration management system.",
+    "Free Tier": "Linux only, basic features.",
+    "Paid Tier": "Call for quote. Windows, AIX, Solaris, and HP-UX OSes, REST API and web portal, alerts & triggers, reporting.",
+    "InstallLink": "https://cfengine.com/downloads/quick-install/",
+    "Github": "https://github.com/cfengine",
+    "Website": "https://cfengine.com/download/",
+    "Layer": "Infra as Code",
+    "Type": "Software"
+  },
+  {
+    "name": "Terraform",
+    "useCase": "Automate infrastructure provisioning on any cloud",
+    "Layer": "Infra as Code",
+    "Type": "Software",
+    "InstallLink": "https://www.terraform.io/downloads",
+    "Tutorial": "https://learn.hashicorp.com/tutorials/terraform/aws-build?in=terraform/aws-get-started"
+  },
+  {
+    "name": "Traefik",
+    "useCase": "Load balancing router designed for containerization.",
+    "Type": "Infrastructure"
+  },
+  {
+    "name": "Redbear",
+    "Type": "Infrastructure",
+    "useCase": "Australian MSP"
+  },
+  {
+    "Free Tier": "Open Source",
+    "useCase": "Lightweight SQL as flat files.",
+    "name": "SQLite",
+    "Type": "Infrastructure"
+  },
+  {
+    "name": "NGINX (Engine-X)",
+    "useCase": "High-volume webserver, caching reverse proxy.",
+    "Free Tier": "Open Source",
+    "Type": "Infrastructure",
+    "Notes": [
+      "Defaults to programmatic file handling."
+    ],
+    "video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/JKxlsvZXG7c' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+  },
+  {
+    "name": "Tailwind",
+    "useCase": "Provides CSS utility classes to be combined into your desired style.",
+    "Notes": [
+      "Use @apply keyword in normal CSS to prevent boilerplating.",
+      "VSCode aids in utility class disambiguation."
+    ],
+    "video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/mr15Xzb1Ook' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
+  },
+  {
+    "name": "CircleCI",
+    "useCase": "CI/CD testing",
+    "Layer": "CI/CD"
+  },
+  {
+    "name": "Cirrus CI",
+    "useCase": "CI/CD testing",
+    "Layer": "CI/CD"
+  },
+  {
+    "name": "Travis CI",
+    "useCase": "CI/CD testing",
+    "Layer": "CI/CD"
+  },
+  {
+    "name": "CodeBuild",
+    "useCase": "Serverless code build and test.",
+    "Free Tier": "100 minutes on general1.small compute type per month.",
+    "Paid Tier": "$0.005/minute, after the free tier is used up.",
+    "Encryption": "KMS",
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/codebuild/",
+    "Layer": "CI/CD",
+    "Type": "SaaS",
+    "Notes": [
+      "Has Jenkins plugin."
+    ]
+  },
+  {
+    "name": "Crunchbase",
+    "useCase": "Info about companies - Bloomberg competitor?",
+    "Type": "SaaS"
+  },
+  {
+    "name": "Glassdoor",
+    "useCase": "Employee reviews of companies.",
+    "Type": "SaaS"
+  },
+  {
+    "name": "Optum Cloud",
+    "Type": "PaaS",
+    "useCase": "Remote primary hosting, data recovery, and backup hosting.",
+    "Layer": "Cloud Partner / MSP.",
+    "Notes": [
+      "Not to be confused with OptumCare."
+    ]
+  },
+  {
+    "name": "Amazon Sortation Center",
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "useCase": "Package sort for physical logistics throughput."
+  },
+  {
+    "name": "Interview Kickstart",
+    "Website": "https://learn.interviewkickstart.com/",
+    "Layer": "Education",
+    "Type": "Software",
+    "useCase": "MANGA (formerly FAANG) interview prep and hiring advice."
+  },
+  {
+    "name": "Metis",
+    "Website": "https://www.thisismetis.com/",
+    "Layer": "Education",
+    "Type": "Software",
+    "useCase": "Data Science & Analytics Bootcamps"
+  },
+  {
+    "name": "Milli",
+    "Type": "SaaS"
+  },
+  {
+    "name": "CrowdStrike",
+    "Type": "SaaS",
+    "useCase": "Broad security threat prevention"
+  },
+  {
+    "name": "Elementium",
+    "Type": "SaaS",
+    "useCase": "Enterprise service supply chain management"
+  },
+  {
+    "name": "HYCU (Haiku)",
+    "Type": "SaaS",
+    "useCase": "Backup/DR "
+  },
+  {
+    "name": "Cox2M",
+    "Type": "SaaS",
+    "useCase": "Corporate vehicle tracking"
+  },
+  {
+    "name": "Proposify",
+    "Type": "SaaS",
+    "useCase": "Corporate Proposals?"
+  },
+  {
+    "name": "Rubrik",
+    "Type": "SaaS",
+    "useCase": "Zero Trust Data Security"
+  },
+  {
+    "name": "Meetaverse",
+    "Type": "SaaS",
+    "useCase": "Create a custom corporate metaverse that your entire organization will love."
+  }
 ]
