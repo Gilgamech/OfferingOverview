@@ -61,10 +61,14 @@ object-fit: contain
 }
 .grid {
 	text-align: center;
+	background: #eee;
 	padding: 20px;
 	font-size: 30px;
 }
-
+.grid:hover {
+  background: #bbb;
+}
+}
 /*Type colors*/
 /*IaaS = Indigo-ish*/
 .IaaS{
