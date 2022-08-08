@@ -1,11 +1,3 @@
-// Get the list of items
-// var items;
-// webRequest("GET","http://localhost/badURI",function(data){items = data;},"JSON");
-
-// Product and corp pages: display all properties as a list.
-// Indexes: display all products or corps in a grid
-//addElement($elementParent,$innerText,$elementClass,$elementType,$elementStyle,$href,$onChange,$onClick,$contentEditable,$attributeType,$attributeAction,$elementId)
-
 var sites;
 var search_terms = new Array();
 
@@ -35,9 +27,8 @@ function showResults(val) {
 
 window.onload = function(){
 	webRequest("get","http://offeringoverview.s3-website-us-west-2.amazonaws.com/Services.json",function(data){
-		//console.log(data)
-		sites = JSON.parse(data)
-
+		sites = data;
+		//console.log(sites)
 		// sort by name
 		sites.sort(function(a, b) {
 		  const nameA = a.name.toUpperCase(); // ignore upper and lowercase
@@ -59,56 +50,22 @@ window.onload = function(){
 		search_terms = search_terms.sort();
 
 		var pathname = decodeURIComponent(window.location.pathname).replace("/","")
-		buildPage(pathname);
-	}); //end webRequest
+		buildPage(pathname,sites);
+	},"JSON"); //end webRequest
 }; //end window.onload
 
-function buildPage(name) {
-	removeElement("wrapper")
+function buildPage(name,sites) {
+	deleteElement("wrapper")
 	addElement("content","","","br");
 	addElement("content","","grid-container","","","","","","","","","wrapper");
 	if (name == "") {
-		for (let site of sites) {
-			var outerHref = addElement("wrapper","","","a","",site.name);
-			addElement(outerHref,site.name,('grid grid-item '+site.Type));
-		}
+		buildGridPage(sites);
 	} else {
-		var currentSite;
 		for (let site of sites) {
 			if (site.name == name) {
-				currentSite = site;
+				buildInfoPage(site);
 			}
 		}
-
-		addElement("wrapper","","grid-item "+currentSite.Type+"Page","","","","","","","","","innerWrapper");
-		addElement("innerWrapper",name,"","h1","text-align: center");
-		if (currentSite.useCase) {
-			addElement("innerWrapper",currentSite.useCase,"","h3","text-align: center");
-		}; //end if currentSite
-		for (let key of getKeys(currentSite)) {
-			if (currentSite[key] != "" && key != "name" && key != "useCase" && key != "video") {
-				var outerPara = addElement("innerWrapper","","","p");
-				addElement(outerPara,key+": ","","strong");
-
-				if (typeof currentSite[key] == "object") {
-					var innerUL = addElement(outerPara,"","","ul");
-					for (let note of currentSite[key]) {
-						addElement(innerUL,note,"","li");
-					}
-				} else if (typeof currentSite[key] == "string") {
-					if (currentSite[key].substr(0,4) == "http") {
-						addElement(outerPara,key,"","a","",currentSite[key]);
-					} else {
-						addElement(outerPara,currentSite[key],"","span");
-					}; //end if currentSite key
-				} else {
-				}; //end if key
-
-			}; //end if currentSite
-		}; //end for let key
-		if (currentSite.video) {
-			document.getElementById("innerWrapper").innerHTML += currentSite.video;
-		}; //end if currentSite
 	};// end if name
 }
 
