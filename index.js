@@ -22,7 +22,7 @@ function autocompleteMatch(input) {
 }
 
 function showResults(val) {
-	removeElement("result")
+	deleteElement("result")
 	addElement("searchSpan","","searchResult","","","","","","","","","result")
 	let list = '';
 	let terms = autocompleteMatch(val);
