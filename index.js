@@ -26,7 +26,7 @@ function showResults(val) {
 }
 
 window.onload = function(){
-	webRequest("get","http://offeringoverview.s3-website-us-west-2.amazonaws.com/Services.json",function(data){
+	webRequest("get","https://www.offeringoverview.com/Services.json",function(data){
 		sites = data;
 		//console.log(sites)
 		// sort by name
@@ -59,11 +59,11 @@ function buildPage(name,sites) {
 	addElement("content","","","br");
 	addElement("content","","grid-container","","","","","","","","","wrapper");
 	if (name == "") {
-		buildGridPage(sites);
+		buildGridPage("wrapper",sites);
 	} else {
 		for (let site of sites) {
 			if (site.name == name) {
-				buildInfoPage(site);
+				buildInfoPage("wrapper",site);
 			}
 		}
 	};// end if name

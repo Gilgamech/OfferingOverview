@@ -58,6 +58,7 @@ object-fit: contain
 }
 .grid-item {
 	border-radius: 15px;
+	background: #eee;
 }
 .grid {
 	text-align: center;
@@ -67,7 +68,6 @@ object-fit: contain
 }
 .grid:hover {
   background: #bbb;
-}
 }
 /*Type colors*/
 /*IaaS = Indigo-ish*/
@@ -129,7 +129,6 @@ object-fit: contain
 .SoftwarePage{
 	background: #DEE; 
 }
-
 
 /*Search*/
 .searchBox {
