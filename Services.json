@@ -3,7 +3,7 @@
     "name": "Amplify",
     "useCase": "Build extensible, full-stack web and mobile apps faster.",
     "Free Tier": [
-      "The free tier expires at the end of your 12 month AWS Free Tier term.",
+      "(Expires at the end of your 12 month AWS Free Tier term.)",
       "Build & Deploy: 1000 build minutes per month. ($10 value)",
       "Static Web Hosting: 5 GB/month stored ($0.115 value) & 15 GB/month served ($0.225 value)."
     ],
