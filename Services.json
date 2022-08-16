@@ -3,7 +3,7 @@
     "name": "Amplify",
     "useCase": "Build extensible, full-stack web and mobile apps faster.",
     "Free Tier": [
-      "(Expires at the end of your 12 month AWS Free Tier term.)",
+      "(Expires at the end of your free tier year.)",
       "Build & Deploy: 1000 build minutes per month. ($10 value)",
       "Static Web Hosting: 5 GB/month stored ($0.115 value) & 15 GB/month served ($0.225 value)."
     ],
@@ -14,7 +14,8 @@
     ],
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/amplify/",
-    "Layer": "IDE with hosting",
+    "Segment": "IDE with hosting",
+	"Type":"SaaS",
     "Notes": [
       "Studio: Visual (no-code?) app builder.",
       "Libraries: Connect to AWS services.",
@@ -25,10 +26,10 @@
   {
     "name": "App Runner",
     "useCase": "Point at container and it handles all the orchestration.",
+    "Paid Tier": "$0.007 / GB-hour ($5.04/month) to remain in RAM, plus $0.064 / vCPU-hour (in 1 minute increments) while processing requests. (Slightly higher in Tokyo.)",
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Website": "https://aws.amazon.com/apprunner/",
-    "Paid Tier": "$0.007 / GB-hour ($5.04/month) to remain in RAM, plus $0.064 / vCPU-hour (in 1 minute increments) while processing requests. (Slightly higher in Tokyo.)",
     "Notes": [
       "Automatic load balancing, SSL, autoscaling, logging, & metrics."
     ]
@@ -40,7 +41,7 @@
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Website": "https://aws.amazon.com/app-mesh/?aws-app-mesh-blogs.sort-by=item.additionalFields.createdDate&aws-app-mesh-blogs.sort-order=desc&whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc",
-    "Layer": "Network Isolation",
+    "Segment": "Network Isolation",
     "Notes": [
       "Works with EC2, ECS, EKS, Fargate, Kubernetes in AWS, and Outposts.",
       "Uses Envoy app proxy to provide networking."
@@ -49,32 +50,36 @@
   {
     "name": "Envoy",
     "useCase": "Open source edge and service proxy, designed for cloud native applications.",
+    "Free Tier": "Open Source",
+    "Install Link": "https://www.envoyproxy.io/docs/envoy/latest/start/install",
     "Ownership": "Private",
     "Crunchbase": "https://www.crunchbase.com/organization/envoy-proxy",
-    "Layer": "Network Proxy",
-    "Install Link": "https://www.envoyproxy.io/docs/envoy/latest/start/install",
+    "Segment": "Network Proxy",
     "Type": "IaaS"
   },
   {
     "name": "Braket",
-    "useCase": "Quantum Computing (named after Bra-ket notation).",
-    "Free Tier": "One free hour of quantum circuit simulation time per month. (Expires after first 12 months.)",
+    "useCase": "Quantum Computing",
+    "Free Tier": "One free hour of quantum circuit simulation time per month. (Expires after free tier year.)",
     "Paid Tier": [
       "Per-task price (Defined number of shots) is $0.30 across all QPUs.",
       "Per-shot price ranges from $0.00019 to $0.01, depending on QPU."
     ],
     "Ownership": "Amazon",
-    "Layer": "Specialized Compute",
+    "Segment": "Specialized Compute",
     "Type": "IaaS",
-    "Website": "https://aws.amazon.com/braket/"
+    "Website": "https://aws.amazon.com/braket/",
+    "Notes": [
+		"Named after Bra-ket notation"
+	]
   },
   {
-    "name": "AWS CLI",
+    "name": "CLI (AWS)",
     "useCase": "Perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, etc.",
     "Free Tier": "Full Service",
     "Encryption": "SSL",
     "Ownership": "Amazon",
-    "Layer": "Control Plane",
+    "Segment": "Control Plane",
     "Type": "Software",
     "Notes": [
       "Easily switch between accounts with --profile",
@@ -88,9 +93,9 @@
     "name": "CloudFormation",
     "useCase": "automate the provisioning of resources and Infrastructure As Code.",
     "Encryption": "are templates encrypted?",
-    "Type": "IaaS",
     "Ownership": "Amazon",
-    "Layer": "IaC",
+    "Segment": "IaC",
+    "Type": "IaaS",
     "Notes": [
       "JSON or YAML",
       "Errors rollback with message 'ROLLBACK_IN_PROGRESS'"
@@ -98,7 +103,7 @@
     "CloudFormation Templates": [
       "Must define at least one resource.",
       "Larger than 51,200 bytes (0.05 MB) must be imported from S3 bucket",
-      "Can be nested into NestedStacks."
+      "Can be nested into NestedLayers."
     ],
     "Fields": [
       "MetaData: extra info",
@@ -123,7 +128,7 @@
     "Encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/cloudfront/",
-    "Layer": "CDN",
+    "Segment": "CDN",
     "Type": "IaaS",
     "Notes": [
       "Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, etc)",
@@ -140,29 +145,74 @@
   {
     "name": "CloudTrail",
     "useCase": "Logs calls between AWS services.",
+	"Free Tier": [
+		"Lake: 30 days or first 5GB data ingested and scanned, whichever comes first.",
+		"Logs: Management events across all AWS services for the past 90 days.",
+		"Trails: one copy of management events delivered to S3."
+	],
+	"Paid Tier": [
+		"Insights: $0.35 per 100k events analyzed.",
+		"Lake: Ingest and store data for 7 years. First 5 TB: $2.50 per GB. ($0.029762/GB/hour). Analyze for $0.005/GB.",
+		"Trails: $2 per 100k management events delivered to S3, after the first free one. Data events are $0.10 per 100k delivered and $0.35 per 100k analyzed."
+	],
     "Encryption": [
       "Trails sent to S3 can use S3-KMS.",
       "Are trails not in S3 encrypted?"
     ],
     "Ownership": "Amazon",
-    "Layer": "Monitoring",
+    "Segment": "Monitoring",
     "Type": "SaaS",
     "Notes": [
       "Involves governance, compliance, operational auditing, and risk auditing.",
       "Can be configured to gather all logs in all regions in all accounts across an AWS Organization.",
-      "Default is 90 days via Event History, and beyond 90 days requires creating a Trail, which is logged to an S3 bucket, and can be analyzed with Athena."
+      "Default is 90 days via Event History, and beyond 90 days requires creating a Trail."
     ],
-    "CloudTrail Logs": [
+    "Insights": [
+      "Logs unusual API Write activity."
+    ],
+    "Lake": [
+      "Managed audit and security Lake"
+    ],
+    "Logs": [
       "Log Validation prevents tampering. (How?)",
       "Can be streamed to Logs",
-      "2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda). Trails don't include data events by default."
+      "2 event kinds: management (operations like IAM) and data (resources like EC2 or Lambda)."
+    ],
+    "Trail": [
+      "Basic unit of logging stream.",
+      "Don't include data events by default.",
+      "Requires an S3 bucket.",
+      "Can be analyzed with Athena from an S3 bucket."
     ]
   },
   {
     "name": "CloudWatch",
     "useCase": "Monitoring, dashboards, event engine, alarms, logging, metrics.",
+    "Free Tier": [
+		"Alarms: 10 Alarm metrics ($1 value)",
+		"Canaries: 100 canary runs per month ($0.12 value)",
+		"Contributor Insights: 1 Contributor Insights rule, and the first one million matching log events each month. ($0.52 value)",
+		"Dashboard: 3 Dashboards with up to 50 total metrics. ($9 value)",
+		"Evidently: 3 million Evidently events and 10 million Evidently analysis units ($90 value)",
+		"Events: No custom events",
+		"Logs: 5GB data ingested and scanned ($2.525 value), plus all inbound data transfer.",
+		"Metrics: Basic Monitoring Metrics, 10 Detailed Monitoring Metrics, 1 Million API requests.",
+		"RUM: 1 million RUM events. ($10 value)"
+	],
+    "Paid Tier": [
+		"Alarms: From $0.10 to $0.50 per alarm metric, after the first 10.",
+		"Canaries: $0.0012 per canary run.",
+		"Contributor Insights: $0.50 per rule and $0.02 per 1 million matching log events.",
+		"Dashboard: $3/dashboard/month after the first 3.",
+		"Evidently: $5 per 1 million events, and $7.50 per 1 million analysis units (event rule matches).",
+		"Events: $1 per 1 million events.",
+		"Logs: $0.50/GB to ingest, $0.03/GB to store, and $0.005/GB to analyze. Vended logs from $0.05/GB to $0.50/GB.",
+		"Metrics: From $0.30 to $0.02.",
+		"Metrics Insights: $0.01 per 1000 metrics analyzed.",
+		"RUM: $1 per 100k events."
+	],
     "Ownership": "Amazon",
-    "Layer": "Monitoring",
+    "Segment": "Monitoring",
     "Type": "SaaS",
     "Notes": [
       "Collection of monitoring services: Dashboards, Events, Alarms, Logs, Metrics",
@@ -171,14 +221,14 @@
       "Can track the amount of billable data written to your AWS accounts.",
       "Can stream custom logs too."
     ],
+    "Alarms": [
+      "Notifications based on metrics"
+    ],
     "Dashboards": [
       "Visualize metrics"
     ],
     "Events": [
       "Trigger AWS events based on condition (use case hourly snapshots)"
-    ],
-    "Alarms": [
-      "Notifications based on metrics"
     ],
     "Logs": [
       "Data point logging",
@@ -192,15 +242,23 @@
   {
     "name": "Cognito",
     "useCase": "Decentralized managed authorization.",
+	"Free Tier":[
+		"50,000 MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
+		"Sync: 10 GB of cloud sync store and 1 million sync operations per month during the free tier year. ($16.50 value)"
+	],
+	"Paid Tier":[
+		"From $0.0055 to $0.0025 per MAU. Advanced security from $0.05 to $0.01 per MAU.",
+		"Sync: $0.15 per GB of sync store and $0.15 for each 10,000 sync operations per month."
+	],
     "Encryption": "Are user pools and identity pools encrypted? Where are they stored?",
     "Ownership": "Amazon",
-    "Layer": "IdP",
+    "Segment": "IdP",
     "Type": "SaaS",
+	"Cognito Sync": "Sync user data and preferences across devices with one line of code (powered by SNS)",
     "Notes": [
       "User Pools directory allows users to auth using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
       "Uses JWTs to persist auth",
       "Identity Pools can provide temp AWS creds for service access (S3, DynamoDB, etc)",
-      "Cognito Sync can sync user data and preferences across devices with one line of code (powered by SNS)",
       "Web Identity Federation exchanges identity and security info between IdP and apps.",
       "IdP is a trusted login source for other services.",
       "OIDC is an Oauth type of IdP.",
@@ -235,21 +293,27 @@
   {
     "name": "Datasync",
     "useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Data logistics",
+    "Segment": "Data logistics",
     "Type": "IaaS"
   },
   {
     "name": "Deep Racer",
     "useCase": "RC car that you can program with ML.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "DocumentDB",
     "useCase": "Document DB with 1:1 featureset match with MongoDB.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "NoSQL Document DB",
+    "Segment": "NoSQL Document DB",
     "Type": "PaaS",
     "Notes": [
       "DocumentDB's featureset match effectively allows charging money for an open sourced application."
@@ -257,10 +321,12 @@
   },
   {
     "name": "DynamoDB",
-    "Ownership": "Amazon",
-    "Layer": "NoSQL Document DB",
-    "Type": "PaaS",
     "useCase": "Fully managed NOSQL key/value & document DB.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Ownership": "Amazon",
+    "Segment": "NoSQL Document DB",
+    "Type": "PaaS",
     "Notes": [
       "Good for applications with large amounts of data and need predictable read & write while scaling.",
       "Scales to meet the specified read and write (per second) capacities.",
@@ -274,8 +340,10 @@
   {
     "name": "Wavelength",
     "useCase": "Deliver ultra-low-latency applications for 5G devices.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "CDN",
+    "Segment": "CDN",
     "Type": "IaaS",
 	"Notes": [
 		"Deploy resources like EC2 instances and EBS volumes to build and deploy applications for 5G edge devices.",
@@ -285,9 +353,10 @@
   {
     "name": "EBS",
     "useCase": "Virtual block-level storage drive that you can attach to a single EC2 instance.",
-    "Encryption": "KMS?",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Persistent Storage",
+    "Segment": "Persistent Storage",
     "Type": "IaaS",
     "Notes": [
       "Volume dimensions (size, storage type) can be changed at any time.",
@@ -432,6 +501,9 @@
   {
     "name": "Savings Plans",
     "useCase": "Flexible pricing model for AWS Services.",
+	"Ownership":"Amazon",
+	"Segment":"Payment",
+	"Type":"IaaS",
 	"Notes": [
 		"Same general options as EC2 Reserved Instances: 1 year / 3 year commitment, Full / Partial / No for upfront costs.",
 		"Does a negative savings rate mean it costs more than on-demand?"
@@ -448,8 +520,10 @@
   {
     "name": "ElastiCache",
     "useCase": "Fully managed Redis in-memory database.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Caching DB",
+    "Segment": "Caching DB",
     "Type": "PaaS"
   },
   {
@@ -486,14 +560,18 @@
   {
     "name": "ES",
     "useCase": "Elastic Search",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Search DB",
+    "Segment": "Search DB",
     "Type": "PaaS"
   },
   {
     "name": "FSx",
     "Ownership": "Amazon",
-    "Layer": "Persistent Data Storage",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "Persistent Data Storage",
     "Type": "PaaS"
   },
   {
@@ -501,7 +579,7 @@
     "useCase": "Run containers without worrying about servers.",
     "Free Tier": "Full Service (pay only for the ECS/EKS/EC2 resources.)",
     "Ownership": "Amazon",
-    "Layer": "Platform",
+    "Segment": "Platform",
     "Type": "SaaS",
     "Notes": [
       "Fargate isn't an independent service, but is a name for Networking Only ECS, which is basically serverless. "
@@ -517,7 +595,7 @@
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/athena/",
     "Type": "SaaS",
-    "Layer": "Relational DB",
+    "Segment": "Relational DB",
     "Notes": [
       "Depends on Glue to assemble S3 folders into tables. If a user can access ALL S3 folders in a table, then Glue will make it available to Athena for the user to query."
     ]
@@ -526,7 +604,7 @@
     "name": "Glue",
     "useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio.",
     "Free Tier": [
-      "AWS Glue Studio Job Notebooks are a built-in interface for Interactive Sessions",
+      "Glue Studio Job Notebooks are a built-in interface for Interactive Sessions",
       "First million objects stored",
       "First million requests per month"
     ],
@@ -555,10 +633,10 @@
   {
     "name": "Graviton",
     "useCase": "Container-optimized arm64 processor.",
-    "Free Tier": "T4g (750 hrs/month, expires Dec 2022.)",
+    "Free Tier": "T4g (750 hrs/month during free tier year.)",
     "Ownership": "Amazon",
     "Type": "IaaS",
-    "Layer": "CPU",
+    "Segment": "CPU",
     "Broad ecosystem support": [
       "Codebuild",
       "CircleCI",
@@ -569,21 +647,23 @@
       "Buildkite",
       "Jenkins"
     ],
-    "Ease of Adoption": [
-      "Difficulty - OS - Languages - Path",
-      "Easy - Linux - Interpreted / JIT (Java, PHP, Node, etc) - Use arm64 or Multi-Arch image.",
-      "Medium - Linux - Compiled (C/C++, Python, Go) - Cross-compile or other fixes during build.",
-      "Hard - Windows - .NET - migrate to .NET Core on Linux.",
-      "Uncompleted - Windows - Windows Server applications can't yet compile to arm64."
+    "(table)Ease of Adoption": [
+      ["Difficulty","OS","Languages","Path"],
+      ["Easy","Linux","Interpreted / JIT (Java, PHP, Node, etc)","Use arm64 or Multi-Arch image."],
+      ["Medium","Linux","Compiled (C/C++, Python, Go)","Cross-compile or other fixes during build."],
+      ["Hard","Windows",".NET","migrate to .NET Core on Linux."],
+      ["Uncompleted","Windows","Windows Server applications can't yet compile to arm64."]
     ],
     "video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/iwSQRLzDwHA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
   },
   {
     "name": "Bottlerocket",
     "useCase": "Built to run containers, using Linux SE for best security.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS",
-    "Layer": "Container image"
+    "Segment": "Container image"
   },
   {
     "name": "ECR",
@@ -602,7 +682,7 @@
     "Website": "https://aws.amazon.com/ecr/",
     "Ownership": "Amazon",
     "Type": "SaaS",
-    "Layer": "Container registry"
+    "Segment": "Container registry"
   },
   {
     "name": "ECS",
@@ -612,7 +692,7 @@
     "Encryption": "Doesn't handle SSL certificates, so use ELB (or CloudFront) to front. Or have your container handle the SSL in some way.",
     "Ownership": "Amazon",
     "Type": "SaaS",
-    "Layer": "Container orchestration",
+    "Segment": "Container orchestration",
     "Notes": [
       "Build a Cluster, then define a Task within it.",
       "Has 3 cluster templates: Networking only (Fargate), EC2 Linux + Networking, EC2 Windows + Networking",
@@ -622,9 +702,11 @@
   {
     "name": "EKS",
     "useCase": "Elastic Kubernetes Service",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS",
-    "Layer": "Container orchestration"
+    "Segment": "Container orchestration"
   },
   {
     "name": "AKS",
@@ -632,15 +714,15 @@
     "Free Tier": "Details are difficult to find. Cluster Management is free, only pay for the VM used to deliver the containers.",
     "Ownership": "Microsoft",
     "Type": "SaaS",
-    "Layer": "Container orchestration"
+    "Segment": "Container orchestration"
   },
   {
     "name": "Rancher",
-    "Paid Tier": "Contact Sales for a quote.",
+    "Paid Tier": "Contact for quote.",
     "useCase": "Kubernetes-as-a-Service.",
     "Ownership": "SUSE",
     "Type": "SaaS",
-    "Layer": "Container orchestration",
+    "Segment": "Container orchestration",
     "Website": "https://rancher.com/"
   },
   {
@@ -658,26 +740,26 @@
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/eks/eks-anywhere/",
     "Type": "SaaS",
-    "Layer": "Container orchestration"
+    "Segment": "Container orchestration"
   },
   {
     "name": "Anthos",
     "useCase": "A managed platform for all your application deployments, both traditional as well as cloud native.",
+    "(table)Paid Tier": [
+      ["Cloud Type","Hourly per vCPU","Hourly*720","Monthly per vCPU","Monthly subscription per vCPU"],
+      ["GCP / AWS / Azure / attached","$0.01096","$7.89","$8","$6"],
+      ["VMware / bare metal","$0.03288","$23.67","$24","$18"]
+    ],
     "Supported Clouds": [
       "On-Premise",
       "AWS",
       "Azure",
       "GCP"
     ],
-    "Paid Tier": [
-      "Cloud Type: Hourly per vCPU (720 Hours) - Monthly per vCPU - Subscription per vCPU (monthly)",
-      "GCP / AWS / Azure / attached: $0.01096 ($7.8912) - $8 - $6",
-      "VMware / bare metal: $0.03288 ($23.6736) - $24 - $18"
-    ],
     "Ownership": "Google",
     "Website": "https://cloud.google.com/anthos",
     "Type": "SaaS",
-    "Layer": "Container orchestration"
+    "Segment": "Container orchestration"
   },
   {
     "name": "Arc",
@@ -705,17 +787,21 @@
     "Ownership": "Microsoft",
     "Website": "https://azure.microsoft.com/en-us/services/azure-arc/",
     "Type": "SaaS",
-    "Layer": "Container orchestration"
+    "Segment": "Container orchestration"
   },
   {
     "name": "Ground Station",
     "useCase": "Contact satellites in orbit around the Earth.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "IaaS"
   },
   {
     "name": "Honeycode",
     "useCase": "Write functions without code",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
@@ -726,11 +812,11 @@
     "Encryption": "Are your policies encrypted at rest?",
     "Type": "PaaS",
     "Ownership": "Amazon",
-    "Layer": "Access",
+    "Segment": "Access",
     "Notes": [
       "Foundational",
       "Universal system, applies to all regions at once.",
-      "AWS account creation normally starts with root user account setup.",
+      "Account creation normally starts with root user account setup.",
       "Always setup MFA for root accounts.",
       "New accounts have no permissions until assigned.",
       "New users get an access key and secret key when created with the programmatic access option set.",
@@ -752,20 +838,45 @@
   },
   {
     "name": "IOT",
+	"useCase":"Suite of tools to build, deploy, connect, control, and analyze IoT devices.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "IOT Core": [
-      "logging"
+	"Website":"https://aws.amazon.com/iot/",
+	"Segment":"Edge Device Administration",
+	"Type":"SaaS",
+    "Device software": [
+      "FreeRTOS - Real-time operating system for microcontrollers",
+      "Greengrass - Build, deploy, and manage applications.",
+      "ExpressLink - Quickly transform any embedded device into an IoT–connected device with minimal design effort using these hardware modules.",
+      "EduKit - Learn how to build applications with reference hardware, guides, and example code."
+    ],
+    "Connectivity and control services": [
+      "Core - Connect devices to without the need to provision or manage servers.",
+      "Device Defender - Continuously audit your configurations and secure your fleet of devices.",
+      "Device Management - Register, organize, monitor, and remotely manage your devices at scale",
+      "FleetWise (Preview) - Collect, transform, and transfer vehicle data to the cloud at scale."
+    ],
+    "Analytics services": [
+      "SiteWise - Collect and analyze industrial data at scale",
+      "Events - Detect and respond to events from many sensors and applications",
+      "Analytics - Run analytics on volumes of data to support data-driven decisions",
+      "TwinMaker - Create digital twins of real-world systems to optimize operations."
     ]
   },
   {
     "name": "Kinesis",
     "useCase": "Captures realtime data stream ",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "Lake Formation",
     "useCase": "Create data lakes, or repositories of unstructured data.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
@@ -773,10 +884,10 @@
     "name": "Lambda",
     "useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture.",
     "Free Tier": "First 1M requests are free.",
-    "Paid Tier": "",
+	"Paid Tier":[],
     "Encryption In Motion": "HTTPS - you'll need to use HTTPS endpoints in your Lambda Function's code.",
     "Ownership": "Amazon",
-    "Layer": "Function invocation",
+    "Segment": "Function invocation",
     "Type": "PaaS",
     "Supports 7 runtimes": [
       "Ruby",
@@ -801,6 +912,8 @@
     "name": "LandingZone",
     "useCase": "Entry point for multi-account access.",
     "Free Tier": "Full Service",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Notes": [
@@ -810,38 +923,50 @@
   {
     "name": "Lex",
     "useCase": "Conversational service with the same tech that operates Amazon Alexa",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "Lightsail",
     "useCase": "If you don't care about the infra and just want to deploy a Wordpress site.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS"
   },
   {
     "name": "MapReduce",
     "useCase": "Apache Spark, lets you do massive parallel processing on data sets.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "MSK",
     "useCase": "Fully managed Apache Kafka message queue",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "MQ",
+    "Segment": "MQ",
     "Type": "PaaS"
   },
   {
     "name": "Neptune",
     "useCase": "Social graph or recommendation engine.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Graph DB",
+    "Segment": "Graph DB",
     "Type": "PaaS"
   },
   {
     "name": "Organizations",
     "Free Tier": "Full Service",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Notes": [
@@ -850,22 +975,29 @@
   },
   {
     "name": "Outposts",
+    "useCase": "Run AWS APIs on your servers.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Type": "IaaS",
-    "useCase": "Run AWS APIs on your servers."
+    "Type": "IaaS"
   },
   {
     "name": "Quantum Ledger",
+    "useCase": "",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Blockchain DB",
+    "Segment": "Blockchain DB",
     "Type": "PaaS"
   },
   {
     "name": "Route53",
-    "Ownership": "Amazon",
-    "Layer": "DNS",
-    "Type": "IaaS",
     "useCase": "DNS provider, registrar, and domain manager.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Ownership": "Amazon",
+    "Segment": "DNS",
+    "Type": "SaaS",
     "Notes": [
       "Traffic Flow: Visual editor for chaining routing policies, has versioning for easy rollback.",
       "Alias Record - AWS' smart record - it detects changed IP addresses and updates automatically. (How - is it a type of reverse DNS?)",
@@ -885,6 +1017,8 @@
   {
     "name": "RDS",
     "useCase": "Relational Database Service",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Encryption At Rest": "KMS",
     "Encryption In Motion": "HTTPS",
     "Ownership": "Amazon",
@@ -905,7 +1039,7 @@
       "Oracle",
       "PostgreSQL"
     ],
-    "Aurora notes": [
+    "Aurora Notes": [
       "Fully-managed PostgreSQL or MySQL with scaling, HA, and fault tolerance.",
       "5x faster than MySQL and 3x faster than PostgreSQL, on same flavor. (How much faster than MySQL is the PostgreSQL one? How do MySQL and PG compare?)",
       "Pricing is about 1/10 other flavors.",
@@ -913,7 +1047,7 @@
       "Can span regions with Global Database.",
       "Aurora Serverless allows starting, stopping, and scaling - for new projects or those with infrequent DB use - to keep costs low."
     ],
-    "PostgreSQL notes": [
+    "PostgreSQL Notes": [
       "Multi-AZ replicates a standby copy of your DB to another AZ, and keeps it up to date.",
       "Automatic Failover will automatically promote to master the standby copy if the main DB's AZ goes down.",
       "Read-Replicas "
@@ -935,11 +1069,12 @@
   {
     "name": "Redshift",
     "useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
-    "cost": " Billed per hour for single-nodes and compute nodes.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Encryption": "KMS or CloudHSM",
     "Ownership": "Amazon",
     "Type": "PaaS",
-    "Layer": "Data Warehouse",
+    "Segment": "Data Warehouse",
     "BI(g) Data warehousing": [
       "Can handle petabytes of data. Data in a warehouse is structured.",
       "Columnar Store OLAP DB that takes SQL-like queries.",
@@ -963,39 +1098,48 @@
     "name": "Registry of Open Data",
     "useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc.",
     "Ownership": "Amazon",
-    "Free Tier": "free",
+    "Free Tier": "Full service",
     "Type": "SaaS",
-    "Layer": "Datasets"
+    "Segment": "Open Data"
   },
   {
     "name": "Rekognition",
     "useCase": "Image classification API",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "Robomaker",
     "useCase": "Robot simulators",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
 	"name": "S3",
-    "Ownership": "Amazon",
-    "Type": "SaaS",
     "useCase": "Storage drives in the cloud",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Ownership": "Amazon",
+    "Segment": "Persistent Storage",
+    "Type": "SaaS",
     "S3-storageClasses": [],
     "S3-transfer": [],
     "S3-snowball": []
   },
   {
     "name": "Sagemaker",
+    "useCase": "Use Tensorflow or Pytorch with a managed Jupyter notebook that can connect to a GPU.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Type": "PaaS",
-    "useCase": "Use Tensorflow or Pytorch with a managed Jupyter notebook that can connect to a GPU."
+    "Type": "PaaS"
   },
   {
-    "name": "AWS SDK",
+    "name": "SDK (AWS)",
     "Ownership": "Amazon",
     "Free Tier": "Full Service",
     "Type": "PaaS",
@@ -1016,26 +1160,34 @@
   {
     "name": "Serverless repos",
     "useCase": "Lambda Marketplace",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS"
   },
   {
     "name": "SES",
     "useCase": "Simple Email Service",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS"
   },
   {
     "name": "SimpleDB",
     "useCase": "Basic NoSQL DB.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Type": "PaaS",
-    "Layer": "NoSQL Document DB"
+    "Type": "SaaS",
+    "Segment": "NoSQL Document DB"
   },
   {
     "name": "Snow Mobile Core",
-    "Ownership": "Amazon",
     "useCase": "Suitcase-sized device which provides a suite of services through a 5G or 4G connection.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Ownership": "Amazon",
     "Type": "IaaS",
     "Services Provided": [
       "Config",
@@ -1057,6 +1209,8 @@
   {
     "name": "SNS",
     "useCase": "Simple Notification Service",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Notes": [
@@ -1107,6 +1261,9 @@
   },
   {
     "name": "STS",
+	"useCase": "",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "PaaS",
     "Notes": [
@@ -1115,22 +1272,29 @@
   },
   {
     "name": "Transit Gateway",
+	"useCase": "",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Persistent Data Storage",
+    "Segment": "Persistent Data Storage",
     "Type": "IaaS"
   },
   {
     "name": "Timestream",
     "useCase": "Time series database with built-in time-based queries and analytics",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Time-series DB",
+    "Segment": "Time-series DB",
     "Type": "PaaS"
   },
   {
     "name": "Trainium ML",
     "useCase": "Machine Learning ASICs can improve training speed while reducing costs.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "ML",
+    "Segment": "ML",
     "Type": "PaaS",
     "Notes": [
       "Training hardware Trn1"
@@ -1139,8 +1303,10 @@
   {
     "name": "VMWare Cloud",
     "useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Hypervisor",
+    "Segment": "Hypervisor",
     "Type": "IaaS"
   },
   {
@@ -1149,7 +1315,7 @@
     "Free Tier": "Full Service",
     "Encryption": "Unsure",
     "Ownership": "Amazon",
-    "Layer": "Networking Isolation",
+    "Segment": "Networking Isolation",
     "Type": "IaaS",
     "VPC-endpoints": [],
     "VPC-flowLogs": [],
@@ -1160,29 +1326,37 @@
   {
     "name": "Cloud Audit Academy",
     "useCase": "Learn about audits in AWS.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Layer": "Training",
+    "Segment": "Training",
     "Type": "IaaS"
   },
   {
     "name": "AzureAD",
     "useCase": "Serverless Active Directory",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Microsoft",
-    "Layer": "Auth",
+    "Segment": "Auth",
     "Type": "SaaS"
   },
   {
     "name": "Windows 365",
     "useCase": "Package sort for physical logistics throughput.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Microsoft",
-    "Layer": "Desktop",
+    "Segment": "Desktop",
     "Type": "IaaS"
   },
   {
     "name": "Excel Live",
     "useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Microsoft",
-    "Layer": "Application",
+    "Segment": "Application",
     "Type": "SaaS"
   },
   {
@@ -1191,7 +1365,7 @@
     "Crunchbase": "https://www.crunchbase.com/organization/cockroach-labs",
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Cockroach-Labs-EI_IE1168502.11,25.htm",
     "Website": "https://www.cockroachlabs.com/",
-    "Layer": "Relational DB",
+    "Segment": "Relational DB",
     "Type": "Software",
     "Ownership": "Pre-IPO",
     "Free Tier": [
@@ -1226,17 +1400,21 @@
   },
   {
     "name": "Freevee",
-    "Ownership": "Amazon",
     "useCase": "Free (ad-supported?) video streaming service.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Ownership": "Amazon",
     "Type": "SaaS"
   },
   {
     "name": "ClearScale",
     "useCase": "AWS Consulting Partner",
-    "Website": "https://www.clearscale.com/",
-    "Layer": "Consulting",
-    "Type": "Infrastructure",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Private",
+    "Website": "https://www.clearscale.com/",
+    "Segment": "Consulting",
+    "Type": "Infrastructure",
     "Crunchbase": "https://www.crunchbase.com/organization/clearscale",
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-ClearScale-EI_IE1183929.11,21.htm"
   },
@@ -1248,7 +1426,7 @@
     "Website": "https://www.jenkins.io/",
     "Overview": "https://www.lambdatest.com/blog/what-is-jenkins/",
     "InstallLink": "https://www.jenkins.io/download/",
-    "Layer": "CI/CD",
+    "Segment": "CI/CD",
     "Type": "Software",
     "Notes": [
       "Jenkins is distributed as WAR files, native packages, installers, and Docker images."
@@ -1257,28 +1435,35 @@
   {
     "name": "Splunk",
     "useCase": "Data analytics collection and dashboarding.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Ownership": "SPLK $103.91 (7/29/2022)",
+    "Segment": "Monitoring",
     "Website": "https://www.splunk.com/",
-    "Layer": "Monitoring",
     "Type": "Software",
-    "Ownership": "Stock Price $103.91 (7/29/2022)",
     "Crunchbase": "https://www.crunchbase.com/organization/splunk",
     "Glassdoor": "https://www.glassdoor.com/Reviews/Splunk-Reviews-E117313.htm"
   },
   {
     "name": "Perpetua",
     "useCase": "eCommerce Advertising Software",
-    "Website": "https://perpetua.io/",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Pre-IPO",
-    "Layer": "Advertising",
+    "Website": "https://perpetua.io/",
+    "Segment": "Advertising",
     "Type": "Software",
     "Crunchbase": "https://www.crunchbase.com/organization/perpetua-labs",
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Perpetua-EI_IE1671941.11,19.htm"
   },
   {
     "name": "Acumatica",
-    "useCase": "Cloud Business Management Software",
+    "useCase": "ERP specifically designed for small and medium-size businesses.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Website": "https://www.acumatica.com/",
-    "Layer": "ERP",
+    "Segment": "ERP",
+	"Type":"SaaS",
     "Ownership": "INVESTOR AB or EQT",
     "Crunchbase": "https://www.crunchbase.com/organization/acumatica",
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Acumatica-EI_IE562378.11,20.htm"
@@ -1286,116 +1471,354 @@
   {
     "name": "Digital Ocean",
     "useCase": "Cloud Host",
-    "Layer": "Cloud Host",
-    "Ownership": "Stock Price $40.98 (7/29/2022)",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "Cloud Host",
+	"Ownership": "DOCN $48.54 (8/15/2022)",
     "Crunchbase": "https://www.crunchbase.com/organization/digitalocean",
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-DigitalOcean-EI_IE823482.11,23.htm",
     "Type": "IaaS"
   },
   {
+    "name": "Cloud  (Lumen)",
+    "useCase": "Cloud Host",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "Cloud Host",
+	"Ownership": "Lumen",
+    "Type": "IaaS"
+  },
+  {
     "name": "Business One",
-    "Layer": "ERP",
+    "useCase": "ERP specifically designed for small and medium-size businesses.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "ERP",
+    "Type": "Software",
     "Ownership": "SAP"
   },
   {
     "name": "Sage Intacct",
-    "Ownership": "Stock Price $34.35 (7/29/2022)",
+    "useCase": "ERP specifically designed for the construction industry.",
+	"Free Tier":[],
+	"Paid Tier":[],
+	"Segment": "ERP",
+	"Type":"SaaS",
+    "Ownership": "SGPYY $35.97 (8/15/2022)",
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Sage-EI_IE1150.11,15.htm"
   },
   {
-    "name": "Oracle NetSuite"
+    "name": "NetSuite",
+	"useCase":" ERP specifically designed for multinational enterprises.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Oracle",
+	"Website":"https://www.netsuite.com/portal/products.shtml",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "Unanet GovCon"
+    "name": "Unanet GovCon",
+	"useCase":" ERP specifically designed for US Government contractors.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Unanet",
+	"Website":"https://unanet.com/erp-for-govcon/overview",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "TallyPrime"
+    "name": "TallyPrime",
+    "useCase": "ERP specifically designed for small and medium-size businesses.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"",
+	"Website":"https://tallysolutions.com/us/tally-prime/",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
     "name": "S/4Hana Cloud",
-    "Ownership": "SAP"
+	"useCase":"ERP specifically designed for multinational enterprises.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+    "Ownership": "SAP",
+	"Website":"https://www.sap.com/products/erp/s4hana-erp.html",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "Total ETO"
+    "name": "Total ETO",
+	"useCase":"ERP specifically designed for Engineer To Order manufacturers.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Private",
+	"Website":"https://totaleto.com/",
+	"Crunchbase":"https://www.crunchbase.com/organization/total-eto",
+	"Segment":"ERP",
+	"Type":"Software",
+	"Notes":[]
   },
   {
-    "name": "MIE Trak Pro"
+    "name": "MIE Trak Pro",
+	"useCase":"ERP made by manufacturers.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Private",
+	"Website":"https://www.mie-solutions.com/mie-trak-pro",
+	"Crunchbase":"https://www.crunchbase.com/organization/mie-solutions-com",
+	"Segment":"ERP",
+	"Type":"Software",
+	"Notes":[
+		"SaaS available for an extra fee, to cover the AWS Named Connection fee."
+	]
   },
   {
     "name": "Odoo",
-    "Layer": "ERP"
+	"useCase":"ERP specifically designed for multinational enterprises.",
+	"Free Tier":"15 day free trial, no credit card required.",
+	"Paid Tier":"Apps range from $12/user/month to $96/user/month",
+	"Ownership":"",
+	"Website":"",
+    "Segment": "ERP",
+	"Segment":"",
+	"Type":"Software",
+	"Notes":[
+		"Odoo = On-Demand Open Object.",
+		"SaaS option available."
+	]
   },
   {
     "name": "BisTrack",
-    "Ownership": "Epicor"
+    "useCase": "ERP specifically designed for the building supply industry.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+    "Ownership": "Epicor",
+	"Website":"https://www.epicor.com/en-us/industry-productivity-solutions/building-supply/platforms/bistrack/",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[
+		"Has Software option."
+	]
   },
   {
-    "name": "ByD",
-    "Ownership": "SAP"
+    "name": "ByDesign",
+    "useCase": "ERP specifically designed for midlevel businesses.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+    "Ownership": "SAP",
+	"Website":"https://www.sap.com/products/erp/business-bydesign.html",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
     "name": "Kinetic",
-    "Ownership": "Epicor"
+    "useCase": "ERP specifically designed for enterprises.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+    "Ownership": "Epicor",
+	"Website":"https://www.epicor.com/en-us/industry-productivity-solutions/manufacturing/platforms/kinetic/",
+    "Gartner": "https://www.gartner.com/reviews/market/cloud-erp-for-product-centric-enterprises/vendor/epicor/product/epicor-kinetic",
+	"Segment":"ERP",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "JupiterOne"
+    "name": "JupiterOne",
+	"useCase":"Technical Wealth Security Platform",
+	"Free Tier":"Limited features.",
+	"Paid Tier": [
+		"Freemium: $500-$2k/mo.",
+		"Enterprise: Contact for quote."
+	],
+	"Ownership":"Pre-IPO",
+	"Website":"https://www.jupiterone.com/",
+	"Segment":"Security awareness",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
     "name": "Snowflake",
-    "useCase": "Very big data"
+    "useCase": "Very big data",
+	"Pricing":"https://www.snowflake.com/pricing/",
+	"Free Tier":"First $400 of use in the first month is free.",
+	"(table)Paid Tier":[
+		["Tier","Cost","Features"],
+		["Standard","$2 cost per credit","Data warehouses, Replication & sharing across regions / clouds, 24 x 365 support, enterprise grade encryption in transit and at rest, federated authentication, Snowsight, Data Exchange/Data Marketplace."],
+		["Enterprise","$3 cost per credit","Standard +, Multi-cluster warehouse, annual rekeying of all encrypted data, materialized views, search optimization, data masking."],
+		["Business Critical","$4 cost per credit","Enterprise +, HIPAA, PCI, encryption using customer-managed keys, AWS/Azure PrivateLink / GCP Private Service Connect, DB failover/back for BC, AWS API Gateway Private Endpoints support"],
+		["Virtual Private Snowflake (VPS) (AWS only)","Contact for quote","Business Critical +, Dedicated encrypted virtual servers & metadata store."],
+		["On-demand storage","$40 per TB / per month"],
+		["Capacity storage","$23 per TB / per month (upfront)"]
+	],
+	"Ownership":"SNOW $169.70 (8/15/2022)",
+	"Website":"https://www.snowflake.com/",
+	"Segment":"BI(g) Data",
+	"Type":"SaaS",
+	"Notes":[
+		"Compute usage is billed on a per-second basis, with a minimum of 60 seconds. (Does that mean that 1 credit = 60 seconds of use?)"
+	]
   },
   {
-    "name": "Flywheel"
+    "name": "PlexTrac",
+    "useCase": "Premier solution for cybersecurity consultancies and service providers offering penetration testing and red teaming services",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Private",
+	"Website":"https://plextrac.com/",
+	"PitchBook":"https://pitchbook.com/profiles/company/342176-68",
+	"Segment":"Security Testing",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "SonicWall"
+    "name": "onXmaps",
+    "useCase": "GPS Map Apps for Hunting, Hiking & Off-Roading",
+	"Free Tier":"Login to get started.",
+	"Paid Tier":[
+		"Premium: $30/year",
+		"Elite: $15/month or $100/year"
+	],
+	"Ownership":"Private",
+	"Website":"https://www.onxmaps.com/",
+	"Segment":"Specialized maps of Earth.",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "Encryption": "No",
-    "useCase": "Scan all ports on all hosts on your network, and report back which ones are open, alongside scary reports of which kinds of hacks hold open these ports.",
-    "name": "Qualys"
+    "name": "Qualys",
+    "useCase": "Helps your business automate the full spectrum of auditing, compliance and protection of your IT systems and web applications.",
+	"Free Tier":"30 day trial. Also has some free SaaS services.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"QLYS $152.50 (8/15/2022)",
+	"Website":"https://www.qualys.com/",
+	"Segment":"Security awareness",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
     "name": "Apica",
-    "useCase": "Find vulnerabilities in your dependencies, Codesmells Dashboards."
+    "useCase": "Digital Performance Monitoring & Load Testing Platform.",
+	"Free Tier":"Free product workshop.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Private",
+	"Website":"https://www.apica.io/",
+	"Bloomberg":"https://www.bloomberg.com/profile/company/9521862Z:SS",
+	"Segment":"Testing",
+	"Type":"SaaS",
+	"Notes":["On-premises and hybrid options also available."],
+    "video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/PdscuDwLzrk' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
   },
   {
     "name": "Snyk",
-    "useCase": "Find vulnerabilities in your dependencies."
+    "useCase": "Find vulnerabilities in your dependencies.",
+	"Free Tier":"Login to get started.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"SNYK Pre-IPO",
+	"Website":"https://snyk.io/",
+	"Segment":"Testing",
+	"Type":"Software",
+	"Notes":[]
   },
   {
     "name": "Zeck",
-    "useCase": "Board Deck creation software (automation?)",
+    "useCase": "Board Deck creation software.",
+
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Details sparse.",
+	"Website":"https://www.zeck.app/",
+	"Segment":"Executive communication",
+	"Type":"SaaS",
     "Notes": [
       "Quirky sense of humor, or unprofessional presentation?"
     ]
   },
   {
-    "name": "RapidAPI"
+    "name": "RapidAPI",
+	"useCase":"Find public APIs for your project.",
+	"Pricing":"https://docs.rapidapi.com/docs/api-pricing.",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"Pre-IPO",
+	"Crunchbase":"https://www.crunchbase.com/organization/rapidapi",
+	"Website":"https://rapidapi.com/",
+	"Segment":"Open Data",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "Jetstack"
+    "name": "Secure",
+	"useCase":"Kubernetes management software.",
+	"Free Tier":[
+		"1 cluster",
+		"Cert-manager control plane",
+		"Detect self-signed certificates",
+		"Certificate & ingress misconfiguration & remediation",
+		"Team access and visibility",
+		"Automated alerts sent to Slack."
+	],
+	"Paid Tier": [
+		"Contact for quote.",
+		"Free Tier features.",
+		"Volume pricing based on number of clusters.",
+		"Multi-cluster visibility",
+		"Enhanced Venafi TPP integration for cert discovery",
+		"Detect untrusted CAs",
+		"Auth and policy control",
+		"Jetstack signed builds of cert-manager",
+		"FIPS 140-2 compliant cert-manager builds",
+		"HSM integration",
+		"Out-of-cluster certificate signing",
+		"Policy engine integration"
+	],
+
+	"Ownership":"Jetstack",
+	"Website":"https://www.jetstack.io/jetstack-secure/",
+	"Segment":"Orchestration",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "Broadcade"
+    "name": "Rapid7",
+	"useCase":"Cybersecurity & Compliance Solutions & Services",
+	"Free Tier":"Free product tour.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"RPD $70.33 (8/15/2022)",
+	"Website":"https://www.rapid7.com/",
+	"Segment":"Security awareness",
+	"Type":"SaaS",
+	"Notes":[]
   },
   {
-    "name": "HTE"
-  },
-  {
-    "name": "Rapid7"
-  },
-  {
-    "name": "Autobox"
+    "name": "Autobox",
+	"useCase":"Simply the easiest way to forecast.",
+	"Free Tier":"Contact for 30 day free trial.",
+	"Paid Tier":"Contact for quote.",
+	"Ownership":"",
+	"Website":"https://autobox.com/cms/",
+	"Segment":"Forecasting",
+	"Type":"Software",
+	"Notes":[
+	"Website menu is hard to use and could use a redesign.",
+	"Several versions offered: Windows 6.0, Batch, 7.0 Batch, For R, Linux/AIX/Solaris, DLL, Lite."
+	]
   },
   {
     "name": "Ansible",
     "useCase": "Delivers simple IT automation that ends repetitive tasks and frees up DevOps teams for more strategic work.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Red Hat",
     "Tutorial": "https://codingbee.net/ansible/ansible-a-hello-world-playbook",
     "Overview": "https://www.ansible.com/overview/how-ansible-works?hsLang=en-us",
     "InstallLink": "https://docs.ansible.com/ansible/latest/installation_guide/index.html",
-    "Layer": "Infra as Code",
+    "Segment": "Infra as Code",
     "Type": "Software",
     "Notes": [
       "Code files are called Playbooks and use YAML format."
@@ -1404,11 +1827,13 @@
   {
     "name": "Infra",
     "useCase": "Powerful Policy-Based Configuration Management System Software",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Chef",
     "Website": "https://www.chef.io/products/chef-Infrastructure",
     "InstallLink": "https://docs.chef.io/windows/",
     "Github": "https://gist.github.com/dhana-git/700da979e8c0d39f7ee74ad5ba8e5f1f",
-    "Layer": "Infra as Code",
+    "Segment": "Infra as Code",
     "Type": "Software"
   },
   {
@@ -1422,7 +1847,7 @@
     ],
     "Website": "https://inedo.com/otter",
     "InstallLink": "https://inedo.com/otter/download",
-    "Layer": "Infra as Code",
+    "Segment": "Infra as Code",
     "Type": "Software",
     "Notes": [
       "Pricing page is a little unclear, and makes services seem nearly identical, until you've looked at it for a few minutes."
@@ -1431,53 +1856,62 @@
   {
     "name": "Salt",
     "useCase": "Automation, infrastructure management, its data-driven orchestration, remote execution, configuration management, and so much more.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Pre-IPO",
     "Website": "https://saltproject.io/",
     "Tutorial": "https://crate.io/blog/infrastructure-as-code-configuration-with-salt",
     "Github": "https://github.com/saltstack/salt-pack",
     "InstallLink": "https://docs.saltproject.io/en/latest/topics/installation/index.html",
-    "Layer": "Infra as Code",
+    "Segment": "Infra as Code",
     "Type": "Software"
   },
   {
     "name": "CFEngine",
     "useCase": "An open-source configuration management system.",
     "Free Tier": "Linux only, basic features.",
-    "Paid Tier": "Call for quote. Windows, AIX, Solaris, and HP-UX OSes, REST API and web portal, alerts & triggers, reporting.",
+    "Paid Tier": "Contact for quote. Windows, AIX, Solaris, and HP-UX OSes, REST API and web portal, alerts & triggers, reporting.",
     "InstallLink": "https://cfengine.com/downloads/quick-install/",
     "Github": "https://github.com/cfengine",
     "Website": "https://cfengine.com/download/",
-    "Layer": "Infra as Code",
+    "Segment": "Infra as Code",
     "Type": "Software"
   },
   {
     "name": "Terraform",
     "useCase": "Automate infrastructure provisioning on any cloud",
-    "Layer": "Infra as Code",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "Infra as Code",
     "Type": "Software",
     "InstallLink": "https://www.terraform.io/downloads",
     "Tutorial": "https://learn.hashicorp.com/tutorials/terraform/aws-build?in=terraform/aws-get-started"
   },
   {
     "name": "Traefik",
+	"Free Tier":[],
+	"Paid Tier":[],
     "useCase": "Load balancing router designed for containerization.",
     "Type": "Infrastructure"
   },
   {
     "name": "Redbear",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Type": "Infrastructure",
     "useCase": "Australian MSP"
   },
   {
+    "name": "SQLite",
     "Free Tier": "Open Source",
     "useCase": "Lightweight SQL as flat files.",
-    "name": "SQLite",
     "Type": "Infrastructure"
   },
   {
     "name": "NGINX (Engine-X)",
     "useCase": "High-volume webserver, caching reverse proxy.",
     "Free Tier": "Open Source",
+    "Segment": "Webserver",
     "Type": "Infrastructure",
     "Notes": [
       "Defaults to programmatic file handling."
@@ -1487,6 +1921,10 @@
   {
     "name": "Tailwind",
     "useCase": "Provides CSS utility classes to be combined into your desired style.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "CSS",
+    "Type": "Software",
     "Notes": [
       "Use @apply keyword in normal CSS to prevent boilerplating.",
       "VSCode aids in utility class disambiguation."
@@ -1495,18 +1933,72 @@
   },
   {
     "name": "CircleCI",
-    "useCase": "CI/CD testing",
-    "Layer": "CI/CD"
+    "useCase": " Continuous Integration and Delivery",
+	"Free Tier":"Up to 6k free build minutes per month, max 30 concurrent builds. (8.3 concurrent builds 24/7 or 30 concurrent builds for 200 hours/month (6.67 hours/day).)",
+	"Paid Tier":[
+		"Performance: Starting at $15/month, 5 user limit, bonus 6k free build minutes per month and billing for more. 80 concurrent job limit. Support 8x5 addon available.",
+		"Enterprise Scale: Starting at $2k/month, customizable user limit and build minutes. Dedicated account team and 24/7 support. Customizable billing, audit log, bulk data export.",
+		"Self-Hosted: Contact for quote. 30 user limit and unlimited build minutes on your own hardware - including Linux, Windows, Android, and Arm. Dedicated account team and 24/7 support, including migration assistance."
+	],
+	"Ownership":"Circle Internet Services",
+	"Website":"https://circleci.com/",
+    "Segment": "CI/CD",
+	"Type":"SaaS",
+	"Notes":[
+		"Has software option.",
+		"Supports GitLab, GitHub, and Bitbucket."
+	]
   },
   {
     "name": "Cirrus CI",
-    "useCase": "CI/CD testing",
-    "Layer": "CI/CD"
+    "useCase": "Modern continuous integration system built for the era of cloud computing.",
+	"Free Tier":"Open source projects. Private projects: 30-Day Free Trial, 10k credits ($10k value). Quick-start resources and guides.",
+	"Paid Tier":[
+		"Free tier can buy compute credits to use for private projects.",
+		"Private repositories on community clusters: $10/month",
+		"Use own hardware: $10/seat/month"
+	],
+	"(table)CPU use limits":[
+		["Platform","Free Tier","$10/month"],
+		["Linux",16,32],
+		["Arm",16,32],
+		["Windows",8,16],
+		["FreeBSD",8,16],
+		["MacOS",12,24]
+	],
+	"(table)1000 minutes of 1 virtual CPU or 0.5 Apple Silicon CPU (MacOS)":[
+		["Platform","Credits","Minutes/Credit","$/hour/CPU"],
+		["Linux","5","200","$0.30"],
+		["FreeBSD","5","200","$0.30"],
+		["Windows","10","100","$0.60"],
+		["MacOS","20","50","$1.20"]
+	],
+	"Ownership":"Cirrus Labs",
+	"Website":"https://cirrus-ci.org/",
+    "Segment": "CI/CD",
+	"Type":"SaaS",
+	"Notes":[
+		"Compute credits cost $1 each, no bulk discount.",
+		"Tasks are charged per-second - 2 CPU Linux task takes 2 minutes? Pay 2 cents."
+	]
   },
   {
     "name": "Travis CI",
-    "useCase": "CI/CD testing",
-    "Layer": "CI/CD"
+    "useCase": "The simplest way to test and deploy your projects.",
+	"Free Tier":"Open source projects. Private projects: 30-Day Free Trial, 10,000 credits. Quick-start resources and guides.",
+	"Paid Tier":[
+		"Core: From $69/month to $249/month, or $759/year to $2739/year. Unlimited builds without any queuing of jobs. ",
+		"Enterprise: Contact for quote. Custom Plans for Cloud and Self-Hosted Deployments. Custom concurrency to keep you building. Host Demos and POCs, run self-hosted workers."
+	],
+	"Ownership":"Idera",
+	"Pitchbook":"https://pitchbook.com/profiles/company/95475-61",
+	"Website":"https://www.travis-ci.com/",
+    "Segment": "CI/CD",
+	"Type":"SaaS",
+	"Notes":[
+		"Has software option.",
+		"Supports GitLab, GitHub, Bitbucket, and Assembla."
+	]
   },
   {
     "name": "CodeBuild",
@@ -1516,7 +2008,7 @@
     "Encryption": "KMS",
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/codebuild/",
-    "Layer": "CI/CD",
+    "Segment": "CI/CD",
     "Type": "SaaS",
     "Notes": [
       "Has Jenkins plugin."
@@ -1525,84 +2017,119 @@
   {
     "name": "Crunchbase",
     "useCase": "Info about companies - Bloomberg competitor?",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Type": "SaaS"
   },
   {
     "name": "Glassdoor",
     "useCase": "Employee reviews of companies.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Type": "SaaS"
   },
   {
-    "name": "Optum Cloud",
-    "Type": "PaaS",
+    "name": "Cloud (Optum)",
     "useCase": "Remote primary hosting, data recovery, and backup hosting.",
-    "Layer": "Cloud Partner / MSP.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "Cloud Partner / MSP.",
+    "Type": "PaaS",
     "Notes": [
       "Not to be confused with OptumCare."
     ]
   },
   {
-    "name": "Amazon Sortation Center",
+    "name": "Sortation Center",
+    "useCase": "Package sort for physical logistics throughput.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Type": "IaaS",
-    "useCase": "Package sort for physical logistics throughput."
+    "Type": "IaaS"
   },
   {
     "name": "Interview Kickstart",
+    "useCase": "MANGA (formerly FAANG) interview prep and hiring advice.",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Website": "https://learn.interviewkickstart.com/",
-    "Layer": "Education",
-    "Type": "Software",
-    "useCase": "MANGA (formerly FAANG) interview prep and hiring advice."
+    "Segment": "Education",
+    "Type": "Software"
   },
   {
     "name": "Metis",
+    "useCase": "Data Science & Analytics Bootcamps",
+	"Free Tier":[],
+	"Paid Tier":[],
     "Website": "https://www.thisismetis.com/",
-    "Layer": "Education",
-    "Type": "Software",
-    "useCase": "Data Science & Analytics Bootcamps"
+    "Segment": "Education",
+    "Type": "Software"
   },
   {
     "name": "Milli",
-    "Type": "SaaS"
+	"useCase":"Award-winning, purpose-driven, creative agency.",
+	"Free Tier":[],
+	"Paid Tier":[],
+	"Ownership":"Private",
+	"Website":"https://www.milli.agency/",
+	"Segment":"Brand engineering",
+    "Type": "SaaS",
+	"Notes":[]
   },
   {
     "name": "CrowdStrike",
-    "Type": "SaaS",
-    "useCase": "Broad security threat prevention"
+    "useCase": "Broad security threat prevention",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "Elementium",
-    "Type": "SaaS",
-    "useCase": "Enterprise service supply chain management"
+    "useCase": "Enterprise service supply chain management",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "HYCU (Haiku)",
-    "Type": "SaaS",
-    "useCase": "Backup/DR "
+    "useCase": "Backup/DR ",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "Cox2M",
-    "Type": "SaaS",
-    "useCase": "Corporate vehicle tracking"
+    "useCase": "Corporate vehicle tracking",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "Proposify",
-    "Type": "SaaS",
-    "useCase": "Corporate Proposals?"
+    "useCase": "Corporate Proposals?",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "Rubrik",
-    "Type": "SaaS",
-    "useCase": "Zero Trust Data Security"
+    "useCase": "Zero Trust Data Security",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "Metallic.io",
-    "Type": "SaaS",
-    "useCase": "Unified Data Management"
+    "useCase": "Unified Data Management",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   },
   {
     "name": "Meetaverse",
-    "Type": "SaaS",
-    "useCase": "Create a custom corporate metaverse that your entire organization will love."
+    "useCase": "Create a custom corporate metaverse that your entire organization will love.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "SaaS"
   }
 ]
