@@ -50,7 +50,7 @@
   {
     "name": "Envoy",
     "useCase": "Open source edge and service proxy, designed for cloud native applications.",
-    "Free Tier": "Open Source",
+    "Free Tier": "Full Service",
     "Install Link": "https://www.envoyproxy.io/docs/envoy/latest/start/install",
     "Ownership": "Private",
     "Crunchbase": "https://www.crunchbase.com/organization/envoy-proxy",
@@ -92,6 +92,14 @@
   {
     "name": "CloudFormation",
     "useCase": "automate the provisioning of resources and Infrastructure As Code.",
+	"Free Tier": [
+		"All operations for AWS::*, Alexa::*, and Custom::* namespaces. Just pay for the resources.",
+		"1,000 3rd party handler operations per month per account, including hook and 3rd party operations. ($0.90 value)"
+	],
+	"Paid Tier":[
+		"3rd party handler operation: $0.0009 each",
+		"3rd party handler operation duration: $0.00008 per second."
+	],
     "Encryption": "are templates encrypted?",
     "Ownership": "Amazon",
     "Segment": "IaC",
@@ -241,7 +249,7 @@
   },
   {
     "name": "Cognito",
-    "useCase": "Decentralized managed authorization.",
+    "useCase": "Decentralized managed authorizationentication.",
 	"Free Tier":[
 		"50,000 MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
 		"Sync: 10 GB of cloud sync store and 1 million sync operations per month during the free tier year. ($16.50 value)"
@@ -256,12 +264,12 @@
     "Type": "SaaS",
 	"Cognito Sync": "Sync user data and preferences across devices with one line of code (powered by SNS)",
     "Notes": [
-      "User Pools directory allows users to auth using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
-      "Uses JWTs to persist auth",
-      "Identity Pools can provide temp AWS creds for service access (S3, DynamoDB, etc)",
+      "User Pools directory allows users to authorization using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
+      "Uses JWTs to persist authorization",
+      "Identity Pools can provide temp AWS credentials for service access (S3, DynamoDB, etc)",
       "Web Identity Federation exchanges identity and security info between IdP and apps.",
       "IdP is a trusted login source for other services.",
-      "OIDC is an Oauth type of IdP.",
+      "OIDC is an Oauthorization type of IdP.",
       "SAML is an SSO type of IdP."
     ]
   },
@@ -294,7 +302,7 @@
     "name": "Datasync",
     "useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network.",
 	"Free Tier":[],
-	"Paid Tier":[],
+	"Paid Tier":"$0.0125 per GB copied.",
     "Ownership": "Amazon",
     "Segment": "Data logistics",
     "Type": "IaaS"
@@ -302,16 +310,40 @@
   {
     "name": "Deep Racer",
     "useCase": "RC car that you can program with ML.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":"10 hours to train or evaluate models, and 5GB of free storage during your first month ($35.115 value).",
+	"Paid Tier":[
+		"Training or evaluation: $3.50 per hour",
+		"Model storage: $0.023 per GB-month"
+	],
+	"Hardware device":[
+		"DeepRacer: $399 - 1/18 scale 4wd car, 4MP camera with 1080p resolution.",
+		"DeepRacer Evo: $598 - DeepRacer with LIDAR and a stereo camera.",
+		"Sensor Kit: $249 - LIDAR and a stereo camera, a new car body shell to accommodate the sensors, and installation tools."
+	],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "DocumentDB",
     "useCase": "Document DB with 1:1 featureset match with MongoDB.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free 30 day trial":[
+		"750 hours of db.t3.medium instance usage ($58.50 value)", 
+		"30 million IOs ($0.60 value)", 
+		"5 GB of storage ($0.50 value)", 
+		"5 GB of backup storage ($1.05 value)"
+	],
+	"Free Tier":[
+		"Data transfer into AWS"
+	],
+	"Paid Tier":[
+		"Compute ranges from $0.26315 to $8.864 per hour.",
+		"I/O Rate: $0.20 per 1 million requests",
+		"Replicated Write I/Os: $0.20 per million replicated write I/Os",
+		"Storage Rate: $0.10 per GB-month",
+		"Backup Storage $0.021 per GB-month",
+		"Data transfer from AWS to Internet: From $0.09/GB to $0.05/GB.",
+		"Data transfer between AWS regions: $0.02/GB."
+	],
     "Ownership": "Amazon",
     "Segment": "NoSQL Document DB",
     "Type": "PaaS",
@@ -322,15 +354,54 @@
   {
     "name": "DynamoDB",
     "useCase": "Fully managed NOSQL key/value & document DB.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"First 25 GB stored in the Standard table class. ($6.25 value)",
+		"2.5 million Streams RRUs per month. ($0.50 value)",
+		"All data transfer into AWS, and 100GB of data transfer out to the Internet free each month, aggregated across all AWS Services."
+	],
+	"Paid Tier":[
+		"Change data capture for Amazon Kinesis Data Streams: $0.10 per million change data capture units",
+		"Change data capture for AWS Glue Elastic Views: $0.10 per million change data capture units",
+		"Data Export to Amazon S3: $0.10 per GB",
+		"Accelerator (DAX): from $0.04 to $4.295 per hour.",
+		"$0.02 per 100,000 Streams RRUs.",
+		"Data transfer out to Internet, after the first 100GB, from $0.09 to $0.05 per GB "
+	],
+	"(table)Table storage classes":[
+		["Type","On-Demand Standard","On-Demand Standard-IA","Provisioned Standard","Provisioned Standard-IA"],
+		["Million WRU/WCU","$1.25","$1.56","$650","$810"],
+		["Million RRU/RCU","$0.25","$0.31","$130","$160"],
+		["Storage per GB-month","$0.25 after first 25GB.","$0.10","$0.25 after first 25GB.","$0.10"],
+		["Global Table Million rWRU or rWCU/hr","$1.875","$2.344","$975","$1,218.75"]
+		
+	],
+	"(table)(Provisioned) Reserved table storage capacity":[
+		["Monthly Commitment","Upfront: 1-Year","Hourly: 1-Year (8760h)","Upfront: 3-Year","Hourly: 3-Year (26280h)"],
+		["100 WCUs","$150.00","$0.0128 ($112.128)","$180.00","$0.0081 ($212.868)"],
+		["100 RCUs","$30.00","$0.0025 ($21.90)","$36.00","$0.0016 ($42.048)"]
+	],
+	"(table)Backup classes per GB-month":[
+		["Class","Warm","Cold"],
+		["Continuous","$0.20","$0.20"],
+		["On-demand","$0.10","$0.03"],
+		["Restore per GB","$0.15","$0.20"]
+	],
     "Ownership": "Amazon",
     "Segment": "NoSQL Document DB",
     "Type": "PaaS",
     "Notes": [
-      "Good for applications with large amounts of data and need predictable read & write while scaling.",
-      "Scales to meet the specified read and write (per second) capacities.",
-      "Data stored as 3 copies on SSDs in 3 regions."
+		"Good for applications with large amounts of data and need predictable read & write while scaling.",
+		"Scales to meet the specified read and write (per second) capacities.",
+		"Data stored as 3 copies on SSDs in 3 regions.",
+		"Standard-Infrequent Access (Standard-IA) table class",
+		"WRU: Write Request Units (On-Demand) - 1 write upto 1 KB - larger writes consume more units.",
+		"WCU: Write Capacity Units (Provisioned) - 1 write/second upto 1 KB - charged regardless of use. A transactional write is 2 WCUs.",
+		"RRU: Read Request Units (On-Demand) - 1 read upto 4 KB - larger reads consume more units.",
+		"RCU: Read Capacity Units (Provisioned) - 1 strongly-consistent read/second upto 4 KB - charged regardless of use. A transactional read is 2 RCUs, and an eventually consistent read is 0.5 RCUs.",
+		"Provisioned Reads, one RCU is one strongly consistent read per second, two RCUs for each transactional read per second, and one-half of an RCU for each eventually consistent read per second (up to 4 KB). ",
+		"Global Tables let you select numerous AWS regions to replicate data into."
+    ],
+    "Streams": [
     ],
     "Two consistency modes": [
       "Eventually (1 sec) Consistent Reads - can return inconsistent immediate reads too.",
@@ -340,21 +411,45 @@
   {
     "name": "Wavelength",
     "useCase": "Deliver ultra-low-latency applications for 5G devices.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":"Details sparse. Pricing page suggests that the service has no cost, and only pay for the other resources used.",
     "Ownership": "Amazon",
     "Segment": "CDN",
     "Type": "IaaS",
 	"Notes": [
+		"Wavelength isn't an independent service, but is a name for Carrier Gateways in VPC. ",
 		"Deploy resources like EC2 instances and EBS volumes to build and deploy applications for 5G edge devices.",
-		"Opt into an AWS Wavelength Zone in the console and select the AWS Region."
+		"Opt into an AWS Wavelength Zone in the console and select the AWS Region. To opt out of a Zone after you have opted in, you must contact AWS Support."
 	]
   },
   {
     "name": "EBS",
     "useCase": "Virtual block-level storage drive that you can attach to a single EC2 instance.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"30 GB of storage. ($2.40 value)",
+		"3,000 IOPS. ($15 value)",
+		"125 MB/s data transfer. ($5 value)",
+		"1 GB of snapshot storage. ($0.05 value)"
+	],
+	"Paid Tier":[
+		"Fast Snapshot Restore: $0.75 per 1 DSU hour on each snapshot and in each AZ it is enabled.",
+		"ListChangedBlocks, ListSnapshotBlocks: $0.0006 per thousand requests",
+		"PutSnapshotBlock: $0.006 per thousand SnapshotAPIUnits",
+		"GetSnapshotBlock: $0.003 per thousand SnapshotAPIUnits"
+	],
+	"(table)Snapshots":[
+		["Storage (GB-month)","Restore (per GB)"],
+		["Standard","$0.05","Free"],
+		["Archive","$0.01","$0.03"]
+	],
+	"(table)Storage Tiers":[
+		["Volume Type","per GB-month","provisioned IOPS-month","provisioned MB/s-month"],
+		["General Purpose SSD (gp3)","$0.08","$0.005 over 3,000","$0.04 over 125"],
+		["General Purpose SSD (gp2)","$0.10 (provisioned)","",""],
+		["Provisioned IOPS SSD (io2)","$0.13","From $0.065 to $0.032",""],
+		["Provisioned IOPS SSD (io1)","$0.125 (provisioned)","$0.07",""],
+		["Throughput Optimized HDD (st1)","$0.045 (provisioned)","",""],
+		["Cold HDD (sc1)","$0.015 (provisioned)","",""]
+	],
     "Ownership": "Amazon",
     "Segment": "Persistent Storage",
     "Type": "IaaS",
@@ -501,13 +596,6 @@
   {
     "name": "Savings Plans",
     "useCase": "Flexible pricing model for AWS Services.",
-	"Ownership":"Amazon",
-	"Segment":"Payment",
-	"Type":"IaaS",
-	"Notes": [
-		"Same general options as EC2 Reserved Instances: 1 year / 3 year commitment, Full / Partial / No for upfront costs.",
-		"Does a negative savings rate mean it costs more than on-demand?"
-	],
 	"(table)Savings over on-demand (approx)": [
 		["Service","1 year Full Upfront","1 year Partial Upfront","1 year No Upfront","3 year Full Upfront","3 year Partial Upfront","3 year No Upfront"],
 		["EC2 Compute","33%","31%","28%","44%","54%","50%"],
@@ -515,6 +603,13 @@
 		["Fargate","27%","25%","20%","52%","50%","45%"],
 		["Lambda","-4% to 17%","0% to 15%","-10% to 12%","-4% to 17%","-6% to 15%","-10% to 12%"],
 		["Sagemaker","32%","31%","28%","55%","54%","50%"]
+	],
+	"Ownership":"Amazon",
+	"Segment":"Payment",
+	"Type":"IaaS",
+	"Notes": [
+		"Same general options as EC2 Reserved Instances: 1 year / 3 year commitment, Full / Partial / No for upfront costs.",
+		"Does a negative savings rate mean it costs more than on-demand?"
 	]
   },
   {
@@ -529,7 +624,10 @@
   {
     "name": "ELB",
     "useCase": "Elastic Load Balancers - split traffic from one destination across numerous servers.",
-    "Paid Tier": " ~$0.55/day or $18/month.",
+	"Free Tier":[
+		"~$0.55/day or $18/month."
+	],
+	"Paid Tier":[],
     "Encryption": "All can hold SSL certs",
     "Ownership": "Amazon",
     "Type": "IaaS",
@@ -588,6 +686,7 @@
   {
     "name": "Athena",
     "useCase": "Query data in S3 tables as though it were a database.",
+	"Free Tier":[],
     "Paid Tier": [
       "$5.00 per TB of data scanned. (This can be reduced up to 3x by compressing the data with GZIP.)",
       "Any Glue, SageMaker, Lambda, and S3 usage fees from Athena will be charged normally."
@@ -634,6 +733,7 @@
     "name": "Graviton",
     "useCase": "Container-optimized arm64 processor.",
     "Free Tier": "T4g (750 hrs/month during free tier year.)",
+	"Paid Tier":[],
     "Ownership": "Amazon",
     "Type": "IaaS",
     "Segment": "CPU",
@@ -767,7 +867,8 @@
     "Free Tier": "Connect to unlimited containers and servers. Configuration updates on 6 vCPUs of containers per month.",
     "Paid Tier - Configuration updates": [
       "Containers: $2/vCPU/month after the first 6.",
-      "Servers: $6/Server/Month."
+      "Servers: $6/Server/Month.",
+	  "Managed SQL Instances listed below."
     ],
     "Managed SQL Instance Tiers": [
       "General Purpose (GP): SQL Server Standard featureset, 24 vCPU & 128 GB limit, single instance.",
@@ -1220,11 +1321,6 @@
   {
     "name": "Storage Gateway",
     "useCase": "Data transfer agent deployed on a VM or hardware device in your network, or as EC2 or VMWare Cloud VM.",
-    "Ownership": "Amazon",
-    "Type": "IaaS",
-    "Notes": [
-      "The AWS Hardware Appliance is available exclusively through resellers, including CDW."
-    ],
     "Free Tier": [
       "Data Transfer from your gateway appliance to the AWS Storage Gateway service is free.",
       "Data Transfer from the AWS Storage Gateway service to an Amazon EC2-based gateway appliance in the same region is free.",
@@ -1257,6 +1353,11 @@
     "Volume Gateway": [
       "Storage Cost: $0.023 per GB-month of data stored.",
       "EBS Snapshot storage - Stored and billed as Amazon EBS snapshots)."
+    ],
+    "Ownership": "Amazon",
+    "Type": "IaaS",
+    "Notes": [
+      "The AWS Hardware Appliance is available exclusively through resellers, including CDW."
     ]
   },
   {
@@ -1421,7 +1522,7 @@
   {
     "name": "Jenkins",
     "useCase": "The leading open source automation server",
-    "Free Tier": "Open Source",
+    "Free Tier": "Full Service",
     "Encryption": "Most data is exposed to the filesystem and memory. Recommends using Docker secrets/ directory to store API keys and other sensitive data.",
     "Website": "https://www.jenkins.io/",
     "Overview": "https://www.lambdatest.com/blog/what-is-jenkins/",
@@ -1649,7 +1750,7 @@
 	"Free Tier":"First $400 of use in the first month is free.",
 	"(table)Paid Tier":[
 		["Tier","Cost","Features"],
-		["Standard","$2 cost per credit","Data warehouses, Replication & sharing across regions / clouds, 24 x 365 support, enterprise grade encryption in transit and at rest, federated authentication, Snowsight, Data Exchange/Data Marketplace."],
+		["Standard","$2 cost per credit","Data warehouses, Replication & sharing across regions / clouds, 24 x 365 support, enterprise grade encryption in transit and at rest, federated authorizationentication, Snowsight, Data Exchange/Data Marketplace."],
 		["Enterprise","$3 cost per credit","Standard +, Multi-cluster warehouse, annual rekeying of all encrypted data, materialized views, search optimization, data masking."],
 		["Business Critical","$4 cost per credit","Enterprise +, HIPAA, PCI, encryption using customer-managed keys, AWS/Azure PrivateLink / GCP Private Service Connect, DB failover/back for BC, AWS API Gateway Private Endpoints support"],
 		["Virtual Private Snowflake (VPS) (AWS only)","Contact for quote","Business Critical +, Dedicated encrypted virtual servers & metadata store."],
@@ -1777,7 +1878,10 @@
 		"Out-of-cluster certificate signing",
 		"Policy engine integration"
 	],
-
+	"name":"Jetstack",
+	"useCase":"Jetstack",
+	"Free Tier":[],
+	"Paid Tier":[],
 	"Ownership":"Jetstack",
 	"Website":"https://www.jetstack.io/jetstack-secure/",
 	"Segment":"Orchestration",
@@ -1839,12 +1943,12 @@
   {
     "name": "Otter",
     "useCase": "Provision your servers and manage configuration",
-    "Ownership": "Inedo",
     "Free Tier": "No server limit, but no permissions (all users are admins).",
     "Paid Tier": [
       "Basic: $1,995/yr for upto 100 servers.",
       "Enterprise: $9,995/yr for upto 100 servers. Includes HA clustering, SAML SSO, and configuration drift tools."
     ],
+    "Ownership": "Inedo",
     "Website": "https://inedo.com/otter",
     "InstallLink": "https://inedo.com/otter/download",
     "Segment": "Infra as Code",
@@ -1903,14 +2007,14 @@
   },
   {
     "name": "SQLite",
-    "Free Tier": "Open Source",
+    "Free Tier": "Full Service",
     "useCase": "Lightweight SQL as flat files.",
     "Type": "Infrastructure"
   },
   {
     "name": "NGINX (Engine-X)",
     "useCase": "High-volume webserver, caching reverse proxy.",
-    "Free Tier": "Open Source",
+    "Free Tier": "Full Service",
     "Segment": "Webserver",
     "Type": "Infrastructure",
     "Notes": [
