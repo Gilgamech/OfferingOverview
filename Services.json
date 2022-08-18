@@ -94,7 +94,7 @@
     "useCase": "automate the provisioning of resources and Infrastructure As Code.",
 	"Free Tier": [
 		"All operations for AWS::*, Alexa::*, and Custom::* namespaces. Just pay for the resources.",
-		"1,000 3rd party handler operations per month per account, including hook and 3rd party operations. ($0.90 value)"
+		"1k 3rd party handler operations per month per account, including hook and 3rd party operations. ($0.90 value)"
 	],
 	"Paid Tier":[
 		"3rd party handler operation: $0.0009 each",
@@ -251,12 +251,12 @@
     "name": "Cognito",
     "useCase": "Decentralized managed authorizationentication.",
 	"Free Tier":[
-		"50,000 MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
+		"50k MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
 		"Sync: 10 GB of cloud sync store and 1 million sync operations per month during the free tier year. ($16.50 value)"
 	],
 	"Paid Tier":[
 		"From $0.0055 to $0.0025 per MAU. Advanced security from $0.05 to $0.01 per MAU.",
-		"Sync: $0.15 per GB of sync store and $0.15 for each 10,000 sync operations per month."
+		"Sync: $0.15 per GB of sync store and $0.15 for each 10k sync operations per month."
 	],
     "Encryption": "Are user pools and identity pools encrypted? Where are they stored?",
     "Ownership": "Amazon",
@@ -277,7 +277,7 @@
     "name": "Data Exchange",
     "useCase": "Easily find, subscribe to, and use third-party data.",
     "Free Tier": "Most data sets are free.",
-    "Paid Tier": "A few data sets cost $1000/month, or even $150,000 for 12 months + API metered costs ($0.00000093 per 100 bytes, or $930/GB)",
+    "Paid Tier": "A few data sets cost $1000/month, or even $150k for 12 months + API metered costs ($0.00000093 per 100 bytes, or $930/GB)",
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/data-exchange/",
     "Type": "SaaS",
@@ -301,7 +301,6 @@
   {
     "name": "Datasync",
     "useCase": "Data transfer agent deployed on a VM in your network, an EC2 Outpost in your network, or on an AWS Snowcone in your network.",
-	"Free Tier":[],
 	"Paid Tier":"$0.0125 per GB copied.",
     "Ownership": "Amazon",
     "Segment": "Data logistics",
@@ -364,7 +363,7 @@
 		"Change data capture for AWS Glue Elastic Views: $0.10 per million change data capture units",
 		"Data Export to Amazon S3: $0.10 per GB",
 		"Accelerator (DAX): from $0.04 to $4.295 per hour.",
-		"$0.02 per 100,000 Streams RRUs.",
+		"$0.02 per 100k Streams RRUs.",
 		"Data transfer out to Internet, after the first 100GB, from $0.09 to $0.05 per GB "
 	],
 	"(table)Table storage classes":[
@@ -376,9 +375,11 @@
 		
 	],
 	"(table)(Provisioned) Reserved table storage capacity":[
-		["Monthly Commitment","Upfront: 1-Year","Hourly: 1-Year (8760h)","Upfront: 3-Year","Hourly: 3-Year (26280h)"],
-		["100 WCUs","$150.00","$0.0128 ($112.128)","$180.00","$0.0081 ($212.868)"],
-		["100 RCUs","$30.00","$0.0025 ($21.90)","$36.00","$0.0016 ($42.048)"]
+		["Monthly Commitment", "100 WCUs", "100 RCUs"],
+		["Upfront: 1-Year","$150.00","$30.00"],
+		["Hourly: 1-Year (8760h)","$0.0128 ($112.128)","$0.0025 ($21.90)"],
+		["Upfront: 3-Year","$180.00","$36.00"],
+		["Hourly: 3-Year (26280h)","$0.0081 ($212.868)","$0.0016 ($42.048)"]
 	],
 	"(table)Backup classes per GB-month":[
 		["Class","Warm","Cold"],
@@ -410,15 +411,15 @@
   },
   {
     "name": "Wavelength",
-    "useCase": "Deliver ultra-low-latency applications for 5G devices.",
-	"Free Tier":"Details sparse. Pricing page suggests that the service has no cost, and only pay for the other resources used.",
+    "useCase": "CDN for 5G devices.",
+	"Free Tier":"Details sparse. Pricing page suggests that the service has no cost, and only pay for the other resources used. (Verify with your TAM.)",
     "Ownership": "Amazon",
     "Segment": "CDN",
     "Type": "IaaS",
 	"Notes": [
-		"Wavelength isn't an independent service, but is a name for Carrier Gateways in VPC. ",
-		"Deploy resources like EC2 instances and EBS volumes to build and deploy applications for 5G edge devices.",
-		"Opt into an AWS Wavelength Zone in the console and select the AWS Region. To opt out of a Zone after you have opted in, you must contact AWS Support."
+		"Wavelength isn't an independent service, but is within Carrier Gateways inside AWS VPC. ",
+		"Only one region available, US East (Verizon) with cities: Atlanta, Boston, Charlotte, Chicago, Dallas, Detroit, Houston, Miami, Minneapolis, Nashville, New York, Tampa, Washington DC, ",
+		"Opt into the Wavelength Zone Region to get started. To revert back to opt out after you have opted in, you must contact AWS Support."
 	]
   },
   {
@@ -426,7 +427,7 @@
     "useCase": "Virtual block-level storage drive that you can attach to a single EC2 instance.",
 	"Free Tier":[
 		"30 GB of storage. ($2.40 value)",
-		"3,000 IOPS. ($15 value)",
+		"3k IOPS. ($15 value)",
 		"125 MB/s data transfer. ($5 value)",
 		"1 GB of snapshot storage. ($0.05 value)"
 	],
@@ -443,7 +444,7 @@
 	],
 	"(table)Storage Tiers":[
 		["Volume Type","per GB-month","provisioned IOPS-month","provisioned MB/s-month"],
-		["General Purpose SSD (gp3)","$0.08","$0.005 over 3,000","$0.04 over 125"],
+		["General Purpose SSD (gp3)","$0.08","$0.005 over 3k","$0.04 over 125"],
 		["General Purpose SSD (gp2)","$0.10 (provisioned)","",""],
 		["Provisioned IOPS SSD (io2)","$0.13","From $0.065 to $0.032",""],
 		["Provisioned IOPS SSD (io1)","$0.125 (provisioned)","$0.07",""],
@@ -615,8 +616,13 @@
   {
     "name": "ElastiCache",
     "useCase": "Fully managed Redis in-memory database.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier": "750 hours on cache.t2.micro or cache.t3.micro. ($12.75 value)",
+	"Paid Tier":[
+		"On-Demand from $0.016 to $12.477 per hour.",
+		"Reserved Instances from around $8.03 ($0.011/hr) to around $3,731.03 ($5.111/hr) per month.",
+		"Global Datastore data transfer out to Internet: $0.02 per GB.",
+		"Outposts: On-Demand from $0.06 to $4.32 per hour."
+	],
     "Ownership": "Amazon",
     "Segment": "Caching DB",
     "Type": "PaaS"
@@ -625,14 +631,32 @@
     "name": "ELB",
     "useCase": "Elastic Load Balancers - split traffic from one destination across numerous servers.",
 	"Free Tier":[
-		"~$0.55/day or $18/month."
+		"750 hours per month shared between Classic and Application load balancers. ($18.75 value)",
+		"15 GB of data processing for Classic load balancers. ($0.12 value)",
+		"15 LCUs for ALBs. ($0.12 value)"
 	],
-	"Paid Tier":[],
+	"(table)Paid Tier":[
+		["Service","LB-hour","Capacity Unit / GB data processed"],
+		["ALB","$0.0225","$0.008"],
+		["Outpost ALB","$0.0225","$0.00"],
+		["NLB","$0.0225","$0.006"],
+		["GLB","$0.0125","$0.004"],
+		["CLB","$0.025","$0.008"]
+	],
+	"(table)Capacity Units":[
+		["Service","Unit","New connections per second","Active connections","Data transfer"],
+		["ALB","LCU","25","3k per minute","1 GB per hour to targets, except 0.4 GB per hour for Lambda functions as targets. Also 1k rule evaluations per second."],
+		["NLB TCP","NLCU","800","100k","1 GB per hour to targets."],
+		["NLB UDP","NLCU","400","50k","1 GB per hour to targets."],
+		["NLB TLS","NLCU","50","3k","1 GB per hour to targets."],
+		["GLB","GLCU","600","60k","1 GB per hour to targets."],
+		["CLB","GB data","0","0","1 GB to targets."]
+	],
     "Encryption": "All can hold SSL certs",
     "Ownership": "Amazon",
     "Type": "IaaS",
     "Notes": [
-      "3 flavors: Network, Application, Classic"
+      "4 flavors: Network, Application, Classic, Gateway"
     ],
     "Application": [
       "Has Listeners, Rules, and Target Groups",
@@ -653,24 +677,91 @@
       "Must have at least 2 AZs",
       "Cannot be cross-region.",
       "X-Forwarded-For header has source IP."
+    ],
+    "Gateway": [
+		"Traffic is forwarded to an appliance for inspection.",
+		"Source and Destination see traffic unchanged.",
+		"Appliance can drop packet if it fails inspection.",
+		"Works with network inspection appliances on the Marketplace.",
+		"Simplifies how applications can securely exchange traffic with across VPC boundaries with Gateway Load Balancer Endpoint (GWLBE), a new type of VPC Endpoint powered by AWS PrivateLink."
     ]
   },
   {
-    "name": "ES",
-    "useCase": "Elastic Search",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "name": "OpenSearch",
+    "useCase": "Elastic Search implementation.",
+	"Free Tier":[
+		"750 hours per month of a t2.small.search or t3.small.search instance.",
+		"10 GB per month of optional EBS storage.",
+		"Automated snapshots foreach OpenSearch domain, retained for 14 days"
+	],
+	"Paid Tier":[
+		"On-Demand Instance time from $0.036 to $4.59 per hour.",
+		"Reserved Instance time from $0.060 (18% savings) to $5.511 (31% savings) per hour.",
+		"UltraWarm Instance time from $0.238 to $2.68 per hour.",
+		"Storage tiers: EBS, UltraWarm, S3 (cold)."
+	],
     "Ownership": "Amazon",
     "Segment": "Search DB",
     "Type": "PaaS"
   },
   {
     "name": "FSx",
+    "useCase": "Feature-rich and highly-performant file systems.",
     "Ownership": "Amazon",
-	"Free Tier":[],
-	"Paid Tier":[],
     "Segment": "Persistent Data Storage",
-    "Type": "PaaS"
+    "Type": "PaaS",
+	"Paid Tier Notes": [
+		"Has 4 flavors: Windows File System, OpenZFS, Lustre, and Netapp Ontap.",
+		"Data Deduplication at rest gives 30-80% space savings.",
+		"Ontap provides compression alongside deduplication."
+	],
+	"(table)Storage per GB-month":[
+		["FileSystem","Type","Multi-AZ","Multi-AZ 50% Dedup","Single-AZ","Single-AZ 50% Dedup"],
+		["Ontap","Standard pool","$0.0077","$0.0219","$0.0438","$0.0153"],
+		["WinFS","HDD","$0.025","$0.0125","$0.013","$0.0065"],
+		["Ontap","SSD","$0.0438","$0.125","$0.25","$0.0875"],
+		["OpenZFS","SSD","$0.09","$0.045","N/A","N/A"],
+		["WinFS","SSD","$0.23","$0.115","$0.13","$0.065"]
+	],
+	"(table)Throughput per MBps-month":[
+		["FileSystem","Multi-AZ","Multi-AZ 50% Dedup","Single-AZ","Single-AZ 50% Dedup"],
+		["OpenZFS","$0.26","$0.26","N/A","N/A"],
+		["Ontap","$0.72","$0.72","$1.20","$1.20"],
+		["WinFS","$4.50","$4.50","$2.25","$2.25"]
+	],
+	"(table)Backup per GB-month":[
+		["FileSystem","Multi-AZ","Multi-AZ 50% Dedup","Single-AZ","Single-AZ 50% Dedup"],
+		["Ontap","$0.05","$0.0175","$0.05","$0.0175"],
+		["WinFS","$0.05","$0.025","$0.05","$0.025"],
+		["OpenZFS","N/A","N/A","$0.05","$0.025"],
+		["Lustre","N/A","N/A","$0.05","$0.025"],
+		["Lustre","HDD","Backup Storage","$0.050 per GB-month","$0.025 per GB-month"]
+	],
+	"(table)SSD IOPS per IOPS-month":[
+		["FileSystem","Multi-AZ","Multi-AZ 50% Dedup","Single-AZ","Single-AZ 50% Dedup"],
+		["OpenZFS","$0.006","$0.006","N/A","N/A"],
+		["Ontap","$0.017","$0.017","$0.034","$0.034"]
+	],
+	"(table)Capacity pool 1000 requests":[
+		["FileSystem","Type","Multi-AZ","Multi-AZ 50% Dedup","Single-AZ","Single-AZ 50% Dedup"],
+		["Ontap","read","$0.0004","$0.0004","$0.0004","$0.0004"],
+		["Ontap","write","$0.005","$0.005","$0.005","$0.005"]
+	],
+	"(table)Lustre throughput rate per TiB":[
+		["Type","Rate","Per TiB/month","-AZ 50% Deduplication"],
+		["HDD","12 MB/s","$25","$13"],
+		["HDD w SSD Cache","12 MB/s","$41","$21"],
+		["HDD","40 MB/s","$83","$42"],
+		["HDD w SSD Cache","40 MB/s","$99","$50"],
+		["Prev","50 MB/s, 1.3 GB/s burst","$140","$70"],
+		["Prev","100 MB/s, 1.3 GB/s burst","$190","$95"],
+		["SSD","125 MB/s","$145","$73"],
+		["SSD","200/MB/s - scratch file","$140","$70"],
+		["Prev","200 MB/s, 1.3 GB/s burst","$290","$145"],
+		["SSD","250 MB/s","$210","$105"],
+		["SSD","500 MB/s","$340","$170"],
+		["SSD","1,000 MB/s","$600","$300"]
+	]
   },
   {
     "name": "Fargate",
@@ -686,7 +777,6 @@
   {
     "name": "Athena",
     "useCase": "Query data in S3 tables as though it were a database.",
-	"Free Tier":[],
     "Paid Tier": [
       "$5.00 per TB of data scanned. (This can be reduced up to 3x by compressing the data with GZIP.)",
       "Any Glue, SageMaker, Lambda, and S3 usage fees from Athena will be charged normally."
@@ -703,7 +793,7 @@
     "name": "Glue",
     "useCase": "Serverless ETL that can connect to other data sets, and has a no-code studio.",
     "Free Tier": [
-      "Glue Studio Job Notebooks are a built-in interface for Interactive Sessions",
+      "Studio Job Notebooks are a built-in interface for Interactive Sessions",
       "First million objects stored",
       "First million requests per month"
     ],
@@ -732,9 +822,12 @@
   {
     "name": "Graviton",
     "useCase": "Container-optimized arm64 processor.",
-    "Free Tier": "T4g (750 hrs/month during free tier year.)",
-	"Paid Tier":[],
+    "Free Tier": "750 hrs/month of EC2 t4g.small instance time during the free tier year.",
+	"Notes":[
+		"Graviton is not a distinct service, but is the CPU type denoted by the 'g' in 'xxg.size' instance class naming format. Such as EC2 t4g.small instance class."
+	],
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/ec2/graviton/",
     "Type": "IaaS",
     "Segment": "CPU",
     "Broad ecosystem support": [
@@ -759,9 +852,10 @@
   {
     "name": "Bottlerocket",
     "useCase": "Built to run containers, using Linux SE for best security.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":"Generally available as an EC2 AMI.",
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/bottlerocket/",
+    "Github": "https://github.com/bottlerocket-os/bottlerocket#bottlerocket-os",
     "Type": "SaaS",
     "Segment": "Container image"
   },
@@ -802,11 +896,14 @@
   {
     "name": "EKS",
     "useCase": "Elastic Kubernetes Service",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Paid Tier":"$0.10 per hour per cluster.",
     "Ownership": "Amazon",
     "Type": "SaaS",
-    "Segment": "Container orchestration"
+    "Segment": "Container orchestration",
+	"Notes":[
+		"EKS on Fargate only costs the compute resources used.",
+		"EKS on Outposts - the EKS still runs in AWS, so still costs $0.10 per hour per cluster. The Outposts EC2 instances involved run free of charge."
+	]
   },
   {
     "name": "AKS",
@@ -893,17 +990,43 @@
   {
     "name": "Ground Station",
     "useCase": "Contact satellites in orbit around the Earth.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier": "Cancel reserved contract with more than 24h notice.",
+	"(table)Paid Tier":[
+		["Contact Type","Pricing"],
+		["Narrowband Reserved","$3 per minute"],
+		["Wideband Reserved","$10 per minute"],
+		["Narrowband On-Demand","$10 per minute"],
+		["Wideband On-Demand","$22 per minute"],
+		["Cancellation On-Demand","100% of contract cost"],
+		["Cancellation Reserved under 24h","100% of contract cost"]
+	],
     "Ownership": "Amazon",
-    "Type": "IaaS"
+    "Website": "https://aws.amazon.com/ground-station/",
+    "Type": "IaaS",
+	"Notes":[
+		"Narrowband: Any pass where the instantaneous bandwidth is less than 54 MHz.",
+		"Wideband: Any pass where the instantaneous bandwidth is greater than or equal to 54 MHz."
+	]
   },
   {
     "name": "Honeycode",
     "useCase": "Write functions without code",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier - Basic": [
+		"2,500 rows/workbook",
+		"Team of up to 20 members",
+		"Unlimited workbooks",
+		"Data integrations via Zapier, Amazon AppFlow, or APIs"
+	],
+	"(table)Paid Tier":[ 
+		["Tier","Plus","Pro"],
+		["Monthly cost","$19.99/month","$29.99/month"],
+		["Inherits","Basic+","Plus+"],
+		["Rows/workbook","10,000","100,000"],
+		["Team members beyond 20","$9.99/month","$19.99/month"],
+		["Other features","IAM Identity Center",""]
+	],
     "Ownership": "Amazon",
+    "Website": "https://www.honeycode.aws/",
     "Type": "PaaS"
   },
   {
@@ -967,25 +1090,58 @@
   },
   {
     "name": "Kinesis",
-    "useCase": "Captures realtime data stream ",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "useCase": "Captures realtime data streams.",
+	"Free Tier":"Retrieving data stream records within the the 24-hour default (or up to 7 days for extended data retention).",
+	"Paid Tier - Stream":[
+		"Per stream, per hour: $0.04",
+		"Data ingested & stored 24h, per GB: $0.08",
+		"Data retrievals, per GB: $0.04",
+		"Enhanced fan-out data retrievals, per GB: $0.05",
+		"Data stored, per GB-month (beyond 24 hours, up to 7 days): $0.10",
+		"Data stored, per GB-month (beyond 7 days): $0.023"
+	],
+	"Paid Tier - Firehose":[
+		"Ingestion, per GB: from $0.029 to $0.02",
+		"Format Conversion, per GB: $0.018",
+		"Processed to VPC, per GB : $0.01",
+		"VPC delivery, per hour, per AZ: $0.01",
+		"S3 delivery, per GB: $0.02",
+		"S3 delivery, per 1k objects: $0.005",
+		"JQ processing, per hour (optional): $0.07"
+	],
     "Ownership": "Amazon",
-    "Type": "PaaS"
+    "Type": "PaaS",
+	"Notes":[
+		"Data Firehose loads data into other datastores."
+	]
   },
   {
     "name": "Lake Formation",
     "useCase": "Create data lakes, or repositories of unstructured data.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier": "1 million tables of S3 storage and 1 million read requests . ($2 value)",
+	"Paid Tier":[
+		"$2.25 per TB of data scanned by Data Filter and/or processed by Storage Optimizer each month",
+		"$1.00 per 100,000 S3 objects stored each month",
+		"$1.00 per million read requests each month"
+	],
+    "Website": "https://aws.amazon.com/lake-formation/",
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
     "name": "Lambda",
     "useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture.",
-    "Free Tier": "First 1M requests are free.",
-	"Paid Tier":[],
+    "Free Tier": [
+		"1 million requests per month",
+		"400,000 GB-seconds (111 GB-hours) of compute time per month"
+	],
+	"Paid Tier":[
+		"Arm Compute from $0.0000133334 to $0.0000106667 per GB-second ($0.0008 to $0.00064 per minute).",
+		"arm64 RAM from $0.0000000017 to $0.0000001333 per millisecond. ($0.0001 to $0.007998 per minute.)",
+		"x86 Compute from $0.0000166667 to $0.0000133334 per GB-second ($0.001 to $0.0008 per minute).",
+		"x86 RAM from $0.0000000021 to $0.0000001667 per millisecond. ($0.000126 to $0.01 per minute.)",
+		"Ephemeral Storage: $0.0000000309 per GB-second ($0.000001854 per minute)"
+	],
     "Encryption In Motion": "HTTPS - you'll need to use HTTPS endpoints in your Lambda Function's code.",
     "Ownership": "Amazon",
     "Segment": "Function invocation",
@@ -1010,22 +1166,31 @@
     ]
   },
   {
-    "name": "LandingZone",
-    "useCase": "Entry point for multi-account access.",
-    "Free Tier": "Full Service",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "name": "Control Tower",
+    "useCase": "The easiest way to set up and govern a secure multi-account AWS environment.",
+    "Free Tier": "Full Service - pay only for the other services invoked.",
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/controltower/",
+    "Segment": "Orchestration",
     "Type": "SaaS",
     "Notes": [
-      "Foundational"
+      "Foundational",
+	  "Includes Landing Zone"
     ]
   },
   {
     "name": "Lex",
     "useCase": "Conversational service with the same tech that operates Amazon Alexa",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"5,000 speech requests or speech intervals. ($20 value)",
+		"10,000 text requests. ($7.50 value)"
+	],
+	"Paid Tier":[
+		"$0.004 per speech request",
+		"$0.00075 per text request.",
+		"$0.0065 per 15-second speech interval.",
+		"$0.50 per minute for chatbot training."
+	],
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
@@ -2089,7 +2254,7 @@
   {
     "name": "Travis CI",
     "useCase": "The simplest way to test and deploy your projects.",
-	"Free Tier":"Open source projects. Private projects: 30-Day Free Trial, 10,000 credits. Quick-start resources and guides.",
+	"Free Tier":"Open source projects. Private projects: 30-Day Free Trial, 10k credits. Quick-start resources and guides.",
 	"Paid Tier":[
 		"Core: From $69/month to $249/month, or $759/year to $2739/year. Unlimited builds without any queuing of jobs. ",
 		"Enterprise: Contact for quote. Custom Plans for Cloud and Self-Hosted Deployments. Custom concurrency to keep you building. Host Demos and POCs, run self-hosted workers."
