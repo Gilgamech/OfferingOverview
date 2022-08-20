@@ -1180,7 +1180,7 @@
   },
   {
     "name": "Lex",
-    "useCase": "Conversational service with the same tech that operates Amazon Alexa",
+    "useCase": "Build chatbots with conversational AI",
 	"Free Tier":[
 		"5,000 speech requests or speech intervals. ($20 value)",
 		"10,000 text requests. ($7.50 value)"
@@ -1192,48 +1192,133 @@
 		"$0.50 per minute for chatbot training."
 	],
     "Ownership": "Amazon",
-    "Type": "PaaS"
+    "Website": "https://aws.amazon.com/lex/",
+    "Type": "PaaS",
+	"Notes":[
+		"Has enough builtin capability to "
+	]
+  },
+  {
+    "name": "Amazon Kendra",
+    "useCase": "ML-powered search.",
+	"Free Tier": "750 hours of Developer Edition in the first 30 days. ($843.75 value)",
+	"Paid Tier":[
+		["Edition","Developer","Enterprise"],
+		["Document Storage","10k","100k"],
+		["Max Queries Per Day","4k","8k"],
+		["Data Sources","5","50"],
+		["Availability Zones","1","3"],
+		["Price per hour (month)","$1.125 ($810)","$1.40 ($1,008)"],
+		["Additional 100,000 docs","N/A","$0.7 per hour. ($504/month)"],
+		["Additional 8,000 queries per day.","N/A","$0.7 per hour. ($504/month)"],
+		["Connector Usage per document scanned","$0.000001","$0.000001"],
+		["Connector Usage each hourly when syncing","$0.35","$0.35"]
+	],
+    "Ownership": "Amazon",
+    "Segment": "Search DB",
+    "Type": "SaaS"
   },
   {
     "name": "Lightsail",
     "useCase": "If you don't care about the infra and just want to deploy a Wordpress site.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier - First 3 months":[
+		"750 hours/month of specific Linux/Windows bundles. (Up to $60 value)",
+		"750 hours/month of the $15 USD/month Database bundle ($45 value)",
+		"750 hours/month of the $10 USD/month Container service (Micro -1 node, $30 value)",
+		"12 months on CDN."
+	],
+	"Paid Tier":[
+		"Windows servers from $8 to $240/month.",
+		"Linux servers from $3.50 to $160/month.",
+		"Containers from $7 to $160/month",
+		"Object storage bundles from $1 to $5/month.",
+		"Overage estimates - Storage: $0.023/GB - Transfer: $0.09/GB",
+		"Managed databases from $15 to $230/month",
+		"CDN distributions from $10 to $35/month",
+		"Load balancer for $18/month",
+		"Block storage from $0.80 to $25.60/month",
+		"Instance and disk snapshots (manual and automatic) for $0.05 GB/month"
+	],
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/lightsail/",
     "Type": "SaaS"
   },
   {
-    "name": "MapReduce",
-    "useCase": "Apache Spark, lets you do massive parallel processing on data sets.",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "name": "EMR",
+    "useCase": "Apache Spark map reduce, lets you do massive parallel processing on data sets.",
+	"Free Tier":[
+		"20 GB of ephemeral storage."
+	],
+	"EMR EC2 (On-Demand)": "From $0.193 to $4.608 per hour.",
+	"(table)Other compute":[
+		["Service","per vCPU per hour","per GB per hour"],
+		["EMR KMS ","$0.01012","$0.00111125"],
+		["Serverless","$0.052624","$0.0057785"],
+		["Ephemeral storage","N/A","$0.000111"]
+	],
+	"(table)Supported worker configurations":[
+		["vCPU","1","2","4"],
+		["Memory Values","2 to 8 GB","4 to 16 GB","8 to 30 GB"],
+		["Ephemeral Storage","20GB","20GB","20GB"]
+	],
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/emr/",
     "Type": "PaaS"
   },
   {
     "name": "MSK",
     "useCase": "Fully managed Apache Kafka message queue",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Paid Tier":[
+		"Broker Instance from $0.0456 to $10.08 per hour.",
+		"Broker Storage:  $0.10 per GB-month",
+		"(optional) Provisioned storage throughput: $0.08 per MB/s-month."
+	],
+	"(table)Serverless":[
+		["Pricing Dimension","Unit","Price per unit"],
+		["Cluster-hours","hour","$0.75"],
+		["Partition-hours","hour","$0.0015"],
+		["Storage","GiB-month","$0.10"],
+		["Data In","GiB","$0.10"],
+		["Data Out","GiB","$0.05"]
+	],
+	"MSK Connect Unit":"$0.11 per hour, billed per second.",
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/msk/",
     "Segment": "MQ",
     "Type": "PaaS"
   },
   {
     "name": "Neptune",
     "useCase": "Social graph or recommendation engine.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Workbench": "visualize results from Jupyter notebooks",
+	"Free Month Tier":[
+		"750 hours of Neptune db.t3.medium or db.t4g.medium. (Up to $73.50 value)",
+		"10 million I/O requests",
+		"1 GB of storage",
+		"1 GB of backup storage"
+	],
+	"Paid Tier":[
+		"Compute from $0.093 to $19.0903 per hour",
+		"Storage Rate","$0.10 per GB-month",
+		"I/O Rate","$0.20 per 1 million requests",
+		"Replicated Write I/Os","$0.20 per million replicated write I/Os",
+		"Backup Storage","$0.021 per GB-month",
+		"Workbench","from $0.05 to $0.445 per hour"
+	],
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/neptune/",
     "Segment": "Graph DB",
-    "Type": "PaaS"
+    "Type": "PaaS",
+    "Notes": [
+      "T4g and T3 DB instances run in Unlimited mode, which means that you will be charged if your average CPU utilization over a rolling 24-hour period exceeds the baseline of the instance.",
+		"CPU Credits are charged at $0.15 per vCPU-Hour."
+    ]
   },
   {
     "name": "Organizations",
     "Free Tier": "Full Service",
-	"Free Tier":[],
-	"Paid Tier":[],
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/organizations/",
     "Type": "SaaS",
     "Notes": [
       "Foundational"
@@ -1241,17 +1326,53 @@
   },
   {
     "name": "Outposts",
-    "useCase": "Run AWS APIs on your servers.",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "useCase": "Rent servers or full server racks from AWS, running AWS APIs in your physical data center.",
+	"Notes":[
+		"Has 2 flavors: Servers and Racks.",
+		"Servers: An industry-standard 1U or 2U server, which can be installed in a standard EIA-310D 19-inch compliant 4-post rack.",
+		"Racks: An industry-standard 42U rack, including rack-mountable servers, switches, a network patch panel, a power shelf and blank panels.",
+		"The AWS Console still says 'Outposts server orders will begin shipping in the second quarter of 2022' so hopefully they did.",
+		"Pricing varies slightly per country.",
+		"Requires a 3 year commitment."
+	],
+	"Servers (3 year term)":[
+		"No Upfront from $547.97 to $1,051.58 monthly. ($19,726.92 to $37,856.88 total)",
+		"Partial Upfront from $9,132.90 to $17,526.28 upfront, and from $253.69 monthly to $486.84 monthly. ($18,265.74 to $35,052.52 total)",
+		"All Upfront from $17,169.85 to $32,949.40."
+	],
+	"Racks (3 year term)":[
+		"No Upfront from $4,985.76 to $24,781.22 monthly. ($179,487.36 to $892,123.92 total)",
+		"Partial Upfront from $83,095.97 to $413,020.38 upfront and $2,308.22 to $11,472.79 monthly. ($166,191.89 to $826,040.82 total)",
+		"All Upfront $156,220.42 to $776,478.32."
+	],
+	"(table)EBS storage tiers":[
+		["TB Tier","GB/month pricing","Monthly pricing"],
+		["11","$0.3000","$3,379.20"],
+		["33 ","$0.2000","$6,758.40"],
+		["55 ","$0.1500","$8,448.00"]
+	],
+	"EBS Local Snapshots on Outposts":"$0.027 per GB-month (requires S3 on Outposts)",
+	"(table)S3 storage tiers":[
+		["TB Tier","GB/month pricing","Monthly pricing"],
+		["26","$0.1000","$2,662.40"],
+		["48","$0.1000","$4,915.20"],
+		["96","$0.1000","$9,830.40"],
+		["240","$0.1000","$24,576.00"],
+		["380","$0.1000","$38,912.00"]
+	],
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/outposts/",
     "Type": "IaaS"
   },
   {
-    "name": "Quantum Ledger",
-    "useCase": "",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "name": "QLDB",
+    "useCase": "Quantum Ledger",
+	"Paid Tier":[
+		"Write I/Os": "$0.70 per 1 million requests",
+		"Read I/Os": "$0.136 per 1 million requests",
+		"Journal Storage Rate": "$0.03 per GB-month",
+		"Indexed Storage Rate": "$0.25 per GB-month"
+	],
     "Ownership": "Amazon",
     "Segment": "Blockchain DB",
     "Type": "PaaS"
@@ -1259,8 +1380,35 @@
   {
     "name": "Route53",
     "useCase": "DNS provider, registrar, and domain manager.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"Alias queries are free when the alias target is an AWS resource outside Route53.",
+		"Health checks on up to 50 AWS endpoints",
+		"Public DNS query logs",
+		"There is a limit of 20 domain name registrations per account. Contact Support to request a higher limit."
+	],
+	"Paid Tier":[
+		"Domain name rates vary as part of the public market.",
+		"$0.50/month per hosted zone for the first 25 hosted zones and $0.10/month foreach additional zone.",
+		"$50.00/month per policy record",
+		"$0.125/hour per ENI for Resolver Endpoints.",
+		"$0.0005 per month (prorated hourly)",
+		"$2.50 per hour for every Recovery Controller cluster configured.",
+		"$0.045 foreach readiness check"
+    ],
+    "(table)Query rates": [
+		["Per million queries ","first 1 Billion queries / month","over 1 Billion queries / month"],
+		["Standard","$0.40","$0.20"],
+		["Latency Based Routing","$0.60","$0.30"],
+		["Geo DNS and Geoproximity","$0.70","$0.35"],
+		["IP-Based Routing","$0.80","$0.40"],
+		["Recursive","$0.40","$0.20"],
+		["DNS Firewall","$0.60","$0.40"],
+    ],
+    "(table)Query rates": [
+"Health Checks	AWS Endpoints	Non-AWS Endpoints"
+"Basic Health Checks	$0.50* per health check / month	$0.75 per health check / month"
+"Optional health checks:	$1.00 / month per optional feature	$2.00 / month per optional feature"
+	],
     "Ownership": "Amazon",
     "Segment": "DNS",
     "Type": "SaaS",
@@ -1268,8 +1416,9 @@
       "Traffic Flow: Visual editor for chaining routing policies, has versioning for easy rollback.",
       "Alias Record - AWS' smart record - it detects changed IP addresses and updates automatically. (How - is it a type of reverse DNS?)",
       "R53 Resolver: Lets you regionally route DNS queries between your VPCs and your hybrid network.",
-      "Health checks can monitor and automatically reroute between endpoints. And health checks can monitor other health checks."
-    ],
+      "Health checks can monitor and automatically reroute between endpoints. And health checks can monitor other health checks.",
+	  "Optional health checks include HTTPS, String Matching, Fast Interval, & Latency Measurement."
+	],
     "Routing types": [
       "Simple: Default, multiple addresses result in random endpoint selection.",
       "Weighted: Assign percentages to different routes.",
@@ -1335,10 +1484,16 @@
   {
     "name": "Redshift",
     "useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"750 hours per month for 2 months of dc2.large compute time, for first time users..",
+		"$300 credit with a 90-day expiration date, for first time users."
+	],
+	"Paid Tier":[
+		""
+	],
     "Encryption": "KMS or CloudHSM",
     "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/redshift/",
     "Type": "PaaS",
     "Segment": "Data Warehouse",
     "BI(g) Data warehousing": [
