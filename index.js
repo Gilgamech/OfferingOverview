@@ -50,23 +50,9 @@ window.onload = function(){
 		search_terms = search_terms.sort();
 
 		var pathname = decodeURIComponent(window.location.pathname).replace("/","")
-		buildPage(pathname,sites);
+		buildInfoGridPage("content",pathname,sites);
 	},"JSON"); //end webRequest
 }; //end window.onload
 
-function buildPage(name,sites) {
-	deleteElement("wrapper")
-	addElement("content","","","br");
-	addElement("content","","grid-container","","","","","","","","","wrapper");
-	if (name == "") {
-		buildGridPage("wrapper",sites);
-	} else {
-		for (let site of sites) {
-			if (site.name == name) {
-				buildInfoPage("wrapper",site);
-			}
-		}
-	};// end if name
-}
 
 
