@@ -395,10 +395,10 @@
 		"Scales to meet the specified read and write (per second) capacities.",
 		"Data stored as 3 copies on SSDs in 3 regions.",
 		"Standard-Infrequent Access (Standard-IA) table class",
-		"WRU: Write Request Units (On-Demand) - 1 write upto 1 KB - larger writes consume more units.",
-		"WCU: Write Capacity Units (Provisioned) - 1 write/second upto 1 KB - charged regardless of use. A transactional write is 2 WCUs.",
-		"RRU: Read Request Units (On-Demand) - 1 read upto 4 KB - larger reads consume more units.",
-		"RCU: Read Capacity Units (Provisioned) - 1 strongly-consistent read/second upto 4 KB - charged regardless of use. A transactional read is 2 RCUs, and an eventually consistent read is 0.5 RCUs.",
+		"WRU: Write Request Units (On-Demand) - 1 write up to 1 KB - larger writes consume more units.",
+		"WCU: Write Capacity Units (Provisioned) - 1 write/second up to 1 KB - charged regardless of use. A transactional write is 2 WCUs.",
+		"RRU: Read Request Units (On-Demand) - 1 read up to 4 KB - larger reads consume more units.",
+		"RCU: Read Capacity Units (Provisioned) - 1 strongly-consistent read/second up to 4 KB - charged regardless of use. A transactional read is 2 RCUs, and an eventually consistent read is 0.5 RCUs.",
 		"Provisioned Reads, one RCU is one strongly consistent read per second, two RCUs for each transactional read per second, and one-half of an RCU for each eventually consistent read per second (up to 4 KB). ",
 		"Global Tables let you select numerous AWS regions to replicate data into."
     ],
@@ -760,7 +760,7 @@
 		["Prev","200 MB/s, 1.3 GB/s burst","$290","$145"],
 		["SSD","250 MB/s","$210","$105"],
 		["SSD","500 MB/s","$340","$170"],
-		["SSD","1,000 MB/s","$600","$300"]
+		["SSD","1k MB/s","$600","$300"]
 	]
   },
   {
@@ -816,7 +816,10 @@
 	  "Can add tables manually, by schema, or by crawler. (Can 'manually' be automated by CLI/API?)",
 	  "Connections can load data into other databases which are defined in the Data Catalog.",
 	  "Jobs are ETL agents that run from either a schedule or external triggers.",
-	  "Glue Dev Endpoints are an abstracted cluster to test and develop scripts against. Pricing is around $50/day and $1k/month"
+	  "Glue Dev Endpoints are an abstracted cluster to test and develop scripts against. Pricing is around $50/day and $1k/month",
+	"Data Firehose loads data into other datastores, like Glue.",
+	"Glue is recommended for complex ETL, including joining streams, and partitioning the output in S3 based on the data content.",
+	"Kinesis Data Firehose is recommended when your use cases focus on data delivery and preparing data to be processed after it is delivered."
     ]
   },
   {
@@ -1021,7 +1024,7 @@
 		["Tier","Plus","Pro"],
 		["Monthly cost","$19.99/month","$29.99/month"],
 		["Inherits","Basic+","Plus+"],
-		["Rows/workbook","10,000","100,000"],
+		["Rows/workbook","10k","100k"],
 		["Team members beyond 20","$9.99/month","$19.99/month"],
 		["Other features","IAM Identity Center",""]
 	],
@@ -1061,17 +1064,34 @@
     ]
   },
   {
-    "name": "IOT",
+    "name": "IoT",
 	"useCase":"Suite of tools to build, deploy, connect, control, and analyze IoT devices.",
-	"Free Tier":[],
+	"Core Free Tier":[
+		"2,250k minutes of connection.",
+		"500k messages.",
+		"225k Registry or Device Shadow operations.",
+		"250k rules triggered and 250k actions executed."
+	],
+	"Free Tier":[
+		"Device Management: 50 remote actions per month."
+	],
 	"Paid Tier":[],
+	"Core":[
+		["Messaging","metered on","rate "],
+		["MQTT and HTTP","million messages","$1.00 to $0.70."],
+		["LoRaWAN","million messages","$2.30 to $1.20."],
+		["LoRaWAN FUOTA","task","$0.006 to $0.003"],
+		["Rules Engine","million rules triggered","Rules","$0.15"],
+		["Rules Engine","million actions executed","Actions","$0.15"]
+	],
     "Ownership": "Amazon",
 	"Website":"https://aws.amazon.com/iot/",
 	"Segment":"Edge Device Administration",
 	"Type":"SaaS",
     "Device software": [
       "FreeRTOS - Real-time operating system for microcontrollers",
-      "Greengrass - Build, deploy, and manage applications.",
+      "Greengrass - Build, deploy, and manage applications. $0.16 per month for up to 10k devices, contact for quote for more.",
+
       "ExpressLink - Quickly transform any embedded device into an IoT–connected device with minimal design effort using these hardware modules.",
       "EduKit - Learn how to build applications with reference hardware, guides, and example code."
     ],
@@ -1100,7 +1120,7 @@
 		"Data stored, per GB-month (beyond 24 hours, up to 7 days): $0.10",
 		"Data stored, per GB-month (beyond 7 days): $0.023"
 	],
-	"Paid Tier - Firehose":[
+	"Paid Tier - Data Firehose":[
 		"Ingestion, per GB: from $0.029 to $0.02",
 		"Format Conversion, per GB: $0.018",
 		"Processed to VPC, per GB : $0.01",
@@ -1112,7 +1132,9 @@
     "Ownership": "Amazon",
     "Type": "PaaS",
 	"Notes":[
-		"Data Firehose loads data into other datastores."
+		"Data Firehose loads data into other datastores, like Glue.",
+		"Glue is recommended for complex ETL, including joining streams, and partitioning the output in S3 based on the data content.",
+		"Kinesis Data Firehose is recommended when your use cases focus on data delivery and preparing data to be processed after it is delivered."
 	]
   },
   {
@@ -1121,7 +1143,7 @@
 	"Free Tier": "1 million tables of S3 storage and 1 million read requests . ($2 value)",
 	"Paid Tier":[
 		"$2.25 per TB of data scanned by Data Filter and/or processed by Storage Optimizer each month",
-		"$1.00 per 100,000 S3 objects stored each month",
+		"$1.00 per 100k S3 objects stored each month",
 		"$1.00 per million read requests each month"
 	],
     "Website": "https://aws.amazon.com/lake-formation/",
@@ -1133,7 +1155,7 @@
     "useCase": "Serverless Functions - upload code and it runs without provisioning servers or architecture.",
     "Free Tier": [
 		"1 million requests per month",
-		"400,000 GB-seconds (111 GB-hours) of compute time per month"
+		"400k GB-seconds (111 GB-hours) of compute time per month"
 	],
 	"Paid Tier":[
 		"Arm Compute from $0.0000133334 to $0.0000106667 per GB-second ($0.0008 to $0.00064 per minute).",
@@ -1157,7 +1179,7 @@
     ],
     "Notes": [
       "Code packages are called Lambda Functions, regardless of if they contain any software functions.",
-      "Adjustable duration timeout upto 15 min and memory size up to 3008 MB.",
+      "Adjustable duration timeout up to 15 min and memory size up to 3008 MB.",
       "Good fit for short-running tasks where you don't need to customize the OS or environment. For longer than 15 minutes, more RAM, or a custom OS environment, consider Fargate/ECS",
       "Can be triggered from SDK or multiple services (S3, API Gateway, DynamoDB, etc). Function URLs allow direct Internet access to trigger a Lambda function - an API Gateway and Route53 redirect are no longer needed.",
       "Use no VPC by default, but can use a VPC to interact with your other services, like RDS.",
@@ -1182,8 +1204,8 @@
     "name": "Lex",
     "useCase": "Build chatbots with conversational AI",
 	"Free Tier":[
-		"5,000 speech requests or speech intervals. ($20 value)",
-		"10,000 text requests. ($7.50 value)"
+		"5k speech requests or speech intervals. ($20 value)",
+		"10k text requests. ($7.50 value)"
 	],
 	"Paid Tier":[
 		"$0.004 per speech request",
@@ -1199,18 +1221,18 @@
 	]
   },
   {
-    "name": "Amazon Kendra",
+    "name": "Kendra",
     "useCase": "ML-powered search.",
 	"Free Tier": "750 hours of Developer Edition in the first 30 days. ($843.75 value)",
-	"Paid Tier":[
+	"(table)Paid Tier":[
 		["Edition","Developer","Enterprise"],
 		["Document Storage","10k","100k"],
 		["Max Queries Per Day","4k","8k"],
 		["Data Sources","5","50"],
 		["Availability Zones","1","3"],
 		["Price per hour (month)","$1.125 ($810)","$1.40 ($1,008)"],
-		["Additional 100,000 docs","N/A","$0.7 per hour. ($504/month)"],
-		["Additional 8,000 queries per day.","N/A","$0.7 per hour. ($504/month)"],
+		["Additional 100k docs","N/A","$0.7 per hour. ($504/month)"],
+		["Additional 8k queries per day.","N/A","$0.7 per hour. ($504/month)"],
 		["Connector Usage per document scanned","$0.000001","$0.000001"],
 		["Connector Usage each hourly when syncing","$0.35","$0.35"]
 	],
@@ -1368,10 +1390,10 @@
     "name": "QLDB",
     "useCase": "Quantum Ledger",
 	"Paid Tier":[
-		"Write I/Os": "$0.70 per 1 million requests",
-		"Read I/Os": "$0.136 per 1 million requests",
-		"Journal Storage Rate": "$0.03 per GB-month",
-		"Indexed Storage Rate": "$0.25 per GB-month"
+		"Write I/Os: $0.70 per 1 million requests",
+		"Read I/Os: $0.136 per 1 million requests",
+		"Journal Storage Rate: $0.03 per GB-month",
+		"Indexed Storage Rate: $0.25 per GB-month"
 	],
     "Ownership": "Amazon",
     "Segment": "Blockchain DB",
@@ -1402,12 +1424,12 @@
 		["Geo DNS and Geoproximity","$0.70","$0.35"],
 		["IP-Based Routing","$0.80","$0.40"],
 		["Recursive","$0.40","$0.20"],
-		["DNS Firewall","$0.60","$0.40"],
+		["DNS Firewall","$0.60","$0.40"]
     ],
     "(table)Query rates": [
-"Health Checks	AWS Endpoints	Non-AWS Endpoints"
-"Basic Health Checks	$0.50* per health check / month	$0.75 per health check / month"
-"Optional health checks:	$1.00 / month per optional feature	$2.00 / month per optional feature"
+		["Health Checks","AWS Endpoints","Non-AWS Endpoints"],
+		["Basic Health Checks","$0.50* per health check / month","$0.75 per health check / month"],
+		["Optional health checks:","$1.00 / month per optional feature","$2.00 / month per optional feature"]
 	],
     "Ownership": "Amazon",
     "Segment": "DNS",
@@ -1485,33 +1507,65 @@
     "name": "Redshift",
     "useCase": "Analytics data store (shift away from Oracle) - dump multiple data sets in one place.",
 	"Free Tier":[
-		"750 hours per month for 2 months of dc2.large compute time, for first time users..",
-		"$300 credit with a 90-day expiration date, for first time users."
+		"750 hours per month for 2 months of dc2.large compute time, for first time users.",
+		"Serverless gives a $300 credit with a 90-day expiration date, for first time users.",
+		"Leader node in multi-node configuration.",
+		"Concurrency scaling and Redshift Spectrum are both included with Redshift Serverless.",
+		"Scheduled snapshots can be retained for a maximum of 35 days."
 	],
 	"Paid Tier":[
-		""
+		"Reserved Instance: Saves about 20% to 30% over on-demand.",
+		"ML cells from $20 to $7.",
+		"Spectrum: $5.00 per terabyte of data scanned",
+		"Manual snapshots you take using the console, API, or CLI."
+	],
+	"Managed Storage (RMS)":[
+		"Starts with your data on large SSDs in each RA3 node, backed up to S3. If the data in a node grows beyond the size of the SSDs, RMS offloads that data to S3. This allows scaling data warehouse capacity without adding more compute nodes.",
+		"Data storage fees are the same regardless of storage type.",
+		"Pricing: $0.024 per GB/month."
+	],
+	"Compute Types":[
+		"Dense Compute (DC2) uses in-cluster SSDs for best performance, and is included in compute billing.",
+		"Independent Storage (RA3) allows choosing storage types and is recommended for datasets larger than 1 TB. Data stored is part of RMS and is billed at RMS rates.",
+		"DC2 backups and RA3 manual cluster snapshots are stored externally in S3 and are billed at standard S3 rates."
+	],
+	"(table)Compute Pricing":[
+		["Class","Gen","vCPU","ECU","Memory GiB","Storage TB","Storage Class","I/O GB/s","Price per hour"],
+		["dc1.large","Prev","2","7","15","0.16","SSD","0.20","$0.25"],
+		["dc2.large","Current","2","N/A","15","0.16","SSD","0.60","$0.25"],
+		["ds1.xlarge","Prev","2","4.4","15","2","HDD","0.30","$0.85"],
+		["ds2.xlarge","Prev","4","14","31","2","HDD","0.40","$0.85"],
+		["ra3.xlplus","Current","4","N/A","32","32","RMS","0.65","$1.086"],
+		["ra3.4xlarge","Current","12","N/A","96","128","RMS","2.00","$3.26"],
+		["dc1.8xlarge","Prev","32","104","244","2.56","SSD","3.70","$4.80"],
+		["dc2.8xlarge","Current","32","N/A","244","2.56","SSD","7.50","$4.80"],
+		["ds1.8xlarge","Prev","16","35","120","16","HDD","2.40","$6.80"],
+		["ds2.8xlarge","Prev","36","116","244","16","HDD","3.30","$6.80"],
+		["ra3.16xlarge","Current","48","N/A","384","128","RMS","8.00","$13.04"]
+	],
+	"Serverless":[
+		"Recovery points that are less than 24 hours old are free, but beyond 24 hours incur RMS charges.",
+		"Point in time restore to the last 24 hours at a 30 min granularity is free.",
+		"Capacity is measured in Redshift Processing Units (RPUs): $0.36 per RPU hour.",
+		"RPU-hours are billed per-second, with a 60-second minimum.",
+		"Base and Max performance settings can be used to control data warehouse performance and costs.",
+		"Base: specifies minimum requirements in RPUs, from 32 to 512 RPUs in units of 8. Increasing can improve data processing and ETL job performance, especially for bigger data.",
+		"Max: specifies maximum requirements in RPU-hours per day/week/month. Increasing can improve overall throughput, for high concurrency.",
+		"Primary storage capacity is billed as Redshift Managed Storage (RMS)."
 	],
     "Encryption": "KMS or CloudHSM",
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/redshift/",
     "Type": "PaaS",
-    "Segment": "Data Warehouse",
-    "BI(g) Data warehousing": [
-      "Can handle petabytes of data. Data in a warehouse is structured.",
-      "Columnar Store OLAP DB that takes SQL-like queries.",
-      "Can ingest data from S3, EMR, DynamoDB, or multiple sources on remote hosts.",
-      "Limited to single-AZ.",
-      "Single-node or multi-node (clustered)."
-    ],
+    "Segment": "BI(g) Data Warehouse",
     "Notes": [
-      "Each node holds 160 GB.",
-      "Multi-node has a leader node and upto 128 compute nodes. Leader node is free.",
-      "Two node types: Dense Compute and Dense Storage",
+      "Columnar Store OLAP DB that takes SQL-like queries.",
+      "Can ingest petabytes of data from S3, EMR, DynamoDB, or multiple sources on remote hosts.",
+      "Limited to single-AZ.",
+      "Single-node or multi-node (clustered). Each node holds 160 GB. Multi-node has up to 128 compute nodes.",
       "Attempts 3 backup copies: Original, Compute, S3.",
-      "Uses sequential HDD caching.",
-      "Backup retention default is 1 day, can be set up to 35 days.",
+      "Backup retention default is 1 day, with maximum of 35 days.",
       "Can asynchronously backup snapshots to another region's S3 bucket.",
-      "Uses massively parallel processing (MPP) to distribute queries and data.",
       "Samples data to create a schema for an empty table."
     ]
   },
@@ -1519,37 +1573,113 @@
     "name": "Registry of Open Data",
     "useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc.",
     "Ownership": "Amazon",
+    "Website": "https://registry.opendata.aws/",
     "Free Tier": "Full service",
     "Type": "SaaS",
-    "Segment": "Open Data"
+    "Segment": "Open Data",
+	"Notes":["All datasets are also discoverable on Data Exchange"]
   },
   {
     "name": "Rekognition",
     "useCase": "Image classification API",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier Year":[
+		"Analyze 5k images per month, in Group 1 and Group 2 APIs. ($5 value)",
+		"Store 1k face metadata objects ($0.01 value) per month.",
+		"1k minutes of video analysis per month, including Label Detection, Content Moderation, Face Detection, Face Search, Celebrity Recognition, Text Detection and Person Pathing. (Up to $120 value per month)"
+	],
+	"Free Tier": "10 training hours ($10 value) and 4 inference hours ($16 value) per month for 3 months.",
+	"Paid Tier":[
+		"Image analysis from $0.001 to $0.0004 per image for Group 1 APIs, and $0.001 to $0.00025 per image for Group 2 APIs.",
+		"Face metadata storage: $0.00001/face metadata per month",
+		"Streaming Label detection: $0.00817/min ($0.49/hr)",
+		"Stored Video Label Detection: $0.10/min",
+		"Streaming Face search: $0.12/min",
+		"Stored Video Face Detection: $0.10/min",
+		"Stored Video Content Moderation: $0.10/min",
+		"Stored Video Text Detection: $0.10/min",
+		"Stored Video Celebrity Recognition: $0.10/min",
+		"Stored Video Face Search: $0.10/min",
+		"Stored Video Person Pathing: $0.10/min",
+		"Video Shot Detection: $0.05/min",
+		"Video Technical Cues Detection (silent black frames, credits, content, and more): $0.05/min",
+		"Custom Labels Training (Development): $1.00/hr",
+		"Custom Labels Inference (Production): $4.00/hr"
+	],
+    "Website": "https://aws.amazon.com/rekognition/",
     "Ownership": "Amazon",
     "Type": "PaaS"
   },
   {
-    "name": "Robomaker",
+    "name": "RoboMaker",
     "useCase": "Robot simulators",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":"25 SU-hours without incurring any charges during the first month. ($10 value)",
+	"Paid Tier":[
+		"1 Simulation Unit, or SU (1 vCPU and 2 GB of memory): $0.40 per hour",
+		"A GPU Unit (GU) provides 1 GPU of indeterminate quality (Is it a GTX 3080 or an HD 2500?): $1.50 per hour",
+		"World Generation: $1.50 per world",
+		"World Export: $5.00 per world",
+		"The RoboMaker development environment runs on Cloud9 and is billed at the underlying EC2 and EBS rates."
+	],
     "Ownership": "Amazon",
-    "Type": "PaaS"
+    "Website": "https://aws.amazon.com/robomaker/",
+    "Type": "PaaS",
+	"Notes":[
+		"SU and GU hours are billed per minute."
+	]
   },
   {
 	"name": "S3",
     "useCase": "Storage drives in the cloud",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"5 GB of Standard storage. ($1.15 value)",
+		"20k GET Requests/month",
+		"2k PUT, COPY, POST, or LIST Requests/month",
+		"100 GB of Data Transfer Out/month"
+	],
+	"Paid Tier":[
+		"Intelligent Tiering Monitoring and Automation (Objects > 128 KB): $0.0025 per 1k objects",
+		"Object Lambda: $0.005 per GB returned",
+		"Each Provisioned Capacity Unit (PCU) can provide at least three expedited retrievals every five minutes and up to 150 MB/s of retrieval throughput: $100/month"
+	],
+	"(table)Storage":[
+		["Brand","Class","Tier","Monthly per 1GB","1GB scanned","1GB returned","1GB retrieval","1k PUT, COPY, POST, LIST","1k GET, SELECT, other verbs","1k Lifecycle Transitions","1k Retrievals"],
+		["S3","Standard","Standard","from $0.023 to $0.021","$0.002","$0.0007","n/a","$0.01","$0.00","n/a","n/a"],
+		["S3","Standard","Infrequent","$0.0125","$0.002","$0.01","$0.01","$0.01","$0.00","$0.01","n/a"],
+		["S3","One AZone","Infrequent","$0.01","$0.002","$0.01","$0.01","$0.01","$0.00","$0.01","n/a"],
+		["S3","Intelligent Tiering","Frequent","from $0.023 to $0.021","$0.002","$0.0007","n/a","$0.01","$0.00","$0.01","n/a"],
+		["S3","Intelligent Tiering","Infrequent","$0.0125","$0.002","$0.0007","n/a","$0.01","$0.00","$0.01","n/a"],
+		["S3","Intelligent Tiering","Archive Instant","$0.004","$0.002","$0.0007","n/a","$0.01","$0.00","$0.01","n/a"],
+		["S3","Intelligent Tiering","Archive","$0.0036","$0.002","$0.0007","$0.03","$0.01","$0.00","$0.01","$10.00"],
+		["S3","Intelligent Tiering","Deep Archive","$0.00099","$0.002","$0.0007","n/a","$0.01","$0.00","$0.01","n/a"],
+		["Glacier","Instant Retrieval","Standard","$0.004","$0.002","$0.03","$0.03","$0.02","$0.01","$0.02","n/a"],
+		["Glacier","Flexible Retrieval","Expedited","$0.004","$0.02","$0.03","$0.03","$0.03","$0.00","$0.03","$10.00"],
+		["Glacier","Flexible Retrieval","Standard","$0.004","$0.008","$0.01","$0.01","$0.03","$0.00","$0.03","$0.05"],
+		["Glacier","Deep Archive","Standard","$0.0036","$0.001","$0.0025","$0.02","$0.05","$0.00","$0.05","$0.10"],
+		["Glacier","Deep Archive","Bulk","$0.00099","n/a","n/a","$0.00","$0.05","$0.00","$0.05","$0.03"]
+	],
+	"Replication":[
+		"Cross-region replication (CRR) and Same-region replicaiton (SRR) incur these costs: destination storage, GET and PUT requests, and data transfer for CRR.",
+		"Replication Time Control data transfer: $0.015 per GB",
+		"Replication Batch Jobs: $0.25 each",
+		"Replication Batch Objects: $1.00 per million objects processed",
+		"If your S3 Batch Operations job is S3 Batch Replication, you may optionally pay for an AWS-generated manifest containing a list of objects for Batch Operations to operate on.",
+		"Replication Batch Manifest (optional): $0.015 per 1 million objects in the source bucket"
+	],
+	"Storage analytics and insights": [
+		"Inventory: $0.0025 per million objects listed",
+		"Analytics Storage Class Analysis: $0.10 per million objects monitored per month",
+		"Object Tagging: $0.01 per 10,000 tags per month",
+		"Storage Lens free metrics: $0.00",
+		"Storage Lens advanced metrics and recommendations: $0.20 per million objects monitored per month, plus a dashboard fee."
+	],
+	"Batch Operations":[
+		"Jobs: $0.25 per job",
+		"Objects: $1.00 per million object operations performed"
+	],
+    "Website": "https://aws.amazon.com/s3/",
     "Ownership": "Amazon",
     "Segment": "Persistent Storage",
-    "Type": "SaaS",
-    "S3-storageClasses": [],
-    "S3-transfer": [],
-    "S3-snowball": []
+    "Type": "SaaS"
   },
   {
     "name": "Sagemaker",
@@ -1579,26 +1709,40 @@
     ]
   },
   {
-    "name": "Serverless repos",
-    "useCase": "Lambda Marketplace",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "name": "Serverless App Repo",
+    "useCase": "Open-Source Lambda Marketplace",
+	"Free Tier": "Full Service - only pay for the resources used.",
+    "Website": "https://aws.amazon.com/serverless/serverlessrepo/",
     "Ownership": "Amazon",
     "Type": "SaaS"
   },
   {
     "name": "SES",
     "useCase": "Simple Email Service",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"62k messages per month (2k or more per day) sent from EC2 or Lambda.",
+		"1k emails received."
+	],
+	"Paid Tier":[
+		"$0.10 for every 1k emails sent or received beyond the free tier.",
+		"$0.12 for each GB of attachments.",
+		"$0.09 for every 256 kilobytes of incoming email data."
+	],
+    "Website": "https://aws.amazon.com/ses/",
     "Ownership": "Amazon",
     "Type": "SaaS"
   },
   {
     "name": "SimpleDB",
     "useCase": "Basic NoSQL DB.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"25 machine hours ($3.50 value)",
+		"1 GB of storage ($0.25 value)"
+	],
+	"Paid Tier":[
+		"$0.14 per machine hour.",
+		"$0.25 per GB-month."
+	],
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Segment": "NoSQL Document DB"
@@ -1660,7 +1804,7 @@
       "Storage Cost: S3 rate"
     ],
     "FSx Gateway": [
-      "Gateway Cost: $0.69 per Hour",
+      "Gateway Cost: $0.69",
       "Storage Cost: FSx for Windows rate"
     ],
     "Tape Gateway": [
@@ -1737,12 +1881,7 @@
     "Encryption": "Unsure",
     "Ownership": "Amazon",
     "Segment": "Networking Isolation",
-    "Type": "IaaS",
-    "VPC-endpoints": [],
-    "VPC-flowLogs": [],
-    "VPC-nacls": [],
-    "VPC-nat": [],
-    "VPC-securityGroups": []
+    "Type": "IaaS"
   },
   {
     "name": "Cloud Audit Academy",
@@ -1912,8 +2051,14 @@
   {
     "name": "Business One",
     "useCase": "ERP specifically designed for small and medium-size businesses.",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":"Free demo",
+	"Paid Tier":[
+		"Contact for quote.",
+		"$56 per user per month (through Reseller) for a Limited License. Choose from CRM, Logistics, or Financial.",
+		"$108 per user per month (through Reseller) for a Professional License. Includes CRM, Logistics, and Financial."
+	],
+	"Website": "https://www.sap.com/products/erp/business-one.html",
+	"Reseller": "https://www.clientsfirst-us.com/sap-business-one-pricing/",
     "Segment": "ERP",
     "Type": "Software",
     "Ownership": "SAP"
@@ -1921,12 +2066,13 @@
   {
     "name": "Sage Intacct",
     "useCase": "ERP specifically designed for the construction industry.",
-	"Free Tier":[],
-	"Paid Tier":[],
-	"Segment": "ERP",
-	"Type":"SaaS",
+	"Free Tier":"Free demo and Q&A session.",
+	"Paid Tier":"Contact for quote.",
     "Ownership": "SGPYY $35.97 (8/15/2022)",
-    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Sage-EI_IE1150.11,15.htm"
+    "Website": "https://www.sageintacct.com/",
+    "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Sage-EI_IE1150.11,15.htm",
+	"Segment": "ERP",
+	"Type":"SaaS"
   },
   {
     "name": "NetSuite",
@@ -1936,8 +2082,7 @@
 	"Ownership":"Oracle",
 	"Website":"https://www.netsuite.com/portal/products.shtml",
 	"Segment":"ERP",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Unanet GovCon",
@@ -1947,8 +2092,7 @@
 	"Ownership":"Unanet",
 	"Website":"https://unanet.com/erp-for-govcon/overview",
 	"Segment":"ERP",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "TallyPrime",
@@ -1958,8 +2102,7 @@
 	"Ownership":"",
 	"Website":"https://tallysolutions.com/us/tally-prime/",
 	"Segment":"ERP",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "S/4Hana Cloud",
@@ -1969,8 +2112,7 @@
     "Ownership": "SAP",
 	"Website":"https://www.sap.com/products/erp/s4hana-erp.html",
 	"Segment":"ERP",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Total ETO",
@@ -1981,8 +2123,7 @@
 	"Website":"https://totaleto.com/",
 	"Crunchbase":"https://www.crunchbase.com/organization/total-eto",
 	"Segment":"ERP",
-	"Type":"Software",
-	"Notes":[]
+	"Type":"Software"
   },
   {
     "name": "MIE Trak Pro",
@@ -2034,8 +2175,7 @@
     "Ownership": "SAP",
 	"Website":"https://www.sap.com/products/erp/business-bydesign.html",
 	"Segment":"ERP",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Kinetic",
@@ -2046,8 +2186,7 @@
 	"Website":"https://www.epicor.com/en-us/industry-productivity-solutions/manufacturing/platforms/kinetic/",
     "Gartner": "https://www.gartner.com/reviews/market/cloud-erp-for-product-centric-enterprises/vendor/epicor/product/epicor-kinetic",
 	"Segment":"ERP",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "JupiterOne",
@@ -2060,8 +2199,7 @@
 	"Ownership":"Pre-IPO",
 	"Website":"https://www.jupiterone.com/",
 	"Segment":"Security awareness",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Snowflake",
@@ -2094,8 +2232,7 @@
 	"Website":"https://plextrac.com/",
 	"PitchBook":"https://pitchbook.com/profiles/company/342176-68",
 	"Segment":"Security Testing",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "onXmaps",
@@ -2108,8 +2245,7 @@
 	"Ownership":"Private",
 	"Website":"https://www.onxmaps.com/",
 	"Segment":"Specialized maps of Earth.",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Qualys",
@@ -2119,8 +2255,7 @@
 	"Ownership":"QLYS $152.50 (8/15/2022)",
 	"Website":"https://www.qualys.com/",
 	"Segment":"Security awareness",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Apica",
@@ -2143,8 +2278,7 @@
 	"Ownership":"SNYK Pre-IPO",
 	"Website":"https://snyk.io/",
 	"Segment":"Testing",
-	"Type":"Software",
-	"Notes":[]
+	"Type":"Software"
   },
   {
     "name": "Zeck",
@@ -2170,8 +2304,7 @@
 	"Crunchbase":"https://www.crunchbase.com/organization/rapidapi",
 	"Website":"https://rapidapi.com/",
 	"Segment":"Open Data",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Secure",
@@ -2197,7 +2330,9 @@
 		"HSM integration",
 		"Out-of-cluster certificate signing",
 		"Policy engine integration"
-	],
+	]
+  },
+  {
 	"name":"Jetstack",
 	"useCase":"Jetstack",
 	"Free Tier":[],
@@ -2205,8 +2340,7 @@
 	"Ownership":"Jetstack",
 	"Website":"https://www.jetstack.io/jetstack-secure/",
 	"Segment":"Orchestration",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Rapid7",
@@ -2216,8 +2350,7 @@
 	"Ownership":"RPD $70.33 (8/15/2022)",
 	"Website":"https://www.rapid7.com/",
 	"Segment":"Security awareness",
-	"Type":"SaaS",
-	"Notes":[]
+	"Type":"SaaS"
   },
   {
     "name": "Autobox",
@@ -2265,8 +2398,8 @@
     "useCase": "Provision your servers and manage configuration",
     "Free Tier": "No server limit, but no permissions (all users are admins).",
     "Paid Tier": [
-      "Basic: $1,995/yr for upto 100 servers.",
-      "Enterprise: $9,995/yr for upto 100 servers. Includes HA clustering, SAML SSO, and configuration drift tools."
+      "Basic: $1,995/yr for up to 100 servers.",
+      "Enterprise: $9,995/yr for up to 100 servers. Includes HA clustering, SAML SSO, and configuration drift tools."
     ],
     "Ownership": "Inedo",
     "Website": "https://inedo.com/otter",
@@ -2497,8 +2630,7 @@
 	"Ownership":"Private",
 	"Website":"https://www.milli.agency/",
 	"Segment":"Brand engineering",
-    "Type": "SaaS",
-	"Notes":[]
+    "Type": "SaaS"
   },
   {
     "name": "CrowdStrike",
@@ -2555,5 +2687,20 @@
 	"Free Tier":[],
 	"Paid Tier":[],
     "Type": "SaaS"
+  },
+  {
+    "name": "West Monroe",
+    "useCase": "MSP?",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Type": "Infrastructure"
+  },
+  {
+    "name": "Linode",
+    "useCase": "Cloud Host.",
+	"Free Tier":[],
+	"Paid Tier":[],
+    "Segment": "Cloud Host.",
+    "Type": "IaaS"
   }
 ]
