@@ -735,7 +735,7 @@
 		["WinFS","$0.05","$0.025","$0.05","$0.025"],
 		["OpenZFS","N/A","N/A","$0.05","$0.025"],
 		["Lustre","N/A","N/A","$0.05","$0.025"],
-		["Lustre","HDD","Backup Storage","$0.050 per GB-month","$0.025 per GB-month"]
+		["Lustre","HDD","Backup Storage","$0.050","$0.025"]
 	],
 	"(table)SSD IOPS per IOPS-month":[
 		["FileSystem","Multi-AZ","Multi-AZ 50% Dedup","Single-AZ","Single-AZ 50% Dedup"],
@@ -748,7 +748,7 @@
 		["Ontap","write","$0.005","$0.005","$0.005","$0.005"]
 	],
 	"(table)Lustre throughput rate per TiB":[
-		["Type","Rate","Per TiB/month","-AZ 50% Deduplication"],
+		["Type","Rate","Per TiB/month","50% Deduplication"],
 		["HDD","12 MB/s","$25","$13"],
 		["HDD w SSD Cache","12 MB/s","$41","$21"],
 		["HDD","40 MB/s","$83","$42"],
@@ -847,8 +847,8 @@
       ["Difficulty","OS","Languages","Path"],
       ["Easy","Linux","Interpreted / JIT (Java, PHP, Node, etc)","Use arm64 or Multi-Arch image."],
       ["Medium","Linux","Compiled (C/C++, Python, Go)","Cross-compile or other fixes during build."],
-      ["Hard","Windows",".NET","migrate to .NET Core on Linux."],
-      ["Uncompleted","Windows","Windows Server applications can't yet compile to arm64."]
+      ["Hard","Windows",".NET","Migrate to .NET Core on Linux."],
+      ["Uncompleted","Windows","Windows Server","Applications can't yet compile to arm64."]
     ],
     "video": "<iframe width='560' height='315' src='https://www.youtube.com/embed/iwSQRLzDwHA' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
   },
@@ -858,7 +858,7 @@
 	"Free Tier":"Generally available as an EC2 AMI.",
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/bottlerocket/",
-    "Github": "https://github.com/bottlerocket-os/bottlerocket#bottlerocket-os",
+    "GitHub": "https://github.com/bottlerocket-os/bottlerocket#bottlerocket-os",
     "Type": "SaaS",
     "Segment": "Container image"
   },
@@ -1064,49 +1064,100 @@
     ]
   },
   {
-    "name": "IoT",
+    "name": "IoT (AWS)",
 	"useCase":"Suite of tools to build, deploy, connect, control, and analyze IoT devices.",
+    "Notes": [
+		"Analytics Compute Unit (ACU) provides 4 vCPU and 16 GB of memory."
+    ],
+    "Device software": [
+		"FreeRTOS - Real-time operating system for microcontrollers",
+		"Greengrass - Build, deploy, and manage applications.",
+		"ExpressLink - Quickly transform any embedded device into an IoT–connected device with minimal design effort using these hardware modules.",
+		"EduKit - Learn how to build applications with reference hardware, guides, and example code."
+    ],
+    "Connectivity and control services": [
+		"Core - Connect devices to without the need to provision or manage servers.",
+		"Device Defender - Continuously audit your configurations and secure your fleet of devices.",
+		"Device Management - Register, organize, monitor, and remotely manage your devices at scale",
+		"FleetWise (Preview) - Collect, transform, and transfer vehicle data to the cloud at scale."
+    ],
+    "Analytics services": [
+		"SiteWise - Collect and analyze industrial equipment data at scale",
+		"Events - Detect and respond to events from many sensors and applications",
+		"Analytics - Run analytics on volumes of data to support data-driven decisions",
+"TwinMaker - Create digital twins of real-world systems to optimize operations."
+    ],
+    "Ownership": "Amazon",
+	"Website":"https://aws.amazon.com/iot/",
+	"Segment":"Edge Device Administration",
+	"Type":"SaaS",
+	"Free Tier Year":[
+		"Events: 2,500 message evaluations per month.",
+		"Greengrass: 3 devices per month."
+	],
+	"Free Tier":[
+		"Analytics: up to 40 GB per analysis during execution",
+		"Device Defender Audit: For all the devices in your fleet for the first month",
+		"Device Defender Rules Detect: 1 million metric datapoints for the first month",
+		"Device Management - Device Jobs: 50 remote actions per month.",
+		"EduKit Service: Details hard to find, but page mentions many free projects.",
+		"Events: Up to 2 action triggers for each message evaluation.",
+		"ExpressLink: Full Service - just buy a hardware module.",
+		"FleetWise during preview",
+		"SiteWise Edge Data collection pack"
+	],
+	"Paid Tier":[
+		"1-Click: From $0.25 to $0.10 per month per device.",
+		"Device Defender Audit: from $0.0011 to $0.001 per device audited each month.",
+		"Device Defender Rules Detect: from $0.025 to $0.02 per 100K metric datapoints each month.",
+		"Device Defender ML Detect: from $2.00 to $0.10 per 100K metric datapoints each month.",
+		"Events - 1 million message evaluations: from $15.00 to $3.00 per ",
+		"Events Alarms: $0.10 per alarm per month",
+		"EduKit Core2 hardware module: $49.90.",
+		"ExpressLink hardware module: From $26.60 to $185, some are 'Contact for Quote'.",
+		"FleetWise: $0.60/month per vehicle and $1.75/million messages (5 KB threshold).",
+		"Greengrass: $0.16 per month for up to 10k devices, contact for quote for more."
+	],
+	"Analytics Free Tier year":[
+		"100 MB/month of data processed in Pipelines ($0.02 value)",
+		"10 GB of Processed Data Storage ($0.30 value)",
+		"10 GB of Raw Data Storage",
+		"10 GB/month of data queried. ($0.065 value)"
+	],
+	"Analytics Paid Tier":[
+		"$0.20 per GB of data processed.",
+		"$0.03 per GB of processed data stored.",
+		"$0.0065 per GB of data queried.",
+		"$0.36 per ACU-Hour, billed per second."
+	],
 	"Core Free Tier":[
 		"2,250k minutes of connection.",
 		"500k messages.",
 		"225k Registry or Device Shadow operations.",
 		"250k rules triggered and 250k actions executed."
 	],
-	"Free Tier":[
-		"Device Management: 50 remote actions per month."
+	"Core Paid Tier":[
+		"$1.00 to $0.70 for 1 million MQTT and HTTP messages",
+		"$2.30 to $1.20 for 1 million LoRaWAN messages",
+		"$0.006 to $0.003 for 1 million LoRaWAN FUOTA messages",
+		"$0.15 for 1 million Rules Engine rules triggered",
+		"$0.15 for 1 million Rules Engine actions executed"
 	],
-	"Paid Tier":[],
-	"Core":[
-		["Messaging","metered on","rate "],
-		["MQTT and HTTP","million messages","$1.00 to $0.70."],
-		["LoRaWAN","million messages","$2.30 to $1.20."],
-		["LoRaWAN FUOTA","task","$0.006 to $0.003"],
-		["Rules Engine","million rules triggered","Rules","$0.15"],
-		["Rules Engine","million actions executed","Actions","$0.15"]
+	"Device Management Paid Tier":[
+		"$0.10 per 1k Things Registered",
+		"$2.25 for 1 million Fleet Index Updates.",
+		"$0.05 per 10k Search queries.",
+		"Device Jobs: From $0.003 to $0.0015 per remote action per month. Contact for quote over 1 million remote actions per month.",
+		"$1.00 per Secure Tunnel opened."
 	],
-    "Ownership": "Amazon",
-	"Website":"https://aws.amazon.com/iot/",
-	"Segment":"Edge Device Administration",
-	"Type":"SaaS",
-    "Device software": [
-      "FreeRTOS - Real-time operating system for microcontrollers",
-      "Greengrass - Build, deploy, and manage applications. $0.16 per month for up to 10k devices, contact for quote for more.",
-
-      "ExpressLink - Quickly transform any embedded device into an IoT–connected device with minimal design effort using these hardware modules.",
-      "EduKit - Learn how to build applications with reference hardware, guides, and example code."
-    ],
-    "Connectivity and control services": [
-      "Core - Connect devices to without the need to provision or manage servers.",
-      "Device Defender - Continuously audit your configurations and secure your fleet of devices.",
-      "Device Management - Register, organize, monitor, and remotely manage your devices at scale",
-      "FleetWise (Preview) - Collect, transform, and transfer vehicle data to the cloud at scale."
-    ],
-    "Analytics services": [
-      "SiteWise - Collect and analyze industrial data at scale",
-      "Events - Detect and respond to events from many sensors and applications",
-      "Analytics - Run analytics on volumes of data to support data-driven decisions",
-      "TwinMaker - Create digital twins of real-world systems to optimize operations."
-    ]
+	"SiteWise Paid Tier":[
+		"$0.10 per alarm per month.",
+		"$1.00 per million messages per month.",
+		"$0.50 per million computations per month.",
+		"$0.00041667 per GB-hour or $0.010 per GB-day or $0.30 per GB-Month for data storage.",
+		"$10.00 per unique active Monitor user per month.",
+		"Edge Data processing pack: $200.00 per active gateway per month."
+	]
   },
   {
     "name": "Kinesis",
@@ -1454,8 +1505,65 @@
   {
     "name": "RDS",
     "useCase": "Relational Database Service",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "6 database flavors": [
+      "Aurora",
+      "MariaDB",
+      "MSSQL",
+      "MySQL",
+      "Oracle",
+      "PostgreSQL"
+    ],
+	"(table)Free Tier Year":[
+		["DB Engine","AZ","Instance Class","Hours/month"],
+		["MariaDB","Single","db.t2.micro; db.t3.micro; db.t4g.micro;","750"],
+		["MySQL","Single","db.t2.micro; db.t3.micro; db.t4g.micro;","750"],
+		["MSSQL Express","Single","db.t2.micro; ","750"],
+		["Oracle BYOL","Single","db.t2.micro; db.t3.micro;","750"],
+		["PostgreSQL","Single","db.t2.micro; db.t3.micro; db.t4g.micro;","750"]
+    ],
+	"Free Tier":[	
+		"20 GB of General Purpose (SSD) DB Storage",
+		"20 GB of backup storage for your automated database backups and any user-initiated DB Snapshots"
+	],
+	"Paid Tier":[
+		"On-Demand Instances: From $0.016 to $28.416 per hour.",
+		"Reserved Instances: From $0.008 to $17.741 per amortized hour.",
+		"General Purpose (SSD) Storage: $0.115 per GB-month",
+		"Provisioned IOPS (SSD) Storage Rate: $0.125 per GB-month",
+		"Provisioned IOPS Rate: $0.10 per IOPS-month",
+		"Magnetic Storage Rate: $0.10 per GB-month",
+		"Magnetic Storage I/O Rate: $0.10 per 1 million requests",
+		"Backup Storage: $0.095 per GB-month (past 100% of your storage in the region.)",
+		"Snapshots: $0.010 per GB"
+	],
+	"Aurora Paid Tier":[
+		"Serverless v2 Aurora Capacity Unit: $0.12 per ACU Hour",
+		"Serverless v1 Aurora Capacity Unit: $0.06 per ACU Hour",
+		"MySQL On-Demand from $0.041 to $13.92.",
+		"MySQL Reserved from $0.028 to $7.837.",
+		"PostgreSQL On-Demand from $0.073 to $13.92.",
+		"PostgreSQL Reserved from $0.049 to $9.060.",
+		"Storage Rate: $0.10 per GB-month",
+		"I/O Rate: $0.20 per 1 million requests",
+		"Backup Storage: $0.021 per GB-month",
+		"Backtrack: $0.012 per 1 million Change Records per hour back."
+	],
+	"(table)MSSQL Classes":[
+		["Class","# AZ","On-Demand/hr","RI / Amorted Hour"],
+		["Express","Single","From $0.044 to $0.35","From $0.026 to $0.221"],
+		["Web","Single","From $0.139 to $3.274","From $0.082 to $3.231"],
+		["Standard","Single","From $1.044 to $79.094","From $0.715 to $74.744"],
+		["Enterprise","Single","From $2.262 to $104.749","From $2.242 to $97.521"],
+		["Standard","Multi","From $2.088 to $158.189","From $1.564 to $149.488"],
+		["Enterprise","Multi","From $2.98 to $187.859","From $3.099 to $174.897"]
+	],
+	"(table)Oracle Classes":[
+		["Class","# AZ","OD+License","OD+BYOL","RI+License","RI+BYOL"],
+		["S1","Single","From $0.035 to $3.584","From $0.017 to $44.8358","N/A","N/A"],
+		["S2","Single","From $0.038 to $3.856","From $0.017 to $44.8358","From $0.022 to $2.428","From $0.024 to $4.532"],
+		["S1","Multi","From $0.07 to $7.168","From $0.034 to $89.6717","N/A","N/A"],
+		["S2","Multi","From $0.075 to $7.712","From $0.034 to $89.6717","From $0.044 to $4.532","From $0.022 to $2.428"]
+	],
     "Encryption At Rest": "KMS",
     "Encryption In Motion": "HTTPS",
     "Ownership": "Amazon",
@@ -1467,14 +1575,6 @@
     ],
     "Manual Snapshots": [
       "Can restore database from snapshot."
-    ],
-    "6 database flavors": [
-      "Aurora",
-      "MariaDB",
-      "MSSQL",
-      "MySQL",
-      "Oracle",
-      "PostgreSQL"
     ],
     "Aurora Notes": [
       "Fully-managed PostgreSQL or MySQL with scaling, HA, and fault tolerance.",
@@ -1668,7 +1768,7 @@
 	"Storage analytics and insights": [
 		"Inventory: $0.0025 per million objects listed",
 		"Analytics Storage Class Analysis: $0.10 per million objects monitored per month",
-		"Object Tagging: $0.01 per 10,000 tags per month",
+		"Object Tagging: $0.01 per 10k tags per month",
 		"Storage Lens free metrics: $0.00",
 		"Storage Lens advanced metrics and recommendations: $0.20 per million objects monitored per month, plus a dashboard fee."
 	],
@@ -1774,8 +1874,20 @@
   {
     "name": "SNS",
     "useCase": "Simple Notification Service",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"Free Tier":[
+		"1 million requests per month",
+		"1 million Mobile Push notifications.",
+		"1,000 Email/Email-JSON notifications.",
+		"100,000 HTTP/S notifications.",
+		"Deliveries to SQS Queues or Lambda. Data transfer rates apply."
+	],
+	"Paid Tier":[
+		"$0.50 per 1 million requests thereafter, 64 KB limit.",
+		"$0.50 per million Mobile Push notifications.",
+		"$2.00 per 100,000 Email/Email-JSON notifications",
+		"$0.60 per million HTTP/S notifications",
+		"$0.19 per million notifications into Kinesis Data Firehose"
+	],
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Notes": [
@@ -1826,9 +1938,9 @@
   },
   {
     "name": "STS",
-	"useCase": "",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"useCase": "Simple Token Service - a web service that enables you to request temporary, limited-privilege credentials for IAM users or authenticated federated users.",
+	"Free Tier":"Full Service",
+    "Website": "https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html",
     "Ownership": "Amazon",
     "Type": "PaaS",
     "Notes": [
@@ -1837,11 +1949,24 @@
   },
   {
     "name": "Transit Gateway",
-	"useCase": "",
-	"Free Tier":[],
-	"Paid Tier":[],
+	"useCase": "Easily connect VPCs, AWS accounts, and on-premises networks to a single gateway.",
+	"Paid Tier":[
+		"$0.05 per AWS Transit Gateway attachment.",
+		"$0.02 per GB of data processed."
+	],
     "Ownership": "Amazon",
-    "Segment": "Persistent Data Storage",
+    "Segment": "Data Logistics",
+    "Type": "IaaS"
+  },
+  {
+    "name": "VPN (AWS)",
+    "useCase": "Extend your on-premises networks to the cloud and securely access them from anywhere.",
+	"Free Tier":"Logging to CloudWatch only incurs CW and data transfer fees.",
+	"Paid Tier":"$0.05 per Site-to-Site VPN connection per hour. Plus data transfer fees.",
+    "Ownership": "Amazon",
+    "Website": "https://aws.amazon.com/vpn/",
+    "Client Download": "https://aws.amazon.com/vpn/client-vpn-download/",
+    "Segment": "Network connection.",
     "Type": "IaaS"
   },
   {
@@ -1856,14 +1981,13 @@
   {
     "name": "Trainium ML",
     "useCase": "Machine Learning ASICs can improve training speed while reducing costs.",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "Free Tier": "Contact to request access to Preview.",
+	"Notes":[
+		"Trainium ML is not a distinct service, but is the CPU type in the 'Trn1' instance class."
+    ],
     "Ownership": "Amazon",
-    "Segment": "ML",
-    "Type": "PaaS",
-    "Notes": [
-      "Training hardware Trn1"
-    ]
+    "Segment": "CPU",
+    "Type": "IaaS"
   },
   {
     "name": "VMWare Cloud",
@@ -1893,31 +2017,196 @@
     "Type": "IaaS"
   },
   {
-    "name": "AzureAD",
-    "useCase": "Serverless Active Directory",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "name": "Rollouts",
+    "useCase": "Kubernetes Progressive Delivery Controller.",
+	"Free Tier": "Full service",
+    "Ownership": "Argo Project",
+    "Website": "https://argoproj.github.io/argo-rollouts/",
+    "Segment": "Container orchestration",
+    "Type": "IaaS",
+	"Notes": [
+		"Grants much more flexibility over the traffic going to specific containers, allowing streamlined blue/green deployments, pre-deployment testing or configuration, and canary testing of a new version.",
+	]
+  },
+  {
+    "name": "Entra",
+    "useCase": "Serverless authentication and authorization.",
+	"Identity and access": [
+		"AzureAD: Identity and access management.",
+		"Key Vault: Store and access API keys, passwords, certificates, or cryptographic keys.",
+		"Permissions Management: Manage permissions for all user and workload identities across all major cloud infrastructures on a single, unified platform.",
+		"Verified ID: Create, issue, and verify credentials with identity verification.",
+		"Defender for Identity: Protect your identity security landscape."
+	],
+	"Cloud security": [
+		"Sentinel: SIEM - Build security operations with AI.",
+		"Defender for Office 365: Protect against threats like email compromise and credential phishing with automated attack investigation and remediation.",
+		"Defender for Cloud Apps: Elevate the posture and secure access of your cloud apps.",
+		"Defender Threat Intelligence: Protect from modern adversaries with a 360-degree view of threat exposure.",
+		"Defender for Cloud: Protect your multicloud and hybrid environments.",
+		"Defender External Attack Surface Management: Understand your security posture beyond the firewall.",
+		"Firewall: Cloud-native and intelligent network firewall security.",
+		"Web Application Firewall: Cloud-native web application firewall (WAF).",
+		"DDoS Protection: Protect from distributed denial of service (DDoS) attacks.",
+		"GitHub Advanced Security: Stay ahead of security issues and identify, remediate, and prevent vulnerabilities with GitHub."
+	],
+	"Endpoint security": [
+		"365 Defender: Stop attacks with cross-domain security and built-in AI.",
+		"Defender for Endpoint: Discover and secure Windows, macOS, Linux, Android, iOS, and network devices against sophisticated threats. In either Enterprise Mobility + Security E3 & E5 or included in MS365 E3 & E5.",
+		"Defender for IoT: Protect your Internet of Things (IoT) and operational technology (OT) devices with continuous asset discovery, vulnerability management, and threat detection.",
+		"Defender for Business: Enterprise-grade endpoint protection for small businesses (up to 300 employees).",
+		"Endpoint Manager: Get endpoint security, device management, and intelligent cloud actions in a unified management platform with Intune and Configuration Manager."
+	],
+	"Risk management and Privacy": [
+		"Insider Risk Management: Detect high-risk activity across your organization to quickly identify, investigate, and take action on insider risks and threats. Included in MS365 E5 Compliance.",
+		"Communication Compliance: Identify compliance risk and code-of-conduct policy violations across company-managed email, chats, and social accounts. Included in MS365 E5 Compliance.",
+		"eDiscovery: Respond to legal matters or internal investigations with intelligent capabilities that reduce data to only what’s relevant. Included in MS365 E5 Compliance.",
+		"Compliance Manager: Simplify compliance and reduce risk with Compliance Manager.",
+		"Privacy Risk Management: Set up policies that identify privacy risks in your enterprise environment and enable easy remediation.",
+		"Subject Rights Requests: Easy-to-use policy templates and automation features for a smoother subject rights request process."
+	],
+	"Information protection": [
+		"Information Protection: Identify, manage, and protect sensitive and business critical data across your environment. Included in MS365 E5 Compliance.",
+		"Data Lifecycle Management: Manage your information lifecycle and records intelligently to meet your legal, business, privacy, and regulatory content obligations.Included in MS365 E5 Compliance.",
+		"Data Loss Prevention: Identify, monitor, and automatically protect sensitive information stored across Office 365, One Drive, SharePoint, Teams, and endpoints. Included in MS365 E5 Compliance."
+	],
+	"Device management": [
+		"Endpoint Manager: Get endpoint security, device management, and intelligent cloud actions in a unified management platform with Intune and Configuration Manager."
+	],
+	"Free Tier":[
+		"Azure 30 day trial with $200 credit.",
+		"AzureAD is included with a subscription of a commercial online service such as Azure, Dynamics 365, Intune, Power Platform, and others.",
+		"Defender for Business for 30 days (full 300 user max?)",
+		"GitHub: Full Service",
+		"GitHub Enterprise Server: Contact for 45-day trial ",
+		"GitHub Enterprise Cloud: Contact for 30-day trial ",
+		"Managed Azure Storage account key rotation during preview. ",
+		"Permissions Management: 90-day trial",
+		"Some AD features are included with O365 E1, E3, E5, F1, and F3 subscriptions.",
+		"Verified ID is included with any AD subscription, including AD Free",
+		"Sentinel: New workspaces get 10GB/day of log data, and existing workspaces can waive the fee, for the first 31 days, up to the 20 workspace limit",
+		"Sentinel: Every GB of data ingested into the workspace, excluding Basic Logs, can be retained at no charge for the first 90 days.",
+		"WAF: First 10 TB/month for Medium and first 40 TB/month for Large."
+	],
+	"Paid Tier":[
+		"AzureAD P1: $6/user/month - Included with MS365 E3 license.",
+		"AzureAD P2: $9/user/month - Included with MS365 E5 license.",
+		"MS365 E5 Compliance: $12.00/user/month",
+		"Permissions Management: $10.40 per user per month",
+		"Privacy Risk Management: $5.00 per user per month",
+		"Subject Rights Requests: $199.80 per user per year ($16.65/month)"
+	],
+	"'Defender for X' Paid Tier":[
+		"App Service: $0.02/App Service/hour",
+		"ARM: $4/1 million API calls",
+		"Business: $3.00 user/month.",
+		"Cloud Apps: Contact for quote.",
+		"Containers: $0.0095/vCore/hour ",
+		"Cosmos DB5, 6: $0.0012 per 100 RUs/hour",
+		"DDoS Protection: $2,944/month for 100 resources and $29.5 per resource per month over 100.",
+		"DNS: $0.70/1 million Queries",
+		"Endpoints P1: Included with MS365 E3",
+		"Endpoints P2: Included with MS365 E5",
+		"Enterprise Mobility + Security E3: $10.60/user/month",
+		"Enterprise Mobility + Security E5: $16.40/user/month",
+		"External Attack Surface Management: Contact for quote.",
+		"Identity: Contact for quote.",
+		"IoT: Contact for quote.",
+		"Key Vault: $0.02/10k transactions",
+		"MariaDB: $0.021/Instance/hour",
+		"MS365: Contact for quote.",
+		"MySQL: $15/Instance/month",
+		"PostgreSQL: $15/Instance/month",
+		"O365: Contact for quote.",
+		"Servers Plan 1: $0.007/Server/hour",
+		"Servers Plan 2: $0.02/Server/hour (Includes 500 MB/day)",
+		"SQL on Azure-connected databases: $0.021/Instance/hour",
+		"SQL outside Azure: $0.015/vCore/hour",
+		"Storage: $0.02/10k transactions",
+		"Threat Intelligence: Contact for quote."
+	],
+	"(table)Firewall Paid Tier":[
+		["Class","Standard","Premium"],
+		["Deployment","$1.25 per deployment hour","$1.75 per deployment hour"],
+		["Secured Virtual Hub Deployments","$1.25 per deployment hour","$1.75 per deployment hour"],
+		["Data Processing","$0.016 per GB processed","$0.016 per GB processed"],
+		["Secured Virtual Hub Data Processed","$0.016 per GB processed","$0.016 per GB processed"]
+	],
+	"Key Vault Paid Tier":[
+		"$1 per scheduled automated key rotation",
+		"$3.20/hour per managed HSM pool (Standard B1)",
+		"$0.03/10k Secrets operations",
+		"$3 per certificate renewal request. (Key Vault does not issue or resell certificates, but enables automation including enroll and renew on certificates from Public CAs.)",
+		"$0.03/10k certificate operation.",
+		"Managed Storage account key rotation: $1 per renewal (Plus any Key Vault Secrets operations above.)"
+	],
+	"(table)Key Vault Key Rates":[
+		["Key length","Software-protected keys","HSM-protected keys (Premium only)"],
+		["RSA 2048-bit keys","$0.03/10k transactions","$1 per key per month + $0.03/10k transactions"],
+		["RSA 3072-bit, RSA 4096-bit, and ECC keys","$0.15/10k transactions","From $5 to $0.40 per key per month + $0.15/10k transactions"]
+	],
+	"Sentinel Paid Tier":[
+		"Pay-As-You-Go: $2.46 per GB of data ingested.",
+		"Commitment Tiers: From $123 to $4,305 per day, or $1.23 to $0.87 per GB, saving between 50% to 65% over PAYG.",
+		"SAP Threat Protection: $2 per SystemID-hour",
+		"Log Data Restore: $0.13 per GB per day",
+		"Search Jobs: $0.0062 per GB of data scanned",
+		"Basic Logs analysis: $0.50 per GB of data ingested",
+		"Basic Logs search queries: $0.007 per GB of data scanned"
+	],
+	"(table)WAF Paid Tier":[
+		["Version","WAF Type","Cost"],
+		["v2","Fixed","$0.443 per gateway-hour"],
+		["v2","Capacity Unit","$0.0144 per capacity unit-hour"],
+		["v1","Small","Not available"],
+		["v1","Medium","$0.126 per gateway-hour (~$91.98/month)"],
+		["v1","Large","$0.448 per gateway-hour (~$327.04/month)"]
+	],
+	"(table)WAF Data Processing Paid Tier":[
+		["Size","Quantity/month","Price/GB /month"],
+		["Small","Unlimited","$0.008"],
+		["Medium","Over 10 TB","$0.007"],
+		["Large","Over 40 TB","$0.0035 "]
+	],
+	"(table)WAF with Front Door (classic) and CDN (classic)":[
+		["Item","Monthly fixed charge"],
+		["Policy","$5 per month"],
+		["Custom Ruleset","$1 per month"],
+		["Managed Ruleset","$20 per month"],
+		["Custom Rules Requests Processed","$0.60 Per million requests"],
+		["Managed Ruleset Requests Processed","$1 Per million requests"]
+	],
     "Ownership": "Microsoft",
+    "Website": "https://www.microsoft.com/en-us/security/business/microsoft-entra",
     "Segment": "Auth",
     "Type": "SaaS"
   },
   {
     "name": "Windows 365",
-    "useCase": "Package sort for physical logistics throughput.",
-	"Free Tier":[],
-	"Paid Tier":[],
+    "useCase": "Business productivity apps.",
+	"Free Tier":[
+		"25 users in 1-month trial."
+	],
+	"(table)Paid Tier":[
+		["Service","Price/user/month","Features"],
+		["MS365 Basic","$6","Office Web, 1TB storage. Teams, email."],
+		["MS365 Personal","$7","1 TB storage"],
+		["MS365 A4B","$8.25","Office Standard, 1TB storage. No email."],
+		["MS365 Family","$10","2-6 seats. 6 TB storage."],
+		["O365 E1","$10","Email, 1TB storage, Teams. No Office."],
+		["MS365 A4E","$12","Office Enterprise, 1TB storage. Email."],
+		["MS365 Business Std","$12.5","Office Enterprise, 1TB storage. Teams, email."],
+		["MS365 Business Prem","$212","Office Enterprise, 1TB storage. InTune. Teams, email."],
+		["O365 E3","$23","E1 plus MS365 and 24/7 phone support."],
+		["O365 E5","$38","E3 plus analytics."],
+		["Office Home & Student 2021","$150 (one-time)","Office Enterprise."]
+	],
     "Ownership": "Microsoft",
-    "Segment": "Desktop",
-    "Type": "IaaS"
-  },
-  {
-    "name": "Excel Live",
-    "useCase": "Embed a live-edit Excel spreadsheet into your Teams meeting.",
-	"Free Tier":[],
-	"Paid Tier":[],
-    "Ownership": "Microsoft",
-    "Segment": "Application",
-    "Type": "SaaS"
+    "Segment": "Business productivity ",
+    "Type": "SaaS",
+	"Notes":[
+		"Excel Live: Embed a live-edit Excel spreadsheet into your Teams meeting."
+	]
   },
   {
     "name": "CockroachDB",
@@ -2330,13 +2619,7 @@
 		"HSM integration",
 		"Out-of-cluster certificate signing",
 		"Policy engine integration"
-	]
-  },
-  {
-	"name":"Jetstack",
-	"useCase":"Jetstack",
-	"Free Tier":[],
-	"Paid Tier":[],
+	],
 	"Ownership":"Jetstack",
 	"Website":"https://www.jetstack.io/jetstack-secure/",
 	"Segment":"Orchestration",
@@ -2389,7 +2672,7 @@
     "Ownership": "Chef",
     "Website": "https://www.chef.io/products/chef-Infrastructure",
     "InstallLink": "https://docs.chef.io/windows/",
-    "Github": "https://gist.github.com/dhana-git/700da979e8c0d39f7ee74ad5ba8e5f1f",
+    "GitHub": "https://gist.github.com/dhana-git/700da979e8c0d39f7ee74ad5ba8e5f1f",
     "Segment": "Infra as Code",
     "Type": "Software"
   },
@@ -2418,7 +2701,7 @@
     "Ownership": "Pre-IPO",
     "Website": "https://saltproject.io/",
     "Tutorial": "https://crate.io/blog/infrastructure-as-code-configuration-with-salt",
-    "Github": "https://github.com/saltstack/salt-pack",
+    "GitHub": "https://github.com/saltstack/salt-pack",
     "InstallLink": "https://docs.saltproject.io/en/latest/topics/installation/index.html",
     "Segment": "Infra as Code",
     "Type": "Software"
@@ -2429,7 +2712,7 @@
     "Free Tier": "Linux only, basic features.",
     "Paid Tier": "Contact for quote. Windows, AIX, Solaris, and HP-UX OSes, REST API and web portal, alerts & triggers, reporting.",
     "InstallLink": "https://cfengine.com/downloads/quick-install/",
-    "Github": "https://github.com/cfengine",
+    "GitHub": "https://github.com/cfengine",
     "Website": "https://cfengine.com/download/",
     "Segment": "Infra as Code",
     "Type": "Software"
