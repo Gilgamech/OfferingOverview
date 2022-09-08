@@ -2,8 +2,7 @@
   {
     "name": "Amplify",
     "useCase": "Build extensible, full-stack web and mobile apps faster.",
-    "Free Tier": [
-      "(Expires at the end of your free tier year.)",
+    "Free Tier Year": [
       "Build & Deploy: 1000 build minutes per month. ($10 value)",
       "Static Web Hosting: 5 GB/month stored ($0.115 value) & 15 GB/month served ($0.225 value)."
     ],
@@ -60,7 +59,7 @@
   {
     "name": "Braket",
     "useCase": "Quantum Computing",
-    "Free Tier": "One free hour of quantum circuit simulation time per month. (Expires after free tier year.)",
+    "Free Tier Year": "One free hour of quantum circuit simulation time per month.",
     "Paid Tier": [
       "Per-task price (Defined number of shots) is $0.30 across all QPUs.",
       "Per-shot price ranges from $0.00019 to $0.01, depending on QPU."
@@ -133,7 +132,7 @@
       "2M CloudFront Function Invocations."
     ],
     "Paid Tier": "First 10TB $0.085",
-    "Encryption": "(Are there use cases for non-public CDNs, like large companies? Does Amazon/AWS use CDNs to accelerate internal proprietary content? Are the edge copies encrypted?)",
+    "Encryption": "SSL from ACM certificates.",
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/cloudfront/",
     "Segment": "CDN",
@@ -142,12 +141,20 @@
       "Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, etc)",
       "Distribution defines a collection of Edge Locations and behavior on how it should handle your cached content.",
       "2 types: Web (static content) and RTMP (streaming media) ",
-      "Security through Signed URLs or Signed Cookies.",
+      "Security through Signed URLs or Signed Cookies, using Original Access Identity (OAI) and additional configuration.",
       "Write to Edge Locations with verbs like PUT objects. (How does this work and what are the use cases? Invalidate cache for a specific location, or A/B test stuff in a specific region?)",
-      "Lambda@Edge allows passing requests through a Lambda to transform.",
       "TTL defines cache expiry in seconds.",
       "Invalidating cache immediately expires the cached items, so they refresh immediately.",
-      "Refreshing a cached item has a bandwidth cost of moving the item from origin to edge."
+      "Refreshing a cached item has a bandwidth cost of moving the item from origin to edge.",
+	  "Allows redirecting to HTTPS, restricting methods, viewer access, and setting TTL.",
+	  "Has Geo Restrictions to blocklist or clearlist specific countries.",
+      "Lambda@Edge allows passing requests through a Lambda to transform or override."
+    ],
+    "Lambda@Edge function types": [
+		"Viewer Request - On any request to the cache, including those reaching the origin.",
+		"Origin Request - On any uncached request to the origin.",
+		"Origin Response - On any uncached response from the origin.",
+		"Viewer Response - On any response from the cache, including those reaching the origin."
     ]
   },
   {
@@ -250,10 +257,8 @@
   {
     "name": "Cognito",
     "useCase": "Decentralized managed authorizationentication.",
-	"Free Tier":[
-		"50k MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
-		"Sync: 10 GB of cloud sync store and 1 million sync operations per month during the free tier year. ($16.50 value)"
-	],
+	"Free Tier Year": "Sync: 10 GB of cloud sync store and 1 million sync operations per month. ($16.50 value)",
+	"Free Tier": "50k MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
 	"Paid Tier":[
 		"From $0.0055 to $0.0025 per MAU. Advanced security from $0.05 to $0.01 per MAU.",
 		"Sync: $0.15 per GB of sync store and $0.15 for each 10k sync operations per month."
@@ -456,7 +461,7 @@
     "Type": "IaaS",
     "Notes": [
       "Volume dimensions (size, storage type) can be changed at any time.",
-      "Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. (What is the use case for these?)",
+      "Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. Useful for temporary backup, caches, unimportant logs, etc.",
       "EBS backed instances can be stopped without data loss.",
       "Root volumes delete on termination by default.",
       "Volumes can have termination protection."
@@ -468,6 +473,12 @@
       "Restoring a snapshots of an encrypted volume will give you a snapshot that is still encrypted, and you can't share encrypted snapshots.",
       "Unencrypted snapshots can be shared with other AWS accounts or made public. (Why would you want to make a snapshot public?)",
       "AMIs can be created from snapshots, or volumes."
+    ],
+    "Data Logistics - Copy volumes to another AZ/Region": [
+		"Take snapshot of volume.",
+		"Create AMI from snapshot",
+		"Copy AMI to other region, if applicable.",
+		"Launch new EC2 in desired AZ."
     ]
   },
   {
@@ -666,7 +677,7 @@
       "Can have sticky sessions which are remembered by cookie."
     ],
     "Network": [
-      "Has Listeners and Target Groups but is a lawless place.",
+      "Has Listeners and Target Groups but is a 'lawless place' without support for Rules.",
       "For TCP/UDP and is good for high throughput i.e. video games.",
       "Can't have sticky sessions?"
     ],
@@ -825,7 +836,7 @@
   {
     "name": "Graviton",
     "useCase": "Container-optimized arm64 processor.",
-    "Free Tier": "750 hrs/month of EC2 t4g.small instance time during the free tier year.",
+    "Free Tier Year": "750 hrs/month of EC2 t4g.small instance time.",
 	"Notes":[
 		"Graviton is not a distinct service, but is the CPU type denoted by the 'g' in 'xxg.size' instance class naming format. Such as EC2 t4g.small instance class."
 	],
@@ -866,7 +877,7 @@
     "name": "ECR",
     "useCase": "Elastic Container Registry",
     "Free Tier": [
-      "Data Transfer Into AWS is free. ",
+      "Data Transfer Into AWS. ",
       "500 MB of private repository storage (for 1 year)",
       "50 GB of public repository storage",
       "500 GB/month of data transferred to the Internet from a public repository anonymously, or 5 TB/month if authenticated to ECR.",
@@ -911,7 +922,7 @@
   {
     "name": "AKS",
     "useCase": "Azure Kubernetes Service",
-    "Free Tier": "Details are difficult to find. Cluster Management is free, only pay for the VM used to deliver the containers.",
+    "Free Tier": "Cluster Management - only pay for the VMs used to deliver the containers.",
     "Ownership": "Microsoft",
     "Type": "SaaS",
     "Segment": "Container orchestration"
@@ -1033,6 +1044,20 @@
     "Type": "PaaS"
   },
   {
+	"name":"Elastic Beanstalk",
+	"useCase":"Deploy and scale web apps written in a number of languages.",
+	"Free Tier":"Full service - only pay for the underlying compute, storage, and network.",
+	"Ownership":"Amazon",
+	"Website":"https://aws.amazon.com/elasticbeanstalk/",
+	"Layer":"Serverless Functions",
+	"Type":"SaaS",
+	"Notes":[
+		"Languages including Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker containers",
+		"Hosting options including Apache, Nginx, Passenger, and IIS.",
+		"Name is a Jack and the Beanstalk reference, where the protagonist climbs a beanstalk to get to The Cloud."
+	]
+	},
+  {
     "name": "IAM",
     "useCase": "Used to manage AWS access.",
     "Free Tier": "Full Service",
@@ -1052,7 +1077,7 @@
       "Users must setup MFA for themselves, and this can't be done by an admin. (is this true?)",
       "Allows setting password policies like minimum length or rotation time."
     ],
-    "Identities are users, groups, and roles.": [
+    "Identities are users, groups, and roles": [
       "User accounts allow users to use the AWS Console, or CLI or SDK.",
       "Groups allow grouping users with the same permissions.",
       "Roles associate permissions with a resource.",
@@ -1217,7 +1242,7 @@
 	],
     "Encryption In Motion": "HTTPS - you'll need to use HTTPS endpoints in your Lambda Function's code.",
     "Ownership": "Amazon",
-    "Segment": "Function invocation",
+    "Segment": "Serverless Functions",
     "Type": "PaaS",
     "Supports 7 runtimes": [
       "Ruby",
@@ -1268,7 +1293,6 @@
     "Website": "https://aws.amazon.com/lex/",
     "Type": "PaaS",
 	"Notes":[
-		"Has enough builtin capability to "
 	]
   },
   {
@@ -1610,7 +1634,8 @@
 		"750 hours per month for 2 months of dc2.large compute time, for first time users.",
 		"Serverless gives a $300 credit with a 90-day expiration date, for first time users.",
 		"Leader node in multi-node configuration.",
-		"Concurrency scaling and Redshift Spectrum are both included with Redshift Serverless.",
+		"Concurrency scaling and Spectrum are both included with Serverless.",
+		"Serverless point in time restore to the last 24 hours at a 30 min granularity.",
 		"Scheduled snapshots can be retained for a maximum of 35 days."
 	],
 	"Paid Tier":[
@@ -1645,7 +1670,6 @@
 	],
 	"Serverless":[
 		"Recovery points that are less than 24 hours old are free, but beyond 24 hours incur RMS charges.",
-		"Point in time restore to the last 24 hours at a 30 min granularity is free.",
 		"Capacity is measured in Redshift Processing Units (RPUs): $0.36 per RPU hour.",
 		"RPU-hours are billed per-second, with a 60-second minimum.",
 		"Base and Max performance settings can be used to control data warehouse performance and costs.",
@@ -1872,6 +1896,94 @@
     ]
   },
   {
+    "name": "SQS",
+    "useCase": "Simple Queue Service",
+	"Free Tier":[
+		"First 1 million requests per month, for either queue type."
+	],
+	"Paid Tier":[
+		"FIFO queues from $0.50 to $0.35 per million requests.",
+		"Standard queues from $0.40 to $0.24 per million requests.",
+		"Messages are split into 64 kb chunks, so a 256 kb message incurs the cost of 4 messages.",
+		"Any KMS fees for encrypting and decrypting queue messages."
+	],
+    "Ownership": "Amazon",
+    "Encryption": "KMS",
+    "Website": "https://aws.amazon.com/sqs/",
+    "Type": "SaaS",
+    "Notes": [
+		"Provides asynchronous communication between sender and receiver, decoupling messages from processes or events.",
+		"Deletes messages on completion. Not realtime or reactive, have to pull. Like Sidekiq or RabbitMQ.",
+		"Two queue types: Standard and FIFO.",
+		"Standard queues allow nearly unlimited transactions per second, guaranteeing delivery at least once, and with best effort to keep them in order. But an extra out of order message could still sneak through.",
+		"FIFO queues are limited to 300 transactions per second, but guarantee single in-order delivery.",
+		"Default retention is 4 days, but can be adjusted from 60 seconds to 2 weeks.",
+		"One request can have up to 10 messages and be up to 256 kb.",
+		"The SQS Extended Library for Java extends this from 256 kb up to 2 gb by storing the message in S3 and referencing it in queue.",
+		"Visibility Timeouts allow 'locking' a message in queue, so other bots can't read it. If the first bot doesn't complete the message before the timeout ends, the message becomes visible to other bots again. Might deliver twice." 
+    ],
+	"Workflow":[
+		"Sender publishes message to queue.",
+		"Receiver pulls queue and receives message.",
+		"Receiver completes task and marks message complete.",
+		"Sender pulls queue and finds no message."
+    ]
+  },
+  {
+    "name": "RabbitMQ",
+    "useCase": "Open-source message broker often used for communication between microservices in the cloud.",
+	"Free Tier": "Full Service",
+	"Paid Tier": "VMWare Tanzu RabbitMQ available.",
+    "Ownership": "SpringSource, a division of VMware",
+    "DownloadLink": "https://www.rabbitmq.com/download.html",
+    "Type": "Software",
+    "Notes": [
+      "Supports protocols including AMQP, STOMP, and MQTT.",
+	  "Supports durable and transient queues."
+    ],
+    "video": "https://www.youtube.com/watch?v=NQ3fZtyXji0"
+  },
+  {
+    "name": "Tanzu",
+    "useCase": "Simplify operation of Kubernetes on-premises by adding cloud native constructs as part of vSphere.",
+	"Free Tier": "Free product intro and demo videos.",
+	"Paid Tier": "$995 per CPU for basic, details for other versions hard to find.",
+    "Store Link": "https://store-us.vmware.com/vmware-tanzu-basic-per-cpu-5471172000.html",
+    "Ownership": "VMware",
+    "Website": "https://tanzu.vmware.com/tanzu",
+    "Type": "PaaS",
+    "Segment": "Container orchestration",
+    "Notes": [
+		"3 versions: Basic, Standard, and Advanced",
+		"Website is obtuse, with 'Contact Us' links and sections instead of pricing details.",
+		"Supports AWS, Azure, Google Cloud, and VMWare.",
+		"Labs consulting services available for modernizing, building, and managing apps & platforms"
+    ]
+  },
+  {
+    "name": "vSphere",
+    "useCase": "Bring the benefits of the cloud to on-premises workloads.",
+	"Free Tier": "Workstation Player",
+	"Paid Tier": [
+		["Level","Basic 1 year","Production 1 year","Basic 3 year","Production 3 year","Features"],
+		["Essential Kit","$576.96","N/A","$686.77","N/A","Hypervisor (ESXi), & vCenter Essentials."],
+		["Essential Plus Kit","$5596.00","$5781.00","$7188.44","$7676.84","Essential Kit, Data Protection. HA, vMotion, Cross Switch vMotion, vShield, & Replication."],
+		["Standard","$1394.00","$1450.00","$1884.36","$2032.20","Hypervisor (ESXi) vMotion, HA, vShield, & Replication."],
+		["Enterprise Plus","$4780.00","$4938.00","$6141.20","$6558.32","Standard level, Trust Authority, & VM encryption."]
+	],
+    "Ownership": "VMware",
+    "Website": "https://www.vmware.com/products/vsphere.html",
+    "Segment": "VM orchestration",
+    "Type": "Platform",
+    "Notes": [
+		"vSphere is the overall virtualization platform, built on one or more ESX or ESXi hosts.",
+		"ESX is old technology, being a software package installed onto a Linux or Windows server.",
+		"ESXi is new technology, having its own kernel to operate the CPU and thus being an OS unto itself.",
+		"Every ESX and ESXi server hosts the vSphere Client on port 443 for easy management.",
+		"vCenter is available as a VM to be downloaded and installed in your environment, to help manage your environment."
+    ]
+  },
+  {
     "name": "SNS",
     "useCase": "Simple Notification Service",
 	"Free Tier":[
@@ -1898,9 +2010,9 @@
     "name": "Storage Gateway",
     "useCase": "Data transfer agent deployed on a VM or hardware device in your network, or as EC2 or VMWare Cloud VM.",
     "Free Tier": [
-      "Data Transfer from your gateway appliance to the AWS Storage Gateway service is free.",
-      "Data Transfer from the AWS Storage Gateway service to an Amazon EC2-based gateway appliance in the same region is free.",
-      "Transfer Cost: The first 100 GB/month into each AWS account is free."
+      "Data Transfer from your gateway appliance to the AWS Storage Gateway service.",
+      "Data Transfer from the AWS Storage Gateway service to an Amazon EC2-based gateway appliance in the same region.",
+      "Transfer Cost: The first 100 GB/month into each AWS account."
     ],
     "Transfer Cost": [
       "$0.01 per GB up to a maximum of $125.00 per gateway per month (12.5 TB) - after the first 100 GB/month into the AWS account. Billed as Amazon S3 requests for S3 Gateways.",
@@ -1990,12 +2102,68 @@
     "Type": "IaaS"
   },
   {
-    "name": "VMWare Cloud",
+    "name": "Cloud (VMWare)",
     "useCase": "Rehost VMWare workloads in AWS before/while pursuing a more cloud-native tech strategy.",
 	"Free Tier":[],
 	"Paid Tier":[],
     "Ownership": "Amazon",
-    "Segment": "Hypervisor",
+    "Segment": "VM Orchestration",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Mystery",
+    "useCase": "Pick your path to better team morale.",
+	"Free Tier":["Free demo events"],
+	"Paid Tier":[
+		"Single events: $30-100+",
+		"Annual subscription starting at $3k/year"
+	],
+    "Ownership": "Pre-IPO",
+    "Crunchbase": "https://www.crunchbase.com/organization/mystery",
+    "Segment": "Corporate morale",
+    "Type": "IaaS"
+  },
+  {
+    "name": "Cloud (Google)",
+    "useCase": "Cloud Host",
+	"Free Tier":[
+		"$300 credit toward paid services.",
+		"AutoML Tables - 6 node hours for training and prediction.",
+		"AutoML Video Intelligence - 40 node hours for training, 5 node hours for prediction.",
+		"AutoML Vision - 40 node hours for training and online prediction, 1 node hour for batch classification prediction, 15 node hours for Edge training.",
+		"Deploy - First active delivery pipeline per billing account.",
+		"Kubernetes Engine - No cluster management fee for one Autopilot or Zonal cluster per billing account.",
+		"Logging and, Monitoring - Unspecified quantity.",
+		"Shell - Full service, including 5 GB of persistent disk storage.",
+		"Source Repositories - Up to 5 users, 50 GB of storage, 50 GB egress."
+	],
+	"Free Tier Daily":[
+		"App Engine Standard Environment - 28 hours of 'F' instances or 9 hours of 'B' instances. 1 GB of egress.",
+		"Build - 120 build-minutes.",
+		"Firestore - 1 GB storage, 50k reads, 20k writes, 20k deletes, per project."
+	],
+	"Free Tier Monthly":[
+		"Artifact Registry - 0.5 GB storage.",
+		"AutoML Natural Language - 5k units of prediction.",
+		"AutoML Translation - 500k translated characters.",
+		"BigQuery - 1 TB of querying, 10 GB of storage.",
+		"Compute - 1 non-preemptible e2-micro VM instance, with 30 GB-months standard persistent disk, 5 GB-month snapshot storage, in us-west1, us-central1, us-east1. Or have the storage in asia-east1 or europe-west1 instead. 1 GB network egress from North America to all region destinations (excluding China and Australia).",
+		"Functions - 2 million invocations (includes both background and HTTP invocations), 400k GB-seconds, 200k GHz-seconds of compute time, 5 GB network egress.",
+		"Natural Language API - 5k units.",
+		"Pub/Sub - 10 GB of messages.",
+		"reCAPTCHA Enterprise - 1 million assessments, create, or site verify calls.",
+		"Run - 2 million requests, 360k GB-seconds of memory, 180k vCPU-seconds of compute time, 1 GB network egress from North America.",
+		"Secret Manager - 6 active secret versions, 10k access operations, 3 secret rotation notifications.",
+		"Speech-to-Text - 60 minutes.",
+		"Storage - 5 GB-months of aggregated regional storage across us-east1, us-west1, and us-central1, 5k Class A Operations, 50k Class B Operations, 1 GB network egress from North America to all region destinations (excluding China and Australia).",
+		"Video Intelligence API - 1k units.",
+		"Vision - 1k units.",
+		"Workflows - 5k internal steps, 2k external HTTP calls"
+	],
+	"Paid Tier":[],
+    "Ownership": "Google",
+    "Website": "https://cloud.google.com/",
+    "Segment": "Cloud Host",
     "Type": "IaaS"
   },
   {
@@ -2005,7 +2173,13 @@
     "Encryption": "Unsure",
     "Ownership": "Amazon",
     "Segment": "Networking Isolation",
-    "Type": "IaaS"
+    "Type": "IaaS",
+	"Direct Connect": [
+		"AWS solution for establishing dedicated networks to customer premises.",
+		"Two very fast tiers: 50Mbit to 500Mbit, and 1 GBit to 10 GBit",
+		"Reduces network costs while increasing bandwidth throughput - great for high-traffic networks.",
+		"Provides a more consistent experience than an IPSEC VPN connection."
+	]
   },
   {
     "name": "Cloud Audit Academy",
@@ -2025,7 +2199,7 @@
     "Segment": "Container orchestration",
     "Type": "IaaS",
 	"Notes": [
-		"Grants much more flexibility over the traffic going to specific containers, allowing streamlined blue/green deployments, pre-deployment testing or configuration, and canary testing of a new version.",
+		"Grants much more flexibility over the traffic going to specific containers, allowing streamlined blue/green deployments, pre-deployment testing or configuration, and canary testing of a new version."
 	]
   },
   {
@@ -2494,7 +2668,7 @@
     "name": "Snowflake",
     "useCase": "Very big data",
 	"Pricing":"https://www.snowflake.com/pricing/",
-	"Free Tier":"First $400 of use in the first month is free.",
+	"Free Tier":"$400 credit towards your first month.",
 	"(table)Paid Tier":[
 		["Tier","Cost","Features"],
 		["Standard","$2 cost per credit","Data warehouses, Replication & sharing across regions / clouds, 24 x 365 support, enterprise grade encryption in transit and at rest, federated authorizationentication, Snowsight, Data Exchange/Data Marketplace."],
