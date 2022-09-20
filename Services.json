@@ -2191,7 +2191,7 @@
 	"Segment":"Application development platform",
 	"Type":"SaaS",
 	"Notes":[
-	"Contact for additional features: Point in time recovery, Designated Support manager & SLAs, Enterprise OAuth providers, SSO/ SAML, SOC2, Custom contracts & invoicing, On-premise support, 24×7×365 premium enterprise support",
+	"Contact for additional features: Point in time recovery, Designated Support manager & SLAs, Enterprise OAuth providers, SSO/ SAML, SOC2, Custom contracts & invoicing, On-premise support, 24×7×365 premium enterprise support"
  	]
   },
   {
@@ -2204,7 +2204,6 @@
 	"Segment":"Application development platform",
 	"Type":"Software",
 	"Notes":[]
-  },
   },
   {
 	"name":"Chime",
@@ -2276,6 +2275,7 @@
 	"Segment":"SaaS",
 	"Type":"",
 	"Notes":[]
+  },
   {
     "name": "VPC",
     "useCase": "Container for other AWS IaaS and PaaS products, and can have Endpoints for AWS SaaS, products.",
