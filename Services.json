@@ -29,6 +29,7 @@
     "Ownership": "Amazon",
     "Type": "SaaS",
     "Website": "https://aws.amazon.com/apprunner/",
+	"Segment":"Container orchestration",
     "Notes": [
       "Automatic load balancing, SSL, autoscaling, logging, & metrics."
     ]
@@ -69,12 +70,13 @@
     "Type": "IaaS",
     "Website": "https://aws.amazon.com/braket/",
     "Notes": [
-		"Named after Bra-ket notation"
+		"Named after Bra-ket notation",
+		"Qubits are analog bits, allowing sub-bit precision for binary systems."
 	]
   },
   {
     "name": "CLI (AWS)",
-    "useCase": "Perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, etc.",
+    "useCase": "Perform various tasks like list buckets, upload data, launch, start, stop, and terminate EC2 instances, update security groups, create subnets, et cetera.",
     "Free Tier": "Full Service",
     "Encryption": "SSL",
     "Ownership": "Amazon",
@@ -138,7 +140,7 @@
     "Segment": "CDN",
     "Type": "IaaS",
     "Notes": [
-      "Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, etc)",
+      "Origin is storage location of data. (S3, Private S3 through Origin Access Identity (OAI), EC2, ELB, R53, et cetera)",
       "Distribution defines a collection of Edge Locations and behavior on how it should handle your cached content.",
       "2 types: Web (static content) and RTMP (streaming media) ",
       "Security through Signed URLs or Signed Cookies, using Original Access Identity (OAI) and additional configuration.",
@@ -256,7 +258,7 @@
   },
   {
     "name": "Cognito",
-    "useCase": "Decentralized managed authorizationentication.",
+    "useCase": "Decentralized managed authentication.",
 	"Free Tier Year": "Sync: 10 GB of cloud sync store and 1 million sync operations per month. ($16.50 value)",
 	"Free Tier": "50k MAUs (monthly active users) for direct Cognito logins ($275 value) and 50 MAUs for SAML 2.0 federated logins.",
 	"Paid Tier":[
@@ -269,12 +271,12 @@
     "Type": "SaaS",
 	"Cognito Sync": "Sync user data and preferences across devices with one line of code (powered by SNS)",
     "Notes": [
-      "User Pools directory allows users to authorization using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, etc) ",
+      "User Pools directory allows users to authorization using OAuth to IdP (Meta, AZ, Netflix?, Google, AAD, itself, et cetera) ",
       "Uses JWTs to persist authorization",
-      "Identity Pools can provide temp AWS credentials for service access (S3, DynamoDB, etc)",
+      "Identity Pools can provide temp AWS credentials for service access (S3, DynamoDB, et cetera)",
       "Web Identity Federation exchanges identity and security info between IdP and apps.",
       "IdP is a trusted login source for other services.",
-      "OIDC is an Oauthorization type of IdP.",
+      "OIDC is an Oauth type of IdP.",
       "SAML is an SSO type of IdP."
     ]
   },
@@ -461,7 +463,7 @@
     "Type": "IaaS",
     "Notes": [
       "Volume dimensions (size, storage type) can be changed at any time.",
-      "Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. Useful for temporary backup, caches, unimportant logs, etc.",
+      "Instance Store Volumes are physical storage attached to a host, and cannot be stopped  - if the host fails, the data is lost. Useful for temporary backup, caches, unimportant logs, et cetera.",
       "EBS backed instances can be stopped without data loss.",
       "Root volumes delete on termination by default.",
       "Volumes can have termination protection."
@@ -507,16 +509,17 @@
 		"General Purpose",
 		"Compute Optimized",
 		"Memory Optimized",
-		"Accelerated Optimized (FPGA, ASIC, etc)",
+		"Accelerated Optimized (FPGA, ASIC, et cetera)",
 		"Storage Optimized"
 	],
 	"Notes": [
-		"Instance sizes generally double in cost and key attributes (RAM?)",
+		"Instance sizes generally double in cost and RAM, maybe network and any attached storage. The majority of server classes have 2 CPUs.",
 		"Placement Groups let you choose the logical placement of instances, to optimize communication, performance, or durability.",
 		"UserData field lets you add a script that will run on EC2 instance launch.",
 		"MetaData holds info about the current instance, and can be reached at http://169.254.169.254/latest/meta-data/.",
 		"Instance Profiles are a list of EC2 instances which can use the same IAM role for AWS access.",
-		"T2, T3, and T4 instance classes have a CPU Credit system."
+		"T2, T3, and T4 instance classes have a CPU Credit system.",
+		"Service occasionally uses paravirtualization (using non-virtualized physical assets in a virtual system) for performance reasons - when this occurs and the underlying VM or asset host requires maintenance, the virtual machine (or asset) can't be hot-migrated to another host, and AWS will send you an email notification that the VM requires a reboot by a deadline within a few days or weeks. This is necessary to separate the VM from the physical asset, to move either the VM or asset (or its data) to another physical host, or replace the physical device with a virtualized replacement. Any full OS reboot from the AWS console will satisfy this requirement, and there is a notification in the Personal Health Dashboard that will clear once the requirement is satisfied. This type of notification is seen less frequently than in prior years, as virtual asset performance now often meets and sometimes exceeds physical asset performance."
 	],
     "AMI (Amazon Machine Image)": [
 		"Referenced by their AMI ID.",
@@ -815,7 +818,8 @@
       "$1.00/ DataBrew interactive session.",
       "$0.48/ DataBrew node hour.",
       "$0.16/VPU-Hour for Elastic View processing.",
-      "$0.023/GB-month for Elastic View Table storage."
+      "$0.023/GB-month for Elastic View Table storage.",
+	  "Around $50/day and $1k/month for Glue Dev Endpoints."
     ],
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/glue/",
@@ -827,7 +831,7 @@
 	  "Can add tables manually, by schema, or by crawler. (Can 'manually' be automated by CLI/API?)",
 	  "Connections can load data into other databases which are defined in the Data Catalog.",
 	  "Jobs are ETL agents that run from either a schedule or external triggers.",
-	  "Glue Dev Endpoints are an abstracted cluster to test and develop scripts against. Pricing is around $50/day and $1k/month",
+	  "Glue Dev Endpoints are an abstracted cluster to test and develop scripts against.",
 	"Data Firehose loads data into other datastores, like Glue.",
 	"Glue is recommended for complex ETL, including joining streams, and partitioning the output in S3 based on the data content.",
 	"Kinesis Data Firehose is recommended when your use cases focus on data delivery and preparing data to be processed after it is delivered."
@@ -856,7 +860,7 @@
     ],
     "(table)Ease of Adoption": [
       ["Difficulty","OS","Languages","Path"],
-      ["Easy","Linux","Interpreted / JIT (Java, PHP, Node, etc)","Use arm64 or Multi-Arch image."],
+      ["Easy","Linux","Interpreted / JIT (Java, PHP, Node, et cetera)","Use arm64 or Multi-Arch image."],
       ["Medium","Linux","Compiled (C/C++, Python, Go)","Cross-compile or other fixes during build."],
       ["Hard","Windows",".NET","Migrate to .NET Core on Linux."],
       ["Uncompleted","Windows","Windows Server","Applications can't yet compile to arm64."]
@@ -1189,21 +1193,19 @@
     "useCase": "Captures realtime data streams.",
 	"Free Tier":"Retrieving data stream records within the the 24-hour default (or up to 7 days for extended data retention).",
 	"Paid Tier - Stream":[
-		"Per stream, per hour: $0.04",
-		"Data ingested & stored 24h, per GB: $0.08",
-		"Data retrievals, per GB: $0.04",
-		"Enhanced fan-out data retrievals, per GB: $0.05",
-		"Data stored, per GB-month (beyond 24 hours, up to 7 days): $0.10",
-		"Data stored, per GB-month (beyond 7 days): $0.023"
+		"Per stream: $0.04/hour",
+		"Data retrievals: $0.04/GB",
+		"Enhanced fan-out data retrievals: $0.05/GB",
+		"Data ingested & stored (first 24h): $0.08/GB",
+		"Data stored (24h to 7 days): $0.10/GB-month",
+		"Data stored (beyond 7 days): $0.023/GB-month"
 	],
 	"Paid Tier - Data Firehose":[
-		"Ingestion, per GB: from $0.029 to $0.02",
-		"Format Conversion, per GB: $0.018",
-		"Processed to VPC, per GB : $0.01",
-		"VPC delivery, per hour, per AZ: $0.01",
-		"S3 delivery, per GB: $0.02",
-		"S3 delivery, per 1k objects: $0.005",
-		"JQ processing, per hour (optional): $0.07"
+		"Ingestion from $0.029 to $0.02/GB",
+		"Format Conversion: $0.018/GB",
+		"JQ processing (optional): $0.07/hour",
+		"Processed to VPC : $0.01/GB plus $0.01/hour/VPC",
+		"S3 delivery: $0.02/GB plus $0.005/1k objects"
 	],
     "Ownership": "Amazon",
     "Type": "PaaS",
@@ -1257,7 +1259,7 @@
       "Code packages are called Lambda Functions, regardless of if they contain any software functions.",
       "Adjustable duration timeout up to 15 min and memory size up to 3008 MB.",
       "Good fit for short-running tasks where you don't need to customize the OS or environment. For longer than 15 minutes, more RAM, or a custom OS environment, consider Fargate/ECS",
-      "Can be triggered from SDK or multiple services (S3, API Gateway, DynamoDB, etc). Function URLs allow direct Internet access to trigger a Lambda function - an API Gateway and Route53 redirect are no longer needed.",
+      "Can be triggered from SDK or multiple services (S3, API Gateway, DynamoDB, et cetera). Function URLs allow direct Internet access to trigger a Lambda function - an API Gateway and Route53 redirect are no longer needed.",
       "Use no VPC by default, but can use a VPC to interact with your other services, like RDS.",
       "Can scale to 1000 (default) concurrent functions. Can increase this default as an AWS Service Limit increase.",
       "Cold Starts - if not used recently there will be a startup delay."
@@ -1396,11 +1398,11 @@
 	],
 	"Paid Tier":[
 		"Compute from $0.093 to $19.0903 per hour",
-		"Storage Rate","$0.10 per GB-month",
-		"I/O Rate","$0.20 per 1 million requests",
-		"Replicated Write I/Os","$0.20 per million replicated write I/Os",
-		"Backup Storage","$0.021 per GB-month",
-		"Workbench","from $0.05 to $0.445 per hour"
+		"Storage: $0.10 per GB-month",
+		"I/O: $0.20 per 1 million requests",
+		"Replicated Write I/Os: $0.20 per million replicated write I/Os",
+		"Backup Storage: $0.021 per GB-month",
+		"Workbench from $0.05 to $0.445 per hour"
 	],
     "Ownership": "Amazon",
     "Website": "https://aws.amazon.com/neptune/",
@@ -1695,7 +1697,7 @@
   },
   {
     "name": "Registry of Open Data",
-    "useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, etc.",
+    "useCase": "Use a public data set, like the Cancer Genome Atlas, USGS LandSat, NOAA GOES, et cetera.",
     "Ownership": "Amazon",
     "Website": "https://registry.opendata.aws/",
     "Free Tier": "Full service",
@@ -1817,7 +1819,7 @@
     "name": "SDK (AWS)",
     "Ownership": "Amazon",
     "Free Tier": "Full Service",
-    "Type": "PaaS",
+    "Type": "Software",
     "Notes": [
       "Programmatic Access must be setup from IAM"
     ],
@@ -1933,7 +1935,7 @@
     "name": "RabbitMQ",
     "useCase": "Open-source message broker often used for communication between microservices in the cloud.",
 	"Free Tier": "Full Service",
-	"Paid Tier": "VMWare Tanzu RabbitMQ available.",
+	"Paid Tier": "VMWare Tanzu RabbitMQ available (SaaS).",
     "Ownership": "SpringSource, a division of VMware",
     "DownloadLink": "https://www.rabbitmq.com/download.html",
     "Type": "Software",
@@ -1964,11 +1966,11 @@
     "name": "vSphere",
     "useCase": "Bring the benefits of the cloud to on-premises workloads.",
 	"Free Tier": "Workstation Player",
-	"Paid Tier": [
+	"(table)Paid Tier": [
 		["Level","Basic 1 year","Production 1 year","Basic 3 year","Production 3 year","Features"],
 		["Essential Kit","$576.96","N/A","$686.77","N/A","Hypervisor (ESXi), & vCenter Essentials."],
 		["Essential Plus Kit","$5596.00","$5781.00","$7188.44","$7676.84","Essential Kit, Data Protection. HA, vMotion, Cross Switch vMotion, vShield, & Replication."],
-		["Standard","$1394.00","$1450.00","$1884.36","$2032.20","Hypervisor (ESXi) vMotion, HA, vShield, & Replication."],
+		["Standard","$1394.00","$1450.00","$1884.36","$2032.20","Hypervisor (ESXi), vMotion, HA, vShield, & Replication."],
 		["Enterprise Plus","$4780.00","$4938.00","$6141.20","$6558.32","Standard level, Trust Authority, & VM encryption."]
 	],
     "Ownership": "VMware",
@@ -2054,7 +2056,7 @@
 	"Free Tier":"Full Service",
     "Website": "https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html",
     "Ownership": "Amazon",
-    "Type": "PaaS",
+    "Type": "SaaS",
     "Notes": [
       "Foundational"
     ]
@@ -2138,9 +2140,9 @@
 		"Source Repositories - Up to 5 users, 50 GB of storage, 50 GB egress."
 	],
 	"Free Tier Daily":[
-		"App Engine Standard Environment - 28 hours of 'F' instances or 9 hours of 'B' instances. 1 GB of egress.",
-		"Build - 120 build-minutes.",
-		"Firestore - 1 GB storage, 50k reads, 20k writes, 20k deletes, per project."
+		"App Engine Standard Environment: 28 hours of 'F' instances or 9 hours of 'B' instances. 1 GB of egress.",
+		"Build: 120 build-minutes.",
+		"Firestore (per project): 1 GB storage, 50k reads, 20k writes, 20k deletes."
 	],
 	"Free Tier Monthly":[
 		"Artifact Registry - 0.5 GB storage.",
@@ -2166,6 +2168,114 @@
     "Segment": "Cloud Host",
     "Type": "IaaS"
   },
+  {
+  	"name":"Firebase",
+	"useCase":"App development platform that helps you build and grow apps and games which users love.",
+	"Free Tier":"",
+	"Paid Tier":"",
+	"Ownership":"Google",
+	"Website":"https://firebase.google.com/",
+	"Segment":"Application development platform",
+	"Type":"SaaS",
+	"Notes":[]
+  },
+  {
+	"name":"Supabase",
+	"useCase":"Open source Firebase alternative",
+	"Free Tier":"500MB database, 1GB file storage, 2GB bandwidth, 50MB file uploads, Social OAuth providers, 50k monthly active users, 500k Edge Function invocations, 1-day log retention, Community support, and projects paused after 1 week of inactivity.",
+	"Paid Tier":"$25/month/project: 8GB database, 100GB file storage, 50GB bandwidth, 5GB file uploads, Social OAuth providers, 100k monthly active users, 2 million Edge Function invocations, Daily backups, 7-day log retention, No project pausing, Email support. Additional fees apply beyond these limits.",
+	"Ownership":"Private",
+	"Website":"https://supabase.com/",
+	"CraftCo":"https://craft.co/supabase",
+	"Crunchbase":"https://www.crunchbase.com/organization/supabase",
+	"Segment":"Application development platform",
+	"Type":"SaaS",
+	"Notes":[
+	"Contact for additional features: Point in time recovery, Designated Support manager & SLAs, Enterprise OAuth providers, SSO/ SAML, SOC2, Custom contracts & invoicing, On-premise support, 24×7×365 premium enterprise support",
+ 	]
+  },
+  {
+	"name":"Pockebase",
+	"useCase":"Open Source backend for your next SaaS and Mobile app in 1 file",
+	"Free Tier":"Full Service.",
+	"Ownership":"Unclear",
+	"Website":"https://pocketbase.io/",
+	"Install Link":"https://pocketbase.io/docs/",
+	"Segment":"Application development platform",
+	"Type":"Software",
+	"Notes":[]
+  },
+  },
+  {
+	"name":"Chime",
+	"useCase":"",
+	"Free Tier":"",
+	"Paid Tier":"",
+	"Ownership":"Amazon",
+	"Website":"",
+	"Segment":"SaaS",
+	"Type":"Chat",
+	"Notes":[]
+  },
+  {
+	"name":"Teams",
+	"useCase":"",
+	"Free Tier":"",
+	"Paid Tier":"",
+	"Ownership":"Microsoft",
+	"Website":"",
+	"Segment":"SaaS",
+	"Type":"",
+	"Notes":[]
+  },
+  {
+	"name":"Discord",
+	"useCase":"",
+	"Free Tier":"",
+	"Paid Tier":"",
+	"Ownership":"",
+	"Website":"",
+	"Glassdoor":"",
+	"Crunchbase":"",
+	"Segment":"SaaS",
+	"Type":"",
+	"Notes":[]
+  },
+  {
+	"name":"EFS",
+	"useCase":"",
+	"Free Tier":"",
+	"Paid Tier":"",
+	"Ownership":"Amazon",
+	"Website":"",
+	"Segment":"SaaS",
+	"Type":"",
+	"Notes":[]
+  },
+  {
+	"name":"Sparational",
+	"useCase":"Make faster websites faster",
+	"Free Tier":"Full Service",
+	"Ownership":"Gilgamech Technologies",
+	"Website":"https://www.sparational.com/",
+	"Segment":"Framework",
+	"Type":"SaaS",
+	"Notes":[
+		"Multiple implementations: static pages, SPAs, multi-page engines, and sitelets."
+	]
+  },
+  {
+	"name":"Slack",
+	"useCase":"",
+	"Free Tier":"",
+	"Paid Tier":"",
+	"Ownership":"Stock price",
+	"Website":"",
+	"Glassdoor":"",
+	"Crunchbase":"",
+	"Segment":"SaaS",
+	"Type":"",
+	"Notes":[]
   {
     "name": "VPC",
     "useCase": "Container for other AWS IaaS and PaaS products, and can have Endpoints for AWS SaaS, products.",
@@ -2389,7 +2499,7 @@
     "Glassdoor": "https://www.glassdoor.com/Overview/Working-at-Cockroach-Labs-EI_IE1168502.11,25.htm",
     "Website": "https://www.cockroachlabs.com/",
     "Segment": "Relational DB",
-    "Type": "Software",
+    "Type": "SaaS",
     "Ownership": "Pre-IPO",
     "Free Tier": [
       "Serverless: Free 5GiB Storage & 250M Request Units/month"
@@ -2671,7 +2781,7 @@
 	"Free Tier":"$400 credit towards your first month.",
 	"(table)Paid Tier":[
 		["Tier","Cost","Features"],
-		["Standard","$2 cost per credit","Data warehouses, Replication & sharing across regions / clouds, 24 x 365 support, enterprise grade encryption in transit and at rest, federated authorizationentication, Snowsight, Data Exchange/Data Marketplace."],
+		["Standard","$2 cost per credit","Data warehouses, Replication & sharing across regions / clouds, 24 x 365 support, enterprise grade encryption in transit and at rest, federated authentication, Snowsight, Data Exchange/Data Marketplace."],
 		["Enterprise","$3 cost per credit","Standard +, Multi-cluster warehouse, annual rekeying of all encrypted data, materialized views, search optimization, data masking."],
 		["Business Critical","$4 cost per credit","Enterprise +, HIPAA, PCI, encryption using customer-managed keys, AWS/Azure PrivateLink / GCP Private Service Connect, DB failover/back for BC, AWS API Gateway Private Endpoints support"],
 		["Virtual Private Snowflake (VPS) (AWS only)","Contact for quote","Business Critical +, Dedicated encrypted virtual servers & metadata store."],

@@ -28,10 +28,10 @@
 	"name": "Document",
 	"Data is stored as": "JSON Documents as unstructured containers for key:value pairs, and these are grouped into collections. Fields in collections can be indexed into hierarchies. This gives a good amount of relational data. No joins, so embed data instead of normalizing it.",
 	"Use Case": "Phone games, IOT, Content Management, anywhere you have a lot of unstructured data. Much faster reads.",
-	"Non-Ideal": "Structured data, joins. Writes etc aren't much faster.",
+	"Non-Ideal": "Structured data, joins. Writes et cetera aren't much faster.",
 	"Schema": "No",
 	"Horizontal": "Good?",
-	"Offerings": "MongoDB, FirestormDB, DynamoDB, CouchDB, SimpleDB, etc.",
+	"Offerings": "MongoDB, FirestormDB, DynamoDB, CouchDB, SimpleDB, et cetera.",
 	"notes":[
 		"Highly structured key-value."
 	]
@@ -75,7 +75,7 @@
 {
 	"name": "Multi-model",
 	"Data is stored as": "structured and unstructured as needed.",
-	"Use Case": "Abstract away data modeling, schemas, replication, shards, etc.",
+	"Use Case": "Abstract away data modeling, schemas, replication, shards, et cetera.",
 	"Non-Ideal": "???",
 	"Schema": "When needed.",
 	"Horizontal": "???",
