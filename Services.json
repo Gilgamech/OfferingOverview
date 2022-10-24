@@ -1082,14 +1082,17 @@
       "Allows setting password policies like minimum length or rotation time."
     ],
     "Identities are users, groups, and roles": [
-      "User accounts allow users to use the AWS Console, or CLI or SDK.",
+      "User accounts allow users to use the Console, or CLI or SDK.",
       "Groups allow grouping users with the same permissions.",
-      "Roles associate permissions with a resource.",
+      "Roles associate permissions with a resource. Roles are used for Console instead of user accounts when the account is directly connected to a SAML IdP, such as AzureAD.",
       "Policies are JSON documents listing specific permissions.",
-      "Inline Policies are directly attached to a user, group, or role.",
+      "Inline Policies are directly attached to a user, group, or role. (These don't show up in lists of policies and so can be hard to manage. The author considers their use to be a security antipattern.)",
       "List Policies can be listed in the AWS Console and are not directly attached. List policies can be Customer or Managed.",
       "Customer Policies are ones you make and maintain.",
-      "Managed Policies are read-only from AWS"
+      "Managed Policies are read-only from AWS",
+	  "Groups, Users, and Roles can each have 10 policies directly attached.",
+	  "A User can be a member of 10 Groups, allowing a total of 100 Group-attached Policies, plus the 10 directly attached Policies for 110 total Policies. Groups can hold nearly limitless Users.",
+	  "Policy Analyzer allows testing and simulating access from any identity to any resource, and is a great way to test your own policies to ensure they allow only the intended access."
     ]
   },
   {
@@ -1703,7 +1706,9 @@
     "Free Tier": "Full service",
     "Type": "SaaS",
     "Segment": "Open Data",
-	"Notes":["All datasets are also discoverable on Data Exchange"]
+	"Notes":[
+		"All datasets are also discoverable on Data Exchange"
+	]
   },
   {
     "name": "Rekognition",
@@ -2182,8 +2187,32 @@
   {
 	"name":"Supabase",
 	"useCase":"Open source Firebase alternative",
-	"Free Tier":"500MB database, 1GB file storage, 2GB bandwidth, 50MB file uploads, Social OAuth providers, 50k monthly active users, 500k Edge Function invocations, 1-day log retention, Community support, and projects paused after 1 week of inactivity.",
-	"Paid Tier":"$25/month/project: 8GB database, 100GB file storage, 50GB bandwidth, 5GB file uploads, Social OAuth providers, 100k monthly active users, 2 million Edge Function invocations, Daily backups, 7-day log retention, No project pausing, Email support. Additional fees apply beyond these limits.",
+	"Free Tier": [
+		"500MB database",
+		"1GB file storage",
+		"2GB bandwidth",
+		"50MB file uploads",
+		"Social OAuth providers",
+		"50k monthly active users",
+		"500k Edge Function invocations",
+		"1-day log retention",
+		"Community support",
+		"Projects paused after 1 week of inactivity."
+	],
+	"Paid Tier: $25/month/project": [
+		"8GB database",
+		"100GB file storage",
+		"50GB bandwidth",
+		"5GB file uploads",
+		"Social OAuth providers",
+		"100k monthly active users",
+		"2 million Edge Function invocations",
+		"7-day log retention",
+		"Email support",
+		"No project pausing",
+		"Daily backups",
+		"Additional fees apply beyond these limits."
+	],
 	"Ownership":"Private",
 	"Website":"https://supabase.com/",
 	"CraftCo":"https://craft.co/supabase",
@@ -2195,7 +2224,7 @@
  	]
   },
   {
-	"name":"Pockebase",
+	"name":"Pocketbase",
 	"useCase":"Open Source backend for your next SaaS and Mobile app in 1 file",
 	"Free Tier":"Full Service.",
 	"Ownership":"Unclear",
@@ -2212,8 +2241,8 @@
 	"Paid Tier":"",
 	"Ownership":"Amazon",
 	"Website":"",
-	"Segment":"SaaS",
-	"Type":"Chat",
+	"Segment":"Chat",
+	"Type":"SaaS",
 	"Notes":[]
   },
   {
@@ -2223,8 +2252,8 @@
 	"Paid Tier":"",
 	"Ownership":"Microsoft",
 	"Website":"",
-	"Segment":"SaaS",
-	"Type":"",
+	"Segment":"",
+	"Type":"SaaS",
 	"Notes":[]
   },
   {
@@ -2236,20 +2265,45 @@
 	"Website":"",
 	"Glassdoor":"",
 	"Crunchbase":"",
-	"Segment":"SaaS",
-	"Type":"",
+	"Segment":"",
+	"Type":"SaaS",
 	"Notes":[]
   },
   {
 	"name":"EFS",
-	"useCase":"",
-	"Free Tier":"",
-	"Paid Tier":"",
+	"useCase":"Simple, serverless, set-and-forget, elastic file system.",
+	"Free Tier Year":"5 GB Standard storage.",
+	"Paid Tier (per GB/month)":[
+		"Standard: $0.08",
+		"One Zone: $0.043"
+	],	
 	"Ownership":"Amazon",
-	"Website":"",
-	"Segment":"SaaS",
-	"Type":"",
+	"Website":"https://aws.amazon.com/efs/",
+	"Segment":"Durable Storage",
+	"Type":"SaaS",
 	"Notes":[]
+  },
+  {
+	"name":"API Gateway",
+	"useCase":"Create, maintain, and secure APIs at any scale, to access data or functionality from back-end services.",
+	"Free Tier Year (per month)": [
+		"1 million HTTP API calls.", 
+		"1 million REST API calls.", 
+		"1 million messages.", 
+		"750k connection minutes."
+	]
+	"Paid Tier (per GB/month)":[
+		"HTTP API Calls starting at $1 per million.",
+		"REST API Calls starting at $3.50 per million.",
+		"WebSocket API Calls starting at $1 per million, plus $0.25 per million connection minutes.",
+		"Caching (optional) from $0.02 to $3.80 per hour."
+	],	
+	"Ownership":"Amazon",
+	"Website":"https://aws.amazon.com/api-gateway/",
+	"Segment":"API hosting",
+	"Type":"SaaS",
+	"Notes":[
+	]
   },
   {
 	"name":"Sparational",
@@ -2268,12 +2322,12 @@
 	"useCase":"",
 	"Free Tier":"",
 	"Paid Tier":"",
-	"Ownership":"Stock price",
+	"Ownership":"",
 	"Website":"",
 	"Glassdoor":"",
 	"Crunchbase":"",
-	"Segment":"SaaS",
-	"Type":"",
+	"Segment":"",
+	"Type":"SaaS",
 	"Notes":[]
   },
   {
@@ -2658,7 +2712,7 @@
 	"Type":"SaaS"
   },
   {
-    "name": "Unanet GovCon",
+    "name": "GovCon",
 	"useCase":" ERP specifically designed for US Government contractors.",
 	"Free Tier":"Free product tour.",
 	"Paid Tier":"Contact for quote.",
@@ -2805,7 +2859,10 @@
 	"Website":"https://plextrac.com/",
 	"PitchBook":"https://pitchbook.com/profiles/company/342176-68",
 	"Segment":"Security Testing",
-	"Type":"SaaS"
+	"Type":"SaaS",
+	"Notes":[
+		"Has tools to streamline report building, with reusable write-ups and narratives."
+	]
   },
   {
     "name": "onXmaps",
