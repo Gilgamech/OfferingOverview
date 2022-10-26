@@ -2291,7 +2291,7 @@
 		"1 million REST API calls.", 
 		"1 million messages.", 
 		"750k connection minutes."
-	]
+	],
 	"Paid Tier (per GB/month)":[
 		"HTTP API Calls starting at $1 per million.",
 		"REST API Calls starting at $3.50 per million.",
