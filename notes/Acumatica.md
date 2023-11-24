@@ -1,19 +1,15 @@
 # Acumatica
 
-## Use Case
-ERP specifically designed for small and medium-size businesses.
+### ERP specifically designed for small and medium-size businesses.
 
-## [Website](https://www.acumatica.com/)
+[Website](https://www.acumatica.com/)
 
-## Segment
-ERP
+Segment: ERP
 
-## Type
-SaaS
+Type: SaaS
 
-## Ownership
-INVESTOR AB or EQT
+Ownership: INVESTOR AB or EQT
 
-## [Crunchbase](https://www.crunchbase.com/organization/acumatica)
+[Crunchbase](https://www.crunchbase.com/organization/acumatica)
 
-## [Glassdoor](https://www.glassdoor.com/Overview/Working-at-Acumatica-EI_IE562378.11,20.htm)
+[Glassdoor](https://www.glassdoor.com/Overview/Working-at-Acumatica-EI_IE562378.11,20.htm)
