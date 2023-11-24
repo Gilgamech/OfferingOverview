@@ -77,10 +77,10 @@ object-fit: contain
 	color: #000;
 }
 .grid-container p {
+	background: #eee;
 	margin: 0;
 	border-radius: 15px;
 	text-align: center;
-	background: #eee;
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
@@ -90,6 +90,34 @@ object-fit: contain
 .grid-container p:hover {
   background: #bbb;
 }
+h4 { /*IaaS*/
+	background: #DDF;
+	margin: 0;
+	border-radius: 15px;
+	text-align: center;
+	color: #000;
+	padding: 20px;
+	font-size: 30px;
+}
+h5 { /*PaaS*/
+	background: #FEE;
+	margin: 0;
+	border-radius: 15px;
+	text-align: center;
+	color: #000;
+	padding: 20px;
+	font-size: 30px;
+}
+h6 { /*SaaS*/
+	background: #DFF; 
+	margin: 0;
+	border-radius: 15px;
+	text-align: center;
+	color: #000;
+	padding: 20px;
+	font-size: 30px;
+}
+
 
 /*Type colors*/
 /*IaaS = Indigo-ish*/
