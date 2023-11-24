@@ -72,7 +72,7 @@ object-fit: contain
 }
 
 /*Testing new menu page*/
-ul li a {
+.grid-container a {
 	border-radius: 15px;
 	text-align: center;
 	background: #eee;
