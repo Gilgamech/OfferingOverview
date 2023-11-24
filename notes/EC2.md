@@ -1,4 +1,3 @@
-
 # EC2
 - Use Case: Servers as a service
 - Free Tier: 750 hours of Linux and Windows t2.micro instances each month for one year. (t3.micro for the regions in which t2.micro is unavailable.) (~$230 value total), Data transfer into an EC2 instance from the Internet, Data transfer from an EC2 instance out to CloudFront., First Elastic IP attached to an EC2 instance, and the first 100 remaps. ($10 value)…
