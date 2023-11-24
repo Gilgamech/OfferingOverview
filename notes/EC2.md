@@ -1,21 +1,40 @@
 # EC2
-- Use Case: Servers as a service
-- Free Tier: 
-  - 750 hours of Linux and Windows t2.micro instances each month for one year. (t3.micro for the regions in which t2.micro is unavailable.) (~$230 value total)
-  - Data transfer into an EC2 instance from the Internet
-  - Data transfer from an EC2 instance out to CloudFront.
-  - First Elastic IP attached to an EC2 instance
-  - and the first 100 remaps. ($10 value)…
-- Paid Tier: 
-  - On-demand server time ranges from $0.0255 to $0.3328 per hour.
-  - Data transfer from an EC2 instance out to the Internet starts at $0.09/GB for the first 10 TB/month.
-  - Data transfer between regions is generally $0.02 per GB.
-  - Additional Elastic IPs attached to an EC2 instance are prorated at $0.005/hour ($3.60/month) while powered on.…
-- Ownership: Amazon
-- [Website](https://aws.amazon.com/ec2/)
-- Type: IaaS
-- Instance Types: General Purpose, Compute Optimized, Memory Optimized, Accelerated Optimized (FPGA, ASIC, et cetera)…
-- Notes: 
+
+## Use Case: 
+
+Servers as a service
+
+## Free Tier: 
+
+750 hours of Linux and Windows t2.micro instances each month for one year. (t3.micro for the regions in which t2.micro is unavailable.) (~$230 value total)
+Data transfer into an EC2 instance from the Internet
+Data transfer from an EC2 instance out to CloudFront.
+First Elastic IP attached to an EC2 instance and the first 100 remaps. ($10 value)…
+
+## Paid Tier: 
+
+On-demand server time ranges from $0.0255 to $0.3328 per hour.
+Data transfer from an EC2 instance out to the Internet starts at $0.09/GB for the first 10 TB/month.
+Data transfer between regions is generally $0.02 per GB.
+Additional Elastic IPs attached to an EC2 instance are prorated at $0.005/hour ($3.60/month) while powered on.…
+
+## Ownership: 
+
+Amazon
+
+## [Website](https://aws.amazon.com/ec2/)
+
+## Type: 
+
+IaaS
+
+## Instance Types: 
+- General Purpose
+- Compute Optimized
+- Memory Optimized
+- Accelerated Optimized (FPGA, ASIC, et cetera)…
+
+## Notes: 
   - Instance sizes generally double in cost and RAM, maybe network and any attached storage. The majority of server classes have 2 CPUs., Placement Groups let you choose the logical placement of instances, to optimize communication, performance, or durability., UserData field lets you add a script that will run on EC2 instance launch., MetaData holds info about the current instance, and can be reached at http://169.254.169.254/latest/meta-data/.…
   - AMI (Amazon Machine Image): Referenced by their AMI ID., Can be created from an EC2 instance that's running or stopped., AMI Marketplace has free, and paid subscriptions to, AMIs maintained by third-party vendors., Community AMIs has free AMIs maintained by community members.
   - AMIs hold the info needed to launch an instance: Template for the root volume, Launch permissions controlling which AWS accounts can launch instances from the AMI., Mapping to a block device, specifying volumes to attach on launch.
