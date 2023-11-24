@@ -77,16 +77,16 @@ object-fit: contain
 	color: #000;
 }
 .grid-container p {
-	background: #eee;
-}
-.grid-container p a {
 	border-radius: 15px;
 	text-align: center;
+	background: #eee;
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
 }
-.grid-container p a:hover {
+.grid-container p a {
+}
+.grid-container p:hover {
   background: #bbb;
 }
 
