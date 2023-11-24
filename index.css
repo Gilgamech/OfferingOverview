@@ -72,6 +72,10 @@ object-fit: contain
 }
 
 /*Testing new menu page*/
+.grid-container p a:link{
+	text-decoration: none;
+	color: #000;
+}
 .grid-container p a {
 	border-radius: 15px;
 	text-align: center;
@@ -79,6 +83,9 @@ object-fit: contain
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
+}
+.grid-container p a:hover {
+  background: #bbb;
 }
 
 /*Type colors*/
