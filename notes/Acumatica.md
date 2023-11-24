@@ -1,7 +1,7 @@
 # Acumatica
 ## ERP specifically designed for small and medium-size businesses.
 [Website](https://www.acumatica.com/)
-	**Segment**: ERP
+**Segment**: ERP
 **Type**: SaaS
 **Ownership**: INVESTOR AB or EQT
 [Crunchbase](https://www.crunchbase.com/organization/acumatica)
