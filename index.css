@@ -98,6 +98,7 @@ h4 { /*IaaS*/
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
+    font-weight: inherit;
 }
 h5 { /*PaaS*/
 	background: #FEE;
@@ -107,6 +108,7 @@ h5 { /*PaaS*/
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
+    font-weight: inherit;
 }
 h6 { /*SaaS*/
 	background: #DFF; 
@@ -116,6 +118,7 @@ h6 { /*SaaS*/
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
+    font-weight: inherit;
 }
 
 
