@@ -76,7 +76,12 @@ object-fit: contain
 	text-decoration: none;
 	color: #000;
 }
-.grid-container p {
+.grid-container p a {
+}
+.grid-container p:hover {
+  background: #bbb;
+}
+h3 { /*etc*/
 	background: #eee;
 	margin: 0;
 	border-radius: 15px;
@@ -84,11 +89,7 @@ object-fit: contain
 	color: #000;
 	padding: 20px;
 	font-size: 30px;
-}
-.grid-container p a {
-}
-.grid-container p:hover {
-  background: #bbb;
+    font-weight: inherit;
 }
 h4 { /*IaaS*/
 	background: #DDF;
