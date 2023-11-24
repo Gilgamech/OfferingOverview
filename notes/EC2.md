@@ -1,31 +1,26 @@
 # EC2
 
 ## Use Case: 
-
 Servers as a service
 
 ## Free Tier: 
-
 750 hours of Linux and Windows t2.micro instances each month for one year. (t3.micro for the regions in which t2.micro is unavailable.) (~$230 value total)
 Data transfer into an EC2 instance from the Internet
 Data transfer from an EC2 instance out to CloudFront.
 First Elastic IP attached to an EC2 instance and the first 100 remaps. ($10 value)…
 
 ## Paid Tier: 
-
 On-demand server time ranges from $0.0255 to $0.3328 per hour.
 Data transfer from an EC2 instance out to the Internet starts at $0.09/GB for the first 10 TB/month.
 Data transfer between regions is generally $0.02 per GB.
 Additional Elastic IPs attached to an EC2 instance are prorated at $0.005/hour ($3.60/month) while powered on.…
 
 ## Ownership: 
-
 Amazon
 
 ## [Website](https://aws.amazon.com/ec2/)
 
 ## Type: 
-
 IaaS
 
 ## Instance Types: 
