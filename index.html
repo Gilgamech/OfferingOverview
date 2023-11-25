@@ -6,9 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://www.Sparational.com/Sparational.js"></script>
-		<script src="https://www.Sparational.com/engines/infoGridPage.js"></script>
 		<link href="https://www.Gilgamech.com/css/normalize.css" rel="stylesheet" type="text/css" charset="utf-8">
-		<script src="/index.js"></script>
 		<link href="/index.css" rel="stylesheet" type="text/css" charset="utf-8">
 	</head>
 	<body>
@@ -20,8 +18,47 @@
 		</span>
 			<a href="mailto:OfferingOverview@Gilgamech.com" class="contact">Contact</a>
 		</p>
-		<div id="content">
-		</div><!-- End Content-->
-		<p class="copyright">© 2022 Gilgamech Technologies - Powered by <a href="https://www.Sparational.com/">Sparational.js</a>.</p>
+		<div id="content" class="grid-container"></div><!-- End Content-->
+		<script>
+			var search_terms = new Array();
+
+			function autocompleteMatch(input) {
+			  if (input == '') {
+				return [];
+			  }
+			  var reg = new RegExp(input.toLowerCase())
+			  return search_terms.filter(function(term) {
+				  if (term.toLowerCase().match(reg)) {
+					return term;
+				  }
+			  });
+			}
+			
+			function showResults(val) {
+				deleteElement("result")
+				addElement("searchSpan","","searchResult","","","","","","","","","result")
+				let list = '';
+				let terms = autocompleteMatch(val);
+				var outerUL = addElement("result","","","ul");
+				for (i=0; i<terms.length; i++) {
+					var outerHref = addElement(outerUL,"","","a","",terms[i]);
+					addElement(outerHref,terms[i],"","li");
+				}
+			}
+			
+			webRequest("get","https://www.offeringoverview.com/notes/index.md",function(data){
+				search_terms = data.replaceAll("###### [","").replaceAll("##### [","").replaceAll("#### [","").replaceAll("### [","").split(/\]\(.*\)\n/)
+				console.log(search_terms)
+				
+				search_terms = search_terms.sort();
+			}); //end webRequest
+
+			if (decodeURIComponent(window.location.pathname).replace("/","") == "") {
+				convertWebElement("content","/notes"+decodeURIComponent(window.location.pathname).replace("html","md"))
+			} else {
+				convertWebElement(addElement("content","","grid-item"),"/notes"+decodeURIComponent(window.location.pathname).replace("html","md"))
+			}
+		</script>
+		<div id="footer" class="copyright"></div><script>convertWebElement('footer',"https://www.sparational.com/sites/footer.md")</script>
 	</body>
 </html>
