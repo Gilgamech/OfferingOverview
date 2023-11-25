@@ -5,17 +5,16 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="Get data on almost every solution." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.OfferingOverview.com/" />
-<meta property="og:description" content="Get data on almost every solution." />
-<meta property="og:image" content="https://www.OfferingOverview.com/images/OO.jpg" />
-<meta name="description" content="Get data on almost every solution.">
-<meta name="keywords" content="blog">
-<meta name="author" content="Stephen Gillie">
 		<script src="https://www.Sparational.com/Sparational.js"></script>
 		<link href="https://www.Gilgamech.com/css/normalize.css" rel="stylesheet" type="text/css">
 		<link href="/index.css" rel="stylesheet" type="text/css" charset="utf-8">
+		<script>
+			if (name == "") {
+				convertWebElement('content',decodeURIComponent(window.location.pathname).replace("html","md"))
+			} else {
+				convertWebElement(addElement("content","","grid-item"),decodeURIComponent(window.location.pathname).replace("html","md"))
+			};// end if name
+		</script>
 	</head>
 	<body>
 		<p class="menu">
@@ -26,9 +25,7 @@
 		</span>
 			<a href="mailto:OfferingOverview@Gilgamech.com" class="contact">Contact</a>
 		</p>
-		
-		<div>
-			<div id="content" class="grid-container"></div><script>convertWebElement('content',"https://www.OfferingOverview.com/index.md")//convertWebElement('content',decodeURIComponent(window.location.pathname).replace("html","md"))</script>
+		<div id="content" class="grid-container">
 		</div><!-- End Content-->
 		<div id="footer" class="copyright"></div><script>convertWebElement('footer',"https://www.sparational.com/sites/footer.md")</script>
 	</body>
