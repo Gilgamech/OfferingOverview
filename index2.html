@@ -20,9 +20,13 @@
 		</p>
 		<div id="content" class="grid-container"></div><!-- End Content-->
 		<script>
-			convertWebElement('content',decodeURIComponent(window.location.pathname).replace("html","md"))
-			//convertWebElement(addElement("content","","grid-item"),"/notes"+decodeURIComponent(window.location.pathname).replace("html","md"))
+			if (decodeURIComponent(window.location.pathname).replace("/","") == "index2.html") {
+				convertWebElement('content',decodeURIComponent(window.location.pathname).replace("html","md"))
+			} else {
+				convertWebElement(addElement("content","","grid-item"),"/notes"+decodeURIComponent(window.location.pathname).replace("html","md"))
+			}
 		</script>
 		<div id="footer" class="copyright"></div><script>convertWebElement('footer',"https://www.sparational.com/sites/footer.md")</script>
 	</body>
 </html>
+
