@@ -1,6 +1,6 @@
 # EC2
 
-### Servers as a service
+## Servers as a service
 
 Free Tier: 
 - 750 hours of Linux and Windows t2.micro instances each month for one year. (t3.micro for the regions in which t2.micro is unavailable.) (~$230 value total)
