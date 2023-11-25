@@ -54,7 +54,7 @@
 			}); //end webRequest
 
 			if (decodeURIComponent(window.location.pathname).replace("/","") == "") {
-				convertWebElement("content","/notes"+decodeURIComponent(window.location.pathname)+".index.md")
+				convertWebElement("content","/notes"+decodeURIComponent(window.location.pathname)+"index.md")
 			} else {
 				convertWebElement(addElement("content","","grid-item"),"/notes"+decodeURIComponent(window.location.pathname)+".md")
 			}
