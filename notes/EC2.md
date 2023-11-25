@@ -14,9 +14,9 @@
 - Additional Elastic IPs attached to an EC2 instance are prorated at $0.005/hour ($3.60/month) while powered on.
 - Elastic IPs not attached to any EC2 instance are prorated at $0.005/hour ($3.60/month) while detached.
 - Elastic IP remaps beyond the first 100/month are $0.10 each.
-**Ownership": "Amazon
-**Website": "https://aws.amazon.com/ec2/
-**Type": "IaaS
+**Ownership**: Amazon
+[Website](https://aws.amazon.com/ec2/)
+**Type**: IaaS
 **Instance Types**: 
 - General Purpose
 - Compute Optimized
@@ -27,7 +27,7 @@
 - Instance sizes generally double in cost and RAM, maybe network and any attached storage. The majority of server classes have 2 CPUs.
 - Placement Groups let you choose the logical placement of instances, to optimize communication, performance, or durability.
 - UserData field lets you add a script that will run on EC2 instance launch.
-- MetaData holds info about the current instance, and can be reached at "http://169.254.169.254/latest/meta-data/".
+- MetaData holds info about the current instance, and can be reached at http://169.254.169.254/latest/meta-data/.
 - Instance Profiles are a list of EC2 instances which can use the same IAM role for AWS access.
 - T2, T3, and T4 instance classes have a CPU Credit system.
 - Service occasionally uses paravirtualization (using non-virtualized physical assets in a virtual system) for performance reasons - when this occurs and the underlying VM or asset host requires maintenance, the virtual machine (or asset) can't be hot-migrated to another host, and AWS will send you an email notification that the VM requires a reboot by a deadline within a few days or weeks. This is necessary to separate the VM from the physical asset, to move either the VM or asset (or its data) to another physical host, or replace the physical device with a virtualized replacement. Any full OS reboot from the AWS console will satisfy this requirement, and there is a notification in the Personal Health Dashboard that will clear once the requirement is satisfied. This type of notification is seen less frequently than in prior years, as virtual asset performance now often meets and sometimes exceeds physical asset performance.
@@ -46,19 +46,19 @@
 **ASG (Auto-scaling groups)**: 
 - A collection of EC2 instances, grouped for scaling and management.
 - Sized based on Min, Max, and Desired capacities.
-**ASG Health Checks":[
+**ASG Health Checks**: 
 - Determine the current state of an EC2 instance.
 - Can be run against either the EC2 instance, or an ELB.
-**ASG Launch Configurations":[
+**ASG Launch Configurations**: 
 - Holds the configuration values used by Auto Scaling to launch new instances, such as AMI ID, Instance Type, Role.
 - Read-only after creation. Can be cloned (which can be edited?)
 - Must be manually edited by updating the Auto Scaling settings.
-**ASG scaling types":[
+**ASG scaling types**: 
 - Out: horizontal scaling
 - Up: vertical scaling
 - In: horizontal downscaling
 - Down: vertical downscaling (unofficial)
-**ASG scaling policies":[
+**ASG scaling policies**: 
 - Simple Scaling: scales when an alarm is breached.
 - Target Scaling: scales when a metric is breached. (i.e. Average CPU Utilization > 75%)
 - Scaling Policy with Steps: lets you establish incremental levels of action for alarm breaches.
