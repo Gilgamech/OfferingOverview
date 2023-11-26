@@ -19,6 +19,10 @@ a:link{
     text-decoration: none;
     color: #000;
 }
+a:visited {
+    text-decoration: none;
+	color:#000;
+}
 
 /*Site parts*/
 .menu {
@@ -117,6 +121,10 @@ object-fit: contain
 	background: #0FF; 
 }
 
+.grid-item {
+    border-radius: 15px;
+    background: #eee;
+}
 
 /*Search*/
 .searchBox {
@@ -181,6 +189,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*<span class="popup">This is a test. <span>Did you pass?</span></span>*/
+/*Should standardize these too.*/
 .popup {
 	background: #3df;
 	border-radius: 15px;
