@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Offering Overview</title>
+		<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://www.Sparational.com/Sparational.js"></script>
+		<link href="https://www.Gilgamech.com/css/normalize.css" rel="stylesheet" type="text/css" charset="utf-8">
+		<link href="/index.css" rel="stylesheet" type="text/css" charset="utf-8">
+	</head>
+	<body>
+		<div id="content" class="grid-container"></div><!-- End Content-->
+		<script>
+			convertWebElement("content","https://www.offeringoverview.com/files/pageFrame.spa")
+			var search_terms = new Array();
+
+			function autocompleteMatch(input) {
+			  if (input == '') {
+				return [];
+			  }
+			  var reg = new RegExp(input.toLowerCase())
+			  return search_terms.filter(function(term) {
+				  if (term.toLowerCase().match(reg)) {
+					return term;
+				  }
+			  });
+			}
+			
+			function showResults(val) {
+				deleteElement("result")
+				addElement("searchSpan","","searchResult","","","","","","","","","result")
+				let list = '';
+				let terms = autocompleteMatch(val);
+				var outerUL = addElement("result","","","ul");
+				for (i=0; i<terms.length; i++) {
+					var outerHref = addElement(outerUL,"","","a","",terms[i]);
+					addElement(outerHref,terms[i],"","li");
+				}
+			}
+			
+			webRequest("get","https://www.offeringoverview.com/notes/index.md",function(data){
+				search_terms = data.replaceAll("###### [","").replaceAll("##### [","").replaceAll("#### [","").replaceAll("### [","").split(/\]\(.*\)\n/)
+				console.log(search_terms)
+				
+				search_terms = search_terms.sort();
+			}); //end webRequest
+
+			if (decodeURIComponent(window.location.pathname).replace("/index2","") == "") {
+				convertWebElement("content","/notes"+decodeURIComponent(window.location.pathname)+"index.md")
+			} else {
+				convertWebElement(addElement("content","","grid-item"),"/notes"+decodeURIComponent(window.location.pathname)+".md")
+			}
+		</script>
+	</body>
+</html>
