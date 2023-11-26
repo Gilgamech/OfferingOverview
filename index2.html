@@ -46,7 +46,7 @@
 				search_terms = search_terms.sort();
 			}); //end webRequest
 
-			if (decodeURIComponent(window.location.pathname).replace("/index2","") == "") {
+			if (decodeURIComponent(window.location.pathname).replace("/index2.html","") == "") {
 				convertWebElement("content","/notes"+decodeURIComponent(window.location.pathname)+"index.md")
 			} else {
 				convertWebElement(addElement("content","","grid-item"),"/notes"+decodeURIComponent(window.location.pathname)+".md")
