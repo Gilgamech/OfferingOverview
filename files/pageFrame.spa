@@ -63,7 +63,7 @@
 				{
 				"elementParent": "parentElement",
 				"elementType":"script",
-				"innerText":"if (decodeURIComponent(window.location.pathname).replace('/','') == 'index2.html') {convertWebElement('content',decodeURIComponent(window.location.pathname).replace('html','md'))} else {convertWebElement(addElement('content','','grid-item'),'/notes'+decodeURIComponent(window.location.pathname).replace('html','md'))}"
+				"innerText":"if (decodeURIComponent(window.location.pathname).replace('/','') == 'index2.html') { convertWebElement('content','/notes'+decodeURIComponent(window.location.pathname)+'index.md') } else { convertWebElement(addElement('content','','grid-item'),'/notes'+decodeURIComponent(window.location.pathname)+'.md') }"
 				},
 				"https: //www.sparational.com/sites/footer.md"
 			]
