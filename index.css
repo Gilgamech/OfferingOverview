@@ -66,7 +66,7 @@ object-fit: contain
 	font-size: 30px;
     font-weight: inherit;
 }
-.grid-container h3 p:hover {
+.grid-container h3:hover {
   background: #0AA;
 }
 
