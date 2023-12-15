@@ -1,8 +1,13 @@
 # Windows 365
+
 ## Business productivity apps.
+
 **Free Tier**: 
+
 - 25 users in 1-month trial.
-**(table)Paid Tier**:
+
+**Paid Tier**:
+
 |Service|Price/user/month|Features|
 | --------| ---------------| ----------|
 |MS365 Basic|$6|Office Web, 1TB storage. Teams, email.|
@@ -20,4 +25,5 @@
 **Segment**: Business productivity 
 **Type**: SaaS
 **Notes**: 
+
 - Excel Live: Embed a live-edit Excel spreadsheet into your Teams meeting.

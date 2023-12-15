@@ -1,5 +1,7 @@
 # ByDesign
+
 ## ERP specifically designed for midlevel businesses.
+
 **Free Tier**: Free product tour.
 **Paid Tier**: Contact for quote.
 **Ownership**: SAP

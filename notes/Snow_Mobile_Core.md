@@ -1,8 +1,11 @@
 # Snow Mobile Core
+
 ## Suitcase-sized device which provides a suite of services through a 5G or 4G connection.
+
 **Ownership**: Amazon
 **Type**: IaaS
-**Services Provided**: 
+**Services Provided**:
+
 - Config
 - CloudWatch
 - AutoScaling
@@ -14,5 +17,7 @@
 - Provisioning and Subscriber tools
 - VPC Management Tools
 - Mobile core control plane.
-**Notes**: 
+
+**Notes**:
+
 - Also called SnowCone?

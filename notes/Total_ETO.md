@@ -1,5 +1,7 @@
 # Total ETO
+
 ## ERP specifically designed for Engineer To Order manufacturers.
+
 **Free Tier**: Free product tour.
 **Paid Tier**: Contact for quote.
 **Ownership**: Private

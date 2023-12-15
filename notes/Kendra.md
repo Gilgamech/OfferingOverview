@@ -1,7 +1,11 @@
 # Kendra
+
 ## ML-powered search.
+
 **Free Tier**: 750 hours of Developer Edition in the first 30 days. ($843.75 value)
-**(table)Paid Tier**: 
+
+**Paid Tier**:
+
 - Edition Developer Enterprise
 - Document Storage 10k 100k
 - Max Queries Per Day 4k 8k
@@ -12,6 +16,7 @@
 - Additional 8k queries per day. N/A $0.7 per hour. ($504/month)
 - Connector Usage per document scanned $0.000001 $0.000001
 - Connector Usage each hourly when syncing $0.35 $0.35
+
 **Ownership**: Amazon
 **Segment**: Search DB
 **Type**: SaaS

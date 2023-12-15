@@ -1,5 +1,7 @@
 # Acumatica
+
 ## ERP specifically designed for small and medium-size businesses.
+
 [Website](https://www.acumatica.com/)
 **Segment**: ERP
 **Type**: SaaS

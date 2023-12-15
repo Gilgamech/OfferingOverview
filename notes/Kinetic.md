@@ -1,5 +1,7 @@
 # Kinetic
+
 ## ERP specifically designed for enterprises.
+
 **Free Tier**: Free product tour.
 **Paid Tier**: Contact for quote.
 **Ownership**: Epicor

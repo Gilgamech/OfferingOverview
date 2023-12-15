@@ -1,6 +1,9 @@
 # CloudWatch
+
 ## Monitoring, dashboards, event engine, alarms, logging, metrics.
-**Free Tier**: 
+
+**Free Tier**:
+
 - Alarms: 10 Alarm metrics ($1 value)
 - Canaries: 100 canary runs per month ($0.12 value)
 - Contributor Insights: 1 Contributor Insights rule, and the first one million matching log events each month. ($0.52 value)
@@ -10,7 +13,9 @@
 - Logs: 5GB data ingested and scanned ($2.525 value), plus all inbound data transfer.
 - Metrics: Basic Monitoring Metrics, 10 Detailed Monitoring Metrics, 1 Million API requests.
 - RUM: 1 million RUM events. ($10 value)"
-**Paid Tier**: 
+
+**Paid Tier**:
+
 - Alarms: From $0.10 to $0.50 per alarm metric, after the first 10.
 - Canaries: $0.0012 per canary run.
 - Contributor Insights: $0.50 per rule and $0.02 per 1 million matching log events.
@@ -21,24 +26,36 @@
 - Metrics: From $0.30 to $0.02.
 - Metrics Insights: $0.01 per 1000 metrics analyzed.
 - RUM: $1 per 100k events."
+
 **Ownership**: Amazon
 **Segment**: Monitoring
 **Type**: SaaS
-**Notes**: 
+**Notes**:
+
 - Collection of monitoring services: Dashboards, Events, Alarms, Logs, Metrics
 - Most services default to 1 minute reporting intervals, with options for 1, 3, and 5.
 - EC2 starts with 5 and calls the 1 min option 'detailed monitoring' (does it cost more?) - Agent required.
 - Can track the amount of billable data written to your AWS accounts.
 - Can stream custom logs too."
-**Alarms**: 
+
+**Alarms**:
+
 - Notifications based on metrics"
-**Dashboards**: 
+
+**Dashboards**:
+
 - Visualize metrics"
-**Events**: 
+
+**Events**:
+
 - Trigger AWS events based on condition (use case hourly snapshots)"
-**Logs**: 
+
+**Logs**:
+
 - Data point logging
 - Must belong to log group"
-**Metrics**: 
+
+**Metrics**:
+
 - Capture one data point across time.
 - Custom Metrics allow much higher resolution, down to 1 second."

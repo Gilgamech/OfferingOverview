@@ -1,5 +1,7 @@
 # Perpetua
+
 ## eCommerce Advertising Software
+
 **Ownership**: Pre-IPO
 [Website](https://perpetua.io/)
 **Segment**: Advertising

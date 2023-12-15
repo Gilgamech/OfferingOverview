@@ -1,11 +1,14 @@
 # IAM
+
 ## Used to manage AWS access.
+
 **Free Tier**: Full Service
 **Encryption**: Are your policies encrypted at rest?
 **Type**: PaaS
 **Ownership**: Amazon
 **Segment**: Access
-**Notes**: 
+**Notes**:
+
 - Foundational
 - Universal system, applies to all regions at once.
 - Account creation normally starts with root user account setup.
@@ -16,7 +19,9 @@
 - Access secret keys are only shown on creation - if lost they must be made again.
 - Users must setup MFA for themselves, and this can't be done by an admin. (is this true?)
 - Allows setting password policies like minimum length or rotation time.
-**Identities are users, groups, and roles**: 
+
+**Identities are users, groups, and roles**:
+
 - User accounts allow users to use the Console, or CLI or SDK.
 - Groups allow grouping users with the same permissions.
 - Roles associate permissions with a resource. Roles are used for Console instead of user accounts when the account is directly connected to a SAML IdP, such as AzureAD.

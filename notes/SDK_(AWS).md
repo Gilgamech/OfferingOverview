@@ -1,10 +1,14 @@
 # SDK (AWS)
-**Ownership**: Amazon
+
 **Free Tier**: Full Service
 **Type**: Software
-**Notes**: 
+**Ownership**: Amazon
+**Notes**:
+
 - Programmatic Access must be setup from IAM
-**Available languages**: 
+
+**Available languages**:
+
 - C++
 -  Go
 -  Java

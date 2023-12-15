@@ -1,5 +1,7 @@
 # NetSuite
+
 ## ERP specifically designed for multinational enterprises.
+
 **Free Tier**: Free product tour.
 **Paid Tier**: Contact for quote.
 **Ownership**: Oracle

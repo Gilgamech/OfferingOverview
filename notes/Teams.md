@@ -1,5 +1,7 @@
 # Teams
+
 ## 
+
 **Free Tier**: 
 **Paid Tier**: 
 **Ownership**: Microsoft

@@ -1,13 +1,18 @@
 # Secure
+
 ## Kubernetes management software.
-**Free Tier**: 
+
+**Free Tier**:
+
 - 1 cluster
 - Cert-manager control plane
 - Detect self-signed certificates
 - Certificate & ingress misconfiguration & remediation
 - Team access and visibility
 - Automated alerts sent to Slack.
-**Paid Tier**: 
+
+**Paid Tier**:
+
 - Contact for quote.
 - Free Tier features.
 - Volume pricing based on number of clusters.
@@ -20,6 +25,7 @@
 - HSM integration
 - Out-of-cluster certificate signing
 - Policy engine integration
+
 **Ownership**: Jetstack
 [Website](https://www.jetstack.io/jetstack-secure/)
 **Segment**: Orchestration

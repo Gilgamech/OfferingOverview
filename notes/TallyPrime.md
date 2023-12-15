@@ -1,5 +1,7 @@
 # TallyPrime
+
 ## ERP specifically designed for small and medium-size businesses.
+
 **Free Tier**: Free product tour.
 **Paid Tier**: Contact for quote.
 **Ownership**: 

@@ -1,6 +1,9 @@
 # Cloud (Google)
+
 ## Cloud Host
-**Free Tier**: 
+
+**Free Tier**:
+
 - $300 credit toward paid services.
 - AutoML Tables - 6 node hours for training and prediction.
 - AutoML Vision - 40 node hours for training and online prediction, 1 node hour for batch classification prediction, 15 node hours for Edge training.
@@ -9,11 +12,15 @@
 - Logging and, Monitoring - Unspecified quantity.
 - Shell - Full service, including 5 GB of persistent disk storage.
 - Source Repositories - Up to 5 users, 50 GB of storage, 50 GB egress.
-**Free Tier Daily**: 
+
+**Free Tier Daily**:
+
 - App Engine Standard Environment: 28 hours of 'F' instances or 9 hours of 'B' instances. 1 GB of egress.
 - Build: 120 build-minutes.
 - Firestore (per project): 1 GB storage, 50k reads, 20k writes, 20k deletes.
-**Free Tier Monthly**: 
+
+**Free Tier Monthly**:
+
 - Artifact Registry - 0.5 GB storage.
 - AutoML Natural Language - 5k units of prediction.
 - AutoML Translation - 500k translated characters.
@@ -30,6 +37,7 @@
 - Video Intelligence API - 1k units.
 - Vision - 1k units.
 - Workflows - 5k internal steps, 2k external HTTP calls
+
 **Paid Tier**: 
 **Ownership**: Google
 [Website](https://cloud.google.com/)

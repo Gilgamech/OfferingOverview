@@ -1,5 +1,7 @@
 # Terraform
+
 ## Automate infrastructure provisioning on any cloud
+
 **Free Tier**: 
 **Paid Tier**: 
 **Segment**: Infra as Code

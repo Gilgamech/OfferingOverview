@@ -1,5 +1,7 @@
 # ClearScale
+
 ## AWS Consulting Partner
+
 **Free Tier**: 
 **Paid Tier**: 
 **Ownership**: Private

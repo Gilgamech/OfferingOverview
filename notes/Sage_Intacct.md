@@ -1,5 +1,7 @@
 # Sage Intacct
+
 ## ERP specifically designed for the construction industry.
+
 **Free Tier**: Free demo and Q&A session.
 **Paid Tier**: Contact for quote.
 **Ownership**: SGPYY $35.97 (8/15/2022)
