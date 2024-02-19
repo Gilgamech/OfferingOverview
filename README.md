@@ -1,12 +1,16 @@
 # OfferingOverview
+
 ## Service types
+
 IaaS - lets you host your applications (servers)
 PaaS - lets you build your applications (functions)
 SaaS - lets you use your applications (cloud hosted)
 DBaaS - DB are software, so DBaaS are SaaS by definition.
 
 - Add these later. https://aws.amazon.com/websites/
+
 ## Misc 
+
 - Code should have minimal dependencies and then be as atomic as possible. This leads to smaller and simpler microservices, leading to smaller clusters, and more flexible compute supply. Reducing dependencies reduces package bloat, and reducing obfuscation makes understanding the code less complex. Smaller and simpler containers make smaller and simpler pods. Smaller and simpler containers and pods are easier to stack in RAM and schedule across CPUs. 
 - Heavy library reuse is not good, as including multiple dependencies bloats a software package while obfuscating its full functionality from even its own programmer. 
 - Why buy what you can make?
@@ -18,6 +22,7 @@ DBaaS - DB are software, so DBaaS are SaaS by definition.
 	- Software testing ice cream cone
 
 ## Cloud native migration questions
+
 - Do you need to customize the OS or environment?
 - How long does it run, and how often? 
 - Does it need to stay in memory?
@@ -32,6 +37,7 @@ DBaaS - DB are software, so DBaaS are SaaS by definition.
 
 
 ## AWS Services Bibliography:
+
 - FreeCodeCamp.org
 	- AWS Certified Solutions Architect - Associate 2020 (PASS THE EXAM!)
 	- https://www.youtube.com/watch?v=Ia-UEYYR44s
